@@ -19,9 +19,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.17",
     "framer-motion": "^12.19.1",
     "lucide-react": "^0.510.0",
     "next": "^15.3.1",
+    "nodemailer": "^7.0.4",
     "posthog-js": "^1.239.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"

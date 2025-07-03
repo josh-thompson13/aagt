@@ -3,7 +3,7 @@ export const AppConfig = {
   description: 'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
   tagline: 'Alternative lending solutions for Australian businesses',
   mission: 'Making business and investment funding accessible and straightforward',
-  email: 'admin@aagtprivateloans.com.au',
+  email: 'aagtpvtloans@gmail.com',
   domain: 'https://aagtprivateloans.com.au',
   businessType: 'Direct Private Lending Company',
   targetMarket: 'Business owners and investors seeking alternative funding solutions',

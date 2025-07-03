@@ -16,7 +16,7 @@ export const organizationSchema = {
     addressRegion: 'NSW',
     addressCountry: 'AU',
   },
-  telephone: '1300-AAGT-LOANS',
+  telephone: '+61 461 534 088',
   email: AppConfig.email,
   priceRange: '$150,000-$5,000,000',
   areaServed: 'Australia',
@@ -168,7 +168,7 @@ export const financialServiceSchema = {
     addressCountry: 'AU',
   },
   url: 'https://aagtprivateloans.com.au',
-  telephone: '1300-AAGT-LOANS',
+  telephone: '+61 461 534 088',
   serviceType: 'Private Lending',
   areaServed: 'Australia',
 };

@@ -1,6 +1,5 @@
 import { ContactSection } from '@/components/prestige/ContactSection';
 import { Clock, Mail, Phone } from 'lucide-react';
-import { AppConfig } from '@/utils/AppConfig';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -46,8 +45,8 @@ export const metadata: Metadata = {
 };
 
 const contactInfo = {
-  email: AppConfig.email,
-  phone: '1300-AAGT-LOANS',
+  email: 'aagtpvtloans@gmail.com',
+  phone: '+61 461 534 088',
   hours: 'Mon-Fri 9AM-6PM',
 };
 
