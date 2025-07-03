@@ -335,7 +335,7 @@ export default function ResourcesPage() {
                   <ul className="space-y-1">
                     {guide.topics.map((topic, topicIndex) => (
                       <li key={topicIndex} className="text-sm text-gray-600 flex items-center">
-                        <div className="w-1.5 h-1.5 bg-primary-700 rounded-full mr-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-primary-700 rounded-full mr-2 flex-shrink-0" />
                         {topic}
                       </li>
                     ))}
@@ -415,7 +415,7 @@ export default function ResourcesPage() {
                     'Tax returns (if self-employed)'
                   ].map((item, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="w-6 h-6 border-2 border-gray-300 rounded mr-3 mt-0.5 flex-shrink-0"></div>
+                      <div className="w-6 h-6 border-2 border-gray-300 rounded mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{item}</span>
                     </div>
                   ))}
@@ -434,7 +434,7 @@ export default function ResourcesPage() {
                     'Be honest about your financial situation'
                   ].map((tip, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-primary-700 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary-700 rounded-full mr-3 mt-2 flex-shrink-0" />
                       <span className="text-gray-700">{tip}</span>
                     </div>
                   ))}

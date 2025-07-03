@@ -86,7 +86,7 @@ export default function NotFound() {
         {/* Illustration */}
         <div className="mt-12 relative">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-64 h-64 bg-primary-100 rounded-full filter blur-3xl opacity-30"></div>
+            <div className="w-64 h-64 bg-primary-100 rounded-full filter blur-3xl opacity-30" />
           </div>
           <div className="relative">
             <svg

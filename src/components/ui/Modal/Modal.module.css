@@ -1,0 +1,154 @@
+/* Overlay */
+.overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+}
+
+.overlay.entering {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.overlay.exiting {
+  animation: fadeOut 0.2s ease-in;
+}
+
+/* Modal Container */
+.modal {
+  @apply bg-white rounded-xl shadow-2xl max-h-[90vh] overflow-hidden w-full max-w-md transform;
+}
+
+.modal.entering {
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal.exiting {
+  animation: slideOut 0.3s ease-in;
+}
+
+/* Size Variants */
+.xs {
+  @apply max-w-xs;
+}
+
+.sm {
+  @apply max-w-sm;
+}
+
+.md {
+  @apply max-w-md;
+}
+
+.lg {
+  @apply max-w-lg;
+}
+
+.xl {
+  @apply max-w-xl;
+}
+
+.xxl {
+  @apply max-w-2xl;
+}
+
+.full {
+  @apply max-w-none w-[95vw] h-[90vh];
+}
+
+/* Modal Sections */
+.header {
+  @apply px-6 py-4 border-b border-gray-200 flex items-center justify-between;
+}
+
+.title {
+  @apply text-lg font-semibold text-[#0A2540] flex-1;
+}
+
+.closeButton {
+  @apply p-1 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors duration-200;
+}
+
+.body {
+  @apply px-6 py-4 overflow-y-auto flex-1;
+}
+
+.footer {
+  @apply px-6 py-4 border-t border-gray-200 flex items-center justify-end gap-3;
+}
+
+/* Glass Morphism Variant */
+.glassmorphism {
+  @apply backdrop-blur-md bg-white/20 border border-white/30;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glassmorphism .header,
+.glassmorphism .footer {
+  @apply border-white/20;
+}
+
+.glassmorphism .title {
+  @apply text-gray-800;
+}
+
+.glassmorphism .closeButton {
+  @apply text-gray-600 hover:text-gray-800 hover:bg-white/20;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal {
+    @apply mx-4 max-w-none;
+  }
+
+  .full {
+    @apply w-full h-full rounded-none;
+  }
+
+  .header,
+  .body,
+  .footer {
+    @apply px-4;
+  }
+}

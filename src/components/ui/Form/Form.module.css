@@ -1,0 +1,163 @@
+/* Base Form Styles */
+.formGroup {
+  @apply relative w-full;
+}
+
+.formField {
+  @apply relative w-full;
+}
+
+/* Input Base Styles */
+.input {
+  @apply w-full px-4 py-3 text-base bg-white border-2 border-gray-200 rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#0891B2]/20 focus:border-[#0891B2] placeholder-transparent peer;
+}
+
+.input:focus {
+  @apply border-[#0891B2];
+}
+
+/* Floating Label */
+.label {
+  @apply absolute left-4 top-3 text-gray-500 text-base transition-all duration-200 ease-in-out pointer-events-none;
+}
+
+.label.floating {
+  @apply -top-2 left-3 text-xs bg-white px-1 text-[#0891B2];
+}
+
+/* When input has value or is focused */
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  @apply -top-2 left-3 text-xs bg-white px-1 text-[#0891B2];
+}
+
+/* Textarea */
+.textarea {
+  @apply w-full px-4 py-3 text-base bg-white border-2 border-gray-200 rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#0891B2]/20 focus:border-[#0891B2] placeholder-transparent peer resize-none;
+}
+
+.textarea:focus + .label,
+.textarea:not(:placeholder-shown) + .label {
+  @apply -top-2 left-3 text-xs bg-white px-1 text-[#0891B2];
+}
+
+/* Select */
+.select {
+  @apply w-full px-4 py-3 text-base bg-white border-2 border-gray-200 rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#0891B2]/20 focus:border-[#0891B2] cursor-pointer appearance-none;
+}
+
+.selectWrapper {
+  @apply relative;
+}
+
+.selectIcon {
+  @apply absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-400;
+}
+
+/* Validation States */
+.error {
+  @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+}
+
+.error + .label {
+  @apply text-red-500;
+}
+
+.success {
+  @apply border-green-500 focus:border-green-500 focus:ring-green-500/20;
+}
+
+.success + .label {
+  @apply text-green-500;
+}
+
+.warning {
+  @apply border-yellow-500 focus:border-yellow-500 focus:ring-yellow-500/20;
+}
+
+.warning + .label {
+  @apply text-yellow-500;
+}
+
+/* Helper Text */
+.helperText {
+  @apply mt-1 text-sm;
+}
+
+.helperText.error {
+  @apply text-red-500;
+}
+
+.helperText.success {
+  @apply text-green-500;
+}
+
+.helperText.warning {
+  @apply text-yellow-500;
+}
+
+.helperText.default {
+  @apply text-gray-500;
+}
+
+/* Required Indicator */
+.required::after {
+  content: " *";
+  @apply text-red-500;
+}
+
+/* Checkbox and Radio */
+.checkbox,
+.radio {
+  @apply w-4 h-4 text-[#0891B2] bg-white border-2 border-gray-300 rounded focus:ring-[#0891B2] focus:ring-2;
+}
+
+.radio {
+  @apply rounded-full;
+}
+
+.checkboxLabel,
+.radioLabel {
+  @apply ml-2 text-sm text-gray-700 cursor-pointer;
+}
+
+.checkboxGroup,
+.radioGroup {
+  @apply flex items-center;
+}
+
+/* Input with Icons */
+.inputWithIcon {
+  @apply pl-10;
+}
+
+.inputIcon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4;
+}
+
+/* File Input */
+.fileInput {
+  @apply hidden;
+}
+
+.fileLabel {
+  @apply inline-flex items-center gap-2 px-4 py-3 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors duration-200;
+}
+
+.fileLabel:hover {
+  @apply border-[#0891B2] text-[#0891B2];
+}
+
+/* Form Layout */
+.formRow {
+  @apply flex gap-4;
+}
+
+.formCol {
+  @apply flex-1;
+}
+
+/* Glass Morphism for Forms */
+.glassMorphism {
+  @apply backdrop-blur-md bg-white/10 border border-white/20;
+}

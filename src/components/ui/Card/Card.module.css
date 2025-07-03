@@ -1,0 +1,141 @@
+/* Base Card Styles */
+.card {
+  @apply bg-white rounded-xl border border-gray-200 shadow-sm transition-all duration-300 ease-in-out;
+}
+
+/* Card Variants */
+.default {
+  @apply bg-white border-gray-200 shadow-sm hover:shadow-md;
+}
+
+.elevated {
+  @apply bg-white border-gray-200 shadow-lg hover:shadow-xl;
+}
+
+.outlined {
+  @apply bg-transparent border-2 border-gray-300 shadow-none hover:border-[#0891B2] hover:shadow-sm;
+}
+
+.filled {
+  @apply bg-gray-50 border-gray-200 shadow-none hover:shadow-sm;
+}
+
+.glassmorphism {
+  @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-xl;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glassmorphismDark {
+  @apply backdrop-blur-md bg-black/20 border border-white/20 shadow-xl text-white;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Interactive States */
+.interactive {
+  @apply cursor-pointer transform transition-transform duration-200 ease-in-out;
+}
+
+.interactive:hover {
+  @apply -translate-y-1;
+}
+
+.interactive:active {
+  @apply translate-y-0;
+}
+
+/* Size Variants */
+.xs {
+  @apply p-3 rounded-lg;
+}
+
+.sm {
+  @apply p-4 rounded-lg;
+}
+
+.md {
+  @apply p-6 rounded-xl;
+}
+
+.lg {
+  @apply p-8 rounded-xl;
+}
+
+.xl {
+  @apply p-10 rounded-2xl;
+}
+
+/* Card Sections */
+.header {
+  @apply border-b border-gray-200 pb-4 mb-4;
+}
+
+.body {
+  @apply flex-1;
+}
+
+.footer {
+  @apply border-t border-gray-200 pt-4 mt-4;
+}
+
+/* Special Card Types */
+.pricing {
+  @apply relative overflow-hidden;
+}
+
+.pricing.featured {
+  @apply border-[#0891B2] ring-2 ring-[#0891B2]/20;
+}
+
+.pricing.featured::before {
+  content: "Most Popular";
+  @apply absolute top-0 right-6 bg-[#0891B2] text-white text-xs font-semibold py-1 px-3 rounded-b-md;
+}
+
+.testimonial {
+  @apply relative;
+}
+
+.testimonial::before {
+  content: '"';
+  @apply absolute -top-2 -left-2 text-6xl text-[#0891B2]/20 font-serif leading-none;
+}
+
+.metric {
+  @apply text-center;
+}
+
+.metric .value {
+  @apply text-3xl font-bold text-[#0A2540];
+}
+
+.metric .label {
+  @apply text-sm text-gray-600 mt-1;
+}
+
+/* Loading State */
+.loading {
+  @apply animate-pulse;
+}
+
+.loading .skeleton {
+  @apply bg-gray-200 rounded;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .md {
+    @apply p-4;
+  }
+
+  .lg {
+    @apply p-6;
+  }
+
+  .xl {
+    @apply p-8;
+  }
+}
