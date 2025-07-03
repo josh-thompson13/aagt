@@ -7,23 +7,23 @@ import { ContactSection } from '@/components/prestige/ContactSection';
 
 export async function generateMetadata() {
   return {
-    title: 'Realty Direct | Real Estate Agency Queensland',
-    description: 'Professional real estate services across Queensland. Helping with buying, selling, and renting properties in Brisbane, Gold Coast, and surrounding areas.',
-    keywords: 'real estate queensland, property brisbane, homes gold coast, real estate agency, properties queensland',
+    title: 'AAGT Private Loans | Fast Business Funding Australia',
+    description: 'AAGT Private Loans offers fast business funding from $150k-$5M. Same day approval, 4-day settlement. Direct funder with competitive rates. If your Bank has said NO to you, come and chat with us. Apply now! 🚀',
+    keywords: 'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
     alternates: {
-      canonical: 'https://realtydirect.com.au',
+      canonical: 'https://aagtprivateloans.com.au',
     },
     openGraph: {
-      title: 'Realty Direct | Real Estate Agency Queensland',
-      description: 'Professional real estate services across Queensland. Helping with buying, selling, and renting properties in Brisbane, Gold Coast, and surrounding areas.',
-      url: 'https://realtydirect.com.au',
-      siteName: 'Realty Direct',
+      title: 'AAGT Private Loans | Fast & Easy Loans 2U 🚀 🚀 🚀',
+      description: 'Direct business funding from $150k-$5M. Same day approval, 4-day settlement. No complex committees. If your Bank has said NO to you, come and chat with us.',
+      url: 'https://aagtprivateloans.com.au',
+      siteName: 'AAGT Private Loans',
       images: [
         {
-          url: 'https://realtydirect.com.au/og-image.jpg',
+          url: 'https://aagtprivateloans.com.au/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'Realty Direct - Queensland Real Estate Platform',
+          alt: 'AAGT Private Loans - Fast & Easy Business Funding',
         },
       ],
       locale: 'en_AU',
@@ -31,9 +31,9 @@ export async function generateMetadata() {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Realty Direct | Real Estate Agency Queensland',
-      description: 'Professional real estate services across Queensland. Helping with buying, selling, and renting properties in Brisbane, Gold Coast, and surrounding areas.',
-      images: ['https://realtydirect.com.au/og-image.jpg'],
+      title: 'AAGT Private Loans | Fast & Easy Loans 2U 🚀 🚀 🚀',
+      description: 'Direct business funding from $150k-$5M. Same day approval, 4-day settlement. No complex committees.',
+      images: ['https://aagtprivateloans.com.au/og-image.jpg'],
     },
     robots: {
       index: true,
@@ -52,24 +52,48 @@ export async function generateMetadata() {
 export default function Index() {
 
   const breadcrumbs = [
-    { name: 'Home', url: 'https://realtydirect.com.au' },
+    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
   ];
 
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    'name': 'Realty Direct',
-    'description': 'Professional real estate services across Queensland',
-    'url': 'https://realtydirect.com.au',
-    'logo': 'https://realtydirect.com.au/logo.png',
+    '@type': 'FinancialService',
+    'name': 'AAGT Private Loans',
+    'description': 'Direct private lending company offering fast business funding from $150k to $5M with same day approval and 4-day settlement',
+    'url': 'https://aagtprivateloans.com.au',
+    'logo': 'https://aagtprivateloans.com.au/logo.png',
     'address': {
       '@type': 'PostalAddress',
-      'addressLocality': 'Brisbane',
-      'addressRegion': 'Queensland',
+      'addressLocality': 'Sydney',
+      'addressRegion': 'NSW',
       'addressCountry': 'AU'
     },
-    'areaServed': ['Brisbane', 'Gold Coast', 'Sunshine Coast'],
-    'priceRange': '$$$$$'
+    'areaServed': 'Australia',
+    'priceRange': '$150,000-$5,000,000',
+    'slogan': 'DREAM LESS, DO MORE',
+    'knowsAbout': ['Business Loans', 'Investment Loans', 'Private Lending', 'Second Mortgages', 'Off-the-Plan Finance'],
+    'hasOfferCatalog': {
+      '@type': 'OfferCatalog',
+      'name': 'Private Loan Products',
+      'itemListElement': [
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'FinancialProduct',
+            'name': 'Business Loans',
+            'description': 'Fast business funding from $150,000 to $5,000,000'
+          }
+        },
+        {
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'FinancialProduct',
+            'name': 'Investment Loans',
+            'description': 'Funding for any worthwhile business or investment purpose'
+          }
+        }
+      ]
+    }
   };
 
   return (

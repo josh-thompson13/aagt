@@ -1,32 +1,30 @@
 'use client';
 
-import { AddressAutocomplete } from '@/components/common/AddressAutocomplete';
-import { getAssetPath } from '@/utils/Helpers';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Clock, DollarSign, FileText } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { AppConfig } from '@/utils/AppConfig';
 
 export const PrestigeHero = () => {
-  const [address, setAddress] = useState('');
+  const [loanAmount, setLoanAmount] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const router = useRouter();
 
-  const handleEstimate = (e: React.FormEvent) => {
+  const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
-    if (address) {
-      // Encode the address for URL
-      const encodedAddress = encodeURIComponent(address);
-      // Navigate to estimate page with address as query parameter
-      router.push(`/estimate?address=${encodedAddress}`);
-    }
+    router.push(`/apply?amount=${encodeURIComponent(loanAmount)}`);
   };
 
-  const handlePlaceSelected = (place: any) => {
-    // You can access additional place details here
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Place selected:', place);
-    }
+  const formatLoanAmount = (value: string) => {
+    const cleanValue = value.replace(/[^0-9]/g, '');
+    const numberValue = parseInt(cleanValue) || 0;
+    return numberValue.toLocaleString('en-AU');
+  };
+
+  const handleLoanAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatLoanAmount(e.target.value);
+    setLoanAmount(formatted);
   };
 
   // Timeout fallback to prevent infinite loading
@@ -36,10 +34,17 @@ export const PrestigeHero = () => {
         setImageLoaded(true);
         setImageError(true);
       }
-    }, 5000); // 5 second timeout
+    }, 5000);
 
     return () => clearTimeout(timeout);
   }, [imageLoaded]);
+
+  const features = [
+    { icon: Clock, text: 'Same Day Approval' },
+    { icon: DollarSign, text: '$150K to $5M Funding' },
+    { icon: FileText, text: 'Minimal Documentation' },
+    { icon: CheckCircle2, text: '4-Day Settlement' },
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center">
@@ -58,47 +63,10 @@ export const PrestigeHero = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900 to-primary-700"></div>
       )}
 
-      {/* Background Image with Overlay */}
+      {/* Background with professional business/finance theme */}
       <div className="absolute inset-0 z-0">
-        {/* Responsive image with WebP support */}
-        <picture className="absolute inset-0">
-          <source 
-            media="(max-width: 768px)" 
-            srcSet={`${getAssetPath("/images/lisa-anna-hero-800.webp")}`}
-            type="image/webp"
-          />
-          <source 
-            media="(max-width: 1200px)" 
-            srcSet={`${getAssetPath("/images/lisa-anna-hero-1200.webp")}`}
-            type="image/webp"
-          />
-          <source 
-            srcSet={`${getAssetPath("/images/lisa-anna-hero-1920.webp")}`}
-            type="image/webp"
-          />
-          <source 
-            media="(max-width: 768px)" 
-            srcSet={`${getAssetPath("/images/lisa-anna-hero-800.jpg")}`}
-            type="image/jpeg"
-          />
-          <source 
-            media="(max-width: 1200px)" 
-            srcSet={`${getAssetPath("/images/lisa-anna-hero-1200.jpg")}`}
-            type="image/jpeg"
-          />
-          <img
-            src={getAssetPath("/images/lisa-anna-hero-1920.jpg")}
-            alt="Queensland property"
-            className="absolute inset-0 w-full h-full object-cover"
-            onLoad={() => setImageLoaded(true)}
-            onError={() => {
-              setImageError(true);
-              setImageLoaded(true);
-            }}
-            loading="eager"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Content */}
@@ -106,31 +74,67 @@ export const PrestigeHero = () => {
         <div className="max-w-4xl w-full text-center">
           {/* Main Content Card */}
           <div className="bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-2xl">
+            {/* Company Tagline */}
+            <div className="mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary-700 mb-2">
+                {AppConfig.tagline}
+              </h2>
+            </div>
+
             {/* Main Heading */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Get an Instant Property Estimate
+              Business Loans Made Simple
             </h1>
 
-            {/* Subheading */}
-            <p className="text-lg md:text-xl text-slate-600 mb-10 font-normal">
-              Discover your property's value with our free, instant estimate tool
+            {/* Key Message */}
+            <p className="text-lg md:text-xl text-slate-700 mb-4 font-semibold">
+              {AppConfig.primaryMessage}
             </p>
 
-            {/* Address Input Form */}
-            <form onSubmit={handleEstimate} className="mb-6 space-y-4">
-              <AddressAutocomplete
-                value={address}
-                onChange={setAddress}
-                onPlaceSelected={handlePlaceSelected}
-                className="bg-white"
-              />
+            {/* Subheading */}
+            <p className="text-lg text-slate-600 mb-10 font-normal">
+              Direct funding from $150,000 to $5,000,000 • No complex committees
+            </p>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+              {features.map((feature, index) => (
+                <div key={index} className="flex flex-col items-center p-4 bg-primary-50 rounded-lg">
+                  <feature.icon className="h-8 w-8 text-primary-700 mb-2" />
+                  <span className="text-sm font-medium text-slate-700 text-center">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Loan Amount Form */}
+            <form onSubmit={handleApply} className="mb-6 space-y-4">
+              <div>
+                <label htmlFor="loanAmount" className="block text-sm font-medium text-slate-700 mb-2">
+                  How much funding do you need?
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500 text-lg font-semibold">
+                    $
+                  </span>
+                  <input
+                    type="text"
+                    id="loanAmount"
+                    value={loanAmount}
+                    onChange={handleLoanAmountChange}
+                    placeholder="Enter amount (e.g., 500,000)"
+                    className="w-full pl-10 pr-4 py-4 text-lg font-semibold border-2 border-slate-300 rounded-lg focus:ring-4 focus:ring-primary-200 focus:border-primary-500 transition-all duration-200"
+                  />
+                </div>
+                <p className="mt-2 text-sm text-slate-500">
+                  Loans available from $150,000 to $5,000,000
+                </p>
+              </div>
               <div className="mt-2">
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 text-base font-semibold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
-                  disabled={!address}
+                  className="w-full px-8 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Get Estimate
+                  Start FAST 🚀 🚀 🚀 Application
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
               </div>
@@ -138,32 +142,36 @@ export const PrestigeHero = () => {
 
             {/* Additional CTAs */}
             <p className="text-slate-600 mt-8 text-sm">
-              Or explore our services:
+              Or explore our loan products:
               <a
-                href="/buying"
+                href="/business-loans"
                 className="mx-2 text-primary-600 hover:text-primary-700 underline"
               >
-                Buying
+                Business Loans
               </a>
               •
               <a
-                href="/selling"
+                href="/investment-loans"
                 className="mx-2 text-primary-600 hover:text-primary-700 underline"
               >
-                Selling
+                Investment Loans
               </a>
               •
               <a
-                href="/renting"
+                href="/rates"
                 className="mx-2 text-primary-600 hover:text-primary-700 underline"
               >
-                Renting
+                Rates & Fees
               </a>
             </p>
+
+            {/* Trust Signal */}
+            <div className="mt-8 pt-8 border-t border-slate-200">
+              <p className="text-lg font-bold text-slate-800">{AppConfig.slogan}</p>
+            </div>
           </div>
         </div>
       </div>
-
     </section>
   );
 };

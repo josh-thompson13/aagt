@@ -1,8 +1,7 @@
 'use client';
 
-import { getAssetPath } from '@/utils/Helpers';
-import { ArrowRight, MapPin, MonitorSmartphone, Users } from 'lucide-react';
-import Image from 'next/image';
+import { AppConfig } from '@/utils/AppConfig';
+import { ArrowRight, Clock, DollarSign, FileCheck, Shield } from 'lucide-react';
 
 export const MarketingSection = () => {
   
@@ -12,10 +11,10 @@ export const MarketingSection = () => {
         {/* Section Header */}
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-center">
-            A Fresh Approach to Queensland Real Estate
+            Private Lending Without the Red Tape
           </h2>
           <p className="text-lg md:text-xl text-slate-200 mb-10 font-normal max-w-3xl text-center leading-relaxed">
-            Realty Direct is an independent agency built on direct relationships, transparent communication, and genuine service. Experience a new standard of professionalism and results—without the legacy hype.
+            {AppConfig.primaryMessage}. We're direct funders who understand business needs and make quick decisions. No complex committees, just straightforward funding solutions.
           </p>
         </div>
 
@@ -26,113 +25,131 @@ export const MarketingSection = () => {
               {/* Left: Value Proposition */}
               <div className="flex-1 min-w-0 md:pr-8">
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-primary-900 mb-6">
-                  Your Queensland Real Estate Journey Starts Here
+                  Why Business Owners Choose AAGT
                 </h3>
                 <p className="text-slate-700 text-lg mb-8 leading-relaxed">
-                  Our dedicated team of local professionals combines deep market knowledge with a tailored, client-first approach. From Brisbane's vibrant city life to the Gold Coast's iconic beaches, we deliver results with integrity and innovation.
+                  We ARE the funder - lending our own funds means faster decisions and flexible solutions. While banks take weeks with committee approvals, we deliver same-day answers and 4-day settlements.
                 </p>
                 <ul className="mb-10 space-y-2 text-base text-slate-700">
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />
-                    Personalised, transparent service
+                    Direct funding from $150,000 to $5,000,000
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />
-                    Advanced marketing & technology
+                    Same day approval with minimal documentation
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />
-                    Results-focused for Queensland families
+                    Settlement within 4 working days
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />
+                    Second mortgages up to 70% LVR
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="/contact"
+                    href="/apply"
                     className="inline-flex items-center justify-center px-7 py-2.5 text-base font-semibold rounded-full text-white bg-primary-700 hover:bg-primary-800 shadow transition-all duration-150 focus:ring-2 focus:ring-primary-300 focus:outline-none"
                     style={{
                       boxShadow: '0 2px 16px 0 rgba(16, 112, 202, 0.10)',
                       letterSpacing: '0.01em'
                     }}
                   >
-                    Book an Appraisal
+                    Start FAST 🚀 Application
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                   <a
-                    href="/about"
+                    href="/rates"
                     className="inline-flex items-center justify-center px-7 py-2.5 text-base font-semibold rounded-full text-primary-700 border border-primary-700 bg-white hover:bg-primary-50 hover:text-primary-900 shadow transition-all duration-150 focus:ring-2 focus:ring-primary-200 focus:outline-none"
                     style={{
                       boxShadow: '0 2px 16px 0 rgba(16, 112, 202, 0.06)',
                       letterSpacing: '0.01em'
                     }}
                   >
-                    Learn More
+                    View Rates
                   </a>
                 </div>
               </div>
               {/* Right: Visual */}
               <div className="flex-1 flex items-center justify-center min-w-0 md:pl-8">
-                <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-xl border border-accent-600 bg-accent-500/10">
-                  <Image
-                    src={getAssetPath("/images/home.jpg")}
-                    alt="Luxury Queensland Property"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/40 via-transparent to-transparent" />
+                <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-xl border border-accent-600 bg-gradient-to-br from-primary-100 to-primary-200">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <DollarSign className="w-24 h-24 text-primary-700 mx-auto mb-4" />
+                      <h4 className="text-2xl font-bold text-primary-900 mb-2">Funding Available</h4>
+                      <p className="text-4xl font-bold text-primary-700">$150K - $5M</p>
+                      <p className="text-lg text-primary-600 mt-2">For any worthwhile business purpose</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             {/* Motto */}
             <div className="mt-14 pt-8 border-t border-slate-200 text-center">
-              <p className="text-lg md:text-xl text-slate-700  font-normal italic">
-                "Direct communication, exceptional results"
+              <p className="text-xl md:text-2xl text-primary-700 font-bold">
+                {AppConfig.slogan}
               </p>
-              
+              <p className="text-base text-slate-600 mt-2 italic">
+                Obtaining a business or investment loan shouldn't be complicated or difficult
+              </p>
             </div>
           </div>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16 max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
             <div className="mb-4">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                <MapPin className="w-8 h-8 text-primary-700" />
+                <Clock className="w-8 h-8 text-primary-700" />
               </div>
             </div>
             <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
-              Local Expertise
+              Same Day Approval
             </h3>
             <p className="text-slate-600 text-base">
-              Deep Queensland market knowledge and insight
+              Quick decisions when you need them most
             </p>
           </div>
           <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
             <div className="mb-4">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                <Users className="w-8 h-8 text-primary-700" />
+                <FileCheck className="w-8 h-8 text-primary-700" />
               </div>
             </div>
             <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
-              Strategic Reach
+              Minimal Documents
             </h3>
             <p className="text-slate-600 text-base">
-              Connected across Brisbane, Gold Coast, and beyond
+              Simple process, no excessive paperwork
             </p>
           </div>
           <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
             <div className="mb-4">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                <MonitorSmartphone className="w-8 h-8 text-primary-700" />
+                <DollarSign className="w-8 h-8 text-primary-700" />
               </div>
             </div>
             <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
-              Tech-Enabled
+              Direct Funder
             </h3>
             <p className="text-slate-600 text-base">
-              Best-in-class marketing and digital tools
+              We lend our own funds - no middlemen
+            </p>
+          </div>
+          <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
+            <div className="mb-4">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                <Shield className="w-8 h-8 text-primary-700" />
+              </div>
+            </div>
+            <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
+              Flexible Terms
+            </h3>
+            <p className="text-slate-600 text-base">
+              Solutions tailored to your business needs
             </p>
           </div>
         </div>

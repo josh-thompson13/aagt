@@ -23,7 +23,7 @@ export const BaseTemplate = (props: {
               <Link href="/" className="flex items-center gap-1 sm:gap-2">
                 <Image
                   src={getAssetPath("/images/logo.svg")}
-                  alt="Realty Direct Logo"
+                  alt="AAGT Private Loans Logo"
                   width={40}
                   height={40}
                   className="h-8 sm:h-10 w-auto"
@@ -90,16 +90,16 @@ export const BaseTemplate = (props: {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><Link href="/buying" className="text-gray-300 hover:text-white">Buying</Link></li>
-                <li><Link href="/selling" className="text-gray-300 hover:text-white">Selling</Link></li>
-                <li><Link href="/renting" className="text-gray-300 hover:text-white">Renting</Link></li>
+                <li><Link href="/business-loans" className="text-gray-300 hover:text-white">Business Loans</Link></li>
+                <li><Link href="/investment-loans" className="text-gray-300 hover:text-white">Investment Loans</Link></li>
+                <li><Link href="/rates" className="text-gray-300 hover:text-white">Rates & Fees</Link></li>
                 <li><Link href="/about" className="text-gray-300 hover:text-white">About</Link></li>
                 <li><Link href="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <p className="text-gray-300">admin@realtydirect.com.au</p>
+              <p className="text-gray-300">{AppConfig.email}</p>
 
             </div>
           </div>

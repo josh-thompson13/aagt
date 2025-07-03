@@ -8,16 +8,16 @@ import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://realtydirect.com.au'),
+  metadataBase: new URL('https://aagtprivateloans.com.au'),
   title: {
-    default: 'Realty Direct | Real Estate Agency Queensland',
-    template: '%s | Realty Direct',
+    default: 'AAGT Private Loans | Fast Business Funding Australia',
+    template: '%s | AAGT Private Loans',
   },
-  description: "Queensland's most flexible real estate platform. Professional property services across Brisbane and Gold Coast.",
-  keywords: 'real estate queensland, property brisbane, homes gold coast, real estate agency, properties queensland',
+  description: "AAGT Private Loans offers fast business funding from $150k-$5M. Same day approval, 4-day settlement. Direct funder with competitive rates. Apply now! 🚀",
+  keywords: 'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
   openGraph: {
     type: 'website',
-    siteName: 'Realty Direct',
+    siteName: 'AAGT Private Loans',
     locale: 'en_AU',
   },
   twitter: {
@@ -32,22 +32,22 @@ export const metadata: Metadata = {
 const navItems = (
   <>
     <LocaleLink
-      href="/buying"
+      href="/business-loans"
       className="block px-3 py-2 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-md text-sm md:text-base font-medium transition-colors"
     >
-      Buying
+      Business Loans
     </LocaleLink>
     <LocaleLink
-      href="/selling"
+      href="/investment-loans"
       className="block px-3 py-2 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-md text-sm md:text-base font-medium transition-colors"
     >
-      Selling
+      Investment Loans
     </LocaleLink>
     <LocaleLink
-      href="/renting"
+      href="/rates"
       className="block px-3 py-2 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-md text-sm md:text-base font-medium transition-colors"
     >
-      Renting
+      Rates & Fees
     </LocaleLink>
     <LocaleLink
       href="/about"
