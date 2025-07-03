@@ -2,9 +2,6 @@
 export { CallToAction } from './common/CallToAction';
 export { StructuredData } from './common/StructuredData';
 
-// Property Components
-export { PropertyListing } from './property-listing';
-
 // Layout Components
 export { BaseTemplate } from './layouts/BaseTemplate';
 

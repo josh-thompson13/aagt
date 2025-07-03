@@ -11,10 +11,10 @@ export const MarketingSection = () => {
         {/* Section Header */}
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-center">
-            Private Lending Without the Red Tape
+            Professional Private Lending Solutions
           </h2>
           <p className="text-lg md:text-xl text-slate-200 mb-10 font-normal max-w-3xl text-center leading-relaxed">
-            {AppConfig.primaryMessage}. We're direct funders who understand business needs and make quick decisions. No complex committees, just straightforward funding solutions.
+            {AppConfig.primaryMessage}. As direct funders, we provide streamlined approval processes and competitive terms for qualified borrowers.
           </p>
         </div>
 
@@ -25,10 +25,10 @@ export const MarketingSection = () => {
               {/* Left: Value Proposition */}
               <div className="flex-1 min-w-0 md:pr-8">
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-primary-900 mb-6">
-                  Why Business Owners Choose AAGT
+                  Why Choose AAGT Private Loans
                 </h3>
                 <p className="text-slate-700 text-lg mb-8 leading-relaxed">
-                  We ARE the funder - lending our own funds means faster decisions and flexible solutions. While banks take weeks with committee approvals, we deliver same-day answers and 4-day settlements.
+                  As a direct lender using proprietary funds, we offer faster decision-making and flexible solutions. Our streamlined processes deliver same-day approvals and 4-day settlements, compared to traditional banks that often require weeks.
                 </p>
                 <ul className="mb-10 space-y-2 text-base text-slate-700">
                   <li className="flex items-center gap-2">
@@ -57,7 +57,7 @@ export const MarketingSection = () => {
                       letterSpacing: '0.01em'
                     }}
                   >
-                    Start FAST 🚀 Application
+                    Apply Now
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                   <a
@@ -89,10 +89,10 @@ export const MarketingSection = () => {
             {/* Motto */}
             <div className="mt-14 pt-8 border-t border-slate-200 text-center">
               <p className="text-xl md:text-2xl text-primary-700 font-bold">
-                {AppConfig.slogan}
+                {AppConfig.mission}
               </p>
               <p className="text-base text-slate-600 mt-2 italic">
-                Obtaining a business or investment loan shouldn't be complicated or difficult
+                Professional lending solutions tailored to your business requirements
               </p>
             </div>
           </div>

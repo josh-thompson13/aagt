@@ -1,11 +1,22 @@
 export const AppConfig = {
   name: 'AAGT Private Loans',
-  description: 'Fast & Easy Loans 2U 🚀 🚀 🚀',
-  tagline: 'Fast & Easy Loans 2U 🚀 🚀 🚀',
-  slogan: 'DREAM LESS, DO MORE',
+  description: 'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
+  tagline: 'Alternative lending solutions for Australian businesses',
+  mission: 'Making business and investment funding accessible and straightforward',
   email: 'admin@aagtprivateloans.com.au',
   domain: 'https://aagtprivateloans.com.au',
-  businessType: 'Private Lending Company',
-  targetMarket: 'Business owners and investors who need quick funding',
-  primaryMessage: 'If your Bank has said NO to you, come and chat with us',
+  businessType: 'Direct Private Lending Company',
+  targetMarket: 'Business owners and investors seeking alternative funding solutions',
+  primaryMessage: 'Alternative lending solutions for businesses declined by traditional banks',
+  loanRange: {
+    min: 150000,
+    max: 5000000,
+    currency: 'AUD'
+  },
+  features: [
+    'Same day approval',
+    '4-day settlement',
+    'Minimal documentation',
+    'Direct lender using proprietary funds'
+  ]
 };

@@ -8,14 +8,14 @@ import { ContactSection } from '@/components/prestige/ContactSection';
 export async function generateMetadata() {
   return {
     title: 'AAGT Private Loans | Fast Business Funding Australia',
-    description: 'AAGT Private Loans offers fast business funding from $150k-$5M. Same day approval, 4-day settlement. Direct funder with competitive rates. If your Bank has said NO to you, come and chat with us. Apply now! 🚀',
+    description: 'AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.',
     keywords: 'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
     alternates: {
       canonical: 'https://aagtprivateloans.com.au',
     },
     openGraph: {
-      title: 'AAGT Private Loans | Fast & Easy Loans 2U 🚀 🚀 🚀',
-      description: 'Direct business funding from $150k-$5M. Same day approval, 4-day settlement. No complex committees. If your Bank has said NO to you, come and chat with us.',
+      title: 'AAGT Private Loans | Alternative Business Funding Solutions',
+      description: 'Direct business funding from $150,000 to $5,000,000. Same day approval, 4-day settlement. Professional lending solutions for Australian businesses.',
       url: 'https://aagtprivateloans.com.au',
       siteName: 'AAGT Private Loans',
       images: [
@@ -31,8 +31,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'AAGT Private Loans | Fast & Easy Loans 2U 🚀 🚀 🚀',
-      description: 'Direct business funding from $150k-$5M. Same day approval, 4-day settlement. No complex committees.',
+      title: 'AAGT Private Loans | Alternative Business Funding Solutions',
+      description: 'Direct business funding from $150,000 to $5,000,000. Same day approval, 4-day settlement. Professional lending solutions.',
       images: ['https://aagtprivateloans.com.au/og-image.jpg'],
     },
     robots: {

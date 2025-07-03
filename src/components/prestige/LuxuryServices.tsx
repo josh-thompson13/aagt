@@ -109,7 +109,7 @@ export const LuxuryServices = () => {
             Need funding fast? Start your application now for same day approval
           </p>
           <a href="/apply" className="inline-flex items-center gap-2 px-8 py-3 bg-primary-700 text-white font-semibold rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
-            Start FAST 🚀 🚀 🚀 Application
+            Submit Application
           </a>
         </div>
       </div>

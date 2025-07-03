@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { AppConfig } from '@/utils/AppConfig';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, subject, message } = body;
+    const { name, email, phone, subject, loanAmount, message } = body;
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -24,18 +25,19 @@ export async function POST(request: NextRequest) {
 
     // Create email content
     const emailBody = `
-New Contact Form Submission from Realty Direct Website
+New Funding Inquiry from AAGT Private Loans Website
 
 Name: ${name}
 Email: ${email}
 Phone: ${phone || 'Not provided'}
-Subject: ${subject || 'General Inquiry'}
+Inquiry Type: ${subject || 'General Inquiry'}
+Loan Amount: ${loanAmount ? `$${loanAmount}` : 'Not specified'}
 
-Message:
+Business & Funding Requirements:
 ${message}
 
 ---
-Submitted at: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Brisbane' })}
+Submitted at: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' })}
 IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'Unknown'}
     `.trim();
 
@@ -44,16 +46,16 @@ IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-r
     
     // Check if we have email configuration
     const emailConfig = {
-      to: 'admin@realtydirect.com.au',
-      from: process.env.SMTP_FROM || 'noreply@realtydirect.com.au',
-      subject: `New Contact Form: ${subject || 'General Inquiry'}`,
+      to: AppConfig.email,
+      from: process.env.SMTP_FROM || `noreply@${AppConfig.domain.replace('https://', '')}`,
+      subject: `New Funding Inquiry: ${subject || 'General Inquiry'} ${loanAmount ? `- $${loanAmount}` : ''}`,
       text: emailBody,
       replyTo: email
     };
 
     // For development/testing, we'll just log the email content
     if (process.env.NODE_ENV === 'development') {
-      console.log('=== EMAIL WOULD BE SENT ===');
+      console.log('=== FUNDING INQUIRY EMAIL ===');
       console.log(`To: ${emailConfig.to}`);
       console.log(`From: ${emailConfig.from}`);
       console.log(`Subject: ${emailConfig.subject}`);
@@ -64,7 +66,7 @@ IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-r
       
       return NextResponse.json({ 
         success: true, 
-        message: 'Thank you for your message. We will get back to you soon!' 
+        message: 'Thank you for your funding inquiry. A lending specialist will contact you within 24 hours!' 
       });
     }
 
@@ -86,7 +88,7 @@ IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-r
     // For now, return success (you'll need to implement actual email sending)
     return NextResponse.json({ 
       success: true, 
-      message: 'Thank you for your message. We will get back to you soon!' 
+      message: 'Thank you for your funding inquiry. A lending specialist will contact you within 24 hours!' 
     });
 
   } catch (error) {

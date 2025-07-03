@@ -76,14 +76,14 @@ export const PrestigeHero = () => {
           <div className="bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-2xl">
             {/* Company Tagline */}
             <div className="mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary-700 mb-2">
+              <h2 className="text-xl md:text-2xl font-semibold text-primary-700 mb-2">
                 {AppConfig.tagline}
               </h2>
             </div>
 
             {/* Main Heading */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Business Loans Made Simple
+              Professional Business Funding Solutions
             </h1>
 
             {/* Key Message */}
@@ -93,7 +93,7 @@ export const PrestigeHero = () => {
 
             {/* Subheading */}
             <p className="text-lg text-slate-600 mb-10 font-normal">
-              Direct funding from $150,000 to $5,000,000 • No complex committees
+              Direct funding from $150,000 to $5,000,000 with streamlined approval processes
             </p>
 
             {/* Features Grid */}
@@ -134,7 +134,7 @@ export const PrestigeHero = () => {
                   type="submit"
                   className="w-full px-8 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Start FAST 🚀 🚀 🚀 Application
+                  Apply for Funding
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
               </div>
@@ -161,13 +161,13 @@ export const PrestigeHero = () => {
                 href="/rates"
                 className="mx-2 text-primary-600 hover:text-primary-700 underline"
               >
-                Rates & Fees
+                Rates & Terms
               </a>
             </p>
 
             {/* Trust Signal */}
             <div className="mt-8 pt-8 border-t border-slate-200">
-              <p className="text-lg font-bold text-slate-800">{AppConfig.slogan}</p>
+              <p className="text-lg font-semibold text-slate-800">{AppConfig.mission}</p>
             </div>
           </div>
         </div>

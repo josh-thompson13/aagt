@@ -67,7 +67,7 @@ export default function BusinessLoansPage() {
                 href="/apply"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-primary-700 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-white/50 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
-                Start FAST 🚀 Application
+                Apply Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
               <a
@@ -203,7 +203,7 @@ export default function BusinessLoansPage() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            {AppConfig.slogan}
+            {AppConfig.mission}
           </p>
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             Join thousands of business owners who have chosen AAGT Private Loans for their 

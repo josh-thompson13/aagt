@@ -20,16 +20,15 @@ export const BaseTemplate = (props: {
           {/* Main navigation bar */}
           <div className="flex justify-between items-center h-16 sm:h-20">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex items-center gap-1 sm:gap-2">
+              <Link href="/" className="flex items-center">
                 <Image
-                  src={getAssetPath("/images/logo.svg")}
+                  src={getAssetPath("/images/aagt_logo_no_background.png")}
                   alt="AAGT Private Loans Logo"
-                  width={40}
-                  height={40}
-                  className="h-8 sm:h-10 w-auto"
+                  width={180}
+                  height={60}
+                  className="h-10 sm:h-12 w-auto"
                   priority
                 />
-                <span className="font-bold text-lg sm:text-2xl text-blue-700 tracking-tight">{AppConfig.name}</span>
               </Link>
             </div>
 
@@ -92,7 +91,8 @@ export const BaseTemplate = (props: {
               <ul className="space-y-2">
                 <li><Link href="/business-loans" className="text-gray-300 hover:text-white">Business Loans</Link></li>
                 <li><Link href="/investment-loans" className="text-gray-300 hover:text-white">Investment Loans</Link></li>
-                <li><Link href="/rates" className="text-gray-300 hover:text-white">Rates & Fees</Link></li>
+                <li><Link href="/rates" className="text-gray-300 hover:text-white">Rates & Terms</Link></li>
+                <li><Link href="/resources" className="text-gray-300 hover:text-white">Resources</Link></li>
                 <li><Link href="/about" className="text-gray-300 hover:text-white">About</Link></li>
                 <li><Link href="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
               </ul>

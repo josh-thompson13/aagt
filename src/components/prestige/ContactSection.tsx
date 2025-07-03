@@ -9,6 +9,7 @@ export const ContactSection = () => {
     email: '',
     phone: '',
     subject: 'General Inquiry',
+    loanAmount: '',
     message: '',
   });
 
@@ -22,6 +23,20 @@ export const ContactSection = () => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value,
+    }));
+  };
+
+  const formatLoanAmount = (value: string) => {
+    const cleanValue = value.replace(/[^0-9]/g, '');
+    const numberValue = parseInt(cleanValue) || 0;
+    return numberValue.toLocaleString('en-AU');
+  };
+
+  const handleLoanAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatLoanAmount(e.target.value);
+    setFormData(prev => ({
+      ...prev,
+      loanAmount: formatted,
     }));
   };
 
@@ -44,7 +59,7 @@ export const ContactSection = () => {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: data.message || 'Thank you for your message. We will get back to you soon!',
+          message: data.message || 'Thank you for your inquiry. A lending specialist will contact you within 24 hours!',
         });
         // Reset form on success
         setFormData({
@@ -52,6 +67,7 @@ export const ContactSection = () => {
           email: '',
           phone: '',
           subject: 'General Inquiry',
+          loanAmount: '',
           message: '',
         });
       } else {
@@ -75,10 +91,10 @@ export const ContactSection = () => {
       {/* Header */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Get In Touch
+          Get Your Funding Quote
         </h2>
         <p className="text-xl text-slate-100 max-w-2xl mx-auto">
-          Ready to experience Queensland's premier real estate service? Contact our expert team today.
+          Ready to secure your business funding? Contact our lending specialists for same day approval.
         </p>
       </div>
 
@@ -87,7 +103,7 @@ export const ContactSection = () => {
         <div>
           <div className="bg-white rounded-2xl p-8 shadow-xl">
             <h3 className="text-2xl font-bold text-slate-900 mb-6">
-              Send us a Message
+              Request Funding Information
             </h3>
 
             {/* Status Message */}
@@ -121,7 +137,7 @@ export const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                     placeholder="Your full name"
                   />
                 </div>
@@ -135,7 +151,7 @@ export const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -151,32 +167,52 @@ export const ContactSection = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                     placeholder="+61 xxx xxx xxx"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Subject
+                    Loan Amount Required
                   </label>
-                  <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  >
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Property Valuation">Property Valuation</option>
-                    <option value="Buying Property">Buying Property</option>
-                    <option value="Selling Property">Selling Property</option>
-                    <option value="Investment Advice">Investment Advice</option>
-                  </select>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500 font-semibold">
+                      $
+                    </span>
+                    <input
+                      type="text"
+                      name="loanAmount"
+                      value={formData.loanAmount}
+                      onChange={handleLoanAmountChange}
+                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                      placeholder="e.g., 500,000"
+                    />
+                  </div>
                 </div>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  Message *
+                  Inquiry Type
+                </label>
+                <select
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                >
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Business Loan">Business Loan</option>
+                  <option value="Investment Loan">Investment Loan</option>
+                  <option value="Second Mortgage">Second Mortgage</option>
+                  <option value="Off-the-Plan Finance">Off-the-Plan Finance</option>
+                  <option value="Urgent Funding">Urgent Funding Required</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  Tell us about your funding needs *
                 </label>
                 <textarea
                   name="message"
@@ -184,8 +220,8 @@ export const ContactSection = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-                  placeholder="Tell us about your property needs..."
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none"
+                  placeholder="Describe your business and funding requirements..."
                 />
               </div>
 
@@ -204,7 +240,7 @@ export const ContactSection = () => {
                   : (
                       <>
                         <Send className="w-4 h-4" />
-                        Send Message
+                        Get Funding Quote
                       </>
                     )}
               </button>

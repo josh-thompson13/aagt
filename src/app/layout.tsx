@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: 'AAGT Private Loans | Fast Business Funding Australia',
     template: '%s | AAGT Private Loans',
   },
-  description: "AAGT Private Loans offers fast business funding from $150k-$5M. Same day approval, 4-day settlement. Direct funder with competitive rates. Apply now! 🚀",
+  description: "AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.",
   keywords: 'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
   openGraph: {
     type: 'website',
@@ -47,7 +47,13 @@ const navItems = (
       href="/rates"
       className="block px-3 py-2 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-md text-sm md:text-base font-medium transition-colors"
     >
-      Rates & Fees
+      Rates & Terms
+    </LocaleLink>
+    <LocaleLink
+      href="/resources"
+      className="block px-3 py-2 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-md text-sm md:text-base font-medium transition-colors"
+    >
+      Resources
     </LocaleLink>
     <LocaleLink
       href="/about"

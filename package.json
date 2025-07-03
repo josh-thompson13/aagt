@@ -1,20 +1,22 @@
 {
-  "name": "realty-direct-landing",
+  "name": "aagt-private-loans",
   "version": "3.67.2",
-  "author": "Realty Direct",
+  "author": "AAGT Private Loans",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && npm run post-build",
-    "post-build": "npm run copy-to-root",
+    "build": "next build && bun run post-build",
+    "post-build": "bun run copy-to-root",
     "copy-to-root": "node scripts/copy-to-root.js",
     "start": "next start",
     "clean": "rm -rf .next out node_modules",
     "check-types": "tsc --noEmit --pretty",
     "export": "next build",
-    "fresh-install": "npm run clean && npm install"
+    "fresh-install": "bun run clean && bun install",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "framer-motion": "^12.19.1",

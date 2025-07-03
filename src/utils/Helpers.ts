@@ -5,7 +5,7 @@ export const getBaseUrl = () => {
 
   // GitHub Pages with custom domain
   if (process.env.GITHUB_ACTIONS) {
-    return 'https://realtydirect.com.au';
+    return 'https://aagtprivateloans.com.au';
   }
 
   if (

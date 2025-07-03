@@ -263,5 +263,7 @@ Economic insights for business owners
 Case studies and success stories
 Regulatory updates and implications
 
+Do not use NPM, we use bun.
+
 
 This guide provides a professional framework for transforming the website while maintaining the core business objectives. Regular updates should be made as the project evolves and new requirements emerge.
