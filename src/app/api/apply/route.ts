@@ -16,30 +16,40 @@ export async function POST(request: NextRequest) {
       businessAddress,
       industry,
       yearsInBusiness,
+      borrowingEntity,
+      directorsNames,
       // Loan Requirements
       loanAmount,
-      loanType,
-      preferredTerm,
-      timeframe,
       loanPurpose,
+      preferredTerm,
+      fundsRequiredDate,
       // Security Information
-      hasProperty,
+      propertyType,
       propertyValue,
       propertyAddress,
+      securityOffered,
+      debtOwing,
       // Additional Information
+      bankruptcyHistory,
+      exitStrategy,
       declinedByBanks,
       workingWithBroker,
+      receiveUpdates,
     } = body;
 
     // Validate required fields
     if (
-      !firstName ||
-      !lastName ||
       !email ||
-      !businessName ||
+      !borrowingEntity ||
+      !directorsNames ||
       !loanAmount ||
-      !loanType ||
-      !loanPurpose
+      !fundsRequiredDate ||
+      !loanPurpose ||
+      !securityOffered ||
+      !propertyValue ||
+      !debtOwing ||
+      !bankruptcyHistory ||
+      !exitStrategy
     ) {
       return NextResponse.json({ error: 'Please fill in all required fields' }, { status: 400 });
     }
@@ -54,35 +64,48 @@ export async function POST(request: NextRequest) {
     const emailBody = `
 NEW LOAN APPLICATION - AAGT Private Loans
 
-=== APPLICANT INFORMATION ===
-Name: ${firstName} ${lastName}
+=== CONTACT INFORMATION ===
 Email: ${email}
+Sign up for news and updates: ${receiveUpdates ? 'Yes' : 'No'}
+
+=== BORROWING ENTITY ===
+Name of Borrowing Entity: ${borrowingEntity}
+Names of Directors: ${directorsNames}
+
+=== LOAN REQUIREMENTS ===
+Required Loan Amount: ${loanAmount}
+When are Funds Required: ${fundsRequiredDate}
+What is Loan Purpose: ${loanPurpose}
+
+=== SECURITY INFORMATION ===
+What type of Security is offered: ${securityOffered}
+What is Estimated Value: ${propertyValue}
+Any debt owing? To who?: ${debtOwing}
+
+=== ADDITIONAL INFORMATION ===
+Are you/have you ever been Bankrupt?: ${bankruptcyHistory}
+What is your Exit Strategy?: ${exitStrategy}
+
+=== PERSONAL DETAILS (IF PROVIDED) ===
+First Name: ${firstName || 'Not provided'}
+Last Name: ${lastName || 'Not provided'}
 Phone: ${phone || 'Not provided'}
 
-=== BUSINESS INFORMATION ===
-Business Name: ${businessName}
+=== BUSINESS DETAILS (IF PROVIDED) ===
+Business Name: ${businessName || 'Not provided'}
 ABN: ${abn || 'Not provided'}
 Business Address: ${businessAddress || 'Not provided'}
 Industry/Type: ${industry || 'Not provided'}
 Years in Business: ${yearsInBusiness || 'Not provided'}
 
-=== LOAN REQUIREMENTS ===
-Loan Amount: ${loanAmount}
-Loan Type: ${loanType}
-Preferred Term: ${preferredTerm || 'Not specified'}
-Timeframe Needed: ${timeframe || 'Not specified'}
-
-Purpose of Loan:
-${loanPurpose}
-
-=== SECURITY INFORMATION ===
-Property Available for Security: ${hasProperty || 'Not specified'}
-Estimated Property Value: ${propertyValue ? `$${propertyValue}` : 'Not provided'}
+=== PROPERTY DETAILS (IF PROVIDED) ===
+Property Type: ${propertyType || 'Not provided'}
 Property Address: ${propertyAddress || 'Not provided'}
 
-=== ADDITIONAL INFORMATION ===
+=== OTHER INFORMATION ===
 Previously Declined by Banks: ${declinedByBanks ? 'Yes' : 'No'}
 Working with Mortgage Broker: ${workingWithBroker ? 'Yes' : 'No'}
+Loan Term: ${preferredTerm || 'Not specified'}
 
 === SUBMISSION DETAILS ===
 Submitted: ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' })}
@@ -105,7 +128,7 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
     const emailConfig = {
       from: 'aagtpvtloans@gmail.com',
       to: testEmail, // Send to test email for now
-      subject: `[AAGT TEST] New Loan Application: ${firstName} ${lastName} - ${loanAmount} ${loanType}`,
+      subject: `[AAGT TEST] New Loan Application: ${borrowingEntity} - ${loanAmount}`,
       text: emailBody,
       replyTo: email,
       html: `
@@ -116,36 +139,30 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
             </h1>
             
             <div style="background: #e8f4f8; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #0891B2;">
-              <h2 style="color: #0A2540; margin-top: 0;">👤 Applicant Information</h2>
+              <h2 style="color: #0A2540; margin-top: 0;">📧 Contact Information</h2>
               <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; font-weight: bold; width: 120px;">Name:</td><td>${firstName} ${lastName}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Email:</td><td><a href="mailto:${email}" style="color: #0891B2;">${email}</a></td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Phone:</td><td>${phone || 'Not provided'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Email:</td><td><a href="mailto:${email}" style="color: #0891B2;">${email}</a></td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Newsletter Sign-up:</td><td>${receiveUpdates ? '✅ Yes' : '❌ No'}</td></tr>
               </table>
             </div>
             
             <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #0A2540;">
-              <h2 style="color: #0A2540; margin-top: 0;">🏢 Business Information</h2>
+              <h2 style="color: #0A2540; margin-top: 0;">🏢 Borrowing Entity</h2>
               <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; font-weight: bold; width: 120px;">Business:</td><td>${businessName}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">ABN:</td><td>${abn || 'Not provided'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Address:</td><td>${businessAddress || 'Not provided'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Industry:</td><td>${industry || 'Not provided'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Years:</td><td>${yearsInBusiness || 'Not provided'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Borrowing Entity:</td><td style="font-weight: bold;">${borrowingEntity}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Directors:</td><td>${directorsNames}</td></tr>
               </table>
             </div>
             
             <div style="background: #fff8e1; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #F59E0B;">
               <h2 style="color: #0A2540; margin-top: 0;">💰 Loan Requirements</h2>
               <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; font-weight: bold; width: 120px;">Amount:</td><td style="font-size: 18px; font-weight: bold; color: #0A2540;">${loanAmount}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Type:</td><td style="font-weight: bold; color: #0891B2;">${loanType}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Term:</td><td>${preferredTerm || 'Not specified'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Timeframe:</td><td>${timeframe || 'Not specified'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Required Amount:</td><td style="font-size: 18px; font-weight: bold; color: #0A2540;">${loanAmount}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Funds Required By:</td><td style="font-weight: bold; color: #0891B2;">${fundsRequiredDate}</td></tr>
               </table>
               
               <div style="margin-top: 15px;">
-                <h3 style="color: #0A2540; margin-bottom: 10px;">Purpose of Loan:</h3>
+                <h3 style="color: #0A2540; margin-bottom: 10px;">Loan Purpose:</h3>
                 <div style="background: white; padding: 15px; border-radius: 5px; border: 1px solid #ddd;">
                   ${loanPurpose.replace(/\n/g, '<br>')}
                 </div>
@@ -155,19 +172,44 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
             <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #10B981;">
               <h2 style="color: #0A2540; margin-top: 0;">🏠 Security Information</h2>
               <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; font-weight: bold; width: 150px;">Property Available:</td><td>${hasProperty || 'Not specified'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Property Value:</td><td>${propertyValue ? `$${propertyValue}` : 'Not provided'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Property Address:</td><td>${propertyAddress || 'Not provided'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Security Offered:</td><td>${securityOffered}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Estimated Value:</td><td>${propertyValue}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Debt Owing:</td><td>${debtOwing}</td></tr>
               </table>
             </div>
             
             <div style="background: #fdf2f8; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #ec4899;">
-              <h2 style="color: #0A2540; margin-top: 0;">ℹ️ Additional Information</h2>
+              <h2 style="color: #0A2540; margin-top: 0;">⚠️ Important Information</h2>
               <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Declined by Banks:</td><td>${declinedByBanks ? '✅ Yes' : '❌ No'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Bankruptcy History:</td><td>${bankruptcyHistory}</td></tr>
+              </table>
+              <div style="margin-top: 15px;">
+                <h3 style="color: #0A2540; margin-bottom: 10px;">Exit Strategy:</h3>
+                <div style="background: white; padding: 15px; border-radius: 5px; border: 1px solid #ddd;">
+                  ${exitStrategy.replace(/\n/g, '<br>')}
+                </div>
+              </div>
+            </div>
+            
+            ${(firstName || lastName || phone || businessName || abn || businessAddress || industry || yearsInBusiness || propertyType || propertyAddress || declinedByBanks || workingWithBroker) ? `
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #6c757d;">
+              <h2 style="color: #0A2540; margin-top: 0;">📋 Additional Details (if provided)</h2>
+              <table style="width: 100%; border-collapse: collapse;">
+                ${firstName || lastName ? `<tr><td style="padding: 8px 0; font-weight: bold; width: 200px;">Name:</td><td>${firstName || ''} ${lastName || ''}</td></tr>` : ''}
+                ${phone ? `<tr><td style="padding: 8px 0; font-weight: bold;">Phone:</td><td>${phone}</td></tr>` : ''}
+                ${businessName ? `<tr><td style="padding: 8px 0; font-weight: bold;">Business Name:</td><td>${businessName}</td></tr>` : ''}
+                ${abn ? `<tr><td style="padding: 8px 0; font-weight: bold;">ABN:</td><td>${abn}</td></tr>` : ''}
+                ${businessAddress ? `<tr><td style="padding: 8px 0; font-weight: bold;">Business Address:</td><td>${businessAddress}</td></tr>` : ''}
+                ${industry ? `<tr><td style="padding: 8px 0; font-weight: bold;">Industry:</td><td>${industry}</td></tr>` : ''}
+                ${yearsInBusiness ? `<tr><td style="padding: 8px 0; font-weight: bold;">Years in Business:</td><td>${yearsInBusiness}</td></tr>` : ''}
+                ${propertyType ? `<tr><td style="padding: 8px 0; font-weight: bold;">Property Type:</td><td>${propertyType}</td></tr>` : ''}
+                ${propertyAddress ? `<tr><td style="padding: 8px 0; font-weight: bold;">Property Address:</td><td>${propertyAddress}</td></tr>` : ''}
+                ${preferredTerm ? `<tr><td style="padding: 8px 0; font-weight: bold;">Loan Term:</td><td>${preferredTerm}</td></tr>` : ''}
+                <tr><td style="padding: 8px 0; font-weight: bold;">Declined by Banks:</td><td>${declinedByBanks ? '✅ Yes' : '❌ No'}</td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold;">Working with Broker:</td><td>${workingWithBroker ? '✅ Yes' : '❌ No'}</td></tr>
               </table>
             </div>
+            ` : ''}
             
             <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e9ecef; font-size: 12px; color: #6c757d; text-align: center;">
               <p><strong>Submitted:</strong> ${new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney' })}</p>
@@ -185,7 +227,7 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
       console.log('=== LOAN APPLICATION EMAIL SENT SUCCESSFULLY ===');
       console.log(`To: ${emailConfig.to}`);
       console.log(`Subject: ${emailConfig.subject}`);
-      console.log(`Applicant: ${firstName} ${lastName}`);
+      console.log(`Borrowing Entity: ${borrowingEntity}`);
       console.log(`Amount: ${loanAmount}`);
       console.log('=== END ===');
 

@@ -1,4 +1,4 @@
-'use strict';
+
 (self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
   [229],
   {
@@ -38,28 +38,20 @@
           '$feature_enrollment_update',
           '$feature_flag_called',
         ],
-        y = (function (e) {
-          return (e.GZipJS = 'gzip-js'), (e.Base64 = 'base64'), e;
-        })({}),
+        y = ((e) => ((e.GZipJS = 'gzip-js'), (e.Base64 = 'base64'), e))({}),
         b = ['fatal', 'error', 'warning', 'log', 'info', 'debug'];
       function w(e, t) {
         return -1 !== e.indexOf(t);
       }
-      var E = function (e) {
-          return e.trim();
-        },
-        S = function (e) {
-          return e.replace(/^\$/, '');
-        },
+      var E = (e) => e.trim(),
+        S = (e) => e.replace(/^\$/, ''),
         k = Array.isArray,
         x = Object.prototype,
         $ = x.hasOwnProperty,
         I = x.toString,
         F =
           k ||
-          function (e) {
-            return '[object Array]' === I.call(e);
-          },
+          ((e) => '[object Array]' === I.call(e)),
         C = (e) => 'function' == typeof e,
         R = (e) => e === Object(e) && !F(e),
         P = (e) => {
@@ -80,7 +72,7 @@
         j = (e) => w(m, e),
         B = (e) => {
           var t = {
-            t: function (t) {
+            t: (t) => {
               if (s && (f.DEBUG || _.POSTHOG_DEBUG) && !T(s.console) && s.console) {
                 for (
                   var i =
@@ -97,19 +89,19 @@
                 i(e, ...n);
               }
             },
-            info: function () {
+            info: () => {
               for (var e = arguments.length, i = Array(e), s = 0; s < e; s++) i[s] = arguments[s];
               t.t('log', ...i);
             },
-            warn: function () {
+            warn: () => {
               for (var e = arguments.length, i = Array(e), s = 0; s < e; s++) i[s] = arguments[s];
               t.t('warn', ...i);
             },
-            error: function () {
+            error: () => {
               for (var e = arguments.length, i = Array(e), s = 0; s < e; s++) i[s] = arguments[s];
               t.t('error', ...i);
             },
-            critical: function () {
+            critical: () => {
               for (var t = arguments.length, i = Array(t), s = 0; s < t; s++) i[s] = arguments[s];
               console.error(e, ...i);
             },
@@ -158,19 +150,19 @@
       function W() {
         return (W = Object.assign
           ? Object.assign.bind()
-          : function (e) {
+          : ((e) => {
               for (var t = 1; t < arguments.length; t++) {
                 var i = arguments[t];
-                for (var s in i) ({}).hasOwnProperty.call(i, s) && (e[s] = i[s]);
+                for (var s in i) Object.hasOwn(i, s) && (e[s] = i[s]);
               }
               return e;
-            }).apply(null, arguments);
+            })).apply(null, arguments);
       }
       function V(e, t) {
         if (null == e) return {};
         var i = {};
         for (var s in e)
-          if ({}.hasOwnProperty.call(e, s)) {
+          if (Object.hasOwn(e, s)) {
             if (-1 !== t.indexOf(s)) continue;
             i[s] = e[s];
           }
@@ -206,22 +198,22 @@
           } else for (var r in e) if ($.call(e, r) && t.call(i, e[r], r) === Y) return;
         }
       }
-      var Z = function (e) {
+      var Z = (e) => {
           for (var t = arguments.length, i = Array(t > 1 ? t - 1 : 0), s = 1; s < t; s++)
             i[s - 1] = arguments[s];
           return (
-            J(i, function (t) {
+            J(i, (t) => {
               for (var i in t) void 0 !== t[i] && (e[i] = t[i]);
             }),
             e
           );
         },
-        X = function (e) {
+        X = (e) => {
           for (var t = arguments.length, i = Array(t > 1 ? t - 1 : 0), s = 1; s < t; s++)
             i[s - 1] = arguments[s];
           return (
-            J(i, function (t) {
-              J(t, function (t) {
+            J(i, (t) => {
+              J(t, (t) => {
                 e.push(t);
               });
             }),
@@ -232,15 +224,14 @@
         for (var t = Object.keys(e), i = t.length, s = Array(i); i--; ) s[i] = [t[i], e[t[i]]];
         return s;
       }
-      var ee = function (e) {
+      var ee = (e) => {
           try {
             return e();
           } catch (e) {
             return;
           }
         },
-        et = function (e) {
-          return function () {
+        et = (e) => function () {
             try {
               for (var t = arguments.length, i = Array(t), s = 0; s < t; s++) i[s] = arguments[s];
               return e.apply(this, i);
@@ -250,12 +241,11 @@
               ),
                 H.critical(e);
             }
-          };
-        },
-        ei = function (e) {
+          },
+        ei = (e) => {
           var t = {};
           return (
-            K(e, function (e, i) {
+            K(e, (e, i) => {
               ((O(e) && e.length > 0) || D(e)) && (t[i] = e);
             }),
             t
@@ -392,7 +382,7 @@
             !e8(e) &&
             e.childNodes &&
             e.childNodes.length &&
-            K(e.childNodes, function (e) {
+            K(e.childNodes, (e) => {
               var i;
               eJ(e) && e.textContent && (t += null != (i = e0(e.textContent)) ? i : '');
             }),
@@ -471,7 +461,7 @@
                 t &&
                   t.childNodes &&
                   t.childNodes.length &&
-                  K(t.childNodes, function (t) {
+                  K(t.childNodes, (t) => {
                     var s;
                     if (t && 'span' === (null == (s = t.tagName) ? void 0 : s.toLowerCase()))
                       try {
@@ -511,13 +501,13 @@
           var t = null == c ? void 0 : c.createElement('a');
           return T(t) ? null : ((t.href = e), t);
         },
-        tc = function (e, t) {
+        tc = (e, t) => {
           void 0 === t && (t = '&');
           var i,
             s,
             r = [];
           return (
-            K(e, function (e, t) {
+            K(e, (e, t) => {
               T(e) ||
                 T(t) ||
                 'undefined' === t ||
@@ -528,7 +518,7 @@
             r.join(t)
           );
         },
-        tu = function (e, t) {
+        tu = (e, t) => {
           for (
             var i,
               s = ((e.split('#')[0] || '').split(/\?(.*)/)[1] || '')
@@ -553,7 +543,7 @@
           }
           return a.replace(/\+/g, ' ');
         },
-        th = function (e, t, i) {
+        th = (e, t, i) => {
           if (!e || !t || !t.length) return e;
           for (
             var s = e.split('#'),
@@ -574,7 +564,7 @@
           var p = l;
           return null != o && (p += '?' + u.join('&')), null != n && (p += '#' + n), p;
         },
-        td = function (e, t) {
+        td = (e, t) => {
           var i = e.match(RegExp(t + '=([^&]*)'));
           return i ? i[1] : null;
         },
@@ -680,7 +670,7 @@
             var n = t === v;
             if (
               r &&
-              (function (e, t, i, r, n) {
+              ((e, t, i, r, n) => {
                 if (
                   (void 0 === i && (i = void 0),
                   !s ||
@@ -710,21 +700,21 @@
                     h.push(d), (p = d);
                   }
                 if (
-                  !(function (e, t) {
+                  !((e, t) => {
                     var i = null == t ? void 0 : t.element_allowlist;
                     if (T(i)) return !0;
                     var s,
-                      r = function (e) {
+                      r = (e) => {
                         if (i.some((t) => e.tagName.toLowerCase() === t)) return { v: !0 };
                       };
                     for (var n of e) if ((s = r(n))) return s.v;
                     return !1;
                   })(h, i) ||
-                  !(function (e, t) {
+                  !((e, t) => {
                     var i = null == t ? void 0 : t.css_selector_allowlist;
                     if (T(i)) return !0;
                     var s,
-                      r = function (e) {
+                      r = (e) => {
                         if (i.some((t) => e.matches(t))) return { v: !0 };
                       };
                     for (var n of e) if ((s = r(n))) return s.v;
@@ -753,7 +743,7 @@
                 }
               })(r, e, this.S, n, n ? ['copy', 'cut'] : void 0)
             ) {
-              var { props: a, explicitNoCapture: o } = (function (e, t) {
+              var { props: a, explicitNoCapture: o } = ((e, t) => {
                 for (
                   var i,
                     r,
@@ -783,7 +773,7 @@
                       ((_ = e.getAttribute('href')), (_ = t && _ && ts(_) && _)),
                       w(eQ(e), 'ph-no-capture') && (f = !0),
                       p.push(
-                        (function (e, t, i, s) {
+                        ((e, t, i, s) => {
                           var r = e.tagName.toLowerCase(),
                             n = { tag_name: r };
                           e3.indexOf(r) > -1 &&
@@ -793,10 +783,8 @@
                               : (n.$el_text = tg(1024, e1(e))));
                           var a = eQ(e);
                           a.length > 0 &&
-                            (n.classes = a.filter(function (e) {
-                              return '' !== e;
-                            })),
-                            K(e.attributes, function (i) {
+                            (n.classes = a.filter((e) => '' !== e)),
+                            K(e.attributes, (i) => {
                               var r;
                               if (
                                 (!e8(e) ||
@@ -815,7 +803,7 @@
                             });
                           for (
                             var o = 1, l = 1, c = e;
-                            (c = (function (e) {
+                            (c = ((e) => {
                               if (e.previousElementSibling) return e.previousElementSibling;
                               var t = e;
                               do t = t.previousSibling;
@@ -829,11 +817,11 @@
                       ),
                       Z(
                         g,
-                        (function (e) {
+                        ((e) => {
                           if (!e6(e)) return {};
                           var t = {};
                           return (
-                            K(e.attributes, function (e) {
+                            K(e.attributes, (e) => {
                               if (e.name && 0 === e.name.indexOf('data-ph-capture-attribute')) {
                                 var i = e.name.replace('data-ph-capture-attribute-', ''),
                                   s = e.value;
@@ -968,13 +956,9 @@
         }
       }
       Math.trunc ||
-        (Math.trunc = function (e) {
-          return e < 0 ? Math.ceil(e) : Math.floor(e);
-        }),
+        (Math.trunc = (e) => e < 0 ? Math.ceil(e) : Math.floor(e)),
         Number.isInteger ||
-          (Number.isInteger = function (e) {
-            return D(e) && isFinite(e) && Math.floor(e) === e;
-          });
+          (Number.isInteger = (e) => D(e) && isFinite(e) && Math.floor(e) === e);
       var tf = '0123456789abcdef';
       class tv {
         constructor(e) {
@@ -1093,10 +1077,10 @@
         tx = /[a-z0-9][a-z0-9-]+\.[a-z]{2,}$/i,
         t$ = {
           O: () => !!c,
-          A: function (e) {
+          A: (e) => {
             H.error('cookieStore error: ' + e);
           },
-          D: function (e) {
+          D: (e) => {
             if (c) {
               try {
                 for (
@@ -1112,21 +1096,21 @@
               return null;
             }
           },
-          L: function (e) {
+          L: (e) => {
             var t;
             try {
               t = JSON.parse(t$.D(e)) || {};
             } catch (e) {}
             return t;
           },
-          j: function (e, t, i, s, r) {
+          j: (e, t, i, s, r) => {
             if (c)
               try {
                 var n = '',
                   a = '',
-                  o = (function (e, t) {
+                  o = ((e, t) => {
                     if (t) {
-                      var i = (function (e, t) {
+                      var i = ((e, t) => {
                         if ((void 0 === t && (t = c), tk)) return tk;
                         if (!t || ['localhost', '127.0.0.1'].includes(e)) return '';
                         for (
@@ -1172,7 +1156,7 @@
                 return;
               }
           },
-          N: function (e, t) {
+          N: (e, t) => {
             try {
               t$.j(e, '', -1, t);
             } catch (e) {
@@ -1182,7 +1166,7 @@
         },
         tI = null,
         tF = {
-          O: function () {
+          O: () => {
             if (!M(tI)) return tI;
             var e = !0;
             if (T(s)) e = !1;
@@ -1197,10 +1181,10 @@
               e || H.error('localStorage unsupported; falling back to cookie store'), (tI = e), e
             );
           },
-          A: function (e) {
+          A: (e) => {
             H.error('localStorage error: ' + e);
           },
-          D: function (e) {
+          D: (e) => {
             try {
               return null == s ? void 0 : s.localStorage.getItem(e);
             } catch (e) {
@@ -1208,20 +1192,20 @@
             }
             return null;
           },
-          L: function (e) {
+          L: (e) => {
             try {
               return JSON.parse(tF.D(e)) || {};
             } catch (e) {}
             return null;
           },
-          j: function (e, t) {
+          j: (e, t) => {
             try {
               null == s || s.localStorage.setItem(e, JSON.stringify(t));
             } catch (e) {
               tF.A(e);
             }
           },
-          N: function (e) {
+          N: (e) => {
             try {
               null == s || s.localStorage.removeItem(e);
             } catch (e) {
@@ -1231,7 +1215,7 @@
         },
         tC = ['distinct_id', ek, ex, eH, eB],
         tR = W({}, tF, {
-          L: function (e) {
+          L: (e) => {
             try {
               var t = {};
               try {
@@ -1242,7 +1226,7 @@
             } catch (e) {}
             return null;
           },
-          j: function (e, t, i, s, r, n) {
+          j: (e, t, i, s, r, n) => {
             try {
               tF.j(e, t, void 0, void 0, n);
               var a = {};
@@ -1254,7 +1238,7 @@
               tF.A(e);
             }
           },
-          N: function (e, t) {
+          N: (e, t) => {
             try {
               null == s || s.localStorage.removeItem(e), t$.N(e, t);
             } catch (e) {
@@ -1264,28 +1248,22 @@
         }),
         tP = {},
         tT = {
-          O: function () {
-            return !0;
-          },
-          A: function (e) {
+          O: () => !0,
+          A: (e) => {
             H.error('memoryStorage error: ' + e);
           },
-          D: function (e) {
-            return tP[e] || null;
-          },
-          L: function (e) {
-            return tP[e] || null;
-          },
-          j: function (e, t) {
+          D: (e) => tP[e] || null,
+          L: (e) => tP[e] || null,
+          j: (e, t) => {
             tP[e] = t;
           },
-          N: function (e) {
+          N: (e) => {
             delete tP[e];
           },
         },
         tO = null,
         tA = {
-          O: function () {
+          O: () => {
             if (!M(tO)) return tO;
             if (((tO = !0), T(s))) tO = !1;
             else
@@ -1297,10 +1275,10 @@
               }
             return tO;
           },
-          A: function (e) {
+          A: (e) => {
             H.error('sessionStorage error: ', e);
           },
-          D: function (e) {
+          D: (e) => {
             try {
               return null == s ? void 0 : s.sessionStorage.getItem(e);
             } catch (e) {
@@ -1308,20 +1286,20 @@
             }
             return null;
           },
-          L: function (e) {
+          L: (e) => {
             try {
               return JSON.parse(tA.D(e)) || null;
             } catch (e) {}
             return null;
           },
-          j: function (e, t) {
+          j: (e, t) => {
             try {
               null == s || s.sessionStorage.setItem(e, JSON.stringify(t));
             } catch (e) {
               tA.A(e);
             }
           },
-          N: function (e) {
+          N: (e) => {
             try {
               null == s || s.sessionStorage.removeItem(e);
             } catch (e) {
@@ -1329,14 +1307,12 @@
             }
           },
         },
-        tM = (function (e) {
-          return (
+        tM = ((e) => (
             (e[(e.PENDING = -1)] = 'PENDING'),
             (e[(e.DENIED = 0)] = 'DENIED'),
             (e[(e.GRANTED = 1)] = 'GRANTED'),
             e
-          );
-        })({});
+          ))({});
       class tL {
         constructor(e) {
           this._instance = e;
@@ -1665,10 +1641,10 @@
         t5 =
           /^\s*(.*?)(?:\((.*?)\))?(?:^|@)?((?:[-a-z]+)?:\/.*?|\[native code\]|[^@]*(?:bundle|\d+\.js)|\/[\w\-. /=]+)(?::(\d+))?(?::(\d+))?\s*$/i,
         t6 = /(\S+) line (\d+)(?: > eval line \d+)* > eval/i,
-        t8 = (function () {
+        t8 = (() => {
           for (var e = arguments.length, t = Array(e), i = 0; i < e; i++) t[i] = arguments[i];
           var s = t.sort((e, t) => e[0] - t[0]).map((e) => e[1]);
-          return function (e, t) {
+          return (e, t) => {
             void 0 === t && (t = 0);
             for (var i = [], r = e.split('\n'), n = t; n < r.length; n++) {
               var a = r[n];
@@ -1756,7 +1732,7 @@
             n,
             a =
               ((r = t8(i, s)),
-              (n = (function (e) {
+              (n = ((e) => {
                 var t = globalThis._posthogChunkIds;
                 if (!t) return {};
                 var i = Object.keys(t);
@@ -2146,7 +2122,7 @@
                   : void 0;
               }
             : (e) =>
-                (function (e) {
+                ((e) => {
                   if (!T(e))
                     return (
                       (e.requestBody = iv(e.requestBody, 'Request')),
@@ -2228,7 +2204,7 @@
           13, 13, 0, 0,
         ]),
         ix = new ib([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]),
-        i$ = function (e, t) {
+        i$ = (e, t) => {
           for (var i = new iw(31), s = 0; s < 31; ++s) i[s] = t += 1 << e[s - 1];
           var r = new iE(i[30]);
           for (s = 1; s < 30; ++s)
@@ -2245,7 +2221,7 @@
           ((61680 & (iO = ((52428 & iO) >>> 2) | ((13107 & iO) << 2))) >>> 4) | ((3855 & iO) << 4)),
           (iP[iT] = (((65280 & iO) >>> 8) | ((255 & iO) << 8)) >>> 1);
       }
-      var iA = function (e, t, i) {
+      var iA = (e, t, i) => {
           for (var s = e.length, r = 0, n = new iw(t); r < s; ++r) ++n[e[r] - 1];
           var a,
             o = new iw(t);
@@ -2276,25 +2252,23 @@
       for (iT = 0; iT < 32; ++iT) iL[iT] = 5;
       var iD = iA(iM, 9, 0),
         iN = iA(iL, 5, 0),
-        iq = function (e) {
-          return ((e / 8) | 0) + (7 & e && 1);
-        },
-        ij = function (e, t, i) {
+        iq = (e) => ((e / 8) | 0) + (7 & e && 1),
+        ij = (e, t, i) => {
           (null == i || i > e.length) && (i = e.length);
           var s = new (e instanceof iw ? iw : e instanceof iE ? iE : ib)(i - t);
           return s.set(e.subarray(t, i)), s;
         },
-        iB = function (e, t, i) {
+        iB = (e, t, i) => {
           i <<= 7 & t;
           var s = (t / 8) | 0;
           (e[s] |= i), (e[s + 1] |= i >>> 8);
         },
-        iH = function (e, t, i) {
+        iH = (e, t, i) => {
           i <<= 7 & t;
           var s = (t / 8) | 0;
           (e[s] |= i), (e[s + 1] |= i >>> 8), (e[s + 2] |= i >>> 16);
         },
-        iU = function (e, t) {
+        iU = (e, t) => {
           for (var i = [], s = 0; s < e.length; ++s) e[s] && i.push({ s: s, f: e[s] });
           var r = i.length,
             n = i.slice();
@@ -2303,9 +2277,7 @@
             var a = new ib(i[0].s + 1);
             return (a[i[0].s] = 1), [a, 1];
           }
-          i.sort(function (e, t) {
-            return e.f - t.f;
-          }),
+          i.sort((e, t) => e.f - t.f),
             i.push({ s: -1, f: 25001 });
           var o = i[0],
             l = i[1],
@@ -2326,9 +2298,7 @@
               f = g - t,
               v = 1 << f;
             for (
-              n.sort(function (e, t) {
-                return p[t.s] - p[e.s] || e.f - t.f;
-              });
+              n.sort((e, t) => p[t.s] - p[e.s] || e.f - t.f);
               s < r;
               ++s
             ) {
@@ -2348,17 +2318,15 @@
           }
           return [new ib(p), g];
         },
-        iz = function (e, t, i) {
-          return -1 == e.s ? Math.max(iz(e.l, t, i + 1), iz(e.r, t, i + 1)) : (t[e.s] = i);
-        },
-        iG = function (e) {
+        iz = (e, t, i) => -1 == e.s ? Math.max(iz(e.l, t, i + 1), iz(e.r, t, i + 1)) : (t[e.s] = i),
+        iG = (e) => {
           for (var t = e.length; t && !e[--t]; );
           for (
             var i = new iw(++t),
               s = 0,
               r = e[0],
               n = 1,
-              a = function (e) {
+              a = (e) => {
                 i[s++] = e;
               },
               o = 1;
@@ -2379,11 +2347,11 @@
             }
           return [i.subarray(0, s), t];
         },
-        iW = function (e, t) {
+        iW = (e, t) => {
           for (var i = 0, s = 0; s < t.length; ++s) i += e[s] * t[s];
           return i;
         },
-        iV = function (e, t, i) {
+        iV = (e, t, i) => {
           var s = i.length,
             r = iq(t + 2);
           (e[r] = 255 & s),
@@ -2393,7 +2361,7 @@
           for (var n = 0; n < s; ++n) e[r + n + 4] = i[n];
           return 8 * (r + 4 + s);
         },
-        iY = function (e, t, i, s, r, n, a, o, l, c, u) {
+        iY = (e, t, i, s, r, n, a, o, l, c, u) => {
           iB(t, u++, i), ++r[256];
           for (
             var h = iU(r, 15),
@@ -2456,29 +2424,27 @@
           return iH(t, u, C[256]), u + R[256];
         },
         iJ = new iE([65540, 131080, 131088, 131104, 262176, 1048704, 1048832, 2114560, 2117632]),
-        iK = (function () {
+        iK = (() => {
           for (var e = new iE(256), t = 0; t < 256; ++t) {
             for (var i = t, s = 9; --s; ) i = (1 & i && 0xedb88320) ^ (i >>> 1);
             e[t] = i;
           }
           return e;
         })(),
-        iZ = function () {
+        iZ = () => {
           var e = 0xffffffff;
           return {
-            p: function (t) {
+            p: (t) => {
               for (var i = e, s = 0; s < t.length; ++s) i = iK[(255 & i) ^ t[s]] ^ (i >>> 8);
               e = i;
             },
-            d: function () {
-              return 0xffffffff ^ e;
-            },
+            d: () => 0xffffffff ^ e,
           };
         },
-        iX = function (e, t, i) {
+        iX = (e, t, i) => {
           for (; i; ++t) (e[t] = i), (i >>>= 8);
         },
-        iQ = function (e, t) {
+        iQ = (e, t) => {
           var i = t.filename;
           if (
             ((e[0] = 31),
@@ -2504,7 +2470,7 @@
         var o =
             ((s = t),
             (r = 10 + (((i = t).filename && i.filename.length + 1) || 0)),
-            (function (e, t, i, s, r, n) {
+            ((e, t, i, s, r, n) => {
               var a = e.length,
                 o = new ib(s + a + 5 * (1 + Math.floor(a / 7e3)) + 8),
                 l = o.subarray(s, o.length - r),
@@ -2526,9 +2492,7 @@
                     v = new iw(_ + 1),
                     m = Math.ceil(i / 3),
                     y = 2 * m,
-                    b = function (t) {
-                      return (e[t] ^ (e[t + 1] << m) ^ (e[t + 2] << y)) & _;
-                    },
+                    b = (t) => (e[t] ^ (e[t + 1] << m) ^ (e[t + 2] << y)) & _,
                     w = new iE(25e3),
                     E = new iw(288),
                     S = new iw(32),
@@ -2604,7 +2568,7 @@
         for (
           var s = new ib(e.length + (e.length >>> 1)),
             r = 0,
-            n = function (e) {
+            n = (e) => {
               s[r++] = e;
             },
             a = 0;
@@ -2832,7 +2796,7 @@
         ],
         s_ = (e) => ({ rrwebMethod: e, enqueuedAt: Date.now(), attempt: 1 });
       function sf(e) {
-        return (function (e, t) {
+        return ((e, t) => {
           for (var i = '', s = 0; s < e.length; ) {
             var r = e[s++];
             r < 128 || t
@@ -3163,7 +3127,7 @@
             var r = this.jt,
               n = i || !N(r),
               a = n
-                ? (function (e) {
+                ? ((e) => {
                     for (var t = 0, i = 0; i < e.length; i++)
                       t = ((t << 5) - t + e.charCodeAt(i)) | 0;
                     return Math.abs(t);
@@ -3493,7 +3457,7 @@
                   this.pi();
               var s = this.Fi ? this.Fi.throttleMutations(e) : e;
               if (s) {
-                var r = (function (e) {
+                var r = ((e) => {
                   if (
                     e &&
                     R(e) &&
@@ -3519,7 +3483,7 @@
                   }
                   var a =
                       null == (t = this._instance.config.session_recording.compress_events) || t
-                        ? (function (e) {
+                        ? ((e) => {
                             if (1024 > ia(e)) return e;
                             try {
                               if (e.type === io.FullSnapshot)
@@ -3780,7 +3744,7 @@
       class sE {
         constructor(e, t, i, s, r) {
           (this.name = sb),
-            (this.setupOnce = function (n) {
+            (this.setupOnce = (n) => {
               n(sw(e, { organization: t, projectId: i, prefix: s, severityAllowList: r }));
             });
         }
@@ -3791,14 +3755,12 @@
             : null,
         sk = '_postHogToolbarParams',
         sx = U('[Toolbar]'),
-        s$ = (function (e) {
-          return (
+        s$ = ((e) => (
             (e[(e.UNINITIALIZED = 0)] = 'UNINITIALIZED'),
             (e[(e.LOADING = 1)] = 'LOADING'),
             (e[(e.LOADED = 2)] = 'LOADED'),
             e
-          );
-        })(s$ || {});
+          ))(s$ || {});
       class sI {
         constructor(e) {
           this.instance = e;
@@ -4161,7 +4123,7 @@
           var i = this.instance.scrollManager.scrollY(),
             r = this.instance.scrollManager.scrollX(),
             n = this.instance.scrollManager.scrollElement(),
-            a = (function (e, t, i) {
+            a = ((e, t, i) => {
               for (var r = e; r && eV(r) && !eY(r, 'body') && r !== i; ) {
                 if (w(t, null == s ? void 0 : s.getComputedStyle(r).position)) return !0;
                 r = e5(r);
@@ -4275,7 +4237,7 @@
           );
         }
       }
-      var sL = function (e) {
+      var sL = (e) => {
           var t,
             i,
             s,
@@ -4321,7 +4283,7 @@
             }
             if (i === y.Base64) {
               var r = ((e) => 'data=' + encodeURIComponent('string' == typeof e ? e : sj(e)))(
-                (function (e) {
+                ((e) => {
                   var t,
                     i,
                     s,
@@ -4374,7 +4336,7 @@
               i,
               { contentType: s, body: r, estimatedSize: n } = null != (t = sB(e)) ? t : {},
               a = new Headers();
-            K(e.headers, function (e, t) {
+            K(e.headers, (e, t) => {
               a.append(t, e);
             }),
               s && a.append('Content-Type', s);
@@ -4423,7 +4385,7 @@
                 i = new d();
               i.open(e.method || 'GET', e.url, !0);
               var { contentType: s, body: r } = null != (t = sB(e)) ? t : {};
-              K(e.headers, function (e, t) {
+              K(e.headers, (e, t) => {
                 i.setRequestHeader(t, e);
               }),
                 s && i.setRequestHeader('Content-Type', s),
@@ -4456,9 +4418,9 @@
               } catch (e) {}
             },
           });
-      var sU = function (e, t) {
+      var sU = (e, t) => {
         if (
-          !(function (e) {
+          !((e) => {
             try {
               new RegExp(e);
             } catch (e) {
@@ -4595,11 +4557,8 @@
         },
         rF = (e, t) =>
           (t && w(t, s0)) ||
-          (function (e) {
-            return w(e, s2) && !w(e, s4) && !w(e, sK);
-          })(e),
-        rC = function (e, t) {
-          return (
+          ((e) => w(e, s2) && !w(e, s4) && !w(e, sK))(e),
+        rC = (e, t) => (
             (t = t || ''),
             w(e, ' OPR/') && w(e, 'Mini')
               ? rs
@@ -4638,8 +4597,7 @@
                                             : w(e, 'Gecko')
                                               ? ra
                                               : ''
-          );
-        },
+          ),
         rR = {
           [rt]: [RegExp('rv:' + rw)],
           [rn]: [RegExp(rr + '?\\/' + rw)],
@@ -4658,7 +4616,7 @@
           [re]: [RegExp('(rv:|MSIE )' + rw)],
           Mozilla: [RegExp('rv:' + rw)],
         },
-        rP = function (e, t) {
+        rP = (e, t) => {
           var i = rR[rC(e, t)];
           if (T(i)) return null;
           for (var s = 0; s < i.length; s++) {
@@ -4716,8 +4674,7 @@
           [/CrOS/, [s7, '']],
           [/Linux|debian/i, ['Linux', '']],
         ],
-        rO = function (e) {
-          return rx.test(e)
+        rO = (e) => rx.test(e)
             ? rl
             : rk.test(e)
               ? rc
@@ -4762,8 +4719,7 @@
                                         : RegExp(sZ, 'i').test(e) &&
                                             !RegExp(sZ + ' pc', 'i').test(e)
                                           ? ry
-                                          : '';
-        },
+                                          : '',
         rA = 'https?://(.*)',
         rM = [
           'gclid',
@@ -4805,7 +4761,7 @@
           n = rj(th(c.URL, r, rD), e);
         return Z(
           ((s = {}),
-          K(rN, function (e) {
+          K(rN, (e) => {
             var t = t$.D(e);
             s[e] = t || null;
           }),
@@ -4817,7 +4773,7 @@
         var i = rL.concat(t || []),
           s = {};
         return (
-          K(i, function (t) {
+          K(i, (t) => {
             var i = tu(e, t);
             s[t] = i || null;
           }),
@@ -4924,9 +4880,7 @@
             e
           );
         },
-        r1 = (function (e) {
-          return (e.FeatureFlags = 'feature_flags'), (e.Recordings = 'recordings'), e;
-        })({}),
+        r1 = ((e) => ((e.FeatureFlags = 'feature_flags'), (e.Recordings = 'recordings'), e))({}),
         r2 = new Set([
           '7c6f7b45',
           '66c1f69c',
@@ -5201,7 +5155,7 @@
               var r =
                   this._instance.config.__preview_flags_v2 &&
                   this._instance.config.__preview_remote_config,
-                n = ((i = (function (e) {
+                n = ((i = ((e) => {
                   for (var t = 0x811c9dc5, i = 0; i < e.length; i++)
                     (t ^= e.charCodeAt(i)),
                       (t += (t << 1) + (t << 4) + (t << 7) + (t << 8) + (t << 24));
@@ -5355,7 +5309,7 @@
             var i = this.getFlagVariants(),
               s = this.getFlagPayloads(),
               r = this.getFlagsWithDetails();
-            !(function (e, t, i, s, r) {
+            !((e, t, i, s, r) => {
               void 0 === i && (i = {}), void 0 === s && (s = {}), void 0 === r && (r = {});
               var n = r0(e),
                 a = n.flags,
@@ -5546,7 +5500,7 @@
         properties() {
           var e = {};
           return (
-            K(this.props, function (t, i) {
+            K(this.props, (t, i) => {
               if (i === eF && R(t))
                 for (var s, r = Object.keys(t), n = 0; n < r.length; n++)
                   e['$feature/' + r[n]] = t[r[n]];
@@ -5556,7 +5510,7 @@
                     ? s
                     : o && eG.indexOf === o
                       ? -1 != eG.indexOf(i)
-                      : (K(eG, function (e) {
+                      : (K(eG, (e) => {
                           if (s || (s = e === i)) return Y;
                         }),
                         s)) || (e[i] = t);
@@ -5585,7 +5539,7 @@
             var s = !1;
             if (
               (K(e, (e, i) => {
-                (this.props.hasOwnProperty(i) && this.props[i] !== t) ||
+                (Object.hasOwn(this.props, i) && this.props[i] !== t) ||
                   ((this.props[i] = e), (s = !0));
               }),
               s)
@@ -5600,7 +5554,7 @@
             var i = !1;
             if (
               (K(e, (t, s) => {
-                e.hasOwnProperty(s) && this.props[s] !== t && ((this.props[s] = t), (i = !0));
+                Object.hasOwn(e, s) && this.props[s] !== t && ((this.props[s] = t), (i = !0));
               }),
               i)
             )
@@ -5655,7 +5609,7 @@
           K([ej, eq], (t) => {
             var i = this.props[t];
             i &&
-              K(i, function (t, i) {
+              K(i, (t, i) => {
                 e['$initial_' + S(i)] = t;
               });
           });
@@ -5668,7 +5622,7 @@
                 e,
                 ((t = rG(s)),
                 (i = {}),
-                K(t, function (e, t) {
+                K(t, (e, t) => {
                   i['$initial_' + S(t)] = e;
                 }),
                 i)
@@ -5678,7 +5632,7 @@
         }
         safe_merge(e) {
           return (
-            K(this.props, function (t, i) {
+            K(this.props, (t, i) => {
               i in e || (e[i] = t);
             }),
             e
@@ -6232,10 +6186,10 @@
           }
         }
       }
-      (function (e) {
+      ((e) => {
         (e.Button = 'button'), (e.Tab = 'tab'), (e.Selector = 'selector');
       })({}),
-        (function (e) {
+        ((e) => {
           (e.TopLeft = 'top_left'),
             (e.TopRight = 'top_right'),
             (e.TopCenter = 'top_center'),
@@ -6247,35 +6201,32 @@
             (e.Right = 'right'),
             (e.NextToTrigger = 'next_to_trigger');
         })({}),
-        (function (e) {
+        ((e) => {
           (e.Popover = 'popover'), (e.API = 'api'), (e.Widget = 'widget');
         })({}),
-        (function (e) {
+        ((e) => {
           (e.Open = 'open'),
             (e.MultipleChoice = 'multiple_choice'),
             (e.SingleChoice = 'single_choice'),
             (e.Rating = 'rating'),
             (e.Link = 'link');
         })({}),
-        (function (e) {
+        ((e) => {
           (e.NextQuestion = 'next_question'),
             (e.End = 'end'),
             (e.ResponseBased = 'response_based'),
             (e.SpecificQuestion = 'specific_question');
         })({}),
-        (function (e) {
+        ((e) => {
           (e.Once = 'once'), (e.Recurring = 'recurring'), (e.Always = 'always');
         })({});
-      var ns = (function (e) {
-          return (
+      var ns = ((e) => (
             (e.SHOWN = 'survey shown'),
             (e.DISMISSED = 'survey dismissed'),
             (e.SENT = 'survey sent'),
             e
-          );
-        })({}),
-        nr = (function (e) {
-          return (
+          ))({}),
+        nr = ((e) => (
             (e.SURVEY_ID = '$survey_id'),
             (e.SURVEY_NAME = '$survey_name'),
             (e.SURVEY_RESPONSE = '$survey_response'),
@@ -6286,8 +6237,7 @@
             (e.SURVEY_QUESTIONS = '$survey_questions'),
             (e.SURVEY_COMPLETED = '$survey_completed'),
             e
-          );
-        })({}),
+          ))({}),
         nn = U('[RateLimiter]');
       class na {
         constructor(e) {
@@ -6456,13 +6406,12 @@
           (this.br = !1), this.kr();
         }
         kr() {
-          var e = this;
           this.br ||
             (this.$r = setTimeout(() => {
               if ((this.Er(), this.yr.length > 0)) {
                 var t = this.Ir();
                 for (var i in t)
-                  !(function () {
+                  !(() => {
                     var s = t[i],
                       r = new Date().getTime();
                     s.data &&
@@ -6470,7 +6419,7 @@
                       K(s.data, (e) => {
                         (e.offset = Math.abs(e.timestamp - r)), delete e.timestamp;
                       }),
-                      e.Sr(s);
+                      this.Sr(s);
                   })();
               }
             }, this.wr));
@@ -6537,7 +6486,7 @@
           e.retriesPerformedSoFar = r + 1;
           var n =
               ((s =
-                (Math.random() - 0.5) * ((i = Math.min(18e5, (t = 3e3 * Math.pow(2, r)))) - t / 2)),
+                (Math.random() - 0.5) * ((i = Math.min(18e5, (t = 3e3 * 2 ** r))) - t / 2)),
               Math.ceil(i + s)),
             a = Date.now() + n;
           this.yr.push({ retryAt: a, requestOptions: e });
@@ -6979,8 +6928,7 @@
         onRemoteConfig(e) {
           var t,
             i,
-            s,
-            r = this;
+            s;
           if (null != (t = this.siteAppLoaders) && t.length)
             return this.isEnabled
               ? (this.ss(), void this._instance.on('eventCaptured', (e) => this.ns(e)))
@@ -6989,12 +6937,12 @@
                 );
           if ((null == (i = this.rs) || i.call(this), null != (s = e.siteApps) && s.length))
             if (this.isEnabled) {
-              var n = function (e) {
+              var n = (e) => {
                 var t;
-                (_['__$$ph_site_app_' + e] = r._instance),
+                (_['__$$ph_site_app_' + e] = this._instance),
                   null == (t = _.__PosthogExtensions__) ||
                     null == t.loadSiteApp ||
-                    t.loadSiteApp(r._instance, o, (t) => {
+                    t.loadSiteApp(this._instance, o, (t) => {
                       if (t)
                         return nm.error(
                           'Error while initializing PostHog app with config id ' + e,
@@ -7087,7 +7035,7 @@
           'google-inspectiontool',
           'bytespider',
         ],
-        nw = function (e, t) {
+        nw = (e, t) => {
           if (!e) return !1;
           var i = e.toLowerCase();
           return nb.concat(t || []).some((e) => {
@@ -7095,7 +7043,7 @@
             return -1 !== i.indexOf(t);
           });
         },
-        nE = function (e, t) {
+        nE = (e, t) => {
           if (!e) return !1;
           var i = e.userAgent;
           if (i && nw(i, t)) return !0;
@@ -7106,9 +7054,7 @@
           } catch (e) {}
           return !!e.webdriver;
         },
-        nS = (function (e) {
-          return (e.US = 'us'), (e.EU = 'eu'), (e.CUSTOM = 'custom'), e;
-        })({}),
+        nS = ((e) => ((e.US = 'us'), (e.EU = 'eu'), (e.CUSTOM = 'custom'), e))({}),
         nk = 'i.posthog.com';
       class nx {
         constructor(e) {
@@ -7160,24 +7106,23 @@
       };
       class nI {
         constructor(e) {
-          var t = this;
-          (this.getWebExperimentsAndEvaluateDisplayLogic = function (e) {
+          (this.getWebExperimentsAndEvaluateDisplayLogic = (e) => {
             void 0 === e && (e = !1),
-              t.getWebExperiments((e) => {
+              this.getWebExperiments((e) => {
                 nI.ls('retrieved web experiments from the server'),
-                  (t.us = new Map()),
+                  (this.us = new Map()),
                   e.forEach((e) => {
                     if (e.feature_flag_key) {
-                      t.us &&
+                      this.us &&
                         (nI.ls('setting flag key ', e.feature_flag_key, ' to web experiment ', e),
-                        null == (i = t.us) || i.set(e.feature_flag_key, e));
+                        null == (i = this.us) || i.set(e.feature_flag_key, e));
                       var i,
-                        s = t._instance.getFeatureFlag(e.feature_flag_key);
-                      O(s) && e.variants[s] && t.hs(e.name, s, e.variants[s].transforms);
+                        s = this._instance.getFeatureFlag(e.feature_flag_key);
+                      O(s) && e.variants[s] && this.hs(e.name, s, e.variants[s].transforms);
                     } else if (e.variants)
                       for (var r in e.variants) {
                         var n = e.variants[r];
-                        nI.ds(n) && t.hs(e.name, r, n.transforms);
+                        nI.ds(n) && this.hs(e.name, r, n.transforms);
                       }
                   });
               }, e);
@@ -7352,7 +7297,7 @@
             token: '',
             autocapture: !0,
             rageclick: !0,
-            cross_subdomain_cookie: (function (e) {
+            cross_subdomain_cookie: ((e) => {
               var t = null == e ? void 0 : e.hostname;
               if (!O(t)) return !1;
               var i = t.split('.').slice(-2).join('.');
@@ -7479,7 +7424,7 @@
             (this.config = nT()),
             (this.SentryIntegration = sE),
             (this.sentryIntegration = (e) =>
-              (function (e, t) {
+              ((e, t) => {
                 var i = sw(e, t);
                 return { name: sb, processEvent: (e) => i(e) };
               })(this, e)),
@@ -7647,10 +7592,10 @@
             }),
             this.toolbar.maybeLoadToolbar(),
             t.segment
-              ? (function (e, t) {
+              ? ((e, t) => {
                   var i = e.config.segment;
                   if (!i) return t();
-                  !(function (e, t) {
+                  !((e, t) => {
                     var i = e.config.segment;
                     if (!i) return t();
                     var s = (i) => {
@@ -7831,13 +7776,13 @@
                       ? r.push(e)
                       : s.push(e));
           });
-          var n = function (e, t) {
+          var n = (e, t) => {
             J(
               e,
               function (e) {
                 if (F(e[0])) {
                   var i = t;
-                  K(e, function (e) {
+                  K(e, (e) => {
                     i = i[e[0]].apply(i, e.slice(1));
                   });
                 } else this[e[0]].apply(this, e.slice(1));
@@ -8009,12 +7954,12 @@
             );
           }
           var d,
-            p = (function (e, t) {
+            p = ((e, t) => {
               if (!g) return {};
               var i,
                 r,
                 n = e ? X([], rM, t || []) : [],
-                [a, o] = (function (e) {
+                [a, o] = ((e) => {
                   for (var t = 0; t < rT.length; t++) {
                     var [i, s] = rT[t],
                       r = i.exec(e),
@@ -8044,7 +7989,7 @@
                             ? sJ
                             : 'Desktop',
                   $timezone: rW(),
-                  $timezone_offset: (function () {
+                  $timezone_offset: (() => {
                     try {
                       return new Date().getTimezoneOffset();
                     } catch (e) {
@@ -8118,7 +8063,7 @@
               l
             )).$is_identified = this._isIdentified()),
             F(this.config.property_denylist)
-              ? K(this.config.property_denylist, function (e) {
+              ? K(this.config.property_denylist, (e) => {
                   delete l[e];
                 })
               : H.error(
@@ -8445,7 +8390,7 @@
           this.exceptions.sendExceptionEvent(
             W(
               {},
-              (function (e, t) {
+              ((e, t) => {
                 var { error: i, event: s } = e,
                   r = { $exception_list: [] },
                   n = i || s;
@@ -8467,7 +8412,7 @@
                 if (tY(n, 'ErrorEvent') && n.error) return it(n.error, t);
                 if (tV(n)) return it(n, t);
                 if (tY(n, 'Object') || tG(n))
-                  return (function (e, t) {
+                  return ((e, t) => {
                     var i,
                       s,
                       r,
@@ -8482,7 +8427,7 @@
                               : 'Error',
                         value:
                           "Non-Error 'exception' captured with keys: " +
-                          (function (e, t) {
+                          ((e, t) => {
                             void 0 === t && (t = 40);
                             var i = Object.keys(e);
                             if ((i.sort(), !i.length)) return '[object has no keys]';
@@ -8702,18 +8647,18 @@
           });
         }
       }
-      !(function (e, t) {
+      !((e, t) => {
         for (var i = 0; i < t.length; i++) e.prototype[t[i]] = et(e.prototype[t[i]]);
       })(nM, ['identify']);
       var nL,
         nD =
           ((nL = nF[nR] = new nM()),
-          (function () {
+          (() => {
             function e() {
               e.done ||
                 ((e.done = !0),
                 (nP = !1),
-                K(nF, function (e) {
+                K(nF, (e) => {
                   e._dom_loaded();
                 }));
             }

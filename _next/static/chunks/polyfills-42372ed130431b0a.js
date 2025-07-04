@@ -1,4 +1,4 @@
-!(function () {
+!(() => {
   var t =
     'undefined' != typeof globalThis
       ? globalThis
@@ -15,9 +15,7 @@
   }
   var r,
     n,
-    o = function (t) {
-      return t && t.Math === Math && t;
-    },
+    o = (t) => t && t.Math === Math && t,
     i =
       o('object' == typeof globalThis && globalThis) ||
       o('object' == typeof window && window) ||
@@ -28,33 +26,27 @@
         return this;
       })() ||
       Function('return this')(),
-    a = function (t) {
+    a = (t) => {
       try {
         return !!t();
       } catch (t) {
         return !0;
       }
     },
-    u = !a(function () {
-      return (
+    u = !a(() => (
         7 !==
         Object.defineProperty({}, 1, {
-          get: function () {
-            return 7;
-          },
+          get: () => 7,
         })[1]
-      );
-    }),
-    s = !a(function () {
-      var t = function () {}.bind();
-      return 'function' != typeof t || t.hasOwnProperty('prototype');
+      )),
+    s = !a(() => {
+      var t = (() => {}).bind();
+      return 'function' != typeof t || Object.hasOwn(t, 'prototype');
     }),
     c = Function.prototype.call,
     f = s
       ? c.bind(c)
-      : function () {
-          return c.apply(c, arguments);
-        },
+      : (() => c.apply(c, arguments)),
     l = {}.propertyIsEnumerable,
     h = Object.getOwnPropertyDescriptor,
     p =
@@ -65,60 +57,35 @@
           }
         : l,
     v = { f: p },
-    d = function (t, e) {
-      return { enumerable: !(1 & t), configurable: !(2 & t), writable: !(4 & t), value: e };
-    },
+    d = (t, e) => ({ enumerable: !(1 & t), configurable: !(2 & t), writable: !(4 & t), value: e }),
     g = Function.prototype,
     y = g.call,
     m = s && g.bind.bind(y, y),
     b = s
       ? m
-      : function (t) {
-          return function () {
-            return y.apply(t, arguments);
-          };
-        },
+      : ((t) => () => y.apply(t, arguments)),
     w = b({}.toString),
     S = b(''.slice),
-    E = function (t) {
-      return S(w(t), 8, -1);
-    },
+    E = (t) => S(w(t), 8, -1),
     O = Object,
     x = b(''.split),
-    R = a(function () {
-      return !O('z').propertyIsEnumerable(0);
-    })
-      ? function (t) {
-          return 'String' === E(t) ? x(t, '') : O(t);
-        }
+    R = a(() => !O('z').propertyIsEnumerable(0))
+      ? ((t) => 'String' === E(t) ? x(t, '') : O(t))
       : O,
-    P = function (t) {
-      return null == t;
-    },
+    P = (t) => null == t,
     A = TypeError,
-    j = function (t) {
+    j = (t) => {
       if (P(t)) throw new A("Can't call method on " + t);
       return t;
     },
-    k = function (t) {
-      return R(j(t));
-    },
+    k = (t) => R(j(t)),
     I = 'object' == typeof document && document.all,
     T =
       void 0 === I && void 0 !== I
-        ? function (t) {
-            return 'function' == typeof t || t === I;
-          }
-        : function (t) {
-            return 'function' == typeof t;
-          },
-    M = function (t) {
-      return 'object' == typeof t ? null !== t : T(t);
-    },
-    L = function (t, e) {
-      return arguments.length < 2 ? (T((r = i[t])) ? r : void 0) : i[t] && i[t][e];
-      var r;
-    },
+        ? ((t) => 'function' == typeof t || t === I)
+        : ((t) => 'function' == typeof t),
+    M = (t) => 'object' == typeof t ? null !== t : T(t),
+    L = (t, e) => arguments.length < 2 ? (T((r = i[t])) ? r : void 0) : i[t] && i[t][e],
     U = b({}.isPrototypeOf),
     N = i.navigator,
     C = N && N.userAgent,
@@ -137,22 +104,20 @@
     q = i.String,
     H =
       !!Object.getOwnPropertySymbols &&
-      !a(function () {
+      !a(() => {
         var t = Symbol('symbol detection');
         return !q(t) || !(Object(t) instanceof Symbol) || (!Symbol.sham && W && W < 41);
       }),
     $ = H && !Symbol.sham && 'symbol' == typeof Symbol.iterator,
     K = Object,
     G = $
-      ? function (t) {
-          return 'symbol' == typeof t;
-        }
-      : function (t) {
+      ? ((t) => 'symbol' == typeof t)
+      : ((t) => {
           var e = L('Symbol');
           return T(e) && U(e.prototype, K(t));
-        },
+        }),
     V = String,
-    Y = function (t) {
+    Y = (t) => {
       try {
         return V(t);
       } catch (t) {
@@ -160,17 +125,17 @@
       }
     },
     X = TypeError,
-    J = function (t) {
+    J = (t) => {
       if (T(t)) return t;
       throw new X(Y(t) + ' is not a function');
     },
-    Q = function (t, e) {
+    Q = (t, e) => {
       var r = t[e];
       return P(r) ? void 0 : J(r);
     },
     Z = TypeError,
     tt = Object.defineProperty,
-    et = function (t, e) {
+    et = (t, e) => {
       try {
         tt(i, t, { value: e, configurable: !0, writable: !0 });
       } catch (r) {
@@ -178,7 +143,7 @@
       }
       return e;
     },
-    rt = e(function (t) {
+    rt = e((t) => {
       var e = '__core-js_shared__',
         r = (t.exports = i[e] || et(e, {}));
       (r.versions || (r.versions = [])).push({
@@ -189,34 +154,24 @@
         source: 'https://github.com/zloirock/core-js',
       });
     }),
-    nt = function (t, e) {
-      return rt[t] || (rt[t] = e || {});
-    },
+    nt = (t, e) => rt[t] || (rt[t] = e || {}),
     ot = Object,
-    it = function (t) {
-      return ot(j(t));
-    },
+    it = (t) => ot(j(t)),
     at = b({}.hasOwnProperty),
     ut =
       Object.hasOwn ||
-      function (t, e) {
-        return at(it(t), e);
-      },
+      ((t, e) => at(it(t), e)),
     st = 0,
     ct = Math.random(),
     ft = b((1).toString),
-    lt = function (t) {
-      return 'Symbol(' + (void 0 === t ? '' : t) + ')_' + ft(++st + ct, 36);
-    },
+    lt = (t) => 'Symbol(' + (void 0 === t ? '' : t) + ')_' + ft(++st + ct, 36),
     ht = i.Symbol,
     pt = nt('wks'),
     vt = $ ? ht.for || ht : (ht && ht.withoutSetter) || lt,
-    dt = function (t) {
-      return ut(pt, t) || (pt[t] = H && ut(ht, t) ? ht[t] : vt('Symbol.' + t)), pt[t];
-    },
+    dt = (t) => (ut(pt, t) || (pt[t] = H && ut(ht, t) ? ht[t] : vt('Symbol.' + t)), pt[t]),
     gt = TypeError,
     yt = dt('toPrimitive'),
-    mt = function (t, e) {
+    mt = (t, e) => {
       if (!M(t) || G(t)) return t;
       var r,
         n = Q(t, yt);
@@ -226,7 +181,7 @@
       }
       return (
         void 0 === e && (e = 'number'),
-        (function (t, e) {
+        ((t, e) => {
           var r, n;
           if ('string' === e && T((r = t.toString)) && !M((n = f(r, t)))) return n;
           if (T((r = t.valueOf)) && !M((n = f(r, t)))) return n;
@@ -235,50 +190,42 @@
         })(t, e)
       );
     },
-    bt = function (t) {
+    bt = (t) => {
       var e = mt(t, 'string');
       return G(e) ? e : e + '';
     },
     wt = i.document,
     St = M(wt) && M(wt.createElement),
-    Et = function (t) {
-      return St ? wt.createElement(t) : {};
-    },
+    Et = (t) => St ? wt.createElement(t) : {},
     Ot =
       !u &&
-      !a(function () {
-        return (
+      !a(() => (
           7 !==
           Object.defineProperty(Et('div'), 'a', {
-            get: function () {
-              return 7;
-            },
+            get: () => 7,
           }).a
-        );
-      }),
+        )),
     xt = Object.getOwnPropertyDescriptor,
     Rt = {
       f: u
         ? xt
-        : function (t, e) {
+        : ((t, e) => {
             if (((t = k(t)), (e = bt(e)), Ot))
               try {
                 return xt(t, e);
               } catch (t) {}
             if (ut(t, e)) return d(!f(v.f, t, e), t[e]);
-          },
+          }),
     },
     Pt =
       u &&
-      a(function () {
-        return (
+      a(() => (
           42 !==
-          Object.defineProperty(function () {}, 'prototype', { value: 42, writable: !1 }).prototype
-        );
-      }),
+          Object.defineProperty(() => {}, 'prototype', { value: 42, writable: !1 }).prototype
+        )),
     At = String,
     jt = TypeError,
-    kt = function (t) {
+    kt = (t) => {
       if (M(t)) return t;
       throw new jt(At(t) + ' is not an object');
     },
@@ -291,7 +238,7 @@
     Ct = {
       f: u
         ? Pt
-          ? function (t, e, r) {
+          ? ((t, e, r) => {
               if (
                 (kt(t),
                 (e = bt(e)),
@@ -309,37 +256,31 @@
                   }));
               }
               return Tt(t, e, r);
-            }
+            })
           : Tt
-        : function (t, e, r) {
+        : ((t, e, r) => {
             if ((kt(t), (e = bt(e)), kt(r), Ot))
               try {
                 return Tt(t, e, r);
               } catch (t) {}
             if ('get' in r || 'set' in r) throw new It('Accessors not supported');
             return 'value' in r && (t[e] = r.value), t;
-          },
+          }),
     },
     _t = u
-      ? function (t, e, r) {
-          return Ct.f(t, e, d(1, r));
-        }
-      : function (t, e, r) {
-          return (t[e] = r), t;
-        },
+      ? ((t, e, r) => Ct.f(t, e, d(1, r)))
+      : ((t, e, r) => ((t[e] = r), t)),
     Ft = Function.prototype,
     Bt = u && Object.getOwnPropertyDescriptor,
     Dt = ut(Ft, 'name'),
     zt = {
       EXISTS: Dt,
-      PROPER: Dt && 'something' === function () {}.name,
+      PROPER: Dt && 'something' === (() => {}).name,
       CONFIGURABLE: Dt && (!u || (u && Bt(Ft, 'name').configurable)),
     },
     Wt = b(Function.toString);
   T(rt.inspectSource) ||
-    (rt.inspectSource = function (t) {
-      return Wt(t);
-    });
+    (rt.inspectSource = (t) => Wt(t));
   var qt,
     Ht,
     $t,
@@ -347,9 +288,7 @@
     Gt = i.WeakMap,
     Vt = T(Gt) && /native code/.test(String(Gt)),
     Yt = nt('keys'),
-    Xt = function (t) {
-      return Yt[t] || (Yt[t] = lt(t));
-    },
+    Xt = (t) => Yt[t] || (Yt[t] = lt(t)),
     Jt = {},
     Qt = 'Object already initialized',
     Zt = i.TypeError;
@@ -358,48 +297,36 @@
     (te.get = te.get),
       (te.has = te.has),
       (te.set = te.set),
-      (qt = function (t, e) {
+      (qt = (t, e) => {
         if (te.has(t)) throw new Zt(Qt);
         return (e.facade = t), te.set(t, e), e;
       }),
-      (Ht = function (t) {
-        return te.get(t) || {};
-      }),
-      ($t = function (t) {
-        return te.has(t);
-      });
+      (Ht = (t) => te.get(t) || {}),
+      ($t = (t) => te.has(t));
   } else {
     var ee = Xt('state');
     (Jt[ee] = !0),
-      (qt = function (t, e) {
+      (qt = (t, e) => {
         if (ut(t, ee)) throw new Zt(Qt);
         return (e.facade = t), _t(t, ee, e), e;
       }),
-      (Ht = function (t) {
-        return ut(t, ee) ? t[ee] : {};
-      }),
-      ($t = function (t) {
-        return ut(t, ee);
-      });
+      (Ht = (t) => ut(t, ee) ? t[ee] : {}),
+      ($t = (t) => ut(t, ee));
   }
   var re,
     ne = {
       set: qt,
       get: Ht,
       has: $t,
-      enforce: function (t) {
-        return $t(t) ? Ht(t) : qt(t, {});
-      },
-      getterFor: function (t) {
-        return function (e) {
+      enforce: (t) => $t(t) ? Ht(t) : qt(t, {}),
+      getterFor: (t) => (e) => {
           var r;
           if (!M(e) || (r = Ht(e)).type !== t)
             throw new Zt('Incompatible receiver, ' + t + ' required');
           return r;
-        };
-      },
+        },
     },
-    oe = e(function (t) {
+    oe = e((t) => {
       var e = zt.CONFIGURABLE,
         r = ne.enforce,
         n = ne.get,
@@ -410,11 +337,9 @@
         f = b([].join),
         l =
           u &&
-          !a(function () {
-            return 8 !== i(function () {}, 'length', { value: 8 }).length;
-          }),
+          !a(() => 8 !== i(() => {}, 'length', { value: 8 }).length),
         h = String(String).split('String'),
-        p = (t.exports = function (t, n, a) {
+        p = (t.exports = (t, n, a) => {
           'Symbol(' === s(o(n), 0, 7) && (n = '[' + c(o(n), /^Symbol\(([^)]*)\).*$/, '$1') + ']'),
             a && a.getter && (n = 'get ' + n),
             a && a.setter && (n = 'set ' + n),
@@ -433,7 +358,7 @@
         return (T(this) && n(this).source) || Kt(this);
       }, 'toString');
     }),
-    ie = function (t, e, r, n) {
+    ie = (t, e, r, n) => {
       n || (n = {});
       var o = n.enumerable,
         i = void 0 !== n.name ? n.name : e;
@@ -457,30 +382,27 @@
     ue = Math.floor,
     se =
       Math.trunc ||
-      function (t) {
+      ((t) => {
         var e = +t;
         return (e > 0 ? ue : ae)(e);
-      },
-    ce = function (t) {
+      }),
+    ce = (t) => {
       var e = +t;
       return e != e || 0 === e ? 0 : se(e);
     },
     fe = Math.max,
     le = Math.min,
-    he = function (t, e) {
+    he = (t, e) => {
       var r = ce(t);
       return r < 0 ? fe(r + e, 0) : le(r, e);
     },
     pe = Math.min,
-    ve = function (t) {
+    ve = (t) => {
       var e = ce(t);
       return e > 0 ? pe(e, 9007199254740991) : 0;
     },
-    de = function (t) {
-      return ve(t.length);
-    },
-    ge = function (t) {
-      return function (e, r, n) {
+    de = (t) => ve(t.length),
+    ge = (t) => (e, r, n) => {
         var o = k(e),
           i = de(o);
         if (0 === i) return !t && -1;
@@ -490,12 +412,11 @@
           for (; i > u; ) if ((a = o[u++]) != a) return !0;
         } else for (; i > u; u++) if ((t || u in o) && o[u] === r) return t || u || 0;
         return !t && -1;
-      };
-    },
+      },
     ye = { includes: ge(!0), indexOf: ge(!1) },
     me = ye.indexOf,
     be = b([].push),
-    we = function (t, e) {
+    we = (t, e) => {
       var r,
         n = k(t),
         o = 0,
@@ -517,39 +438,35 @@
     Oe = {
       f:
         Object.getOwnPropertyNames ||
-        function (t) {
-          return we(t, Ee);
-        },
+        ((t) => we(t, Ee)),
     },
     xe = { f: Object.getOwnPropertySymbols },
     Re = b([].concat),
     Pe =
       L('Reflect', 'ownKeys') ||
-      function (t) {
+      ((t) => {
         var e = Oe.f(kt(t)),
           r = xe.f;
         return r ? Re(e, r(t)) : e;
-      },
-    Ae = function (t, e, r) {
+      }),
+    Ae = (t, e, r) => {
       for (var n = Pe(e), o = Ct.f, i = Rt.f, a = 0; a < n.length; a++) {
         var u = n[a];
         ut(t, u) || (r && ut(r, u)) || o(t, u, i(e, u));
       }
     },
     je = /#|\.prototype\./,
-    ke = function (t, e) {
+    ke = (t, e) => {
       var r = Te[Ie(t)];
       return r === Le || (r !== Me && (T(e) ? a(e) : !!e));
     },
-    Ie = (ke.normalize = function (t) {
-      return String(t).replace(je, '.').toLowerCase();
-    }),
+    Ie = (ke.normalize = (t) => String(t).replace(je, '.').toLowerCase()),
     Te = (ke.data = {}),
     Me = (ke.NATIVE = 'N'),
     Le = (ke.POLYFILL = 'P'),
     Ue = ke,
     Ne = Rt.f,
-    Ce = function (t, e) {
+    Ce = (t, e) => {
       var r,
         n,
         o,
@@ -573,33 +490,29 @@
     },
     _e =
       Object.keys ||
-      function (t) {
-        return we(t, Se);
-      },
+      ((t) => we(t, Se)),
     Fe =
       u && !Pt
         ? Object.defineProperties
-        : function (t, e) {
+        : ((t, e) => {
             kt(t);
             for (var r, n = k(e), o = _e(e), i = o.length, a = 0; i > a; )
               Ct.f(t, (r = o[a++]), n[r]);
             return t;
-          },
+          }),
     Be = { f: Fe },
     De = L('document', 'documentElement'),
     ze = 'prototype',
     We = 'script',
     qe = Xt('IE_PROTO'),
-    He = function () {},
-    $e = function (t) {
-      return '<' + We + '>' + t + '</' + We + '>';
-    },
-    Ke = function (t) {
+    He = () => {},
+    $e = (t) => '<' + We + '>' + t + '</' + We + '>',
+    Ke = (t) => {
       t.write($e('')), t.close();
       var e = t.parentWindow.Object;
       return (t = null), e;
     },
-    Ge = function () {
+    Ge = () => {
       try {
         re = new ActiveXObject('htmlfile');
       } catch (t) {}
@@ -624,7 +537,7 @@
   Jt[qe] = !0;
   var Ve =
       Object.create ||
-      function (t, e) {
+      ((t, e) => {
         var r;
         return (
           null !== t
@@ -632,12 +545,12 @@
             : (r = Ge()),
           void 0 === e ? r : Be.f(r, e)
         );
-      },
+      }),
     Ye = Ct.f,
     Xe = dt('unscopables'),
     Je = Array.prototype;
   void 0 === Je[Xe] && Ye(Je, Xe, { configurable: !0, value: Ve(null) });
-  var Qe = function (t) {
+  var Qe = (t) => {
     Je[Xe][t] = !0;
   };
   Ce(
@@ -653,11 +566,9 @@
     }
   ),
     Qe('at');
-  var Ze = function (t, e) {
-      return b(i[t].prototype[e]);
-    },
+  var Ze = (t, e) => b(i[t].prototype[e]),
     tr = (Ze('Array', 'at'), TypeError),
-    er = function (t, e) {
+    er = (t, e) => {
       if (!delete t[e]) throw new tr('Cannot delete property ' + Y(e) + ' of ' + Y(t));
     },
     rr = Math.min,
@@ -698,27 +609,21 @@
     ),
     Qe('fill'),
     Ze('Array', 'fill');
-  var or = function (t) {
+  var or = (t) => {
       if ('Function' === E(t)) return b(t);
     },
     ir = or(or.bind),
-    ar = function (t, e) {
-      return (
+    ar = (t, e) => (
         J(t),
         void 0 === e
           ? t
           : s
             ? ir(t, e)
-            : function () {
-                return t.apply(e, arguments);
-              }
-      );
-    },
+            : (() => t.apply(e, arguments))
+      ),
     ur =
       Array.isArray ||
-      function (t) {
-        return 'Array' === E(t);
-      },
+      ((t) => 'Array' === E(t)),
     sr = {};
   sr[dt('toStringTag')] = 'z';
   var cr = '[object z]' === String(sr),
@@ -727,20 +632,18 @@
     hr =
       'Arguments' ===
       E(
-        (function () {
-          return arguments;
-        })()
+        (() => arguments)()
       ),
     pr = cr
       ? E
-      : function (t) {
+      : ((t) => {
           var e, r, n;
           return void 0 === t
             ? 'Undefined'
             : null === t
               ? 'Null'
               : 'string' ==
-                  typeof (r = (function (t, e) {
+                  typeof (r = ((t, e) => {
                     try {
                       return t[e];
                     } catch (t) {}
@@ -751,13 +654,13 @@
                   : 'Object' === (n = E(e)) && T(e.callee)
                     ? 'Arguments'
                     : n;
-        },
-    vr = function () {},
+        }),
+    vr = () => {},
     dr = L('Reflect', 'construct'),
     gr = /^\s*(?:class|function)\b/,
     yr = b(gr.exec),
     mr = !gr.test(vr),
-    br = function (t) {
+    br = (t) => {
       if (!T(t)) return !1;
       try {
         return dr(vr, [], t), !0;
@@ -765,7 +668,7 @@
         return !1;
       }
     },
-    wr = function (t) {
+    wr = (t) => {
       if (!T(t)) return !1;
       switch (pr(t)) {
         case 'AsyncFunction':
@@ -782,12 +685,12 @@
   wr.sham = !0;
   var Sr =
       !dr ||
-      a(function () {
+      a(() => {
         var t;
         return (
           br(br.call) ||
           !br(Object) ||
-          !br(function () {
+          !br(() => {
             t = !0;
           }) ||
           t
@@ -797,8 +700,7 @@
         : br,
     Er = dt('species'),
     Or = Array,
-    xr = function (t, e) {
-      return new ((function (t) {
+    xr = (t, e) => new (((t) => {
         var e;
         return (
           ur(t) &&
@@ -807,10 +709,9 @@
             (e = void 0),
           void 0 === e ? Or : e
         );
-      })(t))(0 === e ? 0 : e);
-    },
+      })(t))(0 === e ? 0 : e),
     Rr = b([].push),
-    Pr = function (t) {
+    Pr = (t) => {
       var e = 1 === t,
         r = 2 === t,
         n = 3 === t,
@@ -818,7 +719,7 @@
         i = 6 === t,
         a = 7 === t,
         u = 5 === t || i;
-      return function (s, c, f, l) {
+      return (s, c, f, l) => {
         for (
           var h,
             p,
@@ -869,7 +770,7 @@
     kr = 'find',
     Ir = !0;
   kr in [] &&
-    Array(1)[kr](function () {
+    Array(1)[kr](() => {
       Ir = !1;
     }),
     Ce(
@@ -886,7 +787,7 @@
     Mr = 'findIndex',
     Lr = !0;
   Mr in [] &&
-    Array(1)[Mr](function () {
+    Array(1)[Mr](() => {
       Lr = !1;
     }),
     Ce(
@@ -900,11 +801,11 @@
     Qe(Mr),
     Ze('Array', 'findIndex');
   var Ur = TypeError,
-    Nr = function (t) {
+    Nr = (t) => {
       if (t > 9007199254740991) throw Ur('Maximum allowed index exceeded');
       return t;
     },
-    Cr = function (t, e, r, n, o, i, a, u) {
+    Cr = (t, e, r, n, o, i, a, u) => {
       for (var s, c, f = o, l = 0, h = !!a && ar(a, u); l < n; )
         l in r &&
           ((s = h ? h(r[l], l, e) : r[l]),
@@ -960,15 +861,14 @@
     Br,
     Dr,
     zr = String,
-    Wr = function (t) {
+    Wr = (t) => {
       if ('Symbol' === pr(t)) throw new TypeError('Cannot convert a Symbol value to a string');
       return zr(t);
     },
     qr = b(''.charAt),
     Hr = b(''.charCodeAt),
     $r = b(''.slice),
-    Kr = function (t) {
-      return function (e, r) {
+    Kr = (t) => (e, r) => {
         var n,
           o,
           i = Wr(j(e)),
@@ -989,10 +889,9 @@
             : t
               ? $r(i, a, a + 2)
               : o - 56320 + ((n - 55296) << 10) + 65536;
-      };
-    },
+      },
     Gr = { codeAt: Kr(!1), charAt: Kr(!0) },
-    Vr = !a(function () {
+    Vr = !a(() => {
       function t() {}
       return (t.prototype.constructor = null), Object.getPrototypeOf(new t()) !== t.prototype;
     }),
@@ -1001,19 +900,19 @@
     Jr = Xr.prototype,
     Qr = Vr
       ? Xr.getPrototypeOf
-      : function (t) {
+      : ((t) => {
           var e = it(t);
           if (ut(e, Yr)) return e[Yr];
           var r = e.constructor;
           return T(r) && e instanceof r ? r.prototype : e instanceof Xr ? Jr : null;
-        },
+        }),
     Zr = dt('iterator'),
     tn = !1;
   [].keys &&
     ('next' in (Dr = [].keys()) ? (Br = Qr(Qr(Dr))) !== Object.prototype && (Fr = Br) : (tn = !0));
   var en =
     !M(Fr) ||
-    a(function () {
+    a(() => {
       var t = {};
       return Fr[Zr].call(t) !== t;
     });
@@ -1025,7 +924,7 @@
   var rn = { IteratorPrototype: Fr, BUGGY_SAFARI_ITERATORS: tn },
     nn = Ct.f,
     on = dt('toStringTag'),
-    an = function (t, e, r) {
+    an = (t, e, r) => {
       t && !r && (t = t.prototype), t && !ut(t, on) && nn(t, on, { configurable: !0, value: e });
     },
     un = {},
@@ -1033,22 +932,20 @@
     cn = function () {
       return this;
     },
-    fn = function (t, e, r, n) {
+    fn = (t, e, r, n) => {
       var o = e + ' Iterator';
       return (t.prototype = Ve(sn, { next: d(+!n, r) })), an(t, o, !1), (un[o] = cn), t;
     },
-    ln = function (t, e, r) {
+    ln = (t, e, r) => {
       try {
         return b(J(Object.getOwnPropertyDescriptor(t, e)[r]));
       } catch (t) {}
     },
     hn = String,
     pn = TypeError,
-    vn = function (t) {
+    vn = (t) => {
       if (
-        (function (t) {
-          return M(t) || null === t;
-        })(t)
+        ((t) => M(t) || null === t)(t)
       )
         return t;
       throw new pn("Can't set " + hn(t) + ' as a prototype');
@@ -1056,16 +953,14 @@
     dn =
       Object.setPrototypeOf ||
       ('__proto__' in {}
-        ? (function () {
+        ? (() => {
             var t,
               e = !1,
               r = {};
             try {
               (t = ln(Object.prototype, '__proto__', 'set'))(r, []), (e = r instanceof Array);
             } catch (t) {}
-            return function (r, n) {
-              return j(r), vn(n), M(r) ? (e ? t(r, n) : (r.__proto__ = n), r) : r;
-            };
+            return (r, n) => (j(r), vn(n), M(r) ? (e ? t(r, n) : (r.__proto__ = n), r) : r);
           })()
         : void 0),
     gn = zt.PROPER,
@@ -1079,12 +974,12 @@
     xn = function () {
       return this;
     },
-    Rn = function (t, e, r, n, o, i, a) {
+    Rn = (t, e, r, n, o, i, a) => {
       fn(r, e, n);
       var u,
         s,
         c,
-        l = function (t) {
+        l = (t) => {
           if (t === o && g) return g;
           if (!bn && t && t in v) return v[t];
           switch (t) {
@@ -1127,9 +1022,7 @@
         else Ce({ target: e, proto: !0, forced: bn || p }, s);
       return v[wn] !== g && ie(v, wn, g, { name: o }), (un[e] = g), s;
     },
-    Pn = function (t, e) {
-      return { value: t, done: e };
-    },
+    Pn = (t, e) => ({ value: t, done: e }),
     An = Gr.charAt,
     jn = 'String Iterator',
     kn = ne.set,
@@ -1148,7 +1041,7 @@
       return n >= r.length ? Pn(void 0, !0) : ((t = An(r, n)), (e.index += t.length), Pn(t, !1));
     }
   );
-  var Tn = function (t, e, r) {
+  var Tn = (t, e, r) => {
       var n, o;
       kt(t);
       try {
@@ -1164,7 +1057,7 @@
       if (o) throw n;
       return kt(n), r;
     },
-    Mn = function (t, e, r, n) {
+    Mn = (t, e, r, n) => {
       try {
         return n ? e(kt(r)[0], r[1]) : e(r);
       } catch (e) {
@@ -1173,18 +1066,16 @@
     },
     Ln = dt('iterator'),
     Un = Array.prototype,
-    Nn = function (t) {
-      return void 0 !== t && (un.Array === t || Un[Ln] === t);
-    },
-    Cn = function (t, e, r) {
+    Nn = (t) => void 0 !== t && (un.Array === t || Un[Ln] === t),
+    Cn = (t, e, r) => {
       u ? Ct.f(t, e, d(0, r)) : (t[e] = r);
     },
     _n = dt('iterator'),
-    Fn = function (t) {
+    Fn = (t) => {
       if (!P(t)) return Q(t, _n) || Q(t, '@@iterator') || un[pr(t)];
     },
     Bn = TypeError,
-    Dn = function (t, e) {
+    Dn = (t, e) => {
       var r = arguments.length < 2 ? Fn(t) : e;
       if (J(r)) return kt(f(r, t));
       throw new Bn(Y(t) + ' is not iterable');
@@ -1218,21 +1109,19 @@
   try {
     var $n = 0,
       Kn = {
-        next: function () {
-          return { done: !!$n++ };
-        },
-        return: function () {
+        next: () => ({ done: !!$n++ }),
+        return: () => {
           Hn = !0;
         },
       };
     (Kn[qn] = function () {
       return this;
     }),
-      Array.from(Kn, function () {
+      Array.from(Kn, () => {
         throw 2;
       });
   } catch (t) {}
-  var Gn = function (t, e) {
+  var Gn = (t, e) => {
       try {
         if (!e && !Hn) return !1;
       } catch (t) {
@@ -1241,26 +1130,20 @@
       var r = !1;
       try {
         var n = {};
-        (n[qn] = function () {
-          return {
-            next: function () {
-              return { done: (r = !0) };
-            },
-          };
-        }),
+        (n[qn] = () => ({
+            next: () => ({ done: (r = !0) }),
+          })),
           t(n);
       } catch (t) {}
       return r;
     },
-    Vn = !Gn(function (t) {
+    Vn = !Gn((t) => {
       Array.from(t);
     });
   Ce({ target: 'Array', stat: !0, forced: Vn }, { from: Wn });
   var Yn = i,
     Xn = ye.includes,
-    Jn = a(function () {
-      return !Array(1).includes();
-    });
+    Jn = a(() => !Array(1).includes());
   Ce(
     { target: 'Array', proto: !0, forced: Jn },
     {
@@ -1314,7 +1197,7 @@
     ),
     Ze('Array', 'values');
   var oo = Array,
-    io = a(function () {
+    io = a(() => {
       function t() {}
       return !(oo.of.call(t) instanceof t);
     });
@@ -1339,11 +1222,9 @@
       }, ao),
     }),
     dt('hasInstance');
-  var so = function (t, e, r) {
-      return (
+  var so = (t, e, r) => (
         r.get && oe(r.get, e, { getter: !0 }), r.set && oe(r.set, e, { setter: !0 }), Ct.f(t, e, r)
-      );
-    },
+      ),
     co = zt.EXISTS,
     fo = Function.prototype,
     lo = b(fo.toString),
@@ -1368,19 +1249,17 @@
         ? Object.getOwnPropertyNames(window)
         : [],
     mo = {
-      f: function (t) {
-        return yo && 'Window' === E(t)
-          ? (function (t) {
+      f: (t) => yo && 'Window' === E(t)
+          ? ((t) => {
               try {
                 return go(t);
               } catch (t) {
                 return vo(yo);
               }
             })(t)
-          : go(k(t));
-      },
+          : go(k(t)),
     },
-    bo = a(function () {
+    bo = a(() => {
       if ('function' == typeof ArrayBuffer) {
         var t = new ArrayBuffer(8);
         Object.isExtensible(t) && Object.defineProperty(t, 'a', { value: 8 });
@@ -1388,33 +1267,29 @@
     }),
     wo = Object.isExtensible,
     So =
-      a(function () {
+      a(() => {
         wo(1);
       }) || bo
-        ? function (t) {
-            return !!M(t) && (!bo || 'ArrayBuffer' !== E(t)) && (!wo || wo(t));
-          }
+        ? ((t) => !!M(t) && (!bo || 'ArrayBuffer' !== E(t)) && (!wo || wo(t)))
         : wo,
-    Eo = !a(function () {
-      return Object.isExtensible(Object.preventExtensions({}));
-    }),
-    Oo = e(function (t) {
+    Eo = !a(() => Object.isExtensible(Object.preventExtensions({}))),
+    Oo = e((t) => {
       var e = Ct.f,
         r = !1,
         n = lt('meta'),
         o = 0,
-        i = function (t) {
+        i = (t) => {
           e(t, n, { value: { objectID: 'O' + o++, weakData: {} } });
         },
         a = (t.exports = {
-          enable: function () {
-            (a.enable = function () {}), (r = !0);
+          enable: () => {
+            (a.enable = () => {}), (r = !0);
             var t = Oe.f,
               e = b([].splice),
               o = {};
             (o[n] = 1),
               t(o).length &&
-                ((Oe.f = function (r) {
+                ((Oe.f = (r) => {
                   for (var o = t(r), i = 0, a = o.length; i < a; i++)
                     if (o[i] === n) {
                       e(o, i, 1);
@@ -1424,7 +1299,7 @@
                 }),
                 Ce({ target: 'Object', stat: !0, forced: !0 }, { getOwnPropertyNames: mo.f }));
           },
-          fastKey: function (t, e) {
+          fastKey: (t, e) => {
             if (!M(t)) return 'symbol' == typeof t ? t : ('string' == typeof t ? 'S' : 'P') + t;
             if (!ut(t, n)) {
               if (!So(t)) return 'F';
@@ -1433,7 +1308,7 @@
             }
             return t[n].objectID;
           },
-          getWeakData: function (t, e) {
+          getWeakData: (t, e) => {
             if (!ut(t, n)) {
               if (!So(t)) return !0;
               if (!e) return !1;
@@ -1441,9 +1316,7 @@
             }
             return t[n].weakData;
           },
-          onFreeze: function (t) {
-            return Eo && r && So(t) && !ut(t, n) && i(t), t;
-          },
+          onFreeze: (t) => (Eo && r && So(t) && !ut(t, n) && i(t), t),
         });
       Jt[n] = !0;
     }),
@@ -1452,7 +1325,7 @@
       (this.stopped = t), (this.result = e);
     },
     Po = Ro.prototype,
-    Ao = function (t, e, r) {
+    Ao = (t, e, r) => {
       var n,
         o,
         i,
@@ -1465,12 +1338,8 @@
         p = !(!r || !r.IS_ITERATOR),
         v = !(!r || !r.INTERRUPTED),
         d = ar(e, r && r.that),
-        g = function (t) {
-          return n && Tn(n, 'normal', t), new Ro(!0, t);
-        },
-        y = function (t) {
-          return l ? (kt(t), v ? d(t[0], t[1], g) : d(t[0], t[1])) : v ? d(t, g) : d(t);
-        };
+        g = (t) => (n && Tn(n, 'normal', t), new Ro(!0, t)),
+        y = (t) => l ? (kt(t), v ? d(t[0], t[1], g) : d(t[0], t[1])) : v ? d(t, g) : d(t);
       if (h) n = t.iterator;
       else if (p) n = t;
       else {
@@ -1492,11 +1361,11 @@
       return new Ro(!1);
     },
     jo = TypeError,
-    ko = function (t, e) {
+    ko = (t, e) => {
       if (U(e, t)) return t;
       throw new jo('Incorrect invocation');
     },
-    Io = function (t, e, r) {
+    Io = (t, e, r) => {
       var n, o;
       return (
         dn &&
@@ -1508,7 +1377,7 @@
         t
       );
     },
-    To = function (t, e, r) {
+    To = (t, e, r) => {
       var n = -1 !== t.indexOf('Map'),
         o = -1 !== t.indexOf('Weak'),
         u = n ? 'set' : 'add',
@@ -1516,7 +1385,7 @@
         c = s && s.prototype,
         f = s,
         l = {},
-        h = function (t) {
+        h = (t) => {
           var e = b(c[t]);
           ie(
             c,
@@ -1549,7 +1418,7 @@
             !(
               o ||
               (c.forEach &&
-                !a(function () {
+                !a(() => {
                   new s().entries().next();
                 }))
             )
@@ -1559,20 +1428,20 @@
       else if (Ue(t, !0)) {
         var p = new f(),
           v = p[u](o ? {} : -0, 1) !== p,
-          d = a(function () {
+          d = a(() => {
             p.has(1);
           }),
-          g = Gn(function (t) {
+          g = Gn((t) => {
             new s(t);
           }),
           y =
             !o &&
-            a(function () {
+            a(() => {
               for (var t = new s(), e = 5; e--; ) t[u](e, e);
               return !t.has(-0);
             });
         g ||
-          (((f = e(function (t, e) {
+          (((f = e((t, e) => {
             ko(t, c);
             var r = Io(new s(), t, f);
             return P(e) || Ao(e, r[u], { that: r, AS_ENTRIES: n }), r;
@@ -1590,12 +1459,12 @@
         f
       );
     },
-    Mo = function (t, e, r) {
+    Mo = (t, e, r) => {
       for (var n in e) ie(t, n, e[n], r);
       return t;
     },
     Lo = dt('species'),
-    Uo = function (t) {
+    Uo = (t) => {
       var e = L(t);
       u &&
         e &&
@@ -1611,8 +1480,8 @@
     Co = ne.set,
     _o = ne.getterFor,
     Fo = {
-      getConstructor: function (t, e, r, n) {
-        var o = t(function (t, o) {
+      getConstructor: (t, e, r, n) => {
+        var o = t((t, o) => {
             ko(t, i),
               Co(t, { type: e, index: Ve(null), first: null, last: null, size: 0 }),
               u || (t.size = 0),
@@ -1620,7 +1489,7 @@
           }),
           i = o.prototype,
           a = _o(e),
-          s = function (t, e, r) {
+          s = (t, e, r) => {
             var n,
               o,
               i = a(t),
@@ -1644,7 +1513,7 @@
               t
             );
           },
-          c = function (t, e) {
+          c = (t, e) => {
             var r,
               n = a(t),
               o = No(e);
@@ -1659,9 +1528,9 @@
               (t.first = t.last = null), (t.index = Ve(null)), u ? (t.size = 0) : (this.size = 0);
             },
             delete: function (t) {
-              var e = this,
-                r = a(e),
-                n = c(e, t);
+              var 
+                r = a(this),
+                n = c(this, t);
               if (n) {
                 var o = n.next,
                   i = n.previous;
@@ -1671,7 +1540,7 @@
                   o && (o.previous = i),
                   r.first === n && (r.first = o),
                   r.last === n && (r.last = i),
-                  u ? r.size-- : e.size--;
+                  u ? r.size-- : this.size--;
               }
               return !!n;
             },
@@ -1714,7 +1583,7 @@
           o
         );
       },
-      setStrong: function (t, e, r) {
+      setStrong: (t, e, r) => {
         var n = e + ' Iterator',
           o = _o(e),
           i = _o(n);
@@ -1739,11 +1608,9 @@
     };
   To(
     'Map',
-    function (t) {
-      return function () {
+    (t) => function () {
         return t(this, arguments.length ? arguments[0] : void 0);
-      };
-    },
+      },
     Fo
   );
   var Bo = Map.prototype,
@@ -1760,25 +1627,21 @@
     qo = Do.get,
     Ho = Do.set,
     $o = b([].push),
-    Ko = a(function () {
-      return (
+    Ko = a(() => (
         1 !==
         zo
-          .groupBy('ab', function (t) {
-            return t;
-          })
+          .groupBy('ab', (t) => t)
           .get('a').length
-      );
-    });
+      ));
   Ce(
     { target: 'Map', stat: !0, forced: Ko },
     {
-      groupBy: function (t, e) {
+      groupBy: (t, e) => {
         j(t), J(e);
         var r = new zo(),
           n = 0;
         return (
-          Ao(t, function (t) {
+          Ao(t, (t) => {
             var o = e(t, n++);
             Wo(r, o) ? $o(qo(r, o), t) : Ho(r, o, [t]);
           }),
@@ -1825,7 +1688,7 @@
     Xo = Yo === Object.prototype ? void 0 : Yo,
     Jo = dt('iterator'),
     Qo = ro.values,
-    Zo = function (t, e) {
+    Zo = (t, e) => {
       if (t) {
         if (t[Jo] !== Qo)
           try {
@@ -1845,8 +1708,7 @@
     };
   for (var ti in Go) Zo(i[ti] && i[ti].prototype, ti);
   Zo(Xo, 'DOMTokenList');
-  var ei = function (t, e, r) {
-    return function (n) {
+  var ei = (t, e, r) => (n) => {
       var o = it(n),
         i = arguments.length,
         a = i > 1 ? arguments[1] : void 0,
@@ -1855,29 +1717,24 @@
         c = new t(),
         f = 0;
       return (
-        Ao(o, function (t) {
+        Ao(o, (t) => {
           var n = u ? s(t, f++) : t;
           r ? e(c, kt(n)[0], n[1]) : e(c, n);
         }),
         c
       );
     };
-  };
   Ce({ target: 'Map', stat: !0, forced: !0 }, { from: ei(Do.Map, Do.set, !0) });
-  var ri = function (t, e, r) {
-    return function () {
+  var ri = (t, e, r) => () => {
       for (var n = new t(), o = arguments.length, i = 0; i < o; i++) {
         var a = arguments[i];
         r ? e(n, kt(a)[0], a[1]) : e(n, a);
       }
       return n;
     };
-  };
   Ce({ target: 'Map', stat: !0, forced: !0 }, { of: ri(Do.Map, Do.set, !0) });
   var ni = Do.has,
-    oi = function (t) {
-      return ni(t), t;
-    },
+    oi = (t) => (ni(t), t),
     ii = Do.remove;
   Ce(
     { target: 'Map', proto: !0, real: !0, forced: !0 },
@@ -1905,7 +1762,7 @@
       },
     }
   );
-  var ci = function (t, e, r) {
+  var ci = (t, e, r) => {
       for (var n, o, i = r ? t : t.iterator, a = t.next; !(n = f(a, i)).done; )
         if (void 0 !== (o = e(n.value))) return o;
     },
@@ -1914,13 +1771,9 @@
     hi = b(li.forEach),
     pi = b(li.entries),
     vi = pi(new fi()).next,
-    di = function (t, e, r) {
-      return r
-        ? ci({ iterator: pi(t), next: vi }, function (t) {
-            return e(t[1], t[0]);
-          })
+    di = (t, e, r) => r
+        ? ci({ iterator: pi(t), next: vi }, (t) => e(t[1], t[0]))
         : hi(t, e);
-    };
   Ce(
     { target: 'Map', proto: !0, real: !0, forced: !0 },
     {
@@ -1931,7 +1784,7 @@
           !1 !==
           di(
             e,
-            function (t, n) {
+            (t, n) => {
               if (!r(t, n, e)) return !1;
             },
             !0
@@ -1950,7 +1803,7 @@
           r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
           n = new gi();
         return (
-          di(e, function (t, o) {
+          di(e, (t, o) => {
             r(t, o, e) && yi(n, o, t);
           }),
           n
@@ -1966,7 +1819,7 @@
             r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
             n = di(
               e,
-              function (t, n) {
+              (t, n) => {
                 if (r(t, n, e)) return { value: t };
               },
               !0
@@ -1983,7 +1836,7 @@
             r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
             n = di(
               e,
-              function (t, n) {
+              (t, n) => {
                 if (r(t, n, e)) return { key: n };
               },
               !0
@@ -2000,7 +1853,7 @@
             !0 ===
             di(
               oi(this),
-              function (e) {
+              (e) => {
                 if ((r = e) === (n = t) || (r != r && n != n)) return !0;
                 var r, n;
               },
@@ -2019,7 +1872,7 @@
         J(e);
         var n = J(r.set);
         return (
-          Ao(t, function (t) {
+          Ao(t, (t) => {
             f(n, r, e(t), t);
           }),
           r
@@ -2033,7 +1886,7 @@
         keyOf: function (t) {
           var e = di(
             oi(this),
-            function (e, r) {
+            (e, r) => {
               if (e === t) return { key: r };
             },
             !0
@@ -2052,7 +1905,7 @@
           r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
           n = new bi();
         return (
-          di(e, function (t, o) {
+          di(e, (t, o) => {
             wi(n, r(t, o, e), t);
           }),
           n
@@ -2070,7 +1923,7 @@
           r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
           n = new Si();
         return (
-          di(e, function (t, o) {
+          di(e, (t, o) => {
             Ei(n, o, r(t, o, e));
           }),
           n
@@ -2086,7 +1939,7 @@
         for (var e = oi(this), r = arguments.length, n = 0; n < r; )
           Ao(
             arguments[n++],
-            function (t, r) {
+            (t, r) => {
               Oi(e, t, r);
             },
             { AS_ENTRIES: !0 }
@@ -2105,7 +1958,7 @@
           n = r ? void 0 : arguments[1];
         if (
           (J(t),
-          di(e, function (o, i) {
+          di(e, (o, i) => {
             r ? ((r = !1), (n = o)) : (n = t(n, o, i, e));
           }),
           r)
@@ -2125,7 +1978,7 @@
             !0 ===
             di(
               e,
-              function (t, n) {
+              (t, n) => {
                 if (r(t, n, e)) return !0;
               },
               !0
@@ -2175,12 +2028,10 @@
     Li = b(''.replace),
     Ui = RegExp('^[' + Mi + ']+'),
     Ni = RegExp('(^|[^' + Mi + '])[' + Mi + ']+$'),
-    Ci = function (t) {
-      return function (e) {
+    Ci = (t) => (e) => {
         var r = Wr(j(e));
         return 1 & t && (r = Li(r, Ui, '')), 2 & t && (r = Li(r, Ni, '$1')), r;
-      };
-    },
+      },
     _i = { start: Ci(1), end: Ci(2), trim: Ci(3) },
     Fi = Oe.f,
     Bi = Rt.f,
@@ -2199,11 +2050,11 @@
           arguments.length < 1
             ? 0
             : qi(
-                (function (t) {
+                ((t) => {
                   var e = mt(t, 'number');
                   return 'bigint' == typeof e
                     ? e
-                    : (function (t) {
+                    : ((t) => {
                         var e,
                           r,
                           n,
@@ -2239,7 +2090,7 @@
                 })(t)
               );
       return U(Hi, (e = this)) &&
-        a(function () {
+        a(() => {
           Ti(e);
         })
         ? Io(Object(r), this, Yi)
@@ -2249,7 +2100,7 @@
     Vi && (Hi.constructor = Yi),
     Ce({ global: !0, constructor: !0, wrap: !0, forced: Vi }, { Number: Yi }),
     Vi &&
-      (function (t, e) {
+      ((t, e) => {
         for (
           var r,
             n = u
@@ -2265,7 +2116,7 @@
       })(Yn[Wi], qi),
     Ce(
       { target: 'Number', stat: !0, nonConfigurable: !0, nonWritable: !0 },
-      { EPSILON: Math.pow(2, -52) }
+      { EPSILON: 2 ** -52 }
     );
   var Xi = i.isFinite;
   Ce(
@@ -2273,33 +2124,25 @@
     {
       isFinite:
         Number.isFinite ||
-        function (t) {
-          return 'number' == typeof t && Xi(t);
-        },
+        ((t) => 'number' == typeof t && Xi(t)),
     }
   );
   var Ji = Math.floor,
     Qi =
       Number.isInteger ||
-      function (t) {
-        return !M(t) && isFinite(t) && Ji(t) === t;
-      };
+      ((t) => !M(t) && isFinite(t) && Ji(t) === t);
   Ce({ target: 'Number', stat: !0 }, { isInteger: Qi }),
     Ce(
       { target: 'Number', stat: !0 },
       {
-        isNaN: function (t) {
-          return t != t;
-        },
+        isNaN: (t) => t != t,
       }
     );
   var Zi = Math.abs;
   Ce(
     { target: 'Number', stat: !0 },
     {
-      isSafeInteger: function (t) {
-        return Qi(t) && Zi(t) <= 9007199254740991;
-      },
+      isSafeInteger: (t) => Qi(t) && Zi(t) <= 9007199254740991,
     }
   ),
     Ce(
@@ -2318,14 +2161,14 @@
     ia =
       1 / ra(Mi + '-0') != -Infinity ||
       (oa &&
-        !a(function () {
+        !a(() => {
           ra(Object(oa));
         }))
-        ? function (t) {
+        ? ((t) => {
             var e = ta(Wr(t)),
               r = ra(e);
             return 0 === r && '-' === ea(e, 0) ? -0 : r;
-          }
+          })
         : ra;
   Ce({ target: 'Number', stat: !0, forced: Number.parseFloat !== ia }, { parseFloat: ia });
   var aa = _i.trim,
@@ -2338,77 +2181,67 @@
       8 !== ua(Mi + '08') ||
       22 !== ua(Mi + '0x16') ||
       (ca &&
-        !a(function () {
+        !a(() => {
           ua(Object(ca));
         }))
-        ? function (t, e) {
+        ? ((t, e) => {
             var r = aa(Wr(t));
             return ua(r, e >>> 0 || (la(fa, r) ? 16 : 10));
-          }
+          })
         : ua;
   Ce({ target: 'Number', stat: !0, forced: Number.parseInt !== ha }, { parseInt: ha });
   var pa = b(v.f),
     va = b([].push),
     da =
       u &&
-      a(function () {
+      a(() => {
         var t = Object.create(null);
         return (t[2] = 2), !pa(t, 2);
       }),
-    ga = function (t) {
-      return function (e) {
+    ga = (t) => (e) => {
         for (
           var r, n = k(e), o = _e(n), i = da && null === Qr(n), a = o.length, s = 0, c = [];
           a > s;
         )
           (r = o[s++]), (u && !(i ? r in n : pa(n, r))) || va(c, t ? [r, n[r]] : n[r]);
         return c;
-      };
-    },
+      },
     ya = { entries: ga(!0), values: ga(!1) },
     ma = ya.entries;
   Ce(
     { target: 'Object', stat: !0 },
     {
-      entries: function (t) {
-        return ma(t);
-      },
+      entries: (t) => ma(t),
     }
   ),
     Ce(
       { target: 'Object', stat: !0, sham: !u },
       {
-        getOwnPropertyDescriptors: function (t) {
+        getOwnPropertyDescriptors: (t) => {
           for (var e, r, n = k(t), o = Rt.f, i = Pe(n), a = {}, u = 0; i.length > u; )
             void 0 !== (r = o(n, (e = i[u++]))) && Cn(a, e, r);
           return a;
         },
       }
     );
-  var ba = a(function () {
+  var ba = a(() => {
     _e(1);
   });
   Ce(
     { target: 'Object', stat: !0, forced: ba },
     {
-      keys: function (t) {
-        return _e(it(t));
-      },
+      keys: (t) => _e(it(t)),
     }
   );
   var wa =
     Object.is ||
-    function (t, e) {
-      return t === e ? 0 !== t || 1 / t == 1 / e : t != t && e != e;
-    };
+    ((t, e) => t === e ? 0 !== t || 1 / t == 1 / e : t != t && e != e);
   Ce({ target: 'Object', stat: !0 }, { is: wa });
   var Sa = ya.values;
   Ce(
     { target: 'Object', stat: !0 },
     {
-      values: function (t) {
-        return Sa(t);
-      },
+      values: (t) => Sa(t),
     }
   ),
     Ce({ target: 'Object', stat: !0 }, { hasOwn: ut });
@@ -2419,18 +2252,14 @@
       ('object' == typeof Reflect && Reflect.apply) ||
       (s
         ? xa.bind(Oa)
-        : function () {
-            return xa.apply(Oa, arguments);
-          }),
-    Pa = !a(function () {
-      Reflect.apply(function () {});
+        : (() => xa.apply(Oa, arguments))),
+    Pa = !a(() => {
+      Reflect.apply(() => {});
     });
   Ce(
     { target: 'Reflect', stat: !0, forced: Pa },
     {
-      apply: function (t, e, r) {
-        return Ra(J(t), e, kt(r));
-      },
+      apply: (t, e, r) => Ra(J(t), e, kt(r)),
     }
   );
   var Aa = Function,
@@ -2446,7 +2275,7 @@
             o = function () {
               var r = ja(n, vo(arguments));
               return this instanceof o
-                ? (function (t, e, r) {
+                ? ((t, e, r) => {
                     if (!ut(Ia, e)) {
                       for (var n = [], o = 0; o < e; o++) n[o] = 'a[' + o + ']';
                       Ia[e] = Aa('C,a', 'return new C(' + ka(n, ',') + ')');
@@ -2458,25 +2287,25 @@
           return M(r) && (o.prototype = r), o;
         },
     Ma = TypeError,
-    La = function (t) {
+    La = (t) => {
       if (Sr(t)) return t;
       throw new Ma(Y(t) + ' is not a constructor');
     },
     Ua = L('Reflect', 'construct'),
     Na = Object.prototype,
     Ca = [].push,
-    _a = a(function () {
+    _a = a(() => {
       function t() {}
-      return !(Ua(function () {}, [], t) instanceof t);
+      return !(Ua(() => {}, [], t) instanceof t);
     }),
-    Fa = !a(function () {
-      Ua(function () {});
+    Fa = !a(() => {
+      Ua(() => {});
     }),
     Ba = _a || Fa;
   Ce(
     { target: 'Reflect', stat: !0, forced: Ba, sham: Ba },
     {
-      construct: function (t, e) {
+      construct: (t, e) => {
         La(t), kt(e);
         var r = arguments.length < 3 ? t : La(arguments[2]);
         if (Fa && !_a) return Ua(t, e, r);
@@ -2503,13 +2332,13 @@
       },
     }
   );
-  var Da = a(function () {
+  var Da = a(() => {
     Reflect.defineProperty(Ct.f({}, 1, { value: 1 }), 1, { value: 2 });
   });
   Ce(
     { target: 'Reflect', stat: !0, forced: Da, sham: !u },
     {
-      defineProperty: function (t, e, r) {
+      defineProperty: (t, e, r) => {
         kt(t);
         var n = bt(e);
         kt(r);
@@ -2525,15 +2354,13 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      deleteProperty: function (t, e) {
+      deleteProperty: (t, e) => {
         var r = za(kt(t), e);
         return !(r && !r.configurable) && delete t[e];
       },
     }
   );
-  var Wa = function (t) {
-    return void 0 !== t && (ut(t, 'value') || ut(t, 'writable'));
-  };
+  var Wa = (t) => void 0 !== t && (ut(t, 'value') || ut(t, 'writable'));
   Ce(
     { target: 'Reflect', stat: !0 },
     {
@@ -2558,40 +2385,32 @@
     Ce(
       { target: 'Reflect', stat: !0, sham: !u },
       {
-        getOwnPropertyDescriptor: function (t, e) {
-          return Rt.f(kt(t), e);
-        },
+        getOwnPropertyDescriptor: (t, e) => Rt.f(kt(t), e),
       }
     ),
     Ce(
       { target: 'Reflect', stat: !0, sham: !Vr },
       {
-        getPrototypeOf: function (t) {
-          return Qr(kt(t));
-        },
+        getPrototypeOf: (t) => Qr(kt(t)),
       }
     ),
     Ce(
       { target: 'Reflect', stat: !0 },
       {
-        has: function (t, e) {
-          return e in t;
-        },
+        has: (t, e) => e in t,
       }
     ),
     Ce(
       { target: 'Reflect', stat: !0 },
       {
-        isExtensible: function (t) {
-          return kt(t), So(t);
-        },
+        isExtensible: (t) => (kt(t), So(t)),
       }
     ),
     Ce({ target: 'Reflect', stat: !0 }, { ownKeys: Pe }),
     Ce(
       { target: 'Reflect', stat: !0, sham: !Eo },
       {
-        preventExtensions: function (t) {
+        preventExtensions: (t) => {
           kt(t);
           try {
             var e = L('Object', 'preventExtensions');
@@ -2602,8 +2421,8 @@
         },
       }
     );
-  var qa = a(function () {
-    var t = function () {},
+  var qa = a(() => {
+    var t = () => {},
       e = Ct.f(new t(), 'a', { configurable: !0 });
     return !1 !== Reflect.set(t.prototype, 'a', 1, e);
   });
@@ -2638,7 +2457,7 @@
       Ce(
         { target: 'Reflect', stat: !0 },
         {
-          setPrototypeOf: function (t, e) {
+          setPrototypeOf: (t, e) => {
             kt(t), vn(e);
             try {
               return dn(t, e), !0;
@@ -2657,17 +2476,11 @@
     Va = Ar.findIndex,
     Ya = b([].splice),
     Xa = 0,
-    Ja = function (t) {
-      return t.frozen || (t.frozen = new Qa());
-    },
+    Ja = (t) => t.frozen || (t.frozen = new Qa()),
     Qa = function () {
       this.entries = [];
     },
-    Za = function (t, e) {
-      return Ga(t.entries, function (t) {
-        return t[0] === e;
-      });
-    };
+    Za = (t, e) => Ga(t.entries, (t) => t[0] === e);
   Qa.prototype = {
     get: function (t) {
       var e = Za(this, t);
@@ -2681,23 +2494,21 @@
       r ? (r[1] = e) : this.entries.push([t, e]);
     },
     delete: function (t) {
-      var e = Va(this.entries, function (e) {
-        return e[0] === t;
-      });
+      var e = Va(this.entries, (e) => e[0] === t);
       return ~e && Ya(this.entries, e, 1), !!~e;
     },
   };
   var tu,
     eu = {
-      getConstructor: function (t, e, r, n) {
-        var o = t(function (t, o) {
+      getConstructor: (t, e, r, n) => {
+        var o = t((t, o) => {
             ko(t, i),
               $a(t, { type: e, id: Xa++, frozen: null }),
               P(o) || Ao(o, t[n], { that: t, AS_ENTRIES: r });
           }),
           i = o.prototype,
           a = Ka(e),
-          u = function (t, e, r) {
+          u = (t, e, r) => {
             var n = a(t),
               o = Ha(kt(e), !0);
             return !0 === o ? Ja(n).set(e, r) : (o[n.id] = r), t;
@@ -2752,11 +2563,9 @@
     su = nu.freeze,
     cu = nu.seal,
     fu = !i.ActiveXObject && 'ActiveXObject' in i,
-    lu = function (t) {
-      return function () {
+    lu = (t) => function () {
         return t(this, arguments.length ? arguments[0] : void 0);
-      };
-    },
+      },
     hu = To('WeakMap', lu, eu),
     pu = hu.prototype,
     vu = b(pu.set);
@@ -2798,7 +2607,7 @@
       });
     } else
       Eo &&
-        a(function () {
+        a(() => {
           var t = su([]);
           return vu(new hu(), t, 1), !au(t);
         }) &&
@@ -2813,7 +2622,7 @@
     wu = b([].push),
     Su = nt('metadata'),
     Eu = Su.store || (Su.store = new bu()),
-    Ou = function (t, e, r) {
+    Ou = (t, e, r) => {
       var n = Eu.get(t);
       if (!n) {
         if (!r) return;
@@ -2829,38 +2638,36 @@
     xu = {
       store: Eu,
       getMap: Ou,
-      has: function (t, e, r) {
+      has: (t, e, r) => {
         var n = Ou(e, r, !1);
         return void 0 !== n && n.has(t);
       },
-      get: function (t, e, r) {
+      get: (t, e, r) => {
         var n = Ou(e, r, !1);
         return void 0 === n ? void 0 : n.get(t);
       },
-      set: function (t, e, r, n) {
+      set: (t, e, r, n) => {
         Ou(r, n, !0).set(t, e);
       },
-      keys: function (t, e) {
+      keys: (t, e) => {
         var r = Ou(t, e, !1),
           n = [];
         return (
           r &&
-            r.forEach(function (t, e) {
+            r.forEach((t, e) => {
               wu(n, e);
             }),
           n
         );
       },
-      toKey: function (t) {
-        return void 0 === t || 'symbol' == typeof t ? t : String(t);
-      },
+      toKey: (t) => void 0 === t || 'symbol' == typeof t ? t : String(t),
     },
     Ru = xu.toKey,
     Pu = xu.set;
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      defineMetadata: function (t, e, r) {
+      defineMetadata: (t, e, r) => {
         var n = arguments.length < 4 ? void 0 : Ru(arguments[3]);
         Pu(t, e, kt(r), n);
       },
@@ -2872,7 +2679,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      deleteMetadata: function (t, e) {
+      deleteMetadata: (t, e) => {
         var r = arguments.length < 3 ? void 0 : Au(arguments[2]),
           n = ju(kt(e), r, !1);
         if (void 0 === n || !n.delete(t)) return !1;
@@ -2885,7 +2692,7 @@
   var Iu = xu.has,
     Tu = xu.get,
     Mu = xu.toKey,
-    Lu = function (t, e, r) {
+    Lu = (t, e, r) => {
       if (Iu(t, e, r)) return Tu(t, e, r);
       var n = Qr(e);
       return null !== n ? Lu(t, n, r) : void 0;
@@ -2893,7 +2700,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      getMetadata: function (t, e) {
+      getMetadata: (t, e) => {
         var r = arguments.length < 3 ? void 0 : Mu(arguments[2]);
         return Lu(t, kt(e), r);
       },
@@ -2912,13 +2719,11 @@
         a = [],
         u = new Uu(),
         s = P(t)
-          ? function (t) {
-              return t;
-            }
+          ? ((t) => t)
           : J(t);
       for (e = 0; e < i; e++) (n = s((r = o[e]))), Nu(u, n) || Cu(u, n, r);
       return (
-        di(u, function (t) {
+        di(u, (t) => {
           _u(a, t);
         }),
         a
@@ -2927,7 +2732,7 @@
     Bu = b([].concat),
     Du = xu.keys,
     zu = xu.toKey,
-    Wu = function (t, e) {
+    Wu = (t, e) => {
       var r = Du(t, e),
         n = Qr(t);
       if (null === n) return r;
@@ -2937,7 +2742,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      getMetadataKeys: function (t) {
+      getMetadataKeys: (t) => {
         var e = arguments.length < 2 ? void 0 : zu(arguments[1]);
         return Wu(kt(t), e);
       },
@@ -2948,7 +2753,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      getOwnMetadata: function (t, e) {
+      getOwnMetadata: (t, e) => {
         var r = arguments.length < 3 ? void 0 : Hu(arguments[2]);
         return qu(t, kt(e), r);
       },
@@ -2959,7 +2764,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      getOwnMetadataKeys: function (t) {
+      getOwnMetadataKeys: (t) => {
         var e = arguments.length < 2 ? void 0 : Ku(arguments[1]);
         return $u(kt(t), e);
       },
@@ -2967,7 +2772,7 @@
   );
   var Gu = xu.has,
     Vu = xu.toKey,
-    Yu = function (t, e, r) {
+    Yu = (t, e, r) => {
       if (Gu(t, e, r)) return !0;
       var n = Qr(e);
       return null !== n && Yu(t, n, r);
@@ -2975,7 +2780,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      hasMetadata: function (t, e) {
+      hasMetadata: (t, e) => {
         var r = arguments.length < 3 ? void 0 : Vu(arguments[2]);
         return Yu(t, kt(e), r);
       },
@@ -2986,7 +2791,7 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      hasOwnMetadata: function (t, e) {
+      hasOwnMetadata: (t, e) => {
         var r = arguments.length < 3 ? void 0 : Ju(arguments[2]);
         return Xu(t, kt(e), r);
       },
@@ -2997,15 +2802,13 @@
   Ce(
     { target: 'Reflect', stat: !0 },
     {
-      metadata: function (t, e) {
-        return function (r, n) {
+      metadata: (t, e) => (r, n) => {
           Zu(t, e, kt(r), Qu(n));
-        };
-      },
+        },
     }
   );
   var ts = dt('match'),
-    es = function (t) {
+    es = (t) => {
       var e;
       return M(t) && (void 0 !== (e = t[ts]) ? !!e : 'RegExp' === E(t));
     },
@@ -3025,47 +2828,43 @@
       );
     },
     ns = RegExp.prototype,
-    os = function (t) {
+    os = (t) => {
       var e = t.flags;
       return void 0 !== e || 'flags' in ns || ut(t, 'flags') || !U(ns, t) ? e : f(rs, t);
     },
     is = i.RegExp,
-    as = a(function () {
+    as = a(() => {
       var t = is('a', 'y');
       return (t.lastIndex = 2), null !== t.exec('abcd');
     }),
     us =
       as ||
-      a(function () {
-        return !is('a', 'y').sticky;
-      }),
+      a(() => !is('a', 'y').sticky),
     ss =
       as ||
-      a(function () {
+      a(() => {
         var t = is('^r', 'gy');
         return (t.lastIndex = 2), null !== t.exec('str');
       }),
     cs = { BROKEN_CARET: ss, MISSED_STICKY: us, UNSUPPORTED_Y: as },
     fs = Ct.f,
-    ls = function (t, e, r) {
+    ls = (t, e, r) => {
       r in t ||
         fs(t, r, {
           configurable: !0,
-          get: function () {
-            return e[r];
-          },
-          set: function (t) {
+          get: () => e[r],
+          set: (t) => {
             e[r] = t;
           },
         });
     },
     hs = i.RegExp,
-    ps = a(function () {
+    ps = a(() => {
       var t = hs('.', 's');
       return !(t.dotAll && t.test('\n') && 's' === t.flags);
     }),
     vs = i.RegExp,
-    ds = a(function () {
+    ds = a(() => {
       var t = vs('(?<a>b)', 'g');
       return 'b' !== t.exec('b').groups.a || 'bc' !== 'b'.replace(t, '$<a>c');
     }),
@@ -3092,9 +2891,7 @@
         Ts ||
         ps ||
         ds ||
-        a(function () {
-          return (ks[ms] = !1), bs(js) !== js || bs(ks) === ks || '/a/i' !== String(bs(js, 'i'));
-        }));
+        a(() => ((ks[ms] = !1), bs(js) !== js || bs(ks) === ks || '/a/i' !== String(bs(js, 'i')))));
   if (Ue('RegExp', Ls)) {
     for (
       var Us = function (t, e) {
@@ -3119,7 +2916,7 @@
             (r = e),
             Ts && 'sticky' in js && (o = !!e && Rs(e, 'y') > -1) && Ms && (e = xs(e, /y/g, '')),
             ds &&
-              ((i = (function (t) {
+              ((i = ((t) => {
                 for (
                   var e,
                     r = t.length,
@@ -3162,7 +2959,7 @@
               n &&
                 ((u.dotAll = !0),
                 (u.raw = Us(
-                  (function (t) {
+                  ((t) => {
                     for (var e, r = t.length, n = 0, o = '', i = !1; n <= r; n++)
                       '\\' !== (e = Os(t, n))
                         ? i || '.' !== e
@@ -3194,9 +2991,7 @@
     Fs = 'toString',
     Bs = RegExp.prototype,
     Ds = Bs[Fs];
-  (a(function () {
-    return '/a/b' !== Ds.call({ source: 'a', flags: 'b' });
-  }) ||
+  (a(() => '/a/b' !== Ds.call({ source: 'a', flags: 'b' })) ||
     (_s && Ds.name !== Fs)) &&
     ie(
       Bs,
@@ -3229,7 +3024,7 @@
     Ys = b(''.indexOf),
     Xs = b(''.replace),
     Js = b(''.slice),
-    Qs = (function () {
+    Qs = (() => {
       var t = /a/,
         e = /b*/g;
       return f(Ks, t, 'a'), f(Ks, e, 'a'), 0 !== t.lastIndex || 0 !== e.lastIndex;
@@ -3245,41 +3040,40 @@
         i,
         a,
         u,
-        s = this,
-        c = Hs(s),
+        c = Hs(this),
         l = Wr(t),
         h = c.raw;
-      if (h) return (h.lastIndex = s.lastIndex), (e = f(Gs, h, l)), (s.lastIndex = h.lastIndex), e;
+      if (h) return (h.lastIndex = this.lastIndex), (e = f(Gs, h, l)), (this.lastIndex = h.lastIndex), e;
       var p = c.groups,
-        v = Zs && s.sticky,
-        d = f(rs, s),
-        g = s.source,
+        v = Zs && this.sticky,
+        d = f(rs, this),
+        g = this.source,
         y = 0,
         m = l;
       if (
         (v &&
           ((d = Xs(d, 'y', '')),
           -1 === Ys(d, 'g') && (d += 'g'),
-          (m = Js(l, s.lastIndex)),
-          s.lastIndex > 0 &&
-            (!s.multiline || (s.multiline && '\n' !== Vs(l, s.lastIndex - 1))) &&
+          (m = Js(l, this.lastIndex)),
+          this.lastIndex > 0 &&
+            (!this.multiline || (this.multiline && '\n' !== Vs(l, this.lastIndex - 1))) &&
             ((g = '(?: ' + g + ')'), (m = ' ' + m), y++),
           (r = new RegExp('^(?:' + g + ')', d))),
         tc && (r = new RegExp('^' + g + '$(?!\\s)', d)),
-        Qs && (n = s.lastIndex),
-        (o = f(Ks, v ? r : s, m)),
+        Qs && (n = this.lastIndex),
+        (o = f(Ks, v ? r : this, m)),
         v
           ? o
             ? ((o.input = Js(o.input, y)),
               (o[0] = Js(o[0], y)),
-              (o.index = s.lastIndex),
-              (s.lastIndex += o[0].length))
-            : (s.lastIndex = 0)
-          : Qs && o && (s.lastIndex = s.global ? o.index + o[0].length : n),
+              (o.index = this.lastIndex),
+              (this.lastIndex += o[0].length))
+            : (this.lastIndex = 0)
+          : Qs && o && (this.lastIndex = this.global ? o.index + o[0].length : n),
         tc &&
           o &&
           o.length > 1 &&
-          f($s, o[0], r, function () {
+          f($s, o[0], r, () => {
             for (i = 1; i < arguments.length - 2; i++) void 0 === arguments[i] && (o[i] = void 0);
           }),
         o && p)
@@ -3292,7 +3086,7 @@
   var rc = i.RegExp,
     nc = rc.prototype;
   u &&
-    a(function () {
+    a(() => {
       var t = !0;
       try {
         rc('.', 'd');
@@ -3302,11 +3096,9 @@
       var e = {},
         r = '',
         n = t ? 'dgimsy' : 'gimsy',
-        o = function (t, n) {
+        o = (t, n) => {
           Object.defineProperty(e, t, {
-            get: function () {
-              return (r += n), !0;
-            },
+            get: () => ((r += n), !0),
           });
         },
         i = { dotAll: 's', global: 'g', ignoreCase: 'i', multiline: 'm', sticky: 'y' };
@@ -3352,40 +3144,34 @@
   );
   var lc = dt('species'),
     hc = RegExp.prototype,
-    pc = function (t, e, r, n) {
+    pc = (t, e, r, n) => {
       var o = dt(t),
-        i = !a(function () {
+        i = !a(() => {
           var e = {};
           return (
-            (e[o] = function () {
-              return 7;
-            }),
+            (e[o] = () => 7),
             7 !== ''[t](e)
           );
         }),
         u =
           i &&
-          !a(function () {
+          !a(() => {
             var e = !1,
               r = /a/;
             return (
               'split' === t &&
                 (((r = {}).constructor = {}),
-                (r.constructor[lc] = function () {
-                  return r;
-                }),
+                (r.constructor[lc] = () => r),
                 (r.flags = ''),
                 (r[o] = /./[o])),
-              (r.exec = function () {
-                return (e = !0), null;
-              }),
+              (r.exec = () => ((e = !0), null)),
               r[o](''),
               !e
             );
           });
       if (!i || !u || r) {
         var s = /./[o],
-          c = e(o, ''[t], function (t, e, r, n, o) {
+          c = e(o, ''[t], (t, e, r, n, o) => {
             var a = e.exec;
             return a === ec || a === hc.exec
               ? i && !o
@@ -3398,11 +3184,9 @@
       n && _t(hc[o], 'sham', !0);
     },
     vc = Gr.charAt,
-    dc = function (t, e, r) {
-      return e + (r ? vc(t, e).length : 1);
-    },
+    dc = (t, e, r) => e + (r ? vc(t, e).length : 1),
     gc = TypeError,
-    yc = function (t, e) {
+    yc = (t, e) => {
       var r = t.exec;
       if (T(r)) {
         var n = f(r, t, e);
@@ -3411,8 +3195,7 @@
       if ('RegExp' === E(t)) return f(ec, t, e);
       throw new gc('RegExp#exec called on incompatible receiver');
     };
-  pc('match', function (t, e, r) {
-    return [
+  pc('match', (t, e, r) => [
       function (e) {
         var r = j(this),
           n = P(e) ? void 0 : Q(e, t);
@@ -3432,21 +3215,20 @@
         }
         return 0 === c ? null : s;
       },
-    ];
-  });
+    ]);
   var mc = Math.floor,
     bc = b(''.charAt),
     wc = b(''.replace),
     Sc = b(''.slice),
     Ec = /\$([$&'`]|\d{1,2}|<[^>]*>)/g,
     Oc = /\$([$&'`]|\d{1,2})/g,
-    xc = function (t, e, r, n, o, i) {
+    xc = (t, e, r, n, o, i) => {
       var a = r + t.length,
         u = n.length,
         s = Oc;
       return (
         void 0 !== o && ((o = it(o)), (s = Ec)),
-        wc(i, s, function (i, s) {
+        wc(i, s, (i, s) => {
           var c;
           switch (bc(s, 0)) {
             case '$':
@@ -3460,7 +3242,7 @@
             case '<':
               c = o[Sc(s, 1, -1)];
               break;
-            default:
+            default: {
               var f = +s;
               if (0 === f) return i;
               if (f > u) {
@@ -3474,6 +3256,7 @@
                     : i;
               }
               c = n[f - 1];
+            }
           }
           return void 0 === c ? '' : c;
         })
@@ -3488,10 +3271,10 @@
     Tc = b(''.slice),
     Mc = '$0' === 'a'.replace(/./, '$0'),
     Lc = !!/./[Rc] && '' === /./[Rc]('a', '$0'),
-    Uc = !a(function () {
+    Uc = !a(() => {
       var t = /./;
       return (
-        (t.exec = function () {
+        (t.exec = () => {
           var t = [];
           return (t.groups = { a: '7' }), t;
         }),
@@ -3500,7 +3283,7 @@
     });
   pc(
     'replace',
-    function (t, e, r) {
+    (t, e, r) => {
       var n = Lc ? '$' : '$0';
       return [
         function (t, r) {
@@ -3542,8 +3325,7 @@
     },
     !Uc || !Mc || Lc
   ),
-    pc('search', function (t, e, r) {
-      return [
+    pc('search', (t, e, r) => [
         function (e) {
           var r = j(this),
             n = P(e) ? void 0 : Q(e, t);
@@ -3559,10 +3341,9 @@
           var u = yc(n, o);
           return wa(n.lastIndex, a) || (n.lastIndex = a), null === u ? -1 : u.index;
         },
-      ];
-    });
+      ]);
   var Nc = dt('species'),
-    Cc = function (t, e) {
+    Cc = (t, e) => {
       var r,
         n = kt(t).constructor;
       return void 0 === n || P((r = kt(n)[Nc])) ? e : La(r);
@@ -3571,7 +3352,7 @@
     Fc = Math.min,
     Bc = b([].push),
     Dc = b(''.slice),
-    zc = !a(function () {
+    zc = !a(() => {
       var t = /(?:)/,
         e = t.exec;
       t.exec = function () {
@@ -3589,7 +3370,7 @@
       ''.split(/.?/).length;
   pc(
     'split',
-    function (t, e, r) {
+    (t, e, r) => {
       var n = '0'.split(void 0, 0).length
         ? function (t, r) {
             return void 0 === t && 0 === r ? [] : f(e, this, t, r);
@@ -3652,8 +3433,7 @@
     Kc = b($c),
     Gc = b(''.slice),
     Vc = Math.ceil,
-    Yc = function (t) {
-      return function (e, r, n) {
+    Yc = (t) => (e, r, n) => {
         var o,
           i,
           a = Wr(j(e)),
@@ -3664,8 +3444,7 @@
           ? a
           : ((i = Kc(c, Vc((o = u - s) / c.length))).length > o && (i = Gc(i, 0, o)),
             t ? a + i : i + a);
-      };
-    },
+      },
     Xc = { start: Yc(!1), end: Yc(!0) },
     Jc = Xc.start,
     Qc = Array,
@@ -3679,7 +3458,7 @@
     uf = RegExp('^[!"#%&\',\\-:;<=>@`~' + Mi + ']'),
     sf = b(of.exec),
     cf = { '\t': 't', '\n': 'n', '\v': 'v', '\f': 'f', '\r': 'r' },
-    ff = function (t) {
+    ff = (t) => {
       var e = rf(ef(t, 0), 16);
       return e.length < 3 ? '\\x' + Jc(e, 2, '0') : '\\u' + Jc(e, 4, '0');
     },
@@ -3687,8 +3466,8 @@
   Ce(
     { target: 'RegExp', stat: !0, forced: lf },
     {
-      escape: function (t) {
-        !(function (t) {
+      escape: (t) => {
+        !((t) => {
           if ('string' == typeof t) return t;
           throw new qc('Argument is not a string');
         })(t);
@@ -3713,33 +3492,27 @@
   ),
     To(
       'Set',
-      function (t) {
-        return function () {
+      (t) => function () {
           return t(this, arguments.length ? arguments[0] : void 0);
-        };
-      },
+        },
       Fo
     );
   var hf = Set.prototype,
     pf = { Set: Set, add: b(hf.add), has: b(hf.has), remove: b(hf.delete), proto: hf },
     vf = pf.has,
-    df = function (t) {
-      return vf(t), t;
-    },
+    df = (t) => (vf(t), t),
     gf = pf.Set,
     yf = pf.proto,
     mf = b(yf.forEach),
     bf = b(yf.keys),
     wf = bf(new gf()).next,
-    Sf = function (t, e, r) {
-      return r ? ci({ iterator: bf(t), next: wf }, e) : mf(t, e);
-    },
+    Sf = (t, e, r) => r ? ci({ iterator: bf(t), next: wf }, e) : mf(t, e),
     Ef = pf.Set,
     Of = pf.add,
-    xf = function (t) {
+    xf = (t) => {
       var e = new Ef();
       return (
-        Sf(t, function (t) {
+        Sf(t, (t) => {
           Of(e, t);
         }),
         e
@@ -3747,9 +3520,7 @@
     },
     Rf =
       ln(pf.proto, 'size', 'get') ||
-      function (t) {
-        return t.size;
-      },
+      ((t) => t.size),
     Pf = 'Invalid size',
     Af = RangeError,
     jf = TypeError,
@@ -3766,7 +3537,7 @@
       return f(this.has, this.set, t);
     },
   };
-  var Tf = function (t) {
+  var Tf = (t) => {
       kt(t);
       var e = +t.size;
       if (e != e) throw new jf(Pf);
@@ -3782,31 +3553,23 @@
         n = xf(e);
       return (
         Rf(e) <= r.size
-          ? Sf(e, function (t) {
+          ? Sf(e, (t) => {
               r.includes(t) && Lf(n, t);
             })
-          : ci(r.getIterator(), function (t) {
+          : ci(r.getIterator(), (t) => {
               Mf(e, t) && Lf(n, t);
             }),
         n
       );
     },
-    Nf = function (t) {
-      return {
+    Nf = (t) => ({
         size: t,
-        has: function () {
-          return !1;
-        },
-        keys: function () {
-          return {
-            next: function () {
-              return { done: !0 };
-            },
-          };
-        },
-      };
-    },
-    Cf = function (t) {
+        has: () => !1,
+        keys: () => ({
+            next: () => ({ done: !0 }),
+          }),
+      }),
+    Cf = (t) => {
       var e = L('Set');
       try {
         new e()[t](Nf(0));
@@ -3829,10 +3592,10 @@
         n = new _f();
       return (
         Rf(e) > r.size
-          ? ci(r.getIterator(), function (t) {
+          ? ci(r.getIterator(), (t) => {
               Bf(e, t) && Ff(n, t);
             })
-          : Sf(e, function (t) {
+          : Sf(e, (t) => {
               r.includes(t) && Ff(n, t);
             }),
         n
@@ -3840,9 +3603,7 @@
     },
     zf =
       !Cf('intersection') ||
-      a(function () {
-        return '3,2' !== String(Array.from(new Set([1, 2, 3]).intersection(new Set([3, 2]))));
-      });
+      a(() => '3,2' !== String(Array.from(new Set([1, 2, 3]).intersection(new Set([3, 2])))));
   Ce({ target: 'Set', proto: !0, real: !0, forced: zf }, { intersection: Df });
   var Wf = pf.has,
     qf = function (t) {
@@ -3853,7 +3614,7 @@
           !1 !==
           Sf(
             e,
-            function (t) {
+            (t) => {
               if (r.includes(t)) return !1;
             },
             !0
@@ -3862,7 +3623,7 @@
       var n = r.getIterator();
       return (
         !1 !==
-        ci(n, function (t) {
+        ci(n, (t) => {
           if (Wf(e, t)) return Tn(n, 'normal', !1);
         })
       );
@@ -3876,7 +3637,7 @@
       !1 !==
         Sf(
           e,
-          function (t) {
+          (t) => {
             if (!r.includes(t)) return !1;
           },
           !0
@@ -3892,7 +3653,7 @@
       var n = r.getIterator();
       return (
         !1 !==
-        ci(n, function (t) {
+        ci(n, (t) => {
           if (!$f(e, t)) return Tn(n, 'normal', !1);
         })
       );
@@ -3906,7 +3667,7 @@
         r = Tf(t).getIterator(),
         n = xf(e);
       return (
-        ci(r, function (t) {
+        ci(r, (t) => {
           Vf(e, t) ? Yf(n, t) : Gf(n, t);
         }),
         n
@@ -3922,7 +3683,7 @@
         r = Tf(t).getIterator(),
         n = xf(e);
       return (
-        ci(r, function (t) {
+        ci(r, (t) => {
           Jf(n, t);
         }),
         n
@@ -3962,7 +3723,7 @@
             !1 !==
             Sf(
               e,
-              function (t) {
+              (t) => {
                 if (!r(t, t, e)) return !1;
               },
               !0
@@ -3974,19 +3735,15 @@
   var el = dt('iterator'),
     rl = Object,
     nl = L('Set'),
-    ol = function (t) {
-      return (function (t) {
-        return M(t) && 'number' == typeof t.size && T(t.has) && T(t.keys);
-      })(t)
+    ol = (t) => ((t) => M(t) && 'number' == typeof t.size && T(t.has) && T(t.keys))(t)
         ? t
-        : (function (t) {
+        : ((t) => {
               if (P(t)) return !1;
               var e = rl(t);
               return void 0 !== e[el] || '@@iterator' in e || ut(un, pr(e));
             })(t)
           ? new nl(t)
           : t;
-    };
   Ce(
     { target: 'Set', proto: !0, real: !0, forced: !0 },
     {
@@ -4005,7 +3762,7 @@
           r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
           n = new il();
         return (
-          Sf(e, function (t) {
+          Sf(e, (t) => {
             r(t, t, e) && al(n, t);
           }),
           n
@@ -4021,7 +3778,7 @@
             r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
             n = Sf(
               e,
-              function (t) {
+              (t) => {
                 if (r(t, t, e)) return { value: t };
               },
               !0
@@ -4072,7 +3829,7 @@
           r = void 0 === t ? ',' : Wr(t),
           n = [];
         return (
-          Sf(e, function (t) {
+          Sf(e, (t) => {
             sl(n, t);
           }),
           ul(n, r)
@@ -4090,7 +3847,7 @@
           r = ar(t, arguments.length > 1 ? arguments[1] : void 0),
           n = new cl();
         return (
-          Sf(e, function (t) {
+          Sf(e, (t) => {
             fl(n, r(t, t, e));
           }),
           n
@@ -4108,7 +3865,7 @@
           n = r ? void 0 : arguments[1];
         if (
           (J(t),
-          Sf(e, function (o) {
+          Sf(e, (o) => {
             r ? ((r = !1), (n = o)) : (n = t(n, o, o, e));
           }),
           r)
@@ -4128,7 +3885,7 @@
             !0 ===
             Sf(
               e,
-              function (t) {
+              (t) => {
                 if (r(t, t, e)) return !0;
               },
               !0
@@ -4157,11 +3914,11 @@
     pl = dt('isConcatSpreadable'),
     vl =
       W >= 51 ||
-      !a(function () {
+      !a(() => {
         var t = [];
         return (t[pl] = !1), t.concat()[0] !== t;
       }),
-    dl = function (t) {
+    dl = (t) => {
       if (!M(t)) return !1;
       var e = t[pl];
       return void 0 !== e ? !!e : ur(t);
@@ -4169,12 +3926,10 @@
     gl = !(
       vl &&
       (W >= 51 ||
-        !a(function () {
+        !a(() => {
           var t = [];
           return (
-            ((t.constructor = {})[hl] = function () {
-              return { foo: 1 };
-            }),
+            ((t.constructor = {})[hl] = () => ({ foo: 1 })),
             1 !== t.concat(Boolean).foo
           );
         }))
@@ -4201,11 +3956,11 @@
   );
   var yl = { f: dt },
     ml = Ct.f,
-    bl = function (t) {
+    bl = (t) => {
       var e = Yn.Symbol || (Yn.Symbol = {});
       ut(e, t) || ml(e, t, { value: yl.f(t) });
     },
-    wl = function () {
+    wl = () => {
       var t = L('Symbol'),
         e = t && t.prototype,
         r = e && e.valueOf,
@@ -4242,14 +3997,13 @@
     Bl = nt('op-symbols'),
     Dl = nt('wks'),
     zl = !Ml || !Ml[xl] || !Ml[xl].findChild,
-    Wl = function (t, e, r) {
+    Wl = (t, e, r) => {
       var n = Ll(Al, e);
       n && delete Al[e], Ul(t, e, r), n && t !== Al && Ul(Al, e, n);
     },
     ql =
       u &&
-      a(function () {
-        return (
+      a(() => (
           7 !==
           Ve(
             Ul({}, 'a', {
@@ -4258,15 +4012,14 @@
               },
             })
           ).a
-        );
-      })
+        ))
         ? Wl
         : Ul,
-    Hl = function (t, e) {
+    Hl = (t, e) => {
       var r = (Fl[t] = Ve(kl));
       return Rl(r, { type: Ol, tag: t, description: e }), u || (r.description = e), r;
     },
-    $l = function (t, e, r) {
+    $l = (t, e, r) => {
       t === Al && $l(Bl, e, r), kt(t);
       var n = bt(e);
       return (
@@ -4279,12 +4032,12 @@
           : Ul(t, n, r)
       );
     },
-    Kl = function (t, e) {
+    Kl = (t, e) => {
       kt(t);
       var r = k(e),
         n = _e(r).concat(Xl(r));
       return (
-        Sl(n, function (e) {
+        Sl(n, (e) => {
           (u && !f(Gl, r, e)) || $l(t, e, r[e]);
         }),
         t
@@ -4298,7 +4051,7 @@
         (!(r || !ut(this, e) || !ut(Fl, e) || (ut(this, El) && this[El][e])) || r)
       );
     },
-    Vl = function (t, e) {
+    Vl = (t, e) => {
       var r = k(t),
         n = bt(e);
       if (r !== Al || !ut(Fl, n) || ut(Bl, n)) {
@@ -4306,22 +4059,22 @@
         return !o || !ut(Fl, n) || (ut(r, El) && r[El][n]) || (o.enumerable = !0), o;
       }
     },
-    Yl = function (t) {
+    Yl = (t) => {
       var e = Nl(k(t)),
         r = [];
       return (
-        Sl(e, function (t) {
+        Sl(e, (t) => {
           ut(Fl, t) || ut(Jt, t) || _l(r, t);
         }),
         r
       );
     },
-    Xl = function (t) {
+    Xl = (t) => {
       var e = t === Al,
         r = Nl(e ? Bl : k(t)),
         n = [];
       return (
-        Sl(r, function (t) {
+        Sl(r, (t) => {
           !ut(Fl, t) || (e && !ut(Al, t)) || _l(n, Fl[t]);
         }),
         n
@@ -4348,18 +4101,14 @@
     ie((kl = jl[xl]), 'toString', function () {
       return Pl(this).tag;
     }),
-    ie(jl, 'withoutSetter', function (t) {
-      return Hl(lt(t), t);
-    }),
+    ie(jl, 'withoutSetter', (t) => Hl(lt(t), t)),
     (v.f = Gl),
     (Ct.f = $l),
     (Be.f = Kl),
     (Rt.f = Vl),
     (Oe.f = mo.f = Yl),
     (xe.f = Xl),
-    (yl.f = function (t) {
-      return Hl(dt(t), t);
-    }),
+    (yl.f = (t) => Hl(dt(t), t)),
     u &&
       (so(kl, 'description', {
         configurable: !0,
@@ -4369,16 +4118,16 @@
       }),
       ie(Al, 'propertyIsEnumerable', Gl, { unsafe: !0 }))),
     Ce({ global: !0, constructor: !0, wrap: !0, forced: !H, sham: !H }, { Symbol: jl }),
-    Sl(_e(Dl), function (t) {
+    Sl(_e(Dl), (t) => {
       bl(t);
     }),
     Ce(
       { target: Ol, stat: !0, forced: !H },
       {
-        useSetter: function () {
+        useSetter: () => {
           zl = !0;
         },
-        useSimple: function () {
+        useSimple: () => {
           zl = !1;
         },
       }
@@ -4386,9 +4135,7 @@
     Ce(
       { target: 'Object', stat: !0, forced: !H, sham: !u },
       {
-        create: function (t, e) {
-          return void 0 === e ? Ve(t) : Kl(Ve(t), e);
-        },
+        create: (t, e) => void 0 === e ? Ve(t) : Kl(Ve(t), e),
         defineProperty: $l,
         defineProperties: Kl,
         getOwnPropertyDescriptor: Vl,
@@ -4404,7 +4151,7 @@
   Ce(
     { target: 'Symbol', stat: !0, forced: !Jl },
     {
-      for: function (t) {
+      for: (t) => {
         var e = Wr(t);
         if (ut(Ql, e)) return Ql[e];
         var r = L('Symbol')(e);
@@ -4416,7 +4163,7 @@
   Ce(
     { target: 'Symbol', stat: !0, forced: !Jl },
     {
-      keyFor: function (t) {
+      keyFor: (t) => {
         if (!G(t)) throw new TypeError(Y(t) + ' is not a symbol');
         if (ut(th, t)) return th[t];
       },
@@ -4435,16 +4182,14 @@
     lh = /^[\uDC00-\uDFFF]$/,
     hh =
       !H ||
-      a(function () {
+      a(() => {
         var t = L('Symbol')('stringify detection');
         return '[null]' !== nh([t]) || '{}' !== nh({ a: t }) || '{}' !== nh(Object(t));
       }),
-    ph = a(function () {
-      return '"\\udf06\\ud834"' !== nh('\udf06\ud834') || '"\\udead"' !== nh('\udead');
-    }),
-    vh = function (t, e) {
+    ph = a(() => '"\\udf06\\ud834"' !== nh('\udf06\ud834') || '"\\udead"' !== nh('\udead')),
+    vh = (t, e) => {
       var r = vo(arguments),
-        n = (function (t) {
+        n = ((t) => {
           if (T(t)) return t;
           if (ur(t)) {
             for (var e = t.length, r = [], n = 0; n < e; n++) {
@@ -4470,7 +4215,7 @@
           Ra(nh, null, r)
         );
     },
-    dh = function (t, e, r) {
+    dh = (t, e, r) => {
       var n = ih(r, e - 1),
         o = ih(r, e + 1);
       return (oh(fh, t) && !oh(lh, o)) || (oh(lh, t) && !oh(fh, n)) ? '\\u' + sh(ah(t, 0), 16) : t;
@@ -4479,7 +4224,7 @@
     Ce(
       { target: 'JSON', stat: !0, arity: 3, forced: hh || ph },
       {
-        stringify: function (t, e, r) {
+        stringify: (t, e, r) => {
           var n = vo(arguments),
             o = Ra(hh ? vh : nh, null, n);
           return ph && 'string' == typeof o ? uh(o, ch, dh) : o;
@@ -4488,13 +4233,13 @@
     );
   var gh =
     !H ||
-    a(function () {
+    a(() => {
       xe.f(1);
     });
   Ce(
     { target: 'Object', stat: !0, forced: gh },
     {
-      getOwnPropertySymbols: function (t) {
+      getOwnPropertySymbols: (t) => {
         var e = xe.f;
         return e ? e(it(t)) : [];
       },
@@ -4575,13 +4320,13 @@
     Dh = b(Fh.prototype.valueOf),
     zh =
       Fh.isRegisteredSymbol ||
-      function (t) {
+      ((t) => {
         try {
           return void 0 !== Bh(Dh(t));
         } catch (t) {
           return !1;
         }
-      };
+      });
   Ce({ target: 'Symbol', stat: !0 }, { isRegisteredSymbol: zh });
   for (
     var Wh = L('Symbol'),
@@ -4599,7 +4344,7 @@
       var Xh = Vh[Gh];
       G(Wh[Xh]) && dt(Xh);
     } catch (t) {}
-  var Jh = function (t) {
+  var Jh = (t) => {
     if (qh && qh(t)) return !0;
     try {
       for (var e = $h(t), r = 0, n = Hh(Kh), o = n.length; r < o; r++) if (Kh[n[r]] == e) return !0;
@@ -4627,12 +4372,12 @@
   ),
     Ze('String', 'codePointAt');
   var Zh = TypeError,
-    tp = function (t) {
+    tp = (t) => {
       if (es(t)) throw new Zh("The method doesn't accept regular expressions");
       return t;
     },
     ep = dt('match'),
-    rp = function (t) {
+    rp = (t) => {
       var e = /./;
       try {
         '/./'[t](e);
@@ -4649,7 +4394,7 @@
     ap = rp('endsWith'),
     up =
       !ap &&
-      !!(function () {
+      !!(() => {
         var t = np(String.prototype, 'endsWith');
         return t && !t.writable;
       })();
@@ -4675,7 +4420,7 @@
   Ce(
     { target: 'String', stat: !0, arity: 1, forced: !!fp && 1 !== fp.length },
     {
-      fromCodePoint: function (t) {
+      fromCodePoint: (t) => {
         for (var e, r = [], n = arguments.length, o = 0; n > o; ) {
           if (((e = +arguments[o++]), he(e, 1114111) !== e))
             throw new sp(e + ' is not a valid code point');
@@ -4722,7 +4467,7 @@
   Ce(
     { target: 'String', stat: !0 },
     {
-      raw: function (t) {
+      raw: (t) => {
         var e = k(it(t).raw),
           r = de(e);
         if (!r) return '';
@@ -4741,7 +4486,7 @@
     Sp = rp('startsWith'),
     Ep =
       !Sp &&
-      !!(function () {
+      !!(() => {
         var t = mp(String.prototype, 'startsWith');
         return t && !t.writable;
       })();
@@ -4759,11 +4504,7 @@
   ),
     Ze('String', 'startsWith');
   var Op = zt.PROPER,
-    xp = function (t) {
-      return a(function () {
-        return !!Mi[t]() || '​᠎' !== '​᠎'[t]() || (Op && Mi[t].name !== t);
-      });
-    },
+    xp = (t) => a(() => !!Mi[t]() || '​᠎' !== '​᠎'[t]() || (Op && Mi[t].name !== t)),
     Rp = _i.start,
     Pp = xp('trimStart')
       ? function () {
@@ -4795,20 +4536,20 @@
     ),
     Ze('String', 'trimRight');
   var kp = Object.getOwnPropertyDescriptor,
-    Ip = function (t) {
+    Ip = (t) => {
       if (!u) return i[t];
       var e = kp(i, t);
       return e && e.value;
     },
     Tp = dt('iterator'),
-    Mp = !a(function () {
+    Mp = !a(() => {
       var t = new URL('b?a=1&b=2&c=3', 'https://a'),
         e = t.searchParams,
         r = new URLSearchParams('a=1&a=2&b=3'),
         n = '';
       return (
         (t.pathname = 'c%20d'),
-        e.forEach(function (t, r) {
+        e.forEach((t, r) => {
           e.delete('b'), (n += r + t);
         }),
         r.delete('a', 2),
@@ -4828,12 +4569,12 @@
       );
     }),
     Lp = TypeError,
-    Up = function (t, e) {
+    Up = (t, e) => {
       if (t < e) throw new Lp('Not enough arguments');
       return t;
     },
     Np = Math.floor,
-    Cp = function (t, e) {
+    Cp = (t, e) => {
       var r = t.length;
       if (r < 8)
         for (var n, o, i = 1; i < r; ) {
@@ -4883,15 +4624,15 @@
     sv = b(/./.exec),
     cv = /\+/g,
     fv = /^[0-9a-f]+$/i,
-    lv = function (t, e) {
+    lv = (t, e) => {
       var r = uv(t, e, e + 2);
       return sv(fv, r) ? Zp(r, 16) : NaN;
     },
-    hv = function (t) {
+    hv = (t) => {
       for (var e = 0, r = 128; r > 0 && 0 != (t & r); r >>= 1) e++;
       return e;
     },
-    pv = function (t) {
+    pv = (t) => {
       var e = null;
       switch (t.length) {
         case 1:
@@ -4908,7 +4649,7 @@
       }
       return e > 1114111 ? null : e;
     },
-    vv = function (t) {
+    vv = (t) => {
       for (var e = (t = nv(t, cv, ' ')).length, r = '', n = 0; n < e; ) {
         var o = tv(t, n);
         if ('%' === o) {
@@ -4952,12 +4693,8 @@
     },
     dv = /[!'()~]|%20/g,
     gv = { '!': '%21', "'": '%27', '(': '%28', ')': '%29', '~': '%7E', '%20': '+' },
-    yv = function (t) {
-      return gv[t];
-    },
-    mv = function (t) {
-      return nv(Xp(t), dv, yv);
-    },
+    yv = (t) => gv[t],
+    mv = (t) => nv(Xp(t), dv, yv),
     bv = fn(
       function (t, e) {
         zp(this, { type: Dp, target: Wp(t).entries, index: 0, kind: e });
@@ -5101,9 +4838,7 @@
         },
         sort: function () {
           var t = Wp(this);
-          _p(t.entries, function (t, e) {
-            return t.key > e.key ? 1 : -1;
-          }),
+          _p(t.entries, (t, e) => t.key > e.key ? 1 : -1),
             t.updateURL();
         },
         forEach: function (t) {
@@ -5151,7 +4886,7 @@
   ) {
     var Ov = b(Vp.has),
       xv = b(Vp.set),
-      Rv = function (t) {
+      Rv = (t) => {
         if (M(t)) {
           var e,
             r = t.body;
@@ -5170,9 +4905,7 @@
         Ce(
           { global: !0, enumerable: !0, dontCallGetSet: !0, forced: !0 },
           {
-            fetch: function (t) {
-              return Hp(t, arguments.length > 1 ? Rv(arguments[1]) : {});
-            },
+            fetch: (t) => Hp(t, arguments.length > 1 ? Rv(arguments[1]) : {}),
           }
         ),
       T($p))
@@ -5204,7 +4937,7 @@
             r = e < 2 ? void 0 : arguments[1];
           if (e && void 0 === r) return Tv(this, t);
           var n = [];
-          Mv(this, function (t, e) {
+          Mv(this, (t, e) => {
             Lv(n, { key: e, value: t });
           }),
             Up(e, 1);
@@ -5242,7 +4975,7 @@
       get: function () {
         var t = 0;
         return (
-          zv(this, function () {
+          zv(this, () => {
             t++;
           }),
           t
@@ -5257,7 +4990,7 @@
     $v = b([].concat),
     Kv =
       !qv ||
-      a(function () {
+      a(() => {
         if (
           u &&
           1 !==
@@ -5281,13 +5014,13 @@
           n = 'abcdefghijklmnopqrst';
         return (
           (t[r] = 7),
-          n.split('').forEach(function (t) {
+          n.split('').forEach((t) => {
             e[t] = t;
           }),
           7 !== qv({}, t)[r] || _e(qv({}, e)).join('') !== n
         );
       })
-        ? function (t, e) {
+        ? ((t, e) => {
             for (var r = it(t), n = arguments.length, o = 1, i = xe.f, a = v.f; n > o; )
               for (
                 var s, c = R(arguments[o++]), l = i ? $v(_e(c), i(c)) : _e(c), h = l.length, p = 0;
@@ -5295,7 +5028,7 @@
               )
                 (s = l[p++]), (u && !f(a, c, s)) || (r[s] = c[s]);
             return r;
-          }
+          })
         : qv,
     Gv = 2147483647,
     Vv = /[^\0-\u007E]/,
@@ -5311,17 +5044,15 @@
     od = b(''.replace),
     id = b(''.split),
     ad = b(''.toLowerCase),
-    ud = function (t) {
-      return t + 22 + 75 * (t < 26);
-    },
-    sd = function (t, e, r) {
+    ud = (t) => t + 22 + 75 * (t < 26),
+    sd = (t, e, r) => {
       var n = 0;
       for (t = r ? Zv(t / 700) : t >> 1, t += Zv(t / e); t > 455; ) (t = Zv(t / 35)), (n += 36);
       return Zv(n + (36 * t) / (t + 38));
     },
-    cd = function (t) {
+    cd = (t) => {
       var e = [];
-      t = (function (t) {
+      t = ((t) => {
         for (var e = [], r = 0, n = t.length; r < n; ) {
           var o = ed(t, r++);
           if (o >= 55296 && o <= 56319 && r < n) {
@@ -5399,7 +5130,7 @@
     Hd = /^[\u0000-\u0020]+/,
     $d = /(^|[^\u0000-\u0020])[\u0000-\u0020]+$/,
     Kd = /[\t\n\r]/g,
-    Gd = function (t) {
+    Gd = (t) => {
       var e, r, n, o;
       if ('number' == typeof t) {
         for (e = [], r = 0; r < 4; r++) Td(e, t % 256), (t = md(t / 256));
@@ -5408,7 +5139,7 @@
       if ('object' == typeof t) {
         for (
           e = '',
-            n = (function (t) {
+            n = ((t) => {
               for (var e = null, r = 1, n = null, o = 0, i = 0; i < 8; i++)
                 0 !== t[i]
                   ? (o > r && ((e = n), (r = o)), (n = null), (o = 0))
@@ -5443,16 +5174,16 @@
       '^': 1,
       '|': 1,
     }),
-    Qd = function (t, e) {
+    Qd = (t, e) => {
       var r = fd(t, 0);
       return r > 32 && r < 127 && !ut(e, t) ? t : encodeURIComponent(t);
     },
     Zd = { ftp: 21, file: null, http: 80, https: 443, ws: 80, wss: 443 },
-    tg = function (t, e) {
+    tg = (t, e) => {
       var r;
       return 2 === t.length && Sd(Nd, wd(t, 0)) && (':' === (r = wd(t, 1)) || (!e && '|' === r));
     },
-    eg = function (t) {
+    eg = (t) => {
       var e;
       return (
         t.length > 1 &&
@@ -5460,9 +5191,7 @@
         (2 === t.length || '/' === (e = wd(t, 2)) || '\\' === e || '?' === e || '#' === e)
       );
     },
-    rg = function (t) {
-      return '.' === t || '%2e' === Id(t);
-    },
+    rg = (t) => '.' === t || '%2e' === Id(t),
     ng = {},
     og = {},
     ig = {},
@@ -5505,7 +5234,6 @@
         i,
         a,
         u,
-        s = this,
         c = e || ng,
         f = 0,
         l = '',
@@ -5515,15 +5243,15 @@
       for (
         t = Wr(t),
           e ||
-            ((s.scheme = ''),
-            (s.username = ''),
-            (s.password = ''),
-            (s.host = null),
-            (s.port = null),
-            (s.path = []),
-            (s.query = null),
-            (s.fragment = null),
-            (s.cannotBeABaseURL = !1),
+            ((this.scheme = ''),
+            (this.username = ''),
+            (this.password = ''),
+            (this.host = null),
+            (this.port = null),
+            (this.path = []),
+            (this.query = null),
+            (this.fragment = null),
+            (this.cannotBeABaseURL = !1),
             (t = Pd(t, Hd, '')),
             (t = Pd(t, $d, '$1'))),
           t = Pd(t, Kd, ''),
@@ -5549,33 +5277,33 @@
               }
               if (
                 e &&
-                (s.isSpecial() !== ut(Zd, l) ||
-                  ('file' === l && (s.includesCredentials() || null !== s.port)) ||
-                  ('file' === s.scheme && !s.host))
+                (this.isSpecial() !== ut(Zd, l) ||
+                  ('file' === l && (this.includesCredentials() || null !== this.port)) ||
+                  ('file' === this.scheme && !this.host))
               )
                 return;
-              if (((s.scheme = l), e))
-                return void (s.isSpecial() && Zd[s.scheme] === s.port && (s.port = null));
+              if (((this.scheme = l), e))
+                return void (this.isSpecial() && Zd[this.scheme] === this.port && (this.port = null));
               (l = ''),
-                'file' === s.scheme
+                'file' === this.scheme
                   ? (c = gg)
-                  : s.isSpecial() && r && r.scheme === s.scheme
+                  : this.isSpecial() && r && r.scheme === this.scheme
                     ? (c = ag)
-                    : s.isSpecial()
+                    : this.isSpecial()
                       ? (c = fg)
                       : '/' === n[f + 1]
                         ? ((c = ug), f++)
-                        : ((s.cannotBeABaseURL = !0), Rd(s.path, ''), (c = Sg));
+                        : ((this.cannotBeABaseURL = !0), Rd(this.path, ''), (c = Sg));
             }
             break;
           case ig:
             if (!r || (r.cannotBeABaseURL && '#' !== o)) return Md;
             if (r.cannotBeABaseURL && '#' === o) {
-              (s.scheme = r.scheme),
-                (s.path = vo(r.path)),
-                (s.query = r.query),
-                (s.fragment = ''),
-                (s.cannotBeABaseURL = !0),
+              (this.scheme = r.scheme),
+                (this.path = vo(r.path)),
+                (this.query = r.query),
+                (this.fragment = ''),
+                (this.cannotBeABaseURL = !0),
                 (c = Og);
               break;
             }
@@ -5596,50 +5324,50 @@
             c = wg;
             continue;
           case sg:
-            if (((s.scheme = r.scheme), o === Wv))
-              (s.username = r.username),
-                (s.password = r.password),
-                (s.host = r.host),
-                (s.port = r.port),
-                (s.path = vo(r.path)),
-                (s.query = r.query);
-            else if ('/' === o || ('\\' === o && s.isSpecial())) c = cg;
+            if (((this.scheme = r.scheme), o === Wv))
+              (this.username = r.username),
+                (this.password = r.password),
+                (this.host = r.host),
+                (this.port = r.port),
+                (this.path = vo(r.path)),
+                (this.query = r.query);
+            else if ('/' === o || ('\\' === o && this.isSpecial())) c = cg;
             else if ('?' === o)
-              (s.username = r.username),
-                (s.password = r.password),
-                (s.host = r.host),
-                (s.port = r.port),
-                (s.path = vo(r.path)),
-                (s.query = ''),
+              (this.username = r.username),
+                (this.password = r.password),
+                (this.host = r.host),
+                (this.port = r.port),
+                (this.path = vo(r.path)),
+                (this.query = ''),
                 (c = Eg);
             else {
               if ('#' !== o) {
-                (s.username = r.username),
-                  (s.password = r.password),
-                  (s.host = r.host),
-                  (s.port = r.port),
-                  (s.path = vo(r.path)),
-                  s.path.length--,
+                (this.username = r.username),
+                  (this.password = r.password),
+                  (this.host = r.host),
+                  (this.port = r.port),
+                  (this.path = vo(r.path)),
+                  this.path.length--,
                   (c = wg);
                 continue;
               }
-              (s.username = r.username),
-                (s.password = r.password),
-                (s.host = r.host),
-                (s.port = r.port),
-                (s.path = vo(r.path)),
-                (s.query = r.query),
-                (s.fragment = ''),
+              (this.username = r.username),
+                (this.password = r.password),
+                (this.host = r.host),
+                (this.port = r.port),
+                (this.path = vo(r.path)),
+                (this.query = r.query),
+                (this.fragment = ''),
                 (c = Og);
             }
             break;
           case cg:
-            if (!s.isSpecial() || ('/' !== o && '\\' !== o)) {
+            if (!this.isSpecial() || ('/' !== o && '\\' !== o)) {
               if ('/' !== o) {
-                (s.username = r.username),
-                  (s.password = r.password),
-                  (s.host = r.host),
-                  (s.port = r.port),
+                (this.username = r.username),
+                  (this.password = r.password),
+                  (this.host = r.host),
+                  (this.port = r.port),
                   (c = wg);
                 continue;
               }
@@ -5663,7 +5391,7 @@
                 var g = i[d];
                 if (':' !== g || v) {
                   var y = Qd(g, Jd);
-                  v ? (s.password += y) : (s.username += y);
+                  v ? (this.password += y) : (this.username += y);
                 } else v = !0;
               }
               l = '';
@@ -5672,7 +5400,7 @@
               '/' === o ||
               '?' === o ||
               '#' === o ||
-              ('\\' === o && s.isSpecial())
+              ('\\' === o && this.isSpecial())
             ) {
               if (h && '' === l) return 'Invalid authority';
               (f -= Wn(l).length + 1), (l = ''), (c = pg);
@@ -5680,7 +5408,7 @@
             break;
           case pg:
           case vg:
-            if (e && 'file' === s.scheme) {
+            if (e && 'file' === this.scheme) {
               c = mg;
               continue;
             }
@@ -5690,18 +5418,18 @@
                 '/' === o ||
                 '?' === o ||
                 '#' === o ||
-                ('\\' === o && s.isSpecial())
+                ('\\' === o && this.isSpecial())
               ) {
-                if (s.isSpecial() && '' === l) return Ld;
-                if (e && '' === l && (s.includesCredentials() || null !== s.port)) return;
-                if ((a = s.parseHost(l))) return a;
+                if (this.isSpecial() && '' === l) return Ld;
+                if (e && '' === l && (this.includesCredentials() || null !== this.port)) return;
+                if ((a = this.parseHost(l))) return a;
                 if (((l = ''), (c = bg), e)) return;
                 continue;
               }
               '[' === o ? (p = !0) : ']' === o && (p = !1), (l += o);
             } else {
               if ('' === l) return Ld;
-              if ((a = s.parseHost(l))) return a;
+              if ((a = this.parseHost(l))) return a;
               if (((l = ''), (c = dg), e === vg)) return;
             }
             break;
@@ -5712,13 +5440,13 @@
                 '/' === o ||
                 '?' === o ||
                 '#' === o ||
-                ('\\' === o && s.isSpecial()) ||
+                ('\\' === o && this.isSpecial()) ||
                 e
               ) {
                 if ('' !== l) {
                   var m = yd(l, 10);
                   if (m > 65535) return Ud;
-                  (s.port = s.isSpecial() && m === Zd[s.scheme] ? null : m), (l = '');
+                  (this.port = this.isSpecial() && m === Zd[this.scheme] ? null : m), (l = '');
                 }
                 if (e) return;
                 c = bg;
@@ -5729,7 +5457,7 @@
             l += o;
             break;
           case gg:
-            if (((s.scheme = 'file'), '/' === o || '\\' === o)) c = yg;
+            if (((this.scheme = 'file'), '/' === o || '\\' === o)) c = yg;
             else {
               if (!r || 'file' !== r.scheme) {
                 c = wg;
@@ -5737,21 +5465,21 @@
               }
               switch (o) {
                 case Wv:
-                  (s.host = r.host), (s.path = vo(r.path)), (s.query = r.query);
+                  (this.host = r.host), (this.path = vo(r.path)), (this.query = r.query);
                   break;
                 case '?':
-                  (s.host = r.host), (s.path = vo(r.path)), (s.query = ''), (c = Eg);
+                  (this.host = r.host), (this.path = vo(r.path)), (this.query = ''), (c = Eg);
                   break;
                 case '#':
-                  (s.host = r.host),
-                    (s.path = vo(r.path)),
-                    (s.query = r.query),
-                    (s.fragment = ''),
+                  (this.host = r.host),
+                    (this.path = vo(r.path)),
+                    (this.query = r.query),
+                    (this.fragment = ''),
                     (c = Og);
                   break;
                 default:
                   eg(Ed(vo(n, f), '')) ||
-                    ((s.host = r.host), (s.path = vo(r.path)), s.shortenPath()),
+                    ((this.host = r.host), (this.path = vo(r.path)), this.shortenPath()),
                     (c = wg);
                   continue;
               }
@@ -5765,18 +5493,18 @@
             r &&
               'file' === r.scheme &&
               !eg(Ed(vo(n, f), '')) &&
-              (tg(r.path[0], !0) ? Rd(s.path, r.path[0]) : (s.host = r.host)),
+              (tg(r.path[0], !0) ? Rd(this.path, r.path[0]) : (this.host = r.host)),
               (c = wg);
             continue;
           case mg:
             if (o === Wv || '/' === o || '\\' === o || '?' === o || '#' === o) {
               if (!e && tg(l)) c = wg;
               else if ('' === l) {
-                if (((s.host = ''), e)) return;
+                if (((this.host = ''), e)) return;
                 c = bg;
               } else {
-                if ((a = s.parseHost(l))) return a;
-                if (('localhost' === s.host && (s.host = ''), e)) return;
+                if ((a = this.parseHost(l))) return a;
+                if (('localhost' === this.host && (this.host = ''), e)) return;
                 (l = ''), (c = bg);
               }
               continue;
@@ -5784,55 +5512,55 @@
             l += o;
             break;
           case bg:
-            if (s.isSpecial()) {
+            if (this.isSpecial()) {
               if (((c = wg), '/' !== o && '\\' !== o)) continue;
             } else if (e || '?' !== o)
               if (e || '#' !== o) {
                 if (o !== Wv && ((c = wg), '/' !== o)) continue;
-              } else (s.fragment = ''), (c = Og);
-            else (s.query = ''), (c = Eg);
+              } else (this.fragment = ''), (c = Og);
+            else (this.query = ''), (c = Eg);
             break;
           case wg:
             if (
               o === Wv ||
               '/' === o ||
-              ('\\' === o && s.isSpecial()) ||
+              ('\\' === o && this.isSpecial()) ||
               (!e && ('?' === o || '#' === o))
             ) {
               if (
                 ('..' === (u = Id((u = l))) || '%2e.' === u || '.%2e' === u || '%2e%2e' === u
-                  ? (s.shortenPath(), '/' === o || ('\\' === o && s.isSpecial()) || Rd(s.path, ''))
+                  ? (this.shortenPath(), '/' === o || ('\\' === o && this.isSpecial()) || Rd(this.path, ''))
                   : rg(l)
-                    ? '/' === o || ('\\' === o && s.isSpecial()) || Rd(s.path, '')
-                    : ('file' === s.scheme &&
-                        !s.path.length &&
+                    ? '/' === o || ('\\' === o && this.isSpecial()) || Rd(this.path, '')
+                    : ('file' === this.scheme &&
+                        !this.path.length &&
                         tg(l) &&
-                        (s.host && (s.host = ''), (l = wd(l, 0) + ':')),
-                      Rd(s.path, l)),
+                        (this.host && (this.host = ''), (l = wd(l, 0) + ':')),
+                      Rd(this.path, l)),
                 (l = ''),
-                'file' === s.scheme && (o === Wv || '?' === o || '#' === o))
+                'file' === this.scheme && (o === Wv || '?' === o || '#' === o))
               )
-                for (; s.path.length > 1 && '' === s.path[0]; ) Ad(s.path);
-              '?' === o ? ((s.query = ''), (c = Eg)) : '#' === o && ((s.fragment = ''), (c = Og));
+                for (; this.path.length > 1 && '' === this.path[0]; ) Ad(this.path);
+              '?' === o ? ((this.query = ''), (c = Eg)) : '#' === o && ((this.fragment = ''), (c = Og));
             } else l += Qd(o, Xd);
             break;
           case Sg:
             '?' === o
-              ? ((s.query = ''), (c = Eg))
+              ? ((this.query = ''), (c = Eg))
               : '#' === o
-                ? ((s.fragment = ''), (c = Og))
-                : o !== Wv && (s.path[0] += Qd(o, Vd));
+                ? ((this.fragment = ''), (c = Og))
+                : o !== Wv && (this.path[0] += Qd(o, Vd));
             break;
           case Eg:
             e || '#' !== o
               ? o !== Wv &&
-                ("'" === o && s.isSpecial()
-                  ? (s.query += '%27')
-                  : (s.query += '#' === o ? '%23' : Qd(o, Vd)))
-              : ((s.fragment = ''), (c = Og));
+                ("'" === o && this.isSpecial()
+                  ? (this.query += '%27')
+                  : (this.query += '#' === o ? '%23' : Qd(o, Vd)))
+              : ((this.fragment = ''), (c = Og));
             break;
           case Og:
-            o !== Wv && (s.fragment += Qd(o, Yd));
+            o !== Wv && (this.fragment += Qd(o, Yd));
         }
         f++;
       }
@@ -5842,7 +5570,7 @@
       if ('[' === wd(t, 0)) {
         if (']' !== wd(t, t.length - 1)) return Ld;
         if (
-          ((e = (function (t) {
+          ((e = ((t) => {
             var e,
               r,
               n,
@@ -5854,9 +5582,7 @@
               c = 0,
               f = null,
               l = 0,
-              h = function () {
-                return wd(t, l);
-              };
+              h = () => wd(t, l);
             if (':' === h()) {
               if (':' !== wd(t, 1)) return;
               (l += 2), (f = ++c);
@@ -5909,7 +5635,7 @@
         this.host = e;
       } else if (this.isSpecial()) {
         if (
-          ((t = (function (t) {
+          ((t = ((t) => {
             var e,
               r,
               n = [],
@@ -5921,7 +5647,7 @@
         )
           return Ld;
         if (
-          ((e = (function (t) {
+          ((e = ((t) => {
             var e,
               r,
               n,
@@ -5979,24 +5705,24 @@
       !e || ('file' === this.scheme && 1 === e && tg(t[0], !0)) || t.length--;
     },
     serialize: function () {
-      var t = this,
-        e = t.scheme,
-        r = t.username,
-        n = t.password,
-        o = t.host,
-        i = t.port,
-        a = t.path,
-        u = t.query,
-        s = t.fragment,
+      var 
+        e = this.scheme,
+        r = this.username,
+        n = this.password,
+        o = this.host,
+        i = this.port,
+        a = this.path,
+        u = this.query,
+        s = this.fragment,
         c = e + ':';
       return (
         null !== o
           ? ((c += '//'),
-            t.includesCredentials() && (c += r + (n ? ':' + n : '') + '@'),
+            this.includesCredentials() && (c += r + (n ? ':' + n : '') + '@'),
             (c += Gd(o)),
             null !== i && (c += ':' + i))
           : 'file' === e && (c += '//'),
-        (c += t.cannotBeABaseURL ? a[0] : a.length ? '/' + Ed(a, '/') : ''),
+        (c += this.cannotBeABaseURL ? a[0] : a.length ? '/' + Ed(a, '/') : ''),
         null !== u && (c += '?' + u),
         null !== s && (c += '#' + s),
         c
@@ -6121,8 +5847,7 @@
         (e.hash = n.getHash()));
     },
     Pg = Rg.prototype,
-    Ag = function (t, e) {
-      return {
+    Ag = (t, e) => ({
         get: function () {
           return hd(this)[t]();
         },
@@ -6133,8 +5858,7 @@
           },
         configurable: !0,
         enumerable: !0,
-      };
-    };
+      });
   if (
     (u &&
       (so(Pg, 'href', Ag('serialize', 'setHref')),
@@ -6175,16 +5899,14 @@
   var Ig = L('URL'),
     Tg =
       Mp &&
-      a(function () {
+      a(() => {
         Ig.canParse();
       }),
-    Mg = a(function () {
-      return 1 !== Ig.canParse.length;
-    });
+    Mg = a(() => 1 !== Ig.canParse.length);
   Ce(
     { target: 'URL', stat: !0, forced: !Tg || Mg },
     {
-      canParse: function (t) {
+      canParse: (t) => {
         var e = Up(arguments.length, 1),
           r = Wr(t),
           n = e < 2 || void 0 === arguments[1] ? void 0 : Wr(arguments[1]);
@@ -6200,7 +5922,7 @@
   Ce(
     { target: 'URL', stat: !0, forced: !Mp },
     {
-      parse: function (t) {
+      parse: (t) => {
         var e = Up(arguments.length, 1),
           r = Wr(t),
           n = e < 2 || void 0 === arguments[1] ? void 0 : Wr(arguments[1]);
@@ -6223,9 +5945,7 @@
   var Ug = WeakMap.prototype,
     Ng = { WeakMap: WeakMap, set: b(Ug.set), get: b(Ug.get), has: b(Ug.has), remove: b(Ug.delete) },
     Cg = Ng.has,
-    _g = function (t) {
-      return Cg(t), t;
-    },
+    _g = (t) => (Cg(t), t),
     Fg = Ng.get,
     Bg = Ng.has,
     Dg = Ng.set;
@@ -6258,19 +5978,15 @@
     Ce({ target: 'WeakMap', proto: !0, real: !0, forced: !0 }, { upsert: Ii }),
     To(
       'WeakSet',
-      function (t) {
-        return function () {
+      (t) => function () {
           return t(this, arguments.length ? arguments[0] : void 0);
-        };
-      },
+        },
       eu
     );
   var Wg = WeakSet.prototype,
     qg = { WeakSet: WeakSet, add: b(Wg.add), has: b(Wg.has), remove: b(Wg.delete) },
     Hg = qg.has,
-    $g = function (t) {
-      return Hg(t), t;
-    },
+    $g = (t) => (Hg(t), t),
     Kg = qg.add;
   Ce(
     { target: 'WeakSet', proto: !0, real: !0, forced: !0 },
@@ -6299,7 +6015,7 @@
     Xg = String(new Vg('zxcasd').stack),
     Jg = /\n\s*at [^:]*:[^\n]*/,
     Qg = Jg.test(Xg),
-    Zg = !a(function () {
+    Zg = !a(() => {
       var t = new Error('a');
       return !('stack' in t) || (Object.defineProperty(t, 'stack', d(1, 7)), 7 !== t.stack);
     }),
@@ -6319,9 +6035,7 @@
           _t(
             r,
             'message',
-            (function (t, e) {
-              return void 0 === t ? (arguments.length < 2 ? '' : e) : Wr(t);
-            })(e)
+            ((t, e) => void 0 === t ? (arguments.length < 2 ? '' : e) : Wr(t))(e)
           ),
         (i = r),
         (a = r.stack),
@@ -6331,7 +6045,7 @@
             : _t(
                 i,
                 'stack',
-                (function (t, e) {
+                ((t, e) => {
                   if (Qg && 'string' == typeof t && !Vg.prepareStackTrace)
                     for (; e--; ) t = Yg(t, Jg, '');
                   return t;
@@ -6353,9 +6067,7 @@
     uy,
     sy,
     cy,
-    fy = function (t) {
-      return _.slice(0, t.length) === t;
-    },
+    fy = (t) => _.slice(0, t.length) === t,
     ly = fy('Bun/')
       ? 'BUN'
       : fy('Cloudflare-Workers')
@@ -6385,48 +6097,46 @@
     Sy = 0,
     Ey = {},
     Oy = 'onreadystatechange';
-  a(function () {
+  a(() => {
     ay = i.location;
   });
-  var xy = function (t) {
+  var xy = (t) => {
       if (ut(Ey, t)) {
         var e = Ey[t];
         delete Ey[t], e();
       }
     },
-    Ry = function (t) {
-      return function () {
+    Ry = (t) => () => {
         xy(t);
-      };
-    },
-    Py = function (t) {
+      },
+    Py = (t) => {
       xy(t.data);
     },
-    Ay = function (t) {
+    Ay = (t) => {
       i.postMessage(wy(t), ay.protocol + '//' + ay.host);
     };
   (vy && dy) ||
-    ((vy = function (t) {
+    ((vy = (t) => {
       Up(arguments.length, 1);
       var e = T(t) ? t : my(t),
         r = vo(arguments, 1);
       return (
-        (Ey[++Sy] = function () {
+        (Ey[++Sy] = () => {
           Ra(e, void 0, r);
         }),
         uy(Sy),
         Sy
       );
     }),
-    (dy = function (t) {
+    (dy = (t) => {
       delete Ey[t];
     }),
     hy
-      ? (uy = function (t) {
+      ? (uy = (t) => {
           gy.nextTick(Ry(t));
         })
       : yy && yy.now
-        ? (uy = function (t) {
+        ? (uy = (t) => {
             yy.now(Ry(t));
           })
         : by && !py
@@ -6440,14 +6150,14 @@
             ? ((uy = Ay), i.addEventListener('message', Py, !1))
             : (uy =
                 Oy in Et('script')
-                  ? function (t) {
+                  ? ((t) => {
                       De.appendChild(Et('script'))[Oy] = function () {
                         De.removeChild(this), xy(t);
                       };
-                    }
-                  : function (t) {
+                    })
+                  : ((t) => {
                       setTimeout(Ry(t), 0);
-                    }));
+                    })));
   var jy = { set: vy, clear: dy },
     ky = function () {
       (this.head = null), (this.tail = null);
@@ -6479,7 +6189,7 @@
     qy = Ip('queueMicrotask');
   if (!qy) {
     var Hy = new Ny(),
-      $y = function () {
+      $y = () => {
         var t, e;
         for (hy && (t = zy.domain) && t.exit(); (e = Hy.get()); )
           try {
@@ -6493,24 +6203,24 @@
       ? !Cy && Wy && Wy.resolve
         ? (((Ly = Wy.resolve(void 0)).constructor = Wy),
           (Uy = ar(Ly.then, Ly)),
-          (Iy = function () {
+          (Iy = () => {
             Uy($y);
           }))
         : hy
-          ? (Iy = function () {
+          ? (Iy = () => {
               zy.nextTick($y);
             })
           : ((Fy = ar(Fy, i)),
-            (Iy = function () {
+            (Iy = () => {
               Fy($y);
             }))
       : ((Ty = !0),
         (My = Dy.createTextNode('')),
         new By($y).observe(My, { characterData: !0 }),
-        (Iy = function () {
+        (Iy = () => {
           My.data = Ty = !Ty;
         })),
-      (qy = function (t) {
+      (qy = (t) => {
         Hy.head || Iy(), Hy.add(t);
       });
   }
@@ -6518,7 +6228,7 @@
     Gy,
     Vy,
     Yy = qy,
-    Xy = function (t) {
+    Xy = (t) => {
       try {
         return { error: !1, value: t() };
       } catch (t) {
@@ -6529,21 +6239,21 @@
     Qy = dt('species'),
     Zy = !1,
     tm = T(i.PromiseRejectionEvent),
-    em = Ue('Promise', function () {
+    em = Ue('Promise', () => {
       var t = Kt(Jy),
         e = t !== String(Jy);
       if (!e && 66 === W) return !0;
       if (!W || W < 51 || !/native code/.test(t)) {
-        var r = new Jy(function (t) {
+        var r = new Jy((t) => {
             t(1);
           }),
-          n = function (t) {
+          n = (t) => {
             t(
-              function () {},
-              function () {}
+              () => {},
+              () => {}
             );
           };
-        if ((((r.constructor = {})[Qy] = n), !(Zy = r.then(function () {}) instanceof n)))
+        if ((((r.constructor = {})[Qy] = n), !(Zy = r.then(() => {}) instanceof n)))
           return !0;
       }
       return !(e || ('BROWSER' !== ly && 'DENO' !== ly) || tm);
@@ -6552,7 +6262,7 @@
     nm = TypeError,
     om = function (t) {
       var e, r;
-      (this.promise = new t(function (t, n) {
+      (this.promise = new t((t, n) => {
         if (void 0 !== e || void 0 !== r) throw new nm('Bad Promise constructor');
         (e = t), (r = n);
       })),
@@ -6560,9 +6270,7 @@
         (this.reject = J(r));
     },
     im = {
-      f: function (t) {
-        return new om(t);
-      },
+      f: (t) => new om(t),
     },
     am = jy.set,
     um = 'Promise',
@@ -6581,11 +6289,11 @@
     wm = bm,
     Sm = !!(ym && ym.createEvent && i.dispatchEvent),
     Em = 'unhandledrejection',
-    Om = function (t) {
+    Om = (t) => {
       var e;
       return !(!M(t) || !T((e = t.then))) && e;
     },
-    xm = function (t, e) {
+    xm = (t, e) => {
       var r,
         n,
         o,
@@ -6605,15 +6313,15 @@
         l && !o && l.exit(), c(t);
       }
     },
-    Rm = function (t, e) {
+    Rm = (t, e) => {
       t.notified ||
         ((t.notified = !0),
-        Yy(function () {
+        Yy(() => {
           for (var r, n = t.reactions; (r = n.get()); ) xm(r, t);
           (t.notified = !1), e && !t.rejection && Am(t);
         }));
     },
-    Pm = function (t, e, r) {
+    Pm = (t, e, r) => {
       var n, o;
       Sm
         ? (((n = ym.createEvent('Event')).promise = e),
@@ -6624,20 +6332,20 @@
         !cm && (o = i['on' + t])
           ? o(n)
           : t === Em &&
-            (function (t, e) {
+            ((t, e) => {
               try {
                 1 === arguments.length ? console.error(t) : console.error(t, e);
               } catch (t) {}
             })('Unhandled promise rejection', r);
     },
-    Am = function (t) {
-      f(am, i, function () {
+    Am = (t) => {
+      f(am, i, () => {
         var e,
           r = t.facade,
           n = t.value;
         if (
           jm(t) &&
-          ((e = Xy(function () {
+          ((e = Xy(() => {
             hy ? mm.emit('unhandledRejection', n, r) : Pm(Em, r, n);
           })),
           (t.rejection = hy || jm(t) ? 2 : 1),
@@ -6646,31 +6354,27 @@
           throw e.value;
       });
     },
-    jm = function (t) {
-      return 1 !== t.rejection && !t.parent;
-    },
-    km = function (t) {
-      f(am, i, function () {
+    jm = (t) => 1 !== t.rejection && !t.parent,
+    km = (t) => {
+      f(am, i, () => {
         var e = t.facade;
         hy ? mm.emit('rejectionHandled', e) : Pm('rejectionhandled', e, t.value);
       });
     },
-    Im = function (t, e, r) {
-      return function (n) {
+    Im = (t, e, r) => (n) => {
         t(e, n, r);
-      };
-    },
-    Tm = function (t, e, r) {
+      },
+    Tm = (t, e, r) => {
       t.done || ((t.done = !0), r && (t = r), (t.value = e), (t.state = 2), Rm(t, !0));
     },
-    Mm = function (t, e, r) {
+    Mm = (t, e, r) => {
       if (!t.done) {
         (t.done = !0), r && (t = r);
         try {
           if (t.facade === e) throw new gm("Promise can't be resolved itself");
           var n = Om(e);
           n
-            ? Yy(function () {
+            ? Yy(() => {
                 var r = { done: !1 };
                 try {
                   f(n, e, Im(Mm, r, t), Im(Tm, r, t));
@@ -6716,7 +6420,7 @@
         (n.domain = hy ? mm.domain : void 0),
         0 === r.state
           ? r.reactions.add(n)
-          : Yy(function () {
+          : Yy(() => {
               xm(n, r);
             }),
         n.promise
@@ -6728,9 +6432,7 @@
       (this.promise = t), (this.resolve = Im(Mm, e)), (this.reject = Im(Tm, e));
     }),
     (im.f = bm =
-      function (t) {
-        return t === vm || void 0 === t ? new Gy(t) : wm(t);
-      }),
+      (t) => t === vm || void 0 === t ? new Gy(t) : wm(t)),
     T(Jy) && pm !== Object.prototype)
   ) {
     (Vy = pm.then),
@@ -6739,9 +6441,8 @@
           pm,
           'then',
           function (t, e) {
-            var r = this;
-            return new vm(function (t, e) {
-              f(Vy, r, t, e);
+            return new vm((t, e) => {
+              f(Vy, this, t, e);
             }).then(t, e);
           },
           { unsafe: !0 }
@@ -6756,27 +6457,27 @@
     Uo(um);
   var Lm =
     rm.CONSTRUCTOR ||
-    !Gn(function (t) {
-      Jy.all(t).then(void 0, function () {});
+    !Gn((t) => {
+      Jy.all(t).then(void 0, () => {});
     });
   Ce(
     { target: 'Promise', stat: !0, forced: Lm },
     {
       all: function (t) {
-        var e = this,
-          r = im.f(e),
+        var 
+          r = im.f(this),
           n = r.resolve,
           o = r.reject,
-          i = Xy(function () {
-            var r = J(e.resolve),
+          i = Xy(() => {
+            var r = J(this.resolve),
               i = [],
               a = 0,
               u = 1;
-            Ao(t, function (t) {
+            Ao(t, (t) => {
               var s = a++,
                 c = !1;
               u++,
-                f(r, e, t).then(function (t) {
+                f(r, this, t).then((t) => {
                   c || ((c = !0), (i[s] = t), --u || n(i));
                 }, o);
             }),
@@ -6805,13 +6506,13 @@
     { target: 'Promise', stat: !0, forced: Lm },
     {
       race: function (t) {
-        var e = this,
-          r = im.f(e),
+        var 
+          r = im.f(this),
           n = r.reject,
-          o = Xy(function () {
-            var o = J(e.resolve);
-            Ao(t, function (t) {
-              f(o, e, t).then(r.resolve, n);
+          o = Xy(() => {
+            var o = J(this.resolve);
+            Ao(t, (t) => {
+              f(o, this, t).then(r.resolve, n);
             });
           });
         return o.error && n(o.value), r.promise;
@@ -6827,7 +6528,7 @@
         },
       }
     );
-  var Cm = function (t, e) {
+  var Cm = (t, e) => {
     if ((kt(t), M(e) && e.constructor === t)) return e;
     var r = im.f(t);
     return (0, r.resolve)(e), r.promise;
@@ -6844,24 +6545,24 @@
       { target: 'Promise', stat: !0, forced: Lm },
       {
         allSettled: function (t) {
-          var e = this,
-            r = im.f(e),
+          var 
+            r = im.f(this),
             n = r.resolve,
             o = r.reject,
-            i = Xy(function () {
-              var r = J(e.resolve),
+            i = Xy(() => {
+              var r = J(this.resolve),
                 o = [],
                 i = 0,
                 a = 1;
-              Ao(t, function (t) {
+              Ao(t, (t) => {
                 var u = i++,
                   s = !1;
                 a++,
-                  f(r, e, t).then(
-                    function (t) {
+                  f(r, this, t).then(
+                    (t) => {
                       s || ((s = !0), (o[u] = { status: 'fulfilled', value: t }), --a || n(o));
                     },
-                    function (t) {
+                    (t) => {
                       s || ((s = !0), (o[u] = { status: 'rejected', reason: t }), --a || n(o));
                     }
                   );
@@ -6877,26 +6578,26 @@
     { target: 'Promise', stat: !0, forced: Lm },
     {
       any: function (t) {
-        var e = this,
+        var 
           r = L('AggregateError'),
-          n = im.f(e),
+          n = im.f(this),
           o = n.resolve,
           i = n.reject,
-          a = Xy(function () {
-            var n = J(e.resolve),
+          a = Xy(() => {
+            var n = J(this.resolve),
               a = [],
               u = 0,
               s = 1,
               c = !1;
-            Ao(t, function (t) {
+            Ao(t, (t) => {
               var l = u++,
                 h = !1;
               s++,
-                f(n, e, t).then(
-                  function (t) {
+                f(n, this, t).then(
+                  (t) => {
                     h || c || ((c = !0), o(t));
                   },
-                  function (t) {
+                  (t) => {
                     h || c || ((h = !0), (a[l] = t), --s || i(new r(a, _m)));
                   }
                 );
@@ -6919,8 +6620,8 @@
   var Fm = Jy && Jy.prototype,
     Bm =
       !!Jy &&
-      a(function () {
-        Fm.finally.call({ then: function () {} }, function () {});
+      a(() => {
+        Fm.finally.call({ then: () => {} }, () => {});
       });
   if (
     (Ce(
@@ -6931,18 +6632,12 @@
             r = T(t);
           return this.then(
             r
-              ? function (r) {
-                  return Cm(e, t()).then(function () {
-                    return r;
-                  });
-                }
+              ? ((r) => Cm(e, t()).then(() => r))
               : t,
             r
-              ? function (r) {
-                  return Cm(e, t()).then(function () {
+              ? ((r) => Cm(e, t()).then(() => {
                     throw r;
-                  });
-                }
+                  }))
               : t
           );
         },
@@ -6958,8 +6653,8 @@
     qm =
       !zm ||
       !zm.try ||
-      Xy(function () {
-        zm.try(function (t) {
+      Xy(() => {
+        zm.try((t) => {
           Wm = 8 === t;
         }, 8);
       }).error ||
@@ -6970,9 +6665,7 @@
       try: function (t) {
         var e = arguments.length > 1 ? vo(arguments, 1) : [],
           r = im.f(this),
-          n = Xy(function () {
-            return Ra(J(t), void 0, e);
-          });
+          n = Xy(() => Ra(J(t), void 0, e));
         return (n.error ? r.reject : r.resolve)(n.value), r.promise;
       },
     }
@@ -6983,7 +6676,7 @@
     Km =
       'FileReader' in self &&
       'Blob' in self &&
-      (function () {
+      (() => {
         try {
           return new Blob(), !0;
         } catch (t) {
@@ -7006,9 +6699,7 @@
       ],
       Xm =
         ArrayBuffer.isView ||
-        function (t) {
-          return t && Ym.indexOf(Object.prototype.toString.call(t)) > -1;
-        };
+        ((t) => t && Ym.indexOf(Object.prototype.toString.call(t)) > -1);
   function Jm(t) {
     if (('string' != typeof t && (t = String(t)), /[^a-z0-9\-#$%&'*+.^_`|~]/i.test(t)))
       throw new TypeError('Invalid character in header field name');
@@ -7019,16 +6710,14 @@
   }
   function Zm(t) {
     var e = {
-      next: function () {
+      next: () => {
         var e = t.shift();
         return { done: void 0 === e, value: e };
       },
     };
     return (
       $m &&
-        (e[Symbol.iterator] = function () {
-          return e;
-        }),
+        (e[Symbol.iterator] = () => e),
       e
     );
   }
@@ -7052,11 +6741,11 @@
     t.bodyUsed = !0;
   }
   function rb(t) {
-    return new Promise(function (e, r) {
-      (t.onload = function () {
+    return new Promise((e, r) => {
+      (t.onload = () => {
         e(t.result);
       }),
-        (t.onerror = function () {
+        (t.onerror = () => {
           r(t.error);
         });
     });
@@ -7123,14 +6812,14 @@
         var t = eb(this);
         if (t) return t;
         if (this._bodyBlob)
-          return (function (t) {
+          return ((t) => {
             var e = new FileReader(),
               r = rb(e);
             return e.readAsText(t), r;
           })(this._bodyBlob);
         if (this._bodyArrayBuffer)
           return Promise.resolve(
-            (function (t) {
+            ((t) => {
               for (var e = new Uint8Array(t), r = new Array(e.length), n = 0; n < e.length; n++)
                 r[n] = String.fromCharCode(e[n]);
               return r.join('');
@@ -7161,18 +6850,18 @@
       return (t = Jm(t)), this.has(t) ? this.map[t] : null;
     }),
     (tb.prototype.has = function (t) {
-      return this.map.hasOwnProperty(Jm(t));
+      return  Object.hasOwn(this.map, Jm(t));
     }),
     (tb.prototype.set = function (t, e) {
       this.map[Jm(t)] = Qm(e);
     }),
     (tb.prototype.forEach = function (t, e) {
-      for (var r in this.map) this.map.hasOwnProperty(r) && t.call(e, this.map[r], r, this);
+      for (var r in this.map) Object.hasOwn(this.map, r) && t.call(e, this.map[r], r, this);
     }),
     (tb.prototype.keys = function () {
       var t = [];
       return (
-        this.forEach(function (e, r) {
+        this.forEach((e, r) => {
           t.push(r);
         }),
         Zm(t)
@@ -7181,7 +6870,7 @@
     (tb.prototype.values = function () {
       var t = [];
       return (
-        this.forEach(function (e) {
+        this.forEach((e) => {
           t.push(e);
         }),
         Zm(t)
@@ -7190,7 +6879,7 @@
     (tb.prototype.entries = function () {
       var t = [];
       return (
-        this.forEach(function (e, r) {
+        this.forEach((e, r) => {
           t.push([r, e]);
         }),
         Zm(t)
@@ -7213,7 +6902,7 @@
     if (
       ((this.credentials = e.credentials || this.credentials || 'same-origin'),
       (!e.headers && this.headers) || (this.headers = new tb(e.headers)),
-      (this.method = (function (t) {
+      (this.method = ((t) => {
         var e = t.toUpperCase();
         return ab.indexOf(e) > -1 ? e : t;
       })(e.method || this.method || 'GET')),
@@ -7231,7 +6920,7 @@
       t
         .trim()
         .split('&')
-        .forEach(function (t) {
+        .forEach((t) => {
           if (t) {
             var r = t.split('='),
               n = r.shift().replace(/\+/g, ' '),
@@ -7265,12 +6954,12 @@
         url: this.url,
       });
     }),
-    (cb.error = function () {
+    (cb.error = () => {
       var t = new cb(null, { status: 0, statusText: '' });
       return (t.type = 'error'), t;
     });
   var fb = [301, 302, 303, 307, 308];
-  cb.redirect = function (t, e) {
+  cb.redirect = (t, e) => {
     if (-1 === fb.indexOf(e)) throw new RangeError('Invalid status code');
     return new cb(null, { status: e, headers: { location: t } });
   };
@@ -7286,14 +6975,14 @@
       (lb.prototype.constructor = lb);
   }
   function hb(t, e) {
-    return new Promise(function (r, n) {
+    return new Promise((r, n) => {
       var o = new ub(t, e);
       if (o.signal && o.signal.aborted) return n(new lb('Aborted', 'AbortError'));
       var i = new XMLHttpRequest();
       function a() {
         i.abort();
       }
-      (i.onload = function () {
+      (i.onload = () => {
         var t,
           e,
           n = {
@@ -7305,7 +6994,7 @@
               t
                 .replace(/\r?\n[\t ]+/g, ' ')
                 .split(/\r?\n/)
-                .forEach(function (t) {
+                .forEach((t) => {
                   var r = t.split(':'),
                     n = r.shift().trim();
                   if (n) {
@@ -7318,13 +7007,13 @@
         (n.url = 'responseURL' in i ? i.responseURL : n.headers.get('X-Request-URL')),
           r(new cb('response' in i ? i.response : i.responseText, n));
       }),
-        (i.onerror = function () {
+        (i.onerror = () => {
           n(new TypeError('Network request failed'));
         }),
-        (i.ontimeout = function () {
+        (i.ontimeout = () => {
           n(new TypeError('Network request failed'));
         }),
-        (i.onabort = function () {
+        (i.onabort = () => {
           n(new lb('Aborted', 'AbortError'));
         }),
         i.open(o.method, o.url, !0),
@@ -7332,12 +7021,12 @@
           ? (i.withCredentials = !0)
           : 'omit' === o.credentials && (i.withCredentials = !1),
         'responseType' in i && Km && (i.responseType = 'blob'),
-        o.headers.forEach(function (t, e) {
+        o.headers.forEach((t, e) => {
           i.setRequestHeader(e, t);
         }),
         o.signal &&
           (o.signal.addEventListener('abort', a),
-          (i.onreadystatechange = function () {
+          (i.onreadystatechange = () => {
             4 === i.readyState && o.signal.removeEventListener('abort', a);
           })),
         i.send(void 0 === o._bodyInit ? null : o._bodyInit);
@@ -7349,7 +7038,7 @@
   var pb = Object.getOwnPropertySymbols,
     vb = Object.prototype.hasOwnProperty,
     db = Object.prototype.propertyIsEnumerable,
-    gb = (function () {
+    gb = (() => {
       try {
         if (!Object.assign) return !1;
         var t = new String('abc');
@@ -7358,15 +7047,13 @@
         if (
           '0123456789' !==
           Object.getOwnPropertyNames(e)
-            .map(function (t) {
-              return e[t];
-            })
+            .map((t) => e[t])
             .join('')
         )
           return !1;
         var n = {};
         return (
-          'abcdefghijklmnopqrst'.split('').forEach(function (t) {
+          'abcdefghijklmnopqrst'.split('').forEach((t) => {
             n[t] = t;
           }),
           'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, n)).join('')
@@ -7376,11 +7063,11 @@
       }
     })()
       ? Object.assign
-      : function (t, e) {
+      : ((t, e) => {
           for (
             var r,
               n,
-              o = (function (t) {
+              o = ((t) => {
                 if (null == t)
                   throw new TypeError('Object.assign cannot be called with null or undefined');
                 return Object(t);
@@ -7396,6 +7083,6 @@
             }
           }
           return o;
-        };
+        });
   Object.assign = gb;
 })();

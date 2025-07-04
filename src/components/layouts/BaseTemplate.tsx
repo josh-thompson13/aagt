@@ -46,9 +46,7 @@ export const BaseTemplate = (props: {
                   alt="AAGT Private Loans Logo"
                   width={180}
                   height={60}
-                  className={`w-auto ${
-                    isScrolled ? 'h-8 sm:h-10' : 'h-10 sm:h-12'
-                  }`}
+                  className="w-auto h-10 sm:h-12"
                   priority
                 />
               </Link>

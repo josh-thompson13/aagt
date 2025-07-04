@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, CheckCircle, Clock, DollarSign, FileCheck, Shield, TrendingUp } from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock, FileCheck, Shield, TrendingUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export const PrestigeHero = () => {
@@ -21,20 +21,7 @@ export const PrestigeHero = () => {
     { icon: TrendingUp, text: '4-Day Settlement' },
   ];
 
-  const loanTypes = [
-    { 
-      icon: DollarSign, 
-      title: 'Business Loans',
-      description: 'Expand operations, purchase equipment, or manage cash flow',
-      link: '/business-loans'
-    },
-    { 
-      icon: TrendingUp, 
-      title: 'Investment Loans',
-      description: 'Property investments, portfolio growth, and opportunities',
-      link: '/investment-loans'
-    },
-  ];
+  // Removed unused loanTypes variable
 
   return (
     <section className="relative bg-white">

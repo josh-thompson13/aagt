@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { CheckCircle2, AlertCircle, User, DollarSign, Shield, Upload } from 'lucide-react';
 import { DocumentUpload } from '@/components/molecules/DocumentUpload';
 import type { UploadedFile } from '@/types/application';
+import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ApplicationForm() {
   const [formData, setFormData] = useState({
@@ -25,6 +25,14 @@ export default function ApplicationForm() {
     businessAddress: '',
     industry: '',
     yearsInBusiness: '',
+    // Additional Required Fields
+    borrowingEntity: '',
+    directorsNames: '',
+    fundsRequiredDate: '',
+    securityOffered: '',
+    debtOwing: '',
+    bankruptcyHistory: '',
+    exitStrategy: '',
     // Additional Information
     declinedByBanks: false,
     workingWithBroker: false,
@@ -51,15 +59,47 @@ export default function ApplicationForm() {
         [name]: checked,
       }));
     } else {
+      let newValue = value;
+      
+      // Format loan amount as currency
+      if (name === 'loanAmount') {
+        // Remove non-numeric characters
+        newValue = value.replace(/[^0-9]/g, '');
+        // Limit to reasonable amount
+        if (parseInt(newValue) > 50000000) {
+          newValue = '50000000';
+        }
+      }
+      
+      // Format phone number
+      if (name === 'phone' && value.length <= 12) {
+        newValue = value.replace(/[^0-9]/g, '');
+        if (newValue.length >= 4 && newValue.length <= 6) {
+          newValue = newValue.slice(0, 4) + ' ' + newValue.slice(4);
+        } else if (newValue.length >= 7) {
+          newValue = newValue.slice(0, 4) + ' ' + newValue.slice(4, 7) + ' ' + newValue.slice(7, 10);
+        }
+      }
+      
       setFormData((prev) => ({
         ...prev,
-        [name]: value,
+        [name]: newValue,
       }));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate minimum loan amount
+    const loanAmountNum = parseInt(formData.loanAmount.replace(/[^0-9]/g, ''));
+    if (loanAmountNum < 150000) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Minimum loan amount is $150,000.',
+      });
+      return;
+    }
 
     if (!formData.agreeToTerms) {
       setSubmitStatus({
@@ -107,6 +147,13 @@ export default function ApplicationForm() {
           businessAddress: '',
           industry: '',
           yearsInBusiness: '',
+          borrowingEntity: '',
+          directorsNames: '',
+          fundsRequiredDate: '',
+          securityOffered: '',
+          debtOwing: '',
+          bankruptcyHistory: '',
+          exitStrategy: '',
           declinedByBanks: false,
           workingWithBroker: false,
           agreeToTerms: false,
@@ -130,7 +177,7 @@ export default function ApplicationForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
       {/* Status Message */}
       {submitStatus.type && (
         <div
@@ -150,32 +197,64 @@ export default function ApplicationForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-12">
-        {/* 1. Loan Details */}
-        <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center border-b border-gray-300 pb-3">
-            <DollarSign className="h-6 w-6 text-primary-700 mr-3" />
-            1. Loan Details
+        {/* Contact Information */}
+        <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+            Quick Contact
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Loan Amount Required *
+                Email *
               </label>
-              <select
-                name="loanAmount"
-                value={formData.loanAmount}
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              >
-                <option value="">Select amount</option>
-                <option value="150000-250000">$150,000 - $250,000</option>
-                <option value="250000-500000">$250,000 - $500,000</option>
-                <option value="500000-1000000">$500,000 - $1,000,000</option>
-                <option value="1000000-2500000">$1,000,000 - $2,500,000</option>
-                <option value="2500000-5000000">$2,500,000 - $5,000,000</option>
-                <option value="5000000+">$5,000,000+</option>
-              </select>
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div className="flex items-end pb-3">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  name="receiveUpdates"
+                  checked={formData.receiveUpdates}
+                  onChange={handleChange}
+                  className="h-5 w-5 text-teal-600 focus:ring-teal-500 border-gray-300 rounded transition-colors duration-200 cursor-pointer"
+                />
+                <span className="ml-2 text-sm text-gray-700">
+                  Sign up for news and updates
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. Loan Details */}
+        <div className="bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-primary-700 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+            Loan Details
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Required Loan Amount * (Minimum $150,000)
+              </label>
+              <input
+                type="text"
+                name="loanAmount"
+                value={formData.loanAmount ? `$${parseInt(formData.loanAmount.replace(/[^0-9]/g, '') || '0').toLocaleString()}` : ''}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="Enter amount (minimum $150,000)"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Loan Term *</label>
@@ -184,7 +263,7 @@ export default function ApplicationForm() {
                 value={formData.preferredTerm}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
               >
                 <option value="">Select term</option>
                 <option value="1-3">1-3 months</option>
@@ -194,54 +273,61 @@ export default function ApplicationForm() {
                 <option value="18-24">18-24 months</option>
               </select>
             </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                When are Funds Required? *
+              </label>
+              <input
+                type="text"
+                name="fundsRequiredDate"
+                value={formData.fundsRequiredDate}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. on 12th of March"
+              />
+            </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Purpose of Loan *
+                What is Loan Purpose? *
               </label>
               <textarea
                 name="loanPurpose"
                 value={formData.loanPurpose}
                 onChange={handleChange}
                 required
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                placeholder="Please describe the purpose of your loan and how it will be used..."
+                rows={3}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. Purchase a property, Refinance, Site Amalgamation, Investment"
               />
             </div>
           </div>
         </div>
 
-        {/* 2. Security Details */}
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center border-b border-blue-300 pb-3">
-            <Shield className="h-6 w-6 text-primary-700 mr-3" />
-            2. Security Details
+        {/* 3. Security Details */}
+        <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+            Security Details
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Property Type *
+                What type of Security is offered? *
               </label>
-              <select
-                name="propertyType"
-                value={formData.propertyType}
+              <textarea
+                name="securityOffered"
+                value={formData.securityOffered}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              >
-                <option value="">Select property type</option>
-                <option value="residential">Residential Property</option>
-                <option value="commercial">Commercial Property</option>
-                <option value="industrial">Industrial Property</option>
-                <option value="development">Development Site</option>
-                <option value="mixed-use">Mixed Use</option>
-                <option value="other">Other Asset Type</option>
-                <option value="none">No Security Property</option>
-              </select>
+                rows={2}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. Office Building, House, Vacant land"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Estimated Value *
+                What is Estimated Value? *
               </label>
               <input
                 type="text"
@@ -249,31 +335,46 @@ export default function ApplicationForm() {
                 value={formData.propertyValue}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                placeholder="$XXX,XXX"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. RE appraisal of $1.2 million"
+                title="Include any recent valuations or appraisals if available"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Any debt owing? To who? *
+              </label>
+              <input
+                type="text"
+                name="debtOwing"
+                value={formData.debtOwing}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. Nil Owing, $200,000 to ANZ"
               />
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Property Address
+                Property Address (if applicable)
               </label>
               <input
                 type="text"
                 name="propertyAddress"
                 value={formData.propertyAddress}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                 placeholder="Property address, city, state, postcode"
               />
             </div>
           </div>
         </div>
 
-        {/* 3. Applicant Information */}
-        <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center border-b border-green-300 pb-3">
-            <User className="h-6 w-6 text-primary-700 mr-3" />
-            3. Applicant Information
+        {/* 4. Business & Personal Information */}
+        <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
+            Business & Personal Information
           </h3>
           <div className="space-y-6">
             {/* Personal Details */}
@@ -290,7 +391,7 @@ export default function ApplicationForm() {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                     placeholder="Enter your first name"
                   />
                 </div>
@@ -304,22 +405,8 @@ export default function ApplicationForm() {
                     value={formData.lastName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                     placeholder="Enter your last name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="your@email.com"
                   />
                 </div>
                 <div>
@@ -332,7 +419,7 @@ export default function ApplicationForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                     placeholder="04XX XXX XXX"
                   />
                 </div>
@@ -343,17 +430,45 @@ export default function ApplicationForm() {
             <div>
               <h4 className="text-lg font-medium text-gray-900 mb-4">Business Details</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Name of Borrowing Entity *
+                  </label>
+                  <input
+                    type="text"
+                    name="borrowingEntity"
+                    value={formData.borrowingEntity}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                    placeholder="e.g. Ajax p/l as Trustee for the AJAX Trust"
+                title="Enter the full legal name of the borrowing entity"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Names of Directors *
+                  </label>
+                  <input
+                    type="text"
+                    name="directorsNames"
+                    value={formData.directorsNames}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                    placeholder="List all directors' names"
+                  />
+                </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Name *
+                    Business Name
                   </label>
                   <input
                     type="text"
                     name="businessName"
                     value={formData.businessName}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                     placeholder="Your business name"
                   />
                 </div>
@@ -364,7 +479,7 @@ export default function ApplicationForm() {
                     name="abn"
                     value={formData.abn}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                     placeholder="XX XXX XXX XXX"
                   />
                 </div>
@@ -378,7 +493,7 @@ export default function ApplicationForm() {
                     value={formData.businessAddress}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                     placeholder="Street address, city, state, postcode"
                   />
                 </div>
@@ -391,7 +506,7 @@ export default function ApplicationForm() {
                     value={formData.industry}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                   >
                     <option value="">Select industry</option>
                     <option value="construction">Construction</option>
@@ -414,7 +529,7 @@ export default function ApplicationForm() {
                     value={formData.yearsInBusiness}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                   >
                     <option value="">Select years</option>
                     <option value="0-1">0-1 years</option>
@@ -429,11 +544,11 @@ export default function ApplicationForm() {
           </div>
         </div>
 
-        {/* 4. Supporting Documents */}
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center border-b border-purple-300 pb-3">
-            <Upload className="h-6 w-6 text-primary-700 mr-3" />
-            4. Supporting Documents
+        {/* 5. Supporting Documents */}
+        <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
+            Supporting Documents
           </h3>
           <div className="space-y-6">
             <DocumentUpload
@@ -446,7 +561,7 @@ export default function ApplicationForm() {
               onFilesChange={setDocuments}
               required
             />
-            <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-gray-200 shadow-sm">
               <h4 className="font-medium text-gray-900 mb-2">Suggested Documents:</h4>
               <ul className="text-sm text-gray-600 space-y-1">
                 <li>• Bank statements (last 3 months)</li>
@@ -460,12 +575,43 @@ export default function ApplicationForm() {
           </div>
         </div>
 
-        {/* Additional Information */}
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 border-b border-orange-300 pb-3">
+        {/* 6. Additional Information */}
+        <div className="bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <span className="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">6</span>
             Additional Information
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Are you/ have you ever been Bankrupt? (Does not Disqualify) *
+              </label>
+              <input
+                type="text"
+                name="bankruptcyHistory"
+                value={formData.bankruptcyHistory}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. Yes, but was discharged in 2017 / No, never"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                What is your Exit Strategy? How do you propose to repay the loan? *
+              </label>
+              <textarea
+                name="exitStrategy"
+                value={formData.exitStrategy}
+                onChange={handleChange}
+                required
+                rows={3}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                placeholder="e.g. Sell shares, Refinance, Incoming cash, Inheritance"
+              />
+            </div>
+          </div>
+          <div className="mt-6 space-y-4">
             <div>
               <label className="flex items-start">
                 <input
@@ -517,39 +663,30 @@ export default function ApplicationForm() {
                 </span>
               </label>
             </div>
-            <div>
-              <label className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="receiveUpdates"
-                  checked={formData.receiveUpdates}
-                  onChange={handleChange}
-                  className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-                />
-                <span className="ml-2 text-sm text-gray-700">
-                  I would like to receive updates about loan products and industry insights
-                </span>
-              </label>
-            </div>
           </div>
         </div>
 
         {/* Submit Button */}
-        <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-xl p-8 text-center">
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-xl p-8 text-center">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full md:w-auto inline-flex items-center justify-center px-12 py-4 text-lg font-bold rounded-lg text-white bg-gradient-to-r from-primary-700 to-primary-600 hover:from-primary-600 hover:to-primary-500 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full md:w-auto inline-flex items-center justify-center px-12 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
           >
             {isSubmitting ? (
               <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                Submitting Application...
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                Processing your application...
               </>
             ) : (
               <>
                 Submit Application
-                <CheckCircle2 className="ml-2 h-5 w-5" />
+                <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </>
             )}
           </button>

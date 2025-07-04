@@ -1,5 +1,5 @@
-import { ArrowRight, Award, Heart, Mail, Phone, Users, DollarSign, Clock } from 'lucide-react';
 import { AppConfig } from '@/utils/AppConfig';
+import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -138,10 +138,9 @@ export default function About() {
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Our Vision</h2>
                 </div>
                 <p className="text-base text-slate-200 leading-relaxed">
-                  To become Australia's most trusted private lending partner, known for our
-                  integrity, speed, and commitment to putting our clients' business success first.
-                  We envision a future where every funding need is met with professional service and
-                  competitive terms.
+                  To revolutionize private lending by eliminating the friction between ambition and capital.
+                  We're building a future where smart businesses get funded on merit, not bureaucracy -
+                  where a great opportunity today doesn't have to wait weeks for committee approval.
                 </p>
               </div>
             </div>
@@ -201,7 +200,7 @@ export default function About() {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className={`p-8 border border-gray-200 transition-all duration-300 group rounded-xl ${feature.bgColor} ${feature.hoverBg} hover:shadow-lg hover:scale-105 text-center bg-white shadow-sm`}
+                  className={`p-8 transition-all duration-300 group rounded-xl ${feature.bgColor} ${feature.hoverBg} hover:shadow-lg hover:scale-105 text-center bg-white shadow-sm`}
                 >
                   {/* Icon */}
                   <div className="mb-6">
@@ -263,7 +262,7 @@ export default function About() {
                 ].map((faq, index) => (
                   <div
                     key={index}
-                    className="border-b border-slate-600 pb-8 mb-8 last:border-b-0 last:mb-0"
+                    className="pb-8 mb-8"
                   >
                     <h3 className="font-medium text-white mb-4 text-lg">{faq.question}</h3>
                     <p className="text-slate-200 leading-relaxed">{faq.answer}</p>

@@ -9,53 +9,35 @@ export const WhyAAGT = () => {
       icon: Banknote,
       title: 'Direct Lender',
       description: 'We fund with our own capital',
-      color: 'primary',
+      bgColor: 'bg-gradient-to-br from-green-50 to-green-100',
+      iconBg: 'bg-green-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-green-100 hover:to-green-200',
     },
     {
       icon: Clock,
       title: '4-Day Settlement',
       description: 'From approval to funds',
-      color: 'teal',
+      bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
+      iconBg: 'bg-blue-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
     },
     {
       icon: FileText,
       title: 'Simple Process',
       description: 'No committees or complex requirements',
-      color: 'green',
+      bgColor: 'bg-gradient-to-br from-amber-50 to-amber-100',
+      iconBg: 'bg-amber-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-amber-100 hover:to-amber-200',
     },
     {
       icon: Settings,
       title: 'Flexible Terms',
       description: 'Tailored to your needs',
-      color: 'gold',
+      bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
+      iconBg: 'bg-purple-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
     },
   ];
-
-  const getColorClasses = (color: string) => {
-    const colorMap = {
-      primary: {
-        bg: 'bg-primary-50',
-        icon: 'bg-primary-100 text-primary-600',
-        border: 'border-primary-200',
-      },
-      teal: {
-        bg: 'bg-teal-50',
-        icon: 'bg-teal-100 text-teal-600',
-        border: 'border-teal-200',
-      },
-      green: {
-        bg: 'bg-green-50',
-        icon: 'bg-green-100 text-green-600',
-        border: 'border-green-200',
-      },
-      gold: {
-        bg: 'bg-gold-50',
-        icon: 'bg-gold-100 text-gold-600',
-        border: 'border-gold-200',
-      },
-    };
-    return colorMap[color as keyof typeof colorMap] || colorMap.teal;
-  };
 
   return (
     <section className="py-24 bg-white">
@@ -74,26 +56,29 @@ export const WhyAAGT = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => {
-            const colors = getColorClasses(feature.color);
-            return (
-              <motion.div
-                key={index}
-                className={`text-center p-8 ${colors.bg} rounded-3xl ${colors.border} border-2 hover:shadow-xl transition-all duration-300`}
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className={`inline-flex p-4 ${colors.icon} rounded-2xl mb-6`}>
-                  <feature.icon className="h-8 w-8" />
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className={`p-8 transition-all duration-300 group rounded-xl ${feature.bgColor} ${feature.hoverBg} hover:shadow-lg hover:scale-105 text-center bg-white shadow-sm`}
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+            >
+              {/* Icon */}
+              <div className="mb-6">
+                <div
+                  className={`inline-flex p-4 ${feature.iconBg} rounded-full shadow-md group-hover:shadow-lg transition-all duration-300`}
+                >
+                  <feature.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </motion.div>
-            );
-          })}
+              </div>
+              {/* Content */}
+              <h3 className="font-medium mb-3 text-lg">{feature.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
