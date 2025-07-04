@@ -1,13 +1,8 @@
 import { StructuredData } from '@/components/common/StructuredData';
-import { breadcrumbSchema } from '@/utils/structuredData';
-import { PrestigeHero } from '@/components/prestige/PrestigeHero';
-import { TrustIndicators } from '@/components/ui/TrustIndicators';
-import { LoanFeatures } from '@/components/ui/LoanFeatures';
-import { FeaturesGrid } from '@/components/ui/FeaturesGrid';
-import { MarketingSection } from '@/components/marketing/MarketingSection';
 import { LuxuryServices } from '@/components/prestige/LuxuryServices';
-import { ContactSection } from '@/components/prestige/ContactSection';
+import { PrestigeHero } from '@/components/prestige/PrestigeHero';
 import { WhyAAGT } from '@/components/ui/WhyAAGT';
+import { breadcrumbSchema } from '@/utils/structuredData';
 
 export async function generateMetadata() {
   return {
@@ -113,15 +108,9 @@ export default function Index() {
       <StructuredData data={breadcrumbSchema(breadcrumbs)} />
       <StructuredData data={organizationSchema} />
       <PrestigeHero />
-      <TrustIndicators />
-      <WhyAAGT />
-      <LoanFeatures />
-      <FeaturesGrid />
-      <MarketingSection />
       <LuxuryServices />
-      <section className="py-24 bg-primary-900">
-        <ContactSection />
-      </section>
+      <WhyAAGT />
+    
     </>
   );
 }

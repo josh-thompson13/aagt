@@ -1,6 +1,6 @@
 'use client';
 
-import { Building2, DollarSign, FileText, Home, Percent, TrendingUp } from 'lucide-react';
+import { DollarSign, TrendingUp } from 'lucide-react';
 
 const services = [
   {
@@ -11,6 +11,7 @@ const services = [
     bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
     iconBg: 'bg-blue-500',
     hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
+    link: '/business-loans',
   },
   {
     icon: TrendingUp,
@@ -20,63 +21,28 @@ const services = [
     bgColor: 'bg-gradient-to-br from-emerald-50 to-emerald-100',
     iconBg: 'bg-emerald-500',
     hoverBg: 'hover:bg-gradient-to-br hover:from-emerald-100 hover:to-emerald-200',
-  },
-  {
-    icon: Building2,
-    title: 'Off-the-Plan Finance',
-    description:
-      'Special financing solutions for off-the-plan property purchases. Competitive rates and flexible terms for your investment.',
-    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
-    iconBg: 'bg-purple-500',
-    hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
-  },
-  {
-    icon: Home,
-    title: 'Second Mortgages',
-    description:
-      'Access equity in your property with second mortgages up to 70% LVR. No complex credit committees, just straightforward decisions.',
-    bgColor: 'bg-gradient-to-br from-amber-50 to-amber-100',
-    iconBg: 'bg-amber-500',
-    hoverBg: 'hover:bg-gradient-to-br hover:from-amber-100 hover:to-amber-200',
-  },
-  {
-    icon: FileText,
-    title: 'Short-Term Funding',
-    description:
-      'Bridge the gap with short-term funding solutions. Perfect for time-sensitive opportunities or temporary cash flow needs.',
-    bgColor: 'bg-gradient-to-br from-red-50 to-red-100',
-    iconBg: 'bg-red-500',
-    hoverBg: 'hover:bg-gradient-to-br hover:from-red-100 hover:to-red-200',
-  },
-  {
-    icon: Percent,
-    title: 'Competitive Rates',
-    description:
-      'Better rates than major banks with our fee-free approval process. Compare our rates with NAB, CBA, Westpac, and ANZ.',
-    bgColor: 'bg-gradient-to-br from-indigo-50 to-indigo-100',
-    iconBg: 'bg-indigo-500',
-    hoverBg: 'hover:bg-gradient-to-br hover:from-indigo-100 hover:to-indigo-200',
+    link: '/investment-loans',
   },
 ];
 
 export const LuxuryServices = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-primary-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-slate-900">
+          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
             Our Funding Solutions
           </h2>
           <div className="flex justify-center">
-            <p className="text-slate-600 font-light max-w-2xl text-center">
+            <p className="text-primary-100 font-light max-w-2xl text-center">
               Direct lending solutions designed for business owners and investors who need quick,
               flexible funding
             </p>
           </div>
         </div>
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -94,8 +60,19 @@ export const LuxuryServices = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-semibold mb-3 text-slate-900 text-lg">{service.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{service.description}</p>
+                <h3 className="font-semibold mb-3 text-slate-900 text-xl">{service.title}</h3>
+                <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
+                
+                {/* Button */}
+                <a
+                  href={service.link}
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 hover:border-slate-400 focus:ring-2 focus:ring-slate-200 transition-all duration-200"
+                >
+                  Learn More
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             );
           })}
@@ -103,7 +80,7 @@ export const LuxuryServices = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <p className="text-slate-600 mb-6">
+          <p className="text-primary-100 mb-6">
             Need funding fast? Start your application now for same day approval
           </p>
           <a

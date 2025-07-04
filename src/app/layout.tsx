@@ -58,6 +58,12 @@ const desktopNavItems = (
     >
       About Us
     </LocaleLink>
+    <LocaleLink
+      href="/contact"
+      className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors"
+    >
+      Contact Us
+    </LocaleLink>
   </>
 );
 
@@ -72,9 +78,15 @@ const mobileNavItems = (
     </LocaleLink>
     <LocaleLink
       href="/about"
-      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors"
+      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
     >
       About Us
+    </LocaleLink>
+    <LocaleLink
+      href="/contact"
+      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors"
+    >
+      Contact Us
     </LocaleLink>
   </>
 );

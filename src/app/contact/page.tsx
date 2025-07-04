@@ -1,4 +1,3 @@
-import { ContactSection } from '@/components/prestige/ContactSection';
 import { Clock, Mail, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -60,54 +59,49 @@ export default function Contact() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-              Contact Our Lending Specialists
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Contact Us
             </h1>
             <div className="flex justify-center">
-              <p className="text-base md:text-lg text-slate-600 max-w-2xl mb-10 font-normal leading-relaxed text-center">
-                Ready to secure your business funding? Get in touch with our expert lending team for
-                same day approval.
+              <p className="text-lg md:text-xl text-slate-600 max-w-2xl mb-10 font-normal leading-relaxed text-center">
+                Get in touch with our expert lending team for same day approval on business loans from $150,000 to $5,000,000.
               </p>
             </div>
 
             {/* Contact Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-6">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200">
-                <Phone className="w-8 h-8 text-primary-500 mx-auto mb-4" />
-                <h3 className="font-semibold text-slate-900 mb-2">Phone</h3>
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
+                <Phone className="w-10 h-10 text-primary-600 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">Phone</h3>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="text-slate-600 hover:text-primary-500 transition-colors"
+                  className="text-lg text-primary-600 hover:text-primary-700 font-medium transition-colors"
                 >
                   {contactInfo.phone}
                 </a>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200">
-                <Mail className="w-8 h-8 text-primary-500 mx-auto mb-4" />
-                <h3 className="font-semibold text-slate-900 mb-2">Email</h3>
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
+                <Mail className="w-10 h-10 text-primary-600 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">Email</h3>
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="text-slate-600 hover:text-primary-500 transition-colors"
+                  className="text-lg text-primary-600 hover:text-primary-700 font-medium transition-colors break-all"
                 >
                   {contactInfo.email}
                 </a>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200">
-                <Clock className="w-8 h-8 text-primary-500 mx-auto mb-4" />
-                <h3 className="font-semibold text-slate-900 mb-2">Business Hours</h3>
-                <p className="text-slate-600">{contactInfo.hours}</p>
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
+                <Clock className="w-10 h-10 text-primary-600 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">Business Hours</h3>
+                <p className="text-lg text-slate-700 font-medium">{contactInfo.hours}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-24 bg-primary-900">
-        <ContactSection />
-      </section>
 
       {/* Structured Data */}
       <script
