@@ -13,8 +13,10 @@ export const metadata: Metadata = {
     default: 'AAGT Private Loans | Fast Business Funding Australia',
     template: '%s | AAGT Private Loans',
   },
-  description: "AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.",
-  keywords: 'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
+  description:
+    'AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.',
+  keywords:
+    'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
   openGraph: {
     type: 'website',
     siteName: 'AAGT Private Loans',
@@ -29,7 +31,8 @@ export const metadata: Metadata = {
   },
 };
 
-const navItems = (
+// Desktop navigation with all links
+const desktopNavItems = (
   <>
     <LocaleLink
       href="/"
@@ -58,11 +61,27 @@ const navItems = (
   </>
 );
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// Simplified mobile navigation with only essential links
+const mobileNavItems = (
+  <>
+    <LocaleLink
+      href="/business-loans"
+      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
+    >
+      Business Loans
+    </LocaleLink>
+    <LocaleLink
+      href="/about"
+      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors"
+    >
+      About Us
+    </LocaleLink>
+  </>
+);
+
+const navItems = desktopNavItems;
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.className}>
       <head>
@@ -70,7 +89,7 @@ export default function RootLayout({
       </head>
       <body>
         <PostHogProvider>
-          <BaseTemplate navItems={navItems}>
+          <BaseTemplate navItems={navItems} mobileNavItems={mobileNavItems}>
             {children}
           </BaseTemplate>
         </PostHogProvider>

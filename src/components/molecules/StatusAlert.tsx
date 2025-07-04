@@ -123,9 +123,7 @@ export const StatusAlert = ({
         >
           {/* Auto-hide progress bar */}
           {autoHide && (
-            <motion.div
-              className="absolute top-0 left-0 right-0 h-1 bg-black/10 rounded-t-xl overflow-hidden"
-            >
+            <motion.div className="absolute top-0 left-0 right-0 h-1 bg-black/10 rounded-t-xl overflow-hidden">
               <motion.div
                 variants={progressVariants as any}
                 initial="initial"
@@ -139,24 +137,14 @@ export const StatusAlert = ({
           <div className="flex items-start space-x-3">
             {/* Icon */}
             <div className="flex-shrink-0 pt-0.5">
-              <AnimatedIcon 
-                type={iconType} 
-                size="md" 
-                animate={type === 'info'}
-              />
+              <AnimatedIcon type={iconType} size="md" animate={type === 'info'} />
             </div>
 
             {/* Content */}
             <div className="flex-1 min-w-0">
-              <h3 className="text-sm font-semibold mb-1">
-                {title}
-              </h3>
-              
-              {message && (
-                <p className="text-sm opacity-90 mb-3">
-                  {message}
-                </p>
-              )}
+              <h3 className="text-sm font-semibold mb-1">{title}</h3>
+
+              {message && <p className="text-sm opacity-90 mb-3">{message}</p>}
 
               {/* Actions */}
               {actions.length > 0 && (

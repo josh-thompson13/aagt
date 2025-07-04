@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { type ReactNode, useEffect, useState } from 'react';
 
@@ -11,7 +11,7 @@ interface PageTransitionProps {
 
 export const PageTransition = ({ children, className = '' }: PageTransitionProps) => {
   const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(false);
+  const [_isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,7 +22,7 @@ export const PageTransition = ({ children, className = '' }: PageTransitionProps
     return () => clearTimeout(timer);
   }, [pathname]);
 
-  const pageVariants = {
+  const pageVariants: Variants = {
     initial: {
       opacity: 0,
       y: 20,
@@ -41,8 +41,8 @@ export const PageTransition = ({ children, className = '' }: PageTransitionProps
   };
 
   const pageTransition = {
-    type: 'tween',
-    ease: [0.22, 1, 0.36, 1],
+    type: 'tween' as const,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     duration: 0.6,
   };
 
@@ -106,7 +106,7 @@ export const StaggerContainer = ({
   delayChildren?: number;
   className?: string;
 }) => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -137,7 +137,7 @@ export const StaggerItem = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
@@ -44,7 +44,7 @@ function sanitizeFilename(filename: string): string {
     .replace(/[^a-zA-Z0-9.-]/g, '_')
     .replace(/_{2,}/g, '_')
     .substring(0, 100); // Limit length
-    
+
   return DOMPurify.sanitize(sanitized);
 }
 
@@ -64,31 +64,25 @@ function generateUniqueFilename(originalName: string): string {
   const nameWithoutExt = originalName.replace(/\.[^/.]+$/, '');
   const sanitizedName = sanitizeFilename(nameWithoutExt);
   const uuid = uuidv4();
-  
+
   return `${sanitizedName}_${uuid}.${extension}`;
 }
 
 // Virus scan simulation (in production, integrate with actual antivirus)
 async function scanForViruses(buffer: Buffer): Promise<{ clean: boolean; threat?: string }> {
   // Simulate virus scanning delay
-  await new Promise(resolve => setTimeout(resolve, 100));
-  
+  await new Promise((resolve) => setTimeout(resolve, 100));
+
   // Check for suspicious patterns (basic example)
   const content = buffer.toString('binary');
-  const suspiciousPatterns = [
-    'eval(',
-    'javascript:',
-    '<script',
-    'exec(',
-    'system(',
-  ];
-  
+  const suspiciousPatterns = ['eval(', 'javascript:', '<script', 'exec(', 'system('];
+
   for (const pattern of suspiciousPatterns) {
     if (content.includes(pattern)) {
       return { clean: false, threat: 'Suspicious content detected' };
     }
   }
-  
+
   return { clean: true };
 }
 
@@ -103,7 +97,7 @@ async function logUpload(fileInfo: UploadedFileInfo, userInfo?: any) {
     category: fileInfo.category,
     userInfo: userInfo || 'anonymous',
   };
-  
+
   // In production, log to your preferred logging service
   console.log('File upload:', logEntry);
 }
@@ -111,33 +105,24 @@ async function logUpload(fileInfo: UploadedFileInfo, userInfo?: any) {
 export async function POST(request: NextRequest) {
   try {
     await ensureUploadDir();
-    
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const category = formData.get('category') as string;
-    
+
     if (!file) {
-      return NextResponse.json(
-        { error: 'No file provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
-    
+
     if (!category) {
-      return NextResponse.json(
-        { error: 'Category is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Category is required' }, { status: 400 });
     }
-    
+
     // Validate file type
     if (!validateFileType(file)) {
-      return NextResponse.json(
-        { error: `File type ${file.type} is not allowed` },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: `File type ${file.type} is not allowed` }, { status: 400 });
     }
-    
+
     // Validate file size
     if (!validateFileSize(file)) {
       return NextResponse.json(
@@ -145,11 +130,11 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    
+
     // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    
+
     // Scan for viruses/malware
     const scanResult = await scanForViruses(buffer);
     if (!scanResult.clean) {
@@ -158,14 +143,14 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    
+
     // Generate safe filename
     const uniqueFilename = generateUniqueFilename(file.name);
     const filePath = join(UPLOAD_DIR, uniqueFilename);
-    
+
     // Save file
     await writeFile(filePath, buffer);
-    
+
     // Create file info
     const fileInfo: UploadedFileInfo = {
       id: uuidv4(),
@@ -177,25 +162,21 @@ export async function POST(request: NextRequest) {
       uploadedAt: new Date().toISOString(),
       url: `/uploads/${uniqueFilename}`,
     };
-    
+
     // Log the upload
     await logUpload(fileInfo);
-    
+
     // In production, save file metadata to database
     // await saveFileMetadata(fileInfo);
-    
+
     return NextResponse.json({
       success: true,
       file: fileInfo,
       url: fileInfo.url,
     });
-    
   } catch (error) {
     console.error('Upload error:', error);
-    return NextResponse.json(
-      { error: 'Upload failed' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
   }
 }
 

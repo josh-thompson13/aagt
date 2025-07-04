@@ -1,7 +1,16 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Filter, ChevronDown, Clock, DollarSign, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import {
+  Search,
+  Filter,
+  ChevronDown,
+  Clock,
+  DollarSign,
+  TrendingUp,
+  CheckCircle,
+  ArrowRight,
+} from 'lucide-react';
 import Link from 'next/link';
 import type { LoanProduct, ContentFilter } from '@/types/content';
 import { productCategories, productFeatures } from '@/data/loanProducts';
@@ -17,16 +26,16 @@ export function LoanProductsCatalog({ products }: Props) {
   const [sortBy, setSortBy] = useState<'title' | 'rate' | 'amount' | 'popular'>('popular');
 
   const filteredProducts = useMemo(() => {
-    let filtered = products.filter(product => {
+    const filtered = products.filter((product) => {
       // Text search
       if (searchTerm) {
         const searchLower = searchTerm.toLowerCase();
-        const matchesSearch = 
+        const matchesSearch =
           product.title.toLowerCase().includes(searchLower) ||
           product.description.toLowerCase().includes(searchLower) ||
-          product.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
-          product.features.some(feature => feature.toLowerCase().includes(searchLower));
-        
+          product.tags.some((tag) => tag.toLowerCase().includes(searchLower)) ||
+          product.features.some((feature) => feature.toLowerCase().includes(searchLower));
+
         if (!matchesSearch) return false;
       }
 
@@ -53,8 +62,8 @@ export function LoanProductsCatalog({ products }: Props) {
 
       // Features filter
       if (filters.features?.length) {
-        const hasFeature = filters.features.some(feature => 
-          product.features.some(pFeature => 
+        const hasFeature = filters.features.some((feature) =>
+          product.features.some((pFeature) =>
             pFeature.toLowerCase().includes(feature.toLowerCase())
           )
         );
@@ -104,9 +113,9 @@ export function LoanProductsCatalog({ products }: Props) {
   }, [products, searchTerm, filters, sortBy]);
 
   const updateFilter = (key: keyof ContentFilter, value: any) => {
-    setFilters(prev => ({
+    setFilters((prev) => ({
       ...prev,
-      [key]: value
+      [key]: value,
     }));
   };
 
@@ -120,7 +129,7 @@ export function LoanProductsCatalog({ products }: Props) {
       style: 'currency',
       currency: 'AUD',
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     }).format(amount);
   };
 
@@ -166,7 +175,9 @@ export function LoanProductsCatalog({ products }: Props) {
           >
             <Filter className="w-5 h-5" />
             Filters
-            <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
+            <ChevronDown
+              className={`w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`}
+            />
           </button>
         </div>
 
@@ -176,11 +187,9 @@ export function LoanProductsCatalog({ products }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Category Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Category
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                 <div className="space-y-2">
-                  {productCategories.map(category => (
+                  {productCategories.map((category) => (
                     <label key={category.id} className="flex items-center">
                       <input
                         type="checkbox"
@@ -190,7 +199,10 @@ export function LoanProductsCatalog({ products }: Props) {
                           if (e.target.checked) {
                             updateFilter('category', [...current, category.id]);
                           } else {
-                            updateFilter('category', current.filter(c => c !== category.id));
+                            updateFilter(
+                              'category',
+                              current.filter((c) => c !== category.id)
+                            );
                           }
                         }}
                         className="mr-2 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
@@ -203,22 +215,24 @@ export function LoanProductsCatalog({ products }: Props) {
 
               {/* Amount Range */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Loan Amount
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Loan Amount</label>
                 <div className="space-y-2">
                   <input
                     type="number"
                     placeholder="Min amount"
                     value={filters.minAmount || ''}
-                    onChange={(e) => updateFilter('minAmount', e.target.value ? Number(e.target.value) : undefined)}
+                    onChange={(e) =>
+                      updateFilter('minAmount', e.target.value ? Number(e.target.value) : undefined)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                   <input
                     type="number"
                     placeholder="Max amount"
                     value={filters.maxAmount || ''}
-                    onChange={(e) => updateFilter('maxAmount', e.target.value ? Number(e.target.value) : undefined)}
+                    onChange={(e) =>
+                      updateFilter('maxAmount', e.target.value ? Number(e.target.value) : undefined)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                 </div>
@@ -235,7 +249,9 @@ export function LoanProductsCatalog({ products }: Props) {
                     step="0.1"
                     placeholder="Min rate"
                     value={filters.minRate || ''}
-                    onChange={(e) => updateFilter('minRate', e.target.value ? Number(e.target.value) : undefined)}
+                    onChange={(e) =>
+                      updateFilter('minRate', e.target.value ? Number(e.target.value) : undefined)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                   <input
@@ -243,7 +259,9 @@ export function LoanProductsCatalog({ products }: Props) {
                     step="0.1"
                     placeholder="Max rate"
                     value={filters.maxRate || ''}
-                    onChange={(e) => updateFilter('maxRate', e.target.value ? Number(e.target.value) : undefined)}
+                    onChange={(e) =>
+                      updateFilter('maxRate', e.target.value ? Number(e.target.value) : undefined)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                 </div>
@@ -251,11 +269,9 @@ export function LoanProductsCatalog({ products }: Props) {
 
               {/* Features */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Features
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Features</label>
                 <div className="space-y-2 max-h-32 overflow-y-auto">
-                  {productFeatures.slice(0, 6).map(feature => (
+                  {productFeatures.slice(0, 6).map((feature) => (
                     <label key={feature} className="flex items-center">
                       <input
                         type="checkbox"
@@ -265,7 +281,10 @@ export function LoanProductsCatalog({ products }: Props) {
                           if (e.target.checked) {
                             updateFilter('features', [...current, feature]);
                           } else {
-                            updateFilter('features', current.filter(f => f !== feature));
+                            updateFilter(
+                              'features',
+                              current.filter((f) => f !== feature)
+                            );
                           }
                         }}
                         className="mr-2 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
@@ -294,7 +313,7 @@ export function LoanProductsCatalog({ products }: Props) {
 
       {/* Products Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {filteredProducts.map(product => (
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
             className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden"
@@ -303,12 +322,8 @@ export function LoanProductsCatalog({ products }: Props) {
             <div className="p-6 border-b border-gray-100">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {product.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {product.shortDescription}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{product.title}</h3>
+                  <p className="text-gray-600">{product.shortDescription}</p>
                 </div>
                 <div className="flex gap-2">
                   {product.featured && (
@@ -360,7 +375,7 @@ export function LoanProductsCatalog({ products }: Props) {
             <div className="p-6">
               <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
               <div className="grid grid-cols-1 gap-2">
-                {product.features.slice(0, 4).map(feature => (
+                {product.features.slice(0, 4).map((feature) => (
                   <div key={feature} className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                     <span className="text-sm text-gray-700">{feature}</span>
@@ -399,9 +414,7 @@ export function LoanProductsCatalog({ products }: Props) {
           <div className="text-gray-400 mb-4">
             <Search className="w-16 h-16 mx-auto" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            No products found
-          </h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
           <p className="text-gray-600 mb-6">
             Try adjusting your search criteria or clearing the filters
           </p>

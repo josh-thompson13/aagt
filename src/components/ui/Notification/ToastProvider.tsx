@@ -143,17 +143,17 @@ export const ToastProvider = ({
 
 // Convenience functions
 export const toast = {
-  success: (message: string, options?: Omit<ToastOptions, 'variant' | 'description'>) => {
+  success: (_message: string, _options?: Omit<ToastOptions, 'variant' | 'description'>) => {
     // This will be implemented when used within ToastProvider context
     console.warn('toast.success called outside of ToastProvider context');
   },
-  error: (message: string, options?: Omit<ToastOptions, 'variant' | 'description'>) => {
+  error: (_message: string, _options?: Omit<ToastOptions, 'variant' | 'description'>) => {
     console.warn('toast.error called outside of ToastProvider context');
   },
-  warning: (message: string, options?: Omit<ToastOptions, 'variant' | 'description'>) => {
+  warning: (_message: string, _options?: Omit<ToastOptions, 'variant' | 'description'>) => {
     console.warn('toast.warning called outside of ToastProvider context');
   },
-  info: (message: string, options?: Omit<ToastOptions, 'variant' | 'description'>) => {
+  info: (_message: string, _options?: Omit<ToastOptions, 'variant' | 'description'>) => {
     console.warn('toast.info called outside of ToastProvider context');
   },
 };

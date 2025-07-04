@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Calculator, DollarSign, TrendingUp, Users } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import {
   Button,
@@ -10,7 +10,6 @@ import {
   Input,
   Modal,
   PricingCard,
-  RateChart,
   ToastProvider,
   useToast,
 } from './index';
@@ -34,15 +33,6 @@ export default meta;
 const ComponentShowcase = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const { showToast } = useToast();
-
-  const rateData = [
-    { label: 'Jan', rate: 5.2, date: '2024-01-01' },
-    { label: 'Feb', rate: 5.0, date: '2024-02-01' },
-    { label: 'Mar', rate: 4.9, date: '2024-03-01' },
-    { label: 'Apr', rate: 4.8, date: '2024-04-01' },
-    { label: 'May', rate: 4.7, date: '2024-05-01' },
-    { label: 'Jun', rate: 4.6, date: '2024-06-01' },
-  ];
 
   return (
     <div className="p-8 space-y-12 bg-gray-50 min-h-screen">
@@ -196,17 +186,28 @@ const ComponentShowcase = () => {
         </div>
       </section>
 
-      {/* Data Visualization */}
+      {/* Calculator Section */}
       <section>
-        <h2 className="text-2xl font-bold text-[#0A2540] mb-6">Data Visualization</h2>
+        <h2 className="text-2xl font-bold text-[#0A2540] mb-6">Calculator Tools</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <RateChart data={rateData} title="Interest Rate Trend" height={300} />
           <Card>
             <CardHeader>
               <h3 className="text-lg font-semibold">Quick Quote Calculator</h3>
             </CardHeader>
             <CardBody>
-              <p className="text-gray-600">Simple calculator for loan estimates with 1-24 month terms.</p>
+              <p className="text-gray-600">
+                Simple calculator for loan estimates with 1-24 month terms.
+              </p>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardHeader>
+              <h3 className="text-lg font-semibold">Loan Features</h3>
+            </CardHeader>
+            <CardBody>
+              <p className="text-gray-600">
+                Display loan amounts, terms, and key features in a clean grid.
+              </p>
             </CardBody>
           </Card>
         </div>

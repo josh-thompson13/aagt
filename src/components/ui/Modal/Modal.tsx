@@ -58,6 +58,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         // Restore body scroll
         document.body.style.overflow = '';
       }
+
+      // No cleanup needed for the else branch
+      return undefined;
     }, [isOpen, animationState]);
 
     useEffect(() => {
@@ -71,6 +74,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
       }
+
+      return undefined;
     }, [isOpen, closeOnEscape]);
 
     const handleClose = () => {
@@ -96,17 +101,17 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     }
 
     const overlayClasses = cn(styles.overlay, {
-      [styles.entering]: animationState === 'entering',
-      [styles.exiting]: animationState === 'exiting',
+      [styles.entering || 'entering']: animationState === 'entering',
+      [styles.exiting || 'exiting']: animationState === 'exiting',
     });
 
     const modalClasses = cn(
       styles.modal,
-      styles[size],
+      styles[size as keyof typeof styles],
       {
-        [styles.glassmorphism]: variant === 'glassmorphism',
-        [styles.entering]: animationState === 'entering',
-        [styles.exiting]: animationState === 'exiting',
+        [styles.glassmorphism || 'glassmorphism']: variant === 'glassmorphism',
+        [styles.entering || 'entering']: animationState === 'entering',
+        [styles.exiting || 'exiting']: animationState === 'exiting',
       },
       className
     );

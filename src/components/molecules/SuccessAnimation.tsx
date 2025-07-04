@@ -22,8 +22,8 @@ const containerVariants = {
     transition: {
       staggerChildren: 0.2,
       delayChildren: 0.3,
-    }
-  }
+    },
+  },
 };
 
 const itemVariants = {
@@ -35,8 +35,8 @@ const itemVariants = {
       type: 'spring',
       stiffness: 200,
       damping: 20,
-    }
-  }
+    },
+  },
 };
 
 const iconVariants = {
@@ -49,8 +49,8 @@ const iconVariants = {
       stiffness: 200,
       damping: 15,
       delay: 0.1,
-    }
-  }
+    },
+  },
 };
 
 const sparkleVariants = {
@@ -67,9 +67,9 @@ const sparkleVariants = {
         duration: 2,
         repeat: Infinity,
         ease: 'easeInOut',
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 const pulseVariants = {
@@ -80,8 +80,8 @@ const pulseVariants = {
       duration: 3,
       repeat: Infinity,
       ease: 'easeInOut',
-    }
-  }
+    },
+  },
 };
 
 export const SuccessAnimation = ({
@@ -123,16 +123,10 @@ export const SuccessAnimation = ({
       {/* Content */}
       <div className="relative z-10">
         {/* Success Icon with sparkles */}
-        <motion.div
-          variants={itemVariants as any}
-          className="relative mb-8 flex justify-center"
-        >
+        <motion.div variants={itemVariants as any} className="relative mb-8 flex justify-center">
           <div className="relative">
             {/* Main success icon */}
-            <motion.div
-              variants={iconVariants as any}
-              className="relative z-10"
-            >
+            <motion.div variants={iconVariants as any} className="relative z-10">
               <CheckCircle className="h-24 w-24 text-success-500" />
             </motion.div>
 
@@ -144,7 +138,7 @@ export const SuccessAnimation = ({
             >
               <Sparkles className="h-8 w-8 text-gold-400" />
             </motion.div>
-            
+
             <motion.div
               variants={sparkleVariants as any}
               animate="animate"
@@ -171,10 +165,7 @@ export const SuccessAnimation = ({
         </motion.div>
 
         {/* Title */}
-        <motion.h1
-          variants={itemVariants as any}
-          className="text-3xl font-bold text-gray-900 mb-4"
-        >
+        <motion.h1 variants={itemVariants as any} className="text-3xl font-bold text-gray-900 mb-4">
           {title}
         </motion.h1>
 
@@ -196,9 +187,7 @@ export const SuccessAnimation = ({
             <p className="text-xl font-mono font-bold text-gray-900 tracking-wider">
               {applicationId}
             </p>
-            <p className="text-xs text-gray-500 mt-1">
-              Please save this ID for your records
-            </p>
+            <p className="text-xs text-gray-500 mt-1">Please save this ID for your records</p>
           </motion.div>
         )}
 
@@ -223,9 +212,7 @@ export const SuccessAnimation = ({
                       {index + 1}
                     </div>
                   </div>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {step}
-                  </p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{step}</p>
                 </motion.li>
               ))}
             </ul>
@@ -246,7 +233,7 @@ export const SuccessAnimation = ({
               <span>View Application</span>
             </Button>
           )}
-          
+
           {onContinue && (
             <Button
               variant="primary"

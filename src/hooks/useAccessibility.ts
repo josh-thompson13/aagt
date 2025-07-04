@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { 
-  focusManagement, 
-  keyboardNavigation, 
-  aria, 
+import {
+  focusManagement,
+  keyboardNavigation,
+  aria,
   reducedMotion,
   touchAccessibility,
 } from '@/utils/accessibility';
@@ -35,14 +35,17 @@ export const useKeyboardNavigation = (
 ) => {
   const currentIndex = useRef(0);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    currentIndex.current = keyboardNavigation.handleArrowKeys(
-      e,
-      items,
-      currentIndex.current,
-      orientation
-    );
-  }, [items, orientation]);
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      currentIndex.current = keyboardNavigation.handleArrowKeys(
+        e,
+        items,
+        currentIndex.current,
+        orientation
+      );
+    },
+    [items, orientation]
+  );
 
   const handleEscape = useCallback((callback: () => void) => {
     return keyboardNavigation.handleEscape(callback);
@@ -53,10 +56,7 @@ export const useKeyboardNavigation = (
 
 // Hook for ARIA announcements
 export const useAnnouncements = () => {
-  const announce = useCallback((
-    message: string, 
-    priority: 'polite' | 'assertive' = 'polite'
-  ) => {
+  const announce = useCallback((message: string, priority: 'polite' | 'assertive' = 'polite') => {
     aria.announce(message, priority);
   }, []);
 
@@ -69,31 +69,27 @@ export const useAnnouncements = () => {
 
 // Hook for form accessibility
 export const useFormAccessibility = () => {
-  const associateLabel = useCallback((
-    labelElement: HTMLElement, 
-    controlElement: HTMLElement
-  ) => {
+  const associateLabel = useCallback((labelElement: HTMLElement, controlElement: HTMLElement) => {
     const controlId = controlElement.id || aria.generateId('control');
     controlElement.id = controlId;
     labelElement.setAttribute('for', controlId);
   }, []);
 
-  const setFieldError = useCallback((
-    fieldElement: HTMLElement,
-    errorElement: HTMLElement,
-    hasError: boolean
-  ) => {
-    if (hasError) {
-      const errorId = errorElement.id || aria.generateId('error');
-      errorElement.id = errorId;
-      
-      fieldElement.setAttribute('aria-invalid', 'true');
-      fieldElement.setAttribute('aria-describedby', errorId);
-    } else {
-      fieldElement.setAttribute('aria-invalid', 'false');
-      fieldElement.removeAttribute('aria-describedby');
-    }
-  }, []);
+  const setFieldError = useCallback(
+    (fieldElement: HTMLElement, errorElement: HTMLElement, hasError: boolean) => {
+      if (hasError) {
+        const errorId = errorElement.id || aria.generateId('error');
+        errorElement.id = errorId;
+
+        fieldElement.setAttribute('aria-invalid', 'true');
+        fieldElement.setAttribute('aria-describedby', errorId);
+      } else {
+        fieldElement.setAttribute('aria-invalid', 'false');
+        fieldElement.removeAttribute('aria-describedby');
+      }
+    },
+    []
+  );
 
   const setRequired = useCallback((element: HTMLElement, required: boolean) => {
     if (required) {
@@ -114,10 +110,7 @@ export const useReducedMotion = () => {
     return reducedMotion.prefersReducedMotion();
   }, []);
 
-  const conditionalAnimation = useCallback((
-    animation: () => void,
-    fallback?: () => void
-  ) => {
+  const conditionalAnimation = useCallback((animation: () => void, fallback?: () => void) => {
     reducedMotion.conditionalAnimation(
       document.body, // placeholder element
       animation,
@@ -135,11 +128,14 @@ export const useTouchAccessibility = () => {
   }, []);
 
   // Auto-apply to refs
-  const touchTargetRef = useCallback((element: HTMLElement | null) => {
-    if (element) {
-      ensureMinimumTouchTarget(element);
-    }
-  }, [ensureMinimumTouchTarget]);
+  const touchTargetRef = useCallback(
+    (element: HTMLElement | null) => {
+      if (element) {
+        ensureMinimumTouchTarget(element);
+      }
+    },
+    [ensureMinimumTouchTarget]
+  );
 
   return { ensureMinimumTouchTarget, touchTargetRef };
 };
@@ -150,31 +146,37 @@ export const useModalAccessibility = (isOpen: boolean) => {
   const { saveFocus, restoreFocus, trapFocus } = useFocusManagement();
   const { handleEscape } = useKeyboardNavigation([]);
 
-  const openModal = useCallback((onClose: () => void) => {
-    saveFocus();
-    
-    // Trap focus within modal
-    if (modalRef.current) {
-      const cleanup = trapFocus(modalRef.current);
-      
-      // Handle escape key
-      const escapeCleanup = handleEscape(onClose);
-      
-      // Hide content from screen readers
-      const mainContent = document.querySelector('main');
-      if (mainContent) {
-        mainContent.setAttribute('aria-hidden', 'true');
+  const openModal = useCallback(
+    (onClose: () => void) => {
+      saveFocus();
+
+      // Trap focus within modal
+      if (modalRef.current) {
+        const cleanup = trapFocus(modalRef.current);
+
+        // Handle escape key
+        const escapeCleanup = handleEscape(onClose);
+
+        // Hide content from screen readers
+        const mainContent = document.querySelector('main');
+        if (mainContent) {
+          mainContent.setAttribute('aria-hidden', 'true');
+        }
+
+        return () => {
+          cleanup();
+          escapeCleanup();
+          if (mainContent) {
+            mainContent.removeAttribute('aria-hidden');
+          }
+        };
       }
 
-      return () => {
-        cleanup();
-        escapeCleanup();
-        if (mainContent) {
-          mainContent.removeAttribute('aria-hidden');
-        }
-      };
-    }
-  }, [saveFocus, trapFocus, handleEscape]);
+      // Return a no-op cleanup function if modalRef is not available
+      return () => {};
+    },
+    [saveFocus, trapFocus, handleEscape]
+  );
 
   const closeModal = useCallback(() => {
     restoreFocus();
@@ -201,9 +203,13 @@ export const useSkipNavigation = () => {
     if (mainContent) {
       mainContent.setAttribute('tabindex', '-1');
       mainContent.focus();
-      mainContent.addEventListener('blur', () => {
-        mainContent.removeAttribute('tabindex');
-      }, { once: true });
+      mainContent.addEventListener(
+        'blur',
+        () => {
+          mainContent.removeAttribute('tabindex');
+        },
+        { once: true }
+      );
     }
   }, []);
 
@@ -212,9 +218,13 @@ export const useSkipNavigation = () => {
     if (target) {
       target.setAttribute('tabindex', '-1');
       target.focus();
-      target.addEventListener('blur', () => {
-        target.removeAttribute('tabindex');
-      }, { once: true });
+      target.addEventListener(
+        'blur',
+        () => {
+          target.removeAttribute('tabindex');
+        },
+        { once: true }
+      );
     }
   }, []);
 
@@ -225,13 +235,19 @@ export const useSkipNavigation = () => {
 export const useRouteAnnouncements = () => {
   const { announce } = useAnnouncements();
 
-  const announceRouteChange = useCallback((routeName: string) => {
-    announce(`Navigated to ${routeName}`, 'polite');
-  }, [announce]);
+  const announceRouteChange = useCallback(
+    (routeName: string) => {
+      announce(`Navigated to ${routeName}`, 'polite');
+    },
+    [announce]
+  );
 
-  const announcePageLoad = useCallback((pageTitle: string) => {
-    announce(`${pageTitle} page loaded`, 'polite');
-  }, [announce]);
+  const announcePageLoad = useCallback(
+    (pageTitle: string) => {
+      announce(`${pageTitle} page loaded`, 'polite');
+    },
+    [announce]
+  );
 
   return { announceRouteChange, announcePageLoad };
 };
@@ -240,35 +256,37 @@ export const useRouteAnnouncements = () => {
 export const useFormValidationAnnouncements = () => {
   const { announce } = useAnnouncements();
 
-  const announceValidationResults = useCallback((
-    isValid: boolean,
-    errorCount: number,
-    fieldName?: string
-  ) => {
-    if (fieldName) {
-      if (isValid) {
-        announce(`${fieldName} is valid`, 'polite');
+  const announceValidationResults = useCallback(
+    (isValid: boolean, errorCount: number, fieldName?: string) => {
+      if (fieldName) {
+        if (isValid) {
+          announce(`${fieldName} is valid`, 'polite');
+        } else {
+          announce(`${fieldName} has an error`, 'assertive');
+        }
       } else {
-        announce(`${fieldName} has an error`, 'assertive');
+        if (isValid) {
+          announce('Form is valid', 'polite');
+        } else {
+          announce(`Form has ${errorCount} error${errorCount === 1 ? '' : 's'}`, 'assertive');
+        }
       }
-    } else {
-      if (isValid) {
-        announce('Form is valid', 'polite');
-      } else {
-        announce(`Form has ${errorCount} error${errorCount === 1 ? '' : 's'}`, 'assertive');
-      }
-    }
-  }, [announce]);
+    },
+    [announce]
+  );
 
-  const announceFormSubmission = useCallback((status: 'submitting' | 'success' | 'error') => {
-    const messages = {
-      submitting: 'Form is being submitted',
-      success: 'Form submitted successfully',
-      error: 'Form submission failed',
-    };
-    
-    announce(messages[status], status === 'error' ? 'assertive' : 'polite');
-  }, [announce]);
+  const announceFormSubmission = useCallback(
+    (status: 'submitting' | 'success' | 'error') => {
+      const messages = {
+        submitting: 'Form is being submitted',
+        success: 'Form submitted successfully',
+        error: 'Form submission failed',
+      };
+
+      announce(messages[status], status === 'error' ? 'assertive' : 'polite');
+    },
+    [announce]
+  );
 
   return { announceValidationResults, announceFormSubmission };
 };
@@ -277,25 +295,27 @@ export const useFormValidationAnnouncements = () => {
 export const useUploadAccessibility = () => {
   const { announce } = useAnnouncements();
 
-  const announceUploadStatus = useCallback((
-    fileName: string,
-    status: 'uploading' | 'success' | 'error',
-    progress?: number
-  ) => {
-    const messages = {
-      uploading: `Uploading ${fileName}${progress ? ` - ${progress}% complete` : ''}`,
-      success: `${fileName} uploaded successfully`,
-      error: `Failed to upload ${fileName}`,
-    };
-    
-    announce(messages[status], status === 'error' ? 'assertive' : 'polite');
-  }, [announce]);
+  const announceUploadStatus = useCallback(
+    (fileName: string, status: 'uploading' | 'success' | 'error', progress?: number) => {
+      const messages = {
+        uploading: `Uploading ${fileName}${progress ? ` - ${progress}% complete` : ''}`,
+        success: `${fileName} uploaded successfully`,
+        error: `Failed to upload ${fileName}`,
+      };
 
-  const announceDropZoneStatus = useCallback((isDragActive: boolean) => {
-    if (isDragActive) {
-      announce('Files are ready to be dropped', 'polite');
-    }
-  }, [announce]);
+      announce(messages[status], status === 'error' ? 'assertive' : 'polite');
+    },
+    [announce]
+  );
+
+  const announceDropZoneStatus = useCallback(
+    (isDragActive: boolean) => {
+      if (isDragActive) {
+        announce('Files are ready to be dropped', 'polite');
+      }
+    },
+    [announce]
+  );
 
   return { announceUploadStatus, announceDropZoneStatus };
 };
@@ -318,7 +338,8 @@ export const useApplicationAccessibility = () => {
       link.id = 'skip-to-main';
       link.href = '#main-content';
       link.textContent = 'Skip to main content';
-      link.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-navy-900 focus:text-white focus:px-4 focus:py-2 focus:rounded';
+      link.className =
+        'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-navy-900 focus:text-white focus:px-4 focus:py-2 focus:rounded';
       link.addEventListener('click', (e) => {
         e.preventDefault();
         skipNavigation.skipToMain();

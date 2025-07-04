@@ -56,20 +56,20 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const selectClasses = cn(
       styles.select,
       {
-        [styles.error]: error,
-        [styles.success]: success,
-        [styles.warning]: warning,
+        [styles.error || 'error']: error,
+        [styles.success || 'success']: success,
+        [styles.warning || 'warning']: warning,
         'w-full': fullWidth,
       },
       className
     );
 
     const labelClasses = cn(styles.label, {
-      [styles.floating]: isFocused || hasValue,
-      [styles.required]: required,
+      [styles.floating || 'floating']: isFocused || hasValue,
+      [styles.required || 'required']: required,
     });
 
-    const helperTextClasses = cn(styles.helperText, styles[validationState]);
+    const helperTextClasses = cn(styles.helperText, styles[validationState as keyof typeof styles]);
 
     const displayText = error || success || warning || helperText;
 

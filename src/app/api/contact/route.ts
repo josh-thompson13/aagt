@@ -8,19 +8,13 @@ export async function POST(request: NextRequest) {
 
     // Validate required fields
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Name, email, and message are required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Name, email, and message are required' }, { status: 400 });
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Please provide a valid email address' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Please provide a valid email address' }, { status: 400 });
     }
 
     // Create email content
@@ -43,17 +37,17 @@ IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-r
 
     // For now, we'll use a simple email service
     // In production, you'd want to use a service like SendGrid, AWS SES, etc.
-    
+
     // Email configuration for testing
     const testEmail = 'josh.thompsonau@icloud.com'; // Test email address
-    
+
     // Create transporter for Gmail (for testing)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER || 'aagtpvtloans@gmail.com',
-        pass: process.env.GMAIL_APP_PASSWORD || 'your-app-password-here'
-      }
+        pass: process.env.GMAIL_APP_PASSWORD || 'your-app-password-here',
+      },
     });
 
     const emailConfig = {
@@ -89,26 +83,26 @@ IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-r
             <p><strong>IP Address:</strong> ${request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'Unknown'}</p>
           </div>
         </div>
-      `
+      `,
     };
 
     try {
       // Send the email
       await transporter.sendMail(emailConfig);
-      
+
       console.log('=== EMAIL SENT SUCCESSFULLY ===');
       console.log(`To: ${emailConfig.to}`);
       console.log(`Subject: ${emailConfig.subject}`);
       console.log('=== END ===');
-      
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Thank you for your funding inquiry. A lending specialist will contact you within 24 hours!' 
+
+      return NextResponse.json({
+        success: true,
+        message:
+          'Thank you for your funding inquiry. A lending specialist will contact you within 24 hours!',
       });
-      
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
-      
+
       // Fallback: log email content if sending fails
       console.log('=== EMAIL SENDING FAILED - LOGGING CONTENT ===');
       console.log(`To: ${emailConfig.to}`);
@@ -116,14 +110,14 @@ IP Address: ${request.headers.get('x-forwarded-for') || request.headers.get('x-r
       console.log('\nBody:');
       console.log(emailBody);
       console.log('=== END EMAIL ===');
-      
+
       // Still return success to user (they don't need to know about email issues)
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Thank you for your funding inquiry. A lending specialist will contact you within 24 hours!' 
+      return NextResponse.json({
+        success: true,
+        message:
+          'Thank you for your funding inquiry. A lending specialist will contact you within 24 hours!',
       });
     }
-
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(

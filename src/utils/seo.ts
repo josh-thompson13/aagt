@@ -19,7 +19,8 @@ export interface SEOData {
 
 const defaultMetadata = {
   title: 'AAGT Private Loans',
-  description: 'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Alternative lending solutions for businesses declined by traditional banks.',
+  description:
+    'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Alternative lending solutions for businesses declined by traditional banks.',
   siteName: 'AAGT Private Loans',
   baseUrl: 'https://aagtprivateloans.com.au',
   ogImage: '/images/aagt-og-image.jpg',
@@ -36,8 +37,8 @@ export function generateMetadata(seoData: SEOData): Metadata {
     articleData,
   } = seoData;
 
-  const fullTitle = title.includes(defaultMetadata.title) 
-    ? title 
+  const fullTitle = title.includes(defaultMetadata.title)
+    ? title
     : `${title} | ${defaultMetadata.title}`;
 
   const url = canonical ? `${defaultMetadata.baseUrl}${canonical}` : defaultMetadata.baseUrl;
@@ -47,7 +48,7 @@ export function generateMetadata(seoData: SEOData): Metadata {
     title: fullTitle,
     description,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
-    
+
     // Open Graph
     openGraph: {
       title: fullTitle,
@@ -64,13 +65,14 @@ export function generateMetadata(seoData: SEOData): Metadata {
       ],
       type: ogType,
       locale: 'en_AU',
-      ...(articleData && ogType === 'article' && {
-        publishedTime: articleData.publishedTime,
-        modifiedTime: articleData.modifiedTime,
-        authors: articleData.author ? [articleData.author] : undefined,
-        section: articleData.section,
-        tags: articleData.tags,
-      }),
+      ...(articleData &&
+        ogType === 'article' && {
+          publishedTime: articleData.publishedTime,
+          modifiedTime: articleData.modifiedTime,
+          authors: articleData.author ? [articleData.author] : undefined,
+          section: articleData.section,
+          tags: articleData.tags,
+        }),
     },
 
     // Twitter
@@ -89,7 +91,7 @@ export function generateMetadata(seoData: SEOData): Metadata {
       'geo-region': 'AU',
       'geo-country': 'Australia',
       'contact-type': 'business',
-      'audience': 'business owners, investors, brokers',
+      audience: 'business owners, investors, brokers',
     },
 
     // Canonical URL
@@ -143,7 +145,8 @@ export const defaultSEOData: SEOData = {
 export const pageSEOData = {
   home: {
     title: 'Business & Investment Loans $150K-$5M | AAGT Private Loans',
-    description: 'Direct private lending for businesses and investors. Same-day approval, 4-day settlement. Competitive rates from 8.5%. Alternative funding when banks say no.',
+    description:
+      'Direct private lending for businesses and investors. Same-day approval, 4-day settlement. Competitive rates from 8.5%. Alternative funding when banks say no.',
     keywords: [
       'private business loans Australia',
       'fast business loan approval',
@@ -152,10 +155,11 @@ export const pageSEOData = {
       'same day loan approval',
     ],
   },
-  
+
   businessLoans: {
     title: 'Business Loans $150K-$5M | Fast Approval | AAGT Private Loans',
-    description: 'Business expansion loans from $150,000 to $5,000,000. Direct private lender with streamlined approval process. Apply today for competitive rates.',
+    description:
+      'Business expansion loans from $150,000 to $5,000,000. Direct private lender with streamlined approval process. Apply today for competitive rates.',
     keywords: [
       'business expansion loans',
       'working capital loans',
@@ -167,7 +171,8 @@ export const pageSEOData = {
 
   investmentLoans: {
     title: 'Investment Property Loans | Flexible Terms | AAGT Private Loans',
-    description: 'Investment property finance with flexible terms and competitive rates. Specialized solutions for property investors and developers.',
+    description:
+      'Investment property finance with flexible terms and competitive rates. Specialized solutions for property investors and developers.',
     keywords: [
       'investment property loans',
       'property development finance',
@@ -179,7 +184,8 @@ export const pageSEOData = {
 
   rates: {
     title: 'Interest Rates & Terms | Competitive Pricing | AAGT Private Loans',
-    description: 'Transparent interest rates from 8.5% with flexible terms 1-24 months. Compare our competitive rates with traditional bank lending.',
+    description:
+      'Transparent interest rates from 8.5% with flexible terms 1-24 months. Compare our competitive rates with traditional bank lending.',
     keywords: [
       'private loan interest rates',
       'business loan rates Australia',
@@ -191,7 +197,8 @@ export const pageSEOData = {
 
   about: {
     title: 'About AAGT Private Loans | Direct Private Lender Australia',
-    description: 'Leading direct private lender using proprietary funds. Streamlined approval process without committee delays. Learn about our lending philosophy.',
+    description:
+      'Leading direct private lender using proprietary funds. Streamlined approval process without committee delays. Learn about our lending philosophy.',
     keywords: [
       'private lending company',
       'direct private lender',
@@ -203,7 +210,8 @@ export const pageSEOData = {
 
   contact: {
     title: 'Contact AAGT Private Loans | Get Your Quote Today',
-    description: 'Contact our lending specialists for fast business loan assessment. Call, email, or submit online inquiry for same-day response.',
+    description:
+      'Contact our lending specialists for fast business loan assessment. Call, email, or submit online inquiry for same-day response.',
     keywords: [
       'business loan inquiry',
       'private loan consultation',
@@ -215,7 +223,8 @@ export const pageSEOData = {
 
   apply: {
     title: 'Apply for Business Loan | Quick Application | AAGT Private Loans',
-    description: 'Quick and secure business loan application. Get approved in hours with minimal documentation. Start your funding journey today.',
+    description:
+      'Quick and secure business loan application. Get approved in hours with minimal documentation. Start your funding journey today.',
     keywords: [
       'business loan application',
       'apply for business loan',

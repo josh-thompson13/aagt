@@ -35,18 +35,10 @@ export const LazyImage = ({
   if (hasError) {
     return (
       <div
-        className={cn(
-          'flex items-center justify-center bg-gray-100 text-gray-400',
-          className
-        )}
+        className={cn('flex items-center justify-center bg-gray-100 text-gray-400', className)}
         style={!fill ? { width, height } : undefined}
       >
-        <svg
-          className="h-12 w-12"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

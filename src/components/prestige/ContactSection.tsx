@@ -19,8 +19,10 @@ export const ContactSection = () => {
     message: string;
   }>({ type: null, message: '' });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -34,7 +36,7 @@ export const ContactSection = () => {
 
   const handleLoanAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatLoanAmount(e.target.value);
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       loanAmount: formatted,
     }));
@@ -59,7 +61,9 @@ export const ContactSection = () => {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: data.message || 'Thank you for your inquiry. A lending specialist will contact you within 24 hours!',
+          message:
+            data.message ||
+            'Thank you for your inquiry. A lending specialist will contact you within 24 hours.',
         });
         // Reset form on success
         setFormData({
@@ -90,11 +94,10 @@ export const ContactSection = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-          Get Your Funding Quote
-        </h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Get Your Funding Quote</h2>
         <p className="text-xl text-slate-100 max-w-2xl mx-auto">
-          Ready to secure your business funding? Contact our lending specialists for same day approval.
+          Ready to secure your business funding? Contact our lending specialists for same day
+          approval.
         </p>
       </div>
 
@@ -102,25 +105,22 @@ export const ContactSection = () => {
         {/* Contact Form */}
         <div>
           <div className="bg-white rounded-2xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">
-              Request Funding Information
-            </h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Request Funding Information</h3>
 
             {/* Status Message */}
             {submitStatus.type && (
-              <div className={`p-4 rounded-lg border flex items-center gap-3 mb-6 ${
-                submitStatus.type === 'success'
-                  ? 'bg-green-50 border-green-200 text-green-800'
-                  : 'bg-red-50 border-red-200 text-red-800'
-              }`}
+              <div
+                className={`p-4 rounded-lg border flex items-center gap-3 mb-6 ${
+                  submitStatus.type === 'success'
+                    ? 'bg-green-50 border-green-200 text-green-800'
+                    : 'bg-red-50 border-red-200 text-red-800'
+                }`}
               >
-                {submitStatus.type === 'success'
-                  ? (
-                      <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                    )
-                  : (
-                      <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                    )}
+                {submitStatus.type === 'success' ? (
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                ) : (
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                )}
                 <p className="font-medium">{submitStatus.message}</p>
               </div>
             )}
@@ -230,24 +230,21 @@ export const ContactSection = () => {
                 disabled={isSubmitting}
                 className="inline-flex items-center gap-2 px-6 py-2 bg-primary-700 text-white font-medium rounded-full hover:bg-primary-800 focus:ring-2 focus:ring-primary-300 shadow transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting
-                  ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    )
-                  : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        Get Funding Quote
-                      </>
-                    )}
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Get Funding Quote
+                  </>
+                )}
               </button>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   );

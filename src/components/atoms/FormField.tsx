@@ -55,7 +55,7 @@ export const FormField = ({
 
     if (onValidate) {
       setValidationState({ isValidating: true });
-      
+
       try {
         const result = await onValidate(e.target.value);
         setValidationState({
@@ -93,9 +93,7 @@ export const FormField = ({
       <div className="relative">
         {leftIcon && (
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <div className={cn('text-gray-400', showError && 'text-red-400')}>
-              {leftIcon}
-            </div>
+            <div className={cn('text-gray-400', showError && 'text-red-400')}>{leftIcon}</div>
           </div>
         )}
 
@@ -111,8 +109,8 @@ export const FormField = ({
             showError
               ? 'border-red-300 bg-red-50 text-red-900 placeholder-red-400 focus:border-red-500 focus:ring-red-500'
               : showValid
-              ? 'border-success-300 bg-success-50 text-success-900 focus:border-success-500 focus:ring-success-500'
-              : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:border-teal-600 focus:ring-teal-600',
+                ? 'border-success-300 bg-success-50 text-success-900 focus:border-success-500 focus:ring-success-500'
+                : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:border-teal-600 focus:ring-teal-600',
             className
           )}
           aria-invalid={showError ? 'true' : 'false'}

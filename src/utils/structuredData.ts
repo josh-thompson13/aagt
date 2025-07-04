@@ -9,7 +9,8 @@ export const organizationSchema = {
   url: 'https://aagtprivateloans.com.au',
   logo: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
   image: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
-  description: 'Direct private lending company offering fast business funding from $150,000 to $5,000,000 with same day approval and 4-day settlement',
+  description:
+    'Direct private lending company offering fast business funding from $150,000 to $5,000,000 with same day approval and 4-day settlement',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Sydney',
@@ -21,7 +22,13 @@ export const organizationSchema = {
   priceRange: '$150,000-$5,000,000',
   areaServed: 'Australia',
   slogan: AppConfig.mission,
-  knowsAbout: ['Business Loans', 'Investment Loans', 'Private Lending', 'Second Mortgages', 'Off-the-Plan Finance'],
+  knowsAbout: [
+    'Business Loans',
+    'Investment Loans',
+    'Private Lending',
+    'Second Mortgages',
+    'Off-the-Plan Finance',
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Private Loan Products',
@@ -38,8 +45,8 @@ export const organizationSchema = {
           '@type': 'MonetaryAmount',
           minValue: 150000,
           maxValue: 5000000,
-          currency: 'AUD'
-        }
+          currency: 'AUD',
+        },
       },
       {
         '@type': 'Offer',
@@ -53,8 +60,8 @@ export const organizationSchema = {
           '@type': 'MonetaryAmount',
           minValue: 150000,
           maxValue: 5000000,
-          currency: 'AUD'
-        }
+          currency: 'AUD',
+        },
       },
       {
         '@type': 'Offer',
@@ -63,7 +70,7 @@ export const organizationSchema = {
           name: 'Second Mortgages',
           description: 'Up to 70% LVR for additional capital needs',
           url: 'https://aagtprivateloans.com.au/business-loans',
-        }
+        },
       },
       {
         '@type': 'Offer',
@@ -72,7 +79,7 @@ export const organizationSchema = {
           name: 'Off-the-Plan Finance',
           description: 'Special financing solutions for off-the-plan property purchases',
           url: 'https://aagtprivateloans.com.au/investment-loans',
-        }
+        },
       },
     ],
   },
@@ -84,7 +91,8 @@ export const websiteSchema = {
   '@id': 'https://aagtprivateloans.com.au#website',
   url: 'https://aagtprivateloans.com.au',
   name: 'AAGT Private Loans',
-  description: 'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
+  description:
+    'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
   publisher: {
     '@id': 'https://aagtprivateloans.com.au#organization',
   },
@@ -132,7 +140,7 @@ export const loanProductSchema = (loan: {
     '@type': 'MonetaryAmount',
     minValue: loan.minAmount,
     maxValue: loan.maxAmount,
-    currency: 'AUD'
+    currency: 'AUD',
   },
   url: loan.url,
 });
@@ -140,7 +148,7 @@ export const loanProductSchema = (loan: {
 export const faqSchema = (questions: Array<{ question: string; answer: string }>) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: questions.map(item => ({
+  mainEntity: questions.map((item) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {

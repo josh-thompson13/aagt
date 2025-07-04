@@ -40,26 +40,6 @@ export interface LoanProduct {
   seoKeywords?: string[];
 }
 
-export interface RateComparison {
-  id: string;
-  lender: string;
-  productName: string;
-  rate: number;
-  comparisonRate: number;
-  fees: {
-    establishment: number;
-    monthly: number;
-    annual: number;
-  };
-  features: string[];
-  minLoanAmount: number;
-  maxLoanAmount: number;
-  maxLvr: number;
-  isAAGT: boolean;
-  lastUpdated: string;
-  category: 'business' | 'investment' | 'personal';
-}
-
 export interface FAQItem {
   id: string;
   question: string;

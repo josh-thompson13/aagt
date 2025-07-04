@@ -3,9 +3,7 @@
 import NextError from 'next/error';
 import { useEffect } from 'react';
 
-export default function GlobalError(props: {
-  error: Error & { digest?: string };
-}) {
+export default function GlobalError(props: { error: Error & { digest?: string } }) {
   useEffect(() => {
     console.error('Global error:', props.error);
   }, [props.error]);

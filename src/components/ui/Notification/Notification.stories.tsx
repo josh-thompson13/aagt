@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import { Button } from '../Button';
 import { Toast } from './Toast';
 import { ToastProvider, useToast } from './ToastProvider';
@@ -195,7 +194,7 @@ const ToastDemo = () => {
   );
 };
 
-export const ToastProvider: Story = {
+export const WithToastProvider: Story = {
   render: () => (
     <ToastProvider position="top-right">
       <ToastDemo />

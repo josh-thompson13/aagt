@@ -8,10 +8,10 @@ interface GoogleMapsLoaderProps {
   children: React.ReactNode;
 }
 
-export const GoogleMapsLoader = ({ 
-  apiKey, 
-  libraries = ['places'], 
-  children 
+export const GoogleMapsLoader = ({
+  apiKey,
+  libraries = ['places'],
+  children,
 }: GoogleMapsLoaderProps) => {
   return (
     <>

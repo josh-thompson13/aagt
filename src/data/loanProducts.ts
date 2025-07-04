@@ -5,7 +5,8 @@ export const loanProducts: LoanProduct[] = [
     id: 'business-expansion',
     title: 'Business Expansion Loans',
     slug: 'business-expansion-loans',
-    description: 'Fuel your business growth with flexible funding solutions designed for expansion, equipment purchases, and working capital needs. Our business expansion loans offer competitive rates and fast approval times to help you seize opportunities.',
+    description:
+      'Fuel your business growth with flexible funding solutions designed for expansion, equipment purchases, and working capital needs. Our business expansion loans offer competitive rates and fast approval times to help you seize opportunities.',
     shortDescription: 'Fast, flexible funding for business growth and expansion opportunities.',
     category: 'business',
     minAmount: 150000,
@@ -20,49 +21,49 @@ export const loanProducts: LoanProduct[] = [
       'Flexible repayment terms',
       'No early exit fees',
       'Direct private lender',
-      'Minimal documentation required'
+      'Minimal documentation required',
     ],
     requirements: [
       'Australian business registration',
       'Minimum 2 years trading history',
       'Annual turnover $500k+',
-      'Clear business plan for expansion'
+      'Clear business plan for expansion',
     ],
     benefits: [
       'Fast access to capital',
       'Competitive interest rates',
       'Personalized service',
       'No committee delays',
-      'Flexible security options'
+      'Flexible security options',
     ],
     eligibility: [
       'Established Australian business',
       'Minimum 2 years trading',
       'Annual revenue $500,000+',
       'Acceptable credit history',
-      'Viable business expansion plan'
+      'Viable business expansion plan',
     ],
     fees: {
       establishment: '1% (max $5,000)',
       ongoing: 'Nil',
-      early_exit: 'Nil'
+      early_exit: 'Nil',
     },
     turnaroundTime: {
       approval: '24 hours',
-      settlement: '4 business days'
+      settlement: '4 business days',
     },
     security: [
       'Business assets',
       'Commercial property',
       'Residential property',
-      'Personal guarantee'
+      'Personal guarantee',
     ],
     documentation: [
       'Financial statements (2 years)',
       'Tax returns',
       'Bank statements (6 months)',
       'Business plan',
-      'Asset valuations'
+      'Asset valuations',
     ],
     tags: ['fast-approval', 'business-growth', 'expansion', 'working-capital'],
     featured: true,
@@ -70,15 +71,23 @@ export const loanProducts: LoanProduct[] = [
     available: true,
     lastUpdated: '2024-01-15',
     seoTitle: 'Business Expansion Loans Australia | Fast Approval | AAGT Private Loans',
-    seoDescription: 'Get fast business expansion loans from $150k to $5M. Same-day approval, 4-day settlement. Competitive rates from 8.95%. Apply now for business growth funding.',
-    seoKeywords: ['business expansion loans', 'business growth funding', 'fast business loans', 'private business lender']
+    seoDescription:
+      'Get fast business expansion loans from $150k to $5M. Same-day approval, 4-day settlement. Competitive rates from 8.95%. Apply now for business growth funding.',
+    seoKeywords: [
+      'business expansion loans',
+      'business growth funding',
+      'fast business loans',
+      'private business lender',
+    ],
   },
   {
     id: 'investment-property',
     title: 'Investment Property Loans',
     slug: 'investment-property-loans',
-    description: 'Secure your next investment property with our specialized lending solutions. Whether you\'re a seasoned investor or just starting, our investment property loans offer competitive rates and flexible terms to maximize your portfolio potential.',
-    shortDescription: 'Competitive investment property loans for portfolio growth and wealth creation.',
+    description:
+      "Secure your next investment property with our specialized lending solutions. Whether you're a seasoned investor or just starting, our investment property loans offer competitive rates and flexible terms to maximize your portfolio potential.",
+    shortDescription:
+      'Competitive investment property loans for portfolio growth and wealth creation.',
     category: 'investment',
     minAmount: 200000,
     maxAmount: 5000000,
@@ -92,52 +101,52 @@ export const loanProducts: LoanProduct[] = [
       'Professional investor rates',
       'Portfolio lending available',
       'Fast property settlements',
-      'Expert property assessment'
+      'Expert property assessment',
     ],
     requirements: [
       'Property investment experience or plan',
       'Deposit 30% minimum',
       'Acceptable credit profile',
-      'Property valuation required'
+      'Property valuation required',
     ],
     benefits: [
       'Competitive investor rates',
       'Flexible loan structures',
       'Portfolio lending options',
       'Fast settlement times',
-      'Expert property guidance'
+      'Expert property guidance',
     ],
     eligibility: [
       'Australian resident or citizen',
       'Minimum 30% deposit',
       'Acceptable credit history',
       'Rental income assessment',
-      'Property meets lending criteria'
+      'Property meets lending criteria',
     ],
     fees: {
       establishment: '0.8% (max $4,000)',
       ongoing: 'Nil',
-      early_exit: 'Nil after 2 years'
+      early_exit: 'Nil after 2 years',
     },
     lvr: {
       max: 70,
-      preferred: 65
+      preferred: 65,
     },
     turnaroundTime: {
       approval: '48 hours',
-      settlement: '5 business days'
+      settlement: '5 business days',
     },
     security: [
       'Investment property',
       'Additional property security',
-      'Cross-collateralization options'
+      'Cross-collateralization options',
     ],
     documentation: [
       'Property contract',
       'Financial statements',
       'Tax returns (2 years)',
       'Rental appraisal',
-      'Property valuation'
+      'Property valuation',
     ],
     tags: ['investment-property', 'portfolio-lending', 'property-investor', 'wealth-creation'],
     featured: true,
@@ -145,14 +154,21 @@ export const loanProducts: LoanProduct[] = [
     available: true,
     lastUpdated: '2024-01-15',
     seoTitle: 'Investment Property Loans Australia | Up to 70% LVR | AAGT Private Loans',
-    seoDescription: 'Investment property loans from $200k to $5M. Up to 70% LVR, competitive rates from 9.25%. Fast approval for property investors. Portfolio lending available.',
-    seoKeywords: ['investment property loans', 'property investor loans', 'portfolio lending', 'investment finance']
+    seoDescription:
+      'Investment property loans from $200k to $5M. Up to 70% LVR, competitive rates from 9.25%. Fast approval for property investors. Portfolio lending available.',
+    seoKeywords: [
+      'investment property loans',
+      'property investor loans',
+      'portfolio lending',
+      'investment finance',
+    ],
   },
   {
     id: 'off-the-plan',
     title: 'Off-the-Plan Finance',
     slug: 'off-the-plan-finance',
-    description: 'Secure off-the-plan properties with confidence using our specialized finance solutions. We understand the unique challenges of off-the-plan purchases and provide flexible funding to help you secure your investment before completion.',
+    description:
+      'Secure off-the-plan properties with confidence using our specialized finance solutions. We understand the unique challenges of off-the-plan purchases and provide flexible funding to help you secure your investment before completion.',
     shortDescription: 'Specialized finance for off-the-plan property purchases and developments.',
     category: 'property',
     minAmount: 300000,
@@ -167,52 +183,48 @@ export const loanProducts: LoanProduct[] = [
       'Flexible settlement terms',
       'Development risk assessment',
       'Builder verification',
-      'Title completion guarantee'
+      'Title completion guarantee',
     ],
     requirements: [
       'Minimum 20% deposit paid',
       'Developer due diligence',
       'Acceptable contract terms',
-      'Building insurance coverage'
+      'Building insurance coverage',
     ],
     benefits: [
       'Secure new properties',
       'Capital growth potential',
       'Fixed price protection',
       'Professional support',
-      'Risk mitigation'
+      'Risk mitigation',
     ],
     eligibility: [
       'Australian resident',
       'Minimum 20% deposit',
       'Approved development project',
       'Acceptable contract terms',
-      'Financial capacity verified'
+      'Financial capacity verified',
     ],
     fees: {
       establishment: '1.2% (max $6,000)',
       ongoing: 'Nil',
-      early_exit: '1% if within 12 months'
+      early_exit: '1% if within 12 months',
     },
     lvr: {
       max: 80,
-      preferred: 70
+      preferred: 70,
     },
     turnaroundTime: {
       approval: '72 hours',
-      settlement: 'Upon title completion'
+      settlement: 'Upon title completion',
     },
-    security: [
-      'Off-the-plan property',
-      'Additional security if required',
-      'Builder guarantees'
-    ],
+    security: ['Off-the-plan property', 'Additional security if required', 'Builder guarantees'],
     documentation: [
       'Contract of sale',
       'Development plans',
       'Financial statements',
       'Builder credentials',
-      'Insurance documentation'
+      'Insurance documentation',
     ],
     tags: ['off-the-plan', 'new-development', 'property-development', 'construction-finance'],
     featured: false,
@@ -220,15 +232,23 @@ export const loanProducts: LoanProduct[] = [
     available: true,
     lastUpdated: '2024-01-15',
     seoTitle: 'Off-the-Plan Finance Australia | Property Development Loans | AAGT',
-    seoDescription: 'Off-the-plan finance from $300k to $5M. Sunset clause protection, progress payments. Expert support for new development purchases.',
-    seoKeywords: ['off the plan finance', 'development finance', 'construction loans', 'new property finance']
+    seoDescription:
+      'Off-the-plan finance from $300k to $5M. Sunset clause protection, progress payments. Expert support for new development purchases.',
+    seoKeywords: [
+      'off the plan finance',
+      'development finance',
+      'construction loans',
+      'new property finance',
+    ],
   },
   {
     id: 'bridging-finance',
     title: 'Bridging Finance',
     slug: 'bridging-finance',
-    description: 'Bridge the gap between property transactions with our short-term financing solutions. Perfect for auction purchases, quick settlements, or when you need to buy before selling your existing property.',
-    shortDescription: 'Short-term finance to bridge property transactions and time-sensitive opportunities.',
+    description:
+      'Bridge the gap between property transactions with our short-term financing solutions. Perfect for auction purchases, quick settlements, or when you need to buy before selling your existing property.',
+    shortDescription:
+      'Short-term finance to bridge property transactions and time-sensitive opportunities.',
     category: 'property',
     minAmount: 150000,
     maxAmount: 3000000,
@@ -242,52 +262,48 @@ export const loanProducts: LoanProduct[] = [
       'Interest-only payments',
       'No monthly principal payments',
       'Auction finance available',
-      'Flexible exit strategies'
+      'Flexible exit strategies',
     ],
     requirements: [
       'Clear exit strategy',
       'Property security',
       'Acceptable LVR',
-      'Proven ability to service'
+      'Proven ability to service',
     ],
     benefits: [
       'Ultra-fast approval',
       'Immediate settlement',
       'Auction success',
       'Time advantage',
-      'Flexible terms'
+      'Flexible terms',
     ],
     eligibility: [
       'Clear exit strategy required',
       'Maximum 70% LVR combined',
       'Acceptable credit history',
       'Property meets criteria',
-      'Demonstrated serviceability'
+      'Demonstrated serviceability',
     ],
     fees: {
       establishment: '2% (minimum $3,000)',
       ongoing: 'Line fee may apply',
-      early_exit: 'Nil'
+      early_exit: 'Nil',
     },
     lvr: {
       max: 70,
-      preferred: 60
+      preferred: 60,
     },
     turnaroundTime: {
       approval: '24 hours',
-      settlement: '2 business days'
+      settlement: '2 business days',
     },
-    security: [
-      'First mortgage security',
-      'Cross-collateralization',
-      'Caveat protection available'
-    ],
+    security: ['First mortgage security', 'Cross-collateralization', 'Caveat protection available'],
     documentation: [
       'Property contract (if applicable)',
       'Financial statements',
       'Exit strategy documentation',
       'Property valuations',
-      'Bank statements'
+      'Bank statements',
     ],
     tags: ['bridging-finance', 'short-term', 'auction-finance', 'fast-settlement'],
     featured: false,
@@ -295,15 +311,23 @@ export const loanProducts: LoanProduct[] = [
     available: true,
     lastUpdated: '2024-01-15',
     seoTitle: 'Bridging Finance Australia | 24-Hour Approval | AAGT Private Loans',
-    seoDescription: 'Bridging finance from $150k to $3M. 24-hour approval, 2-day settlement. Perfect for auctions and quick property transactions.',
-    seoKeywords: ['bridging finance', 'bridge loans', 'auction finance', 'short term property loans']
+    seoDescription:
+      'Bridging finance from $150k to $3M. 24-hour approval, 2-day settlement. Perfect for auctions and quick property transactions.',
+    seoKeywords: [
+      'bridging finance',
+      'bridge loans',
+      'auction finance',
+      'short term property loans',
+    ],
   },
   {
     id: 'working-capital',
     title: 'Working Capital Loans',
     slug: 'working-capital-loans',
-    description: 'Maintain healthy cash flow with our working capital solutions designed to support your day-to-day business operations. Whether for inventory, payroll, or seasonal fluctuations, we provide the flexibility you need.',
-    shortDescription: 'Flexible working capital solutions for cash flow management and operational needs.',
+    description:
+      'Maintain healthy cash flow with our working capital solutions designed to support your day-to-day business operations. Whether for inventory, payroll, or seasonal fluctuations, we provide the flexibility you need.',
+    shortDescription:
+      'Flexible working capital solutions for cash flow management and operational needs.',
     category: 'business',
     minAmount: 150000,
     maxAmount: 2000000,
@@ -317,49 +341,44 @@ export const loanProducts: LoanProduct[] = [
       'Interest only on usage',
       'Revolving credit facility',
       'Quick access to funds',
-      'Flexible repayment terms'
+      'Flexible repayment terms',
     ],
     requirements: [
       'Established business operations',
       'Regular revenue stream',
       'Acceptable trading history',
-      'Clear business purpose'
+      'Clear business purpose',
     ],
     benefits: [
       'Improved cash flow',
       'Operational flexibility',
       'Only pay for what you use',
       'Quick fund access',
-      'Competitive rates'
+      'Competitive rates',
     ],
     eligibility: [
       'Australian business entity',
       'Minimum 12 months trading',
       'Annual revenue $300,000+',
       'Acceptable credit profile',
-      'Demonstrable cash flow'
+      'Demonstrable cash flow',
     ],
     fees: {
       establishment: '1.5% (max $4,000)',
       ongoing: 'Line fee if applicable',
-      early_exit: 'Nil'
+      early_exit: 'Nil',
     },
     turnaroundTime: {
       approval: '24-48 hours',
-      settlement: '3 business days'
+      settlement: '3 business days',
     },
-    security: [
-      'Business assets',
-      'Accounts receivable',
-      'Inventory',
-      'Property security'
-    ],
+    security: ['Business assets', 'Accounts receivable', 'Inventory', 'Property security'],
     documentation: [
       'Management accounts',
       'Tax returns',
       'Bank statements (6 months)',
       'Aged debtors/creditors',
-      'Cash flow projections'
+      'Cash flow projections',
     ],
     tags: ['working-capital', 'cash-flow', 'line-of-credit', 'business-operations'],
     featured: false,
@@ -367,15 +386,23 @@ export const loanProducts: LoanProduct[] = [
     available: true,
     lastUpdated: '2024-01-15',
     seoTitle: 'Working Capital Loans Australia | Business Cash Flow | AAGT Private Loans',
-    seoDescription: 'Working capital loans from $150k to $2M. Line of credit options, quick access to funds. Flexible repayment terms for business operations.',
-    seoKeywords: ['working capital loans', 'business cash flow', 'line of credit', 'operational finance']
+    seoDescription:
+      'Working capital loans from $150k to $2M. Line of credit options, quick access to funds. Flexible repayment terms for business operations.',
+    seoKeywords: [
+      'working capital loans',
+      'business cash flow',
+      'line of credit',
+      'operational finance',
+    ],
   },
   {
     id: 'second-mortgage',
     title: 'Second Mortgage Loans',
     slug: 'second-mortgage-loans',
-    description: 'Access the equity in your property with our second mortgage solutions. Perfect for debt consolidation, business investment, or major purchases without refinancing your primary mortgage.',
-    shortDescription: 'Unlock property equity with second mortgage loans for various financial needs.',
+    description:
+      'Access the equity in your property with our second mortgage solutions. Perfect for debt consolidation, business investment, or major purchases without refinancing your primary mortgage.',
+    shortDescription:
+      'Unlock property equity with second mortgage loans for various financial needs.',
     category: 'personal',
     minAmount: 150000,
     maxAmount: 1500000,
@@ -389,52 +416,48 @@ export const loanProducts: LoanProduct[] = [
       'Fixed or variable rates',
       'Multiple purpose options',
       'Competitive second position rates',
-      'Flexible loan structures'
+      'Flexible loan structures',
     ],
     requirements: [
       'Existing first mortgage',
       'Adequate equity position',
       'Serviceability assessment',
-      'Property valuation'
+      'Property valuation',
     ],
     benefits: [
       'Access locked equity',
       'No refinancing required',
       'Competitive rates',
       'Multiple use options',
-      'Maintain current mortgage'
+      'Maintain current mortgage',
     ],
     eligibility: [
       'Property owner with equity',
       'Adequate combined LVR',
       'Acceptable credit history',
       'Demonstrated serviceability',
-      'Clear loan purpose'
+      'Clear loan purpose',
     ],
     fees: {
       establishment: '2% (minimum $2,500)',
       ongoing: 'Nil',
-      early_exit: '2% reducing scale'
+      early_exit: '2% reducing scale',
     },
     lvr: {
       max: 85,
-      preferred: 80
+      preferred: 80,
     },
     turnaroundTime: {
       approval: '48-72 hours',
-      settlement: '7 business days'
+      settlement: '7 business days',
     },
-    security: [
-      'Second mortgage over property',
-      'Registered mortgage',
-      'Title insurance available'
-    ],
+    security: ['Second mortgage over property', 'Registered mortgage', 'Title insurance available'],
     documentation: [
       'Property valuation',
       'Existing mortgage details',
       'Financial statements',
       'Tax returns',
-      'Loan purpose documentation'
+      'Loan purpose documentation',
     ],
     tags: ['second-mortgage', 'equity-release', 'debt-consolidation', 'property-equity'],
     featured: false,
@@ -442,9 +465,10 @@ export const loanProducts: LoanProduct[] = [
     available: true,
     lastUpdated: '2024-01-15',
     seoTitle: 'Second Mortgage Loans Australia | Property Equity Access | AAGT',
-    seoDescription: 'Second mortgage loans from $150k to $1.5M. Access property equity without refinancing. Competitive rates, flexible terms.',
-    seoKeywords: ['second mortgage', 'equity loans', 'property equity', 'second position lending']
-  }
+    seoDescription:
+      'Second mortgage loans from $150k to $1.5M. Access property equity without refinancing. Competitive rates, flexible terms.',
+    seoKeywords: ['second mortgage', 'equity loans', 'property equity', 'second position lending'],
+  },
 ];
 
 export const productCategories = [
@@ -452,26 +476,26 @@ export const productCategories = [
     id: 'business',
     name: 'Business Loans',
     description: 'Funding solutions for business growth and operations',
-    icon: '🏢'
+    icon: '🏢',
   },
   {
     id: 'investment',
     name: 'Investment Loans',
     description: 'Property investment and portfolio financing',
-    icon: '🏘️'
+    icon: '🏘️',
   },
   {
     id: 'property',
     name: 'Property Finance',
     description: 'Specialized property and development finance',
-    icon: '🏗️'
+    icon: '🏗️',
   },
   {
     id: 'personal',
     name: 'Personal Finance',
     description: 'Personal lending and equity solutions',
-    icon: '👤'
-  }
+    icon: '👤',
+  },
 ];
 
 export const productFeatures = [
@@ -486,5 +510,5 @@ export const productFeatures = [
   'Professional investor rates',
   'Portfolio lending available',
   'Line of credit available',
-  'Draw down as needed'
+  'Draw down as needed',
 ];

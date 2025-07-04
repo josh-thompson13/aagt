@@ -27,10 +27,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const checkboxClasses = cn(styles.checkbox, className);
 
     const labelClasses = cn(styles.checkboxLabel, {
-      [styles.required]: required,
+      [styles.required || 'required']: required,
     });
 
-    const helperTextClasses = cn(styles.helperText, styles[validationState]);
+    const helperTextClasses = cn(styles.helperText, styles[validationState as keyof typeof styles]);
 
     const displayText = error || success || warning || helperText;
 

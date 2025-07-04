@@ -13,22 +13,22 @@ interface AnimatedIconProps {
 
 const iconVariants = {
   initial: { scale: 0, rotate: -180, opacity: 0 },
-  animate: { 
-    scale: 1, 
-    rotate: 0, 
+  animate: {
+    scale: 1,
+    rotate: 0,
     opacity: 1,
     transition: {
       type: 'spring',
       stiffness: 200,
       damping: 15,
       duration: 0.6,
-    }
+    },
   },
-  exit: { 
-    scale: 0, 
-    rotate: 180, 
+  exit: {
+    scale: 0,
+    rotate: 180,
     opacity: 0,
-    transition: { duration: 0.3 }
+    transition: { duration: 0.3 },
   },
 };
 
@@ -39,8 +39,8 @@ const pulseVariants = {
       duration: 2,
       repeat: Infinity,
       ease: 'easeInOut',
-    }
-  }
+    },
+  },
 };
 
 const spinVariants = {
@@ -50,8 +50,8 @@ const spinVariants = {
       duration: 1,
       repeat: Infinity,
       ease: 'linear',
-    }
-  }
+    },
+  },
 };
 
 const bounceVariants = {
@@ -61,15 +61,15 @@ const bounceVariants = {
       duration: 1.5,
       repeat: Infinity,
       ease: 'easeInOut',
-    }
-  }
+    },
+  },
 };
 
-export const AnimatedIcon = ({ 
-  type, 
-  size = 'md', 
-  className, 
-  animate = true 
+export const AnimatedIcon = ({
+  type,
+  size = 'md',
+  className,
+  animate = true,
 }: AnimatedIconProps) => {
   const sizes = {
     sm: 'h-4 w-4',
@@ -110,7 +110,7 @@ export const AnimatedIcon = ({
 
   const getAnimation = () => {
     if (!animate) return {};
-    
+
     switch (type) {
       case 'loading':
         return spinVariants;
@@ -132,17 +132,8 @@ export const AnimatedIcon = ({
       exit="exit"
       className="flex items-center justify-center"
     >
-      <motion.div
-        variants={getAnimation()}
-        animate={animate ? 'animate' : undefined}
-      >
-        <Icon 
-          className={cn(
-            sizes[size],
-            colors[type],
-            className
-          )}
-        />
+      <motion.div variants={getAnimation()} animate={animate ? 'animate' : undefined}>
+        <Icon className={cn(sizes[size], colors[type], className)} />
       </motion.div>
     </motion.div>
   );

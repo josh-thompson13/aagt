@@ -63,6 +63,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
         return () => clearTimeout(enterTimer);
       }
+
+      return undefined;
     }, [isVisible]);
 
     useEffect(() => {
@@ -83,6 +85,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
         return () => clearInterval(interval);
       }
+
+      return undefined;
     }, [isVisible, duration]);
 
     const handleClose = () => {
@@ -102,10 +106,10 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
     const toastClasses = cn(
       styles.toast,
-      styles[variant],
+      styles[variant as keyof typeof styles],
       {
-        [styles.entering]: animationState === 'entering',
-        [styles.exiting]: animationState === 'exiting',
+        [styles.entering || 'entering']: animationState === 'entering',
+        [styles.exiting || 'exiting']: animationState === 'exiting',
       },
       className
     );

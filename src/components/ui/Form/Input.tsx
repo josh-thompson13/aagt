@@ -54,21 +54,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputClasses = cn(
       styles.input,
       {
-        [styles.error]: error,
-        [styles.success]: success,
-        [styles.warning]: warning,
-        [styles.inputWithIcon]: leftIcon,
+        [styles.error || 'error']: error,
+        [styles.success || 'success']: success,
+        [styles.warning || 'warning']: warning,
+        [styles.inputWithIcon || 'input-with-icon']: leftIcon,
         'w-full': fullWidth,
       },
       className
     );
 
     const labelClasses = cn(styles.label, {
-      [styles.floating]: isFocused || hasValue,
-      [styles.required]: required,
+      [styles.floating || 'floating']: isFocused || hasValue,
+      [styles.required || 'required']: required,
     });
 
-    const helperTextClasses = cn(styles.helperText, styles[validationState]);
+    const helperTextClasses = cn(styles.helperText, styles[validationState as keyof typeof styles]);
 
     const displayText = error || success || warning || helperText;
 

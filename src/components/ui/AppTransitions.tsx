@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 // Route-based transition configurations
 const routeTransitions = {
@@ -10,36 +10,36 @@ const routeTransitions = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.3, ease: 'easeInOut' }
+    transition: { duration: 0.3, ease: 'easeInOut' },
   },
   slide: {
     initial: { opacity: 0, x: 50 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -50 },
-    transition: { duration: 0.4, ease: 'easeOut' }
+    transition: { duration: 0.4, ease: 'easeOut' },
   },
   scale: {
     initial: { opacity: 0, scale: 0.95 },
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 1.05 },
-    transition: { duration: 0.3, ease: 'easeInOut' }
+    transition: { duration: 0.3, ease: 'easeInOut' },
   },
   calculator: {
     initial: { opacity: 0, rotateX: 90, transformPerspective: 1000 },
     animate: { opacity: 1, rotateX: 0 },
     exit: { opacity: 0, rotateX: -90 },
-    transition: { duration: 0.5, ease: 'easeOut' }
+    transition: { duration: 0.5, ease: 'easeOut' },
   },
   modal: {
     initial: { opacity: 0, scale: 0.8, y: 50 },
     animate: { opacity: 1, scale: 1, y: 0 },
     exit: { opacity: 0, scale: 0.8, y: 50 },
-    transition: { 
-      duration: 0.4, 
+    transition: {
+      duration: 0.4,
       ease: [0.34, 1.56, 0.64, 1],
-      opacity: { duration: 0.3 }
-    }
-  }
+      opacity: { duration: 0.3 },
+    },
+  },
 };
 
 // Get transition type based on route
@@ -76,7 +76,13 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
 };
 
 // Loading transition with app-like feel
-export const LoadingTransition = ({ isLoading, children }: { isLoading: boolean; children: ReactNode }) => {
+export const LoadingTransition = ({
+  isLoading,
+  children,
+}: {
+  isLoading: boolean;
+  children: ReactNode;
+}) => {
   return (
     <AnimatePresence mode="wait">
       {isLoading ? (
@@ -124,13 +130,13 @@ export const LoadingTransition = ({ isLoading, children }: { isLoading: boolean;
 };
 
 // Stagger container for animating lists
-export const StaggerContainer = ({ 
-  children, 
+export const StaggerContainer = ({
+  children,
   className = '',
   delay = 0,
-  staggerDelay = 0.1 
-}: { 
-  children: ReactNode; 
+  staggerDelay = 0.1,
+}: {
+  children: ReactNode;
   className?: string;
   delay?: number;
   staggerDelay?: number;
@@ -157,12 +163,12 @@ export const StaggerContainer = ({
 };
 
 // Individual stagger item
-export const StaggerItem = ({ 
-  children, 
+export const StaggerItem = ({
+  children,
   className = '',
-  direction = 'up'
-}: { 
-  children: ReactNode; 
+  direction = 'up',
+}: {
+  children: ReactNode;
   className?: string;
   direction?: 'up' | 'down' | 'left' | 'right';
 }) => {
@@ -195,12 +201,12 @@ export const StaggerItem = ({
 };
 
 // Slide up modal transition
-export const ModalTransition = ({ 
-  isOpen, 
-  children, 
-  onClose 
-}: { 
-  isOpen: boolean; 
+export const ModalTransition = ({
+  isOpen,
+  children,
+  onClose,
+}: {
+  isOpen: boolean;
   children: ReactNode;
   onClose: () => void;
 }) => {
@@ -229,18 +235,18 @@ export const ModalTransition = ({
             transition={{ duration: 0.3 }}
             onClick={onClose}
           />
-          
+
           {/* Modal */}
           <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
-            transition={{ 
+            transition={{
               type: 'spring',
               damping: 30,
               stiffness: 300,
-              duration: 0.4
+              duration: 0.4,
             }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
@@ -264,14 +270,14 @@ export const ModalTransition = ({
 };
 
 // Card flip transition
-export const FlipCard = ({ 
-  front, 
-  back, 
-  isFlipped 
-}: { 
-  front: ReactNode; 
-  back: ReactNode; 
-  isFlipped: boolean; 
+export const FlipCard = ({
+  front,
+  back,
+  isFlipped,
+}: {
+  front: ReactNode;
+  back: ReactNode;
+  isFlipped: boolean;
 }) => {
   return (
     <motion.div
@@ -300,12 +306,12 @@ export const FlipCard = ({
 };
 
 // Pull to refresh transition
-export const PullToRefresh = ({ 
-  onRefresh, 
-  children 
-}: { 
-  onRefresh: () => void; 
-  children: ReactNode; 
+export const PullToRefresh = ({
+  onRefresh,
+  children,
+}: {
+  onRefresh: () => void;
+  children: ReactNode;
 }) => {
   const [isPulling, setIsPulling] = useState(false);
   const [pullDistance, setPullDistance] = useState(0);
@@ -334,9 +340,9 @@ export const PullToRefresh = ({
       <motion.div
         className="absolute top-0 left-0 right-0 flex justify-center py-4 text-gray-500"
         initial={{ y: -60, opacity: 0 }}
-        animate={{ 
-          y: pullDistance > 20 ? -20 : -60, 
-          opacity: pullDistance > 20 ? 1 : 0 
+        animate={{
+          y: pullDistance > 20 ? -20 : -60,
+          opacity: pullDistance > 20 ? 1 : 0,
         }}
         transition={{ duration: 0.2 }}
       >
@@ -355,13 +361,7 @@ export const PullToRefresh = ({
 };
 
 // Tab transition with native feel
-export const TabTransition = ({ 
-  activeTab, 
-  tabs 
-}: { 
-  activeTab: number; 
-  tabs: ReactNode[]; 
-}) => {
+export const TabTransition = ({ activeTab, tabs }: { activeTab: number; tabs: ReactNode[] }) => {
   return (
     <div className="relative overflow-hidden">
       <AnimatePresence mode="wait">

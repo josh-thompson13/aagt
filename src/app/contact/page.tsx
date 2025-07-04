@@ -4,14 +4,17 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact Us | AAGT Private Loans',
-  description: 'Contact AAGT Private Loans for business funding inquiries. Get same day approval for loans from $150,000 to $5,000,000. Speak to our lending specialists today.',
-  keywords: 'contact AAGT private loans, business loan contact, private lending inquiry, loan specialist contact, business funding help',
+  description:
+    'Contact AAGT Private Loans for business funding inquiries. Get same day approval for loans from $150,000 to $5,000,000. Speak to our lending specialists today.',
+  keywords:
+    'contact AAGT private loans, business loan contact, private lending inquiry, loan specialist contact, business funding help',
   alternates: {
     canonical: 'https://aagtprivateloans.com.au/contact',
   },
   openGraph: {
     title: 'Contact Us | AAGT Private Loans',
-    description: 'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
+    description:
+      'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
     url: 'https://aagtprivateloans.com.au/contact',
     siteName: 'AAGT Private Loans',
     images: [
@@ -35,8 +38,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: {
-      'index': true,
-      'follow': true,
+      index: true,
+      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -62,7 +65,8 @@ export default function Contact() {
             </h1>
             <div className="flex justify-center">
               <p className="text-base md:text-lg text-slate-600 max-w-2xl mb-10 font-normal leading-relaxed text-center">
-                Ready to secure your business funding? Get in touch with our expert lending team for same day approval.
+                Ready to secure your business funding? Get in touch with our expert lending team for
+                same day approval.
               </p>
             </div>
 
@@ -93,9 +97,7 @@ export default function Contact() {
               <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200">
                 <Clock className="w-8 h-8 text-primary-500 mx-auto mb-4" />
                 <h3 className="font-semibold text-slate-900 mb-2">Business Hours</h3>
-                <p className="text-slate-600">
-                  {contactInfo.hours}
-                </p>
+                <p className="text-slate-600">{contactInfo.hours}</p>
               </div>
             </div>
           </div>
@@ -114,21 +116,22 @@ export default function Contact() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ContactPage',
-            'name': 'Contact AAGT Private Loans',
-            'description': 'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
-            'url': 'https://aagtprivateloans.com.au/contact',
-            'mainEntity': {
+            name: 'Contact AAGT Private Loans',
+            description:
+              'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
+            url: 'https://aagtprivateloans.com.au/contact',
+            mainEntity: {
               '@type': 'FinancialService',
-              'name': 'AAGT Private Loans',
-              'telephone': contactInfo.phone,
-              'email': contactInfo.email,
-              'address': {
+              name: 'AAGT Private Loans',
+              telephone: contactInfo.phone,
+              email: contactInfo.email,
+              address: {
                 '@type': 'PostalAddress',
-                'addressCountry': 'AU',
-                'addressRegion': 'NSW',
+                addressCountry: 'AU',
+                addressRegion: 'NSW',
               },
-              'openingHours': 'Mo-Fr 09:00-18:00',
-              'serviceType': 'Private Lending',
+              openingHours: 'Mo-Fr 09:00-18:00',
+              serviceType: 'Private Lending',
             },
           }),
         }}

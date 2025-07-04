@@ -1,14 +1,7 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import {
-  DollarSign,
-  Calendar,
-  Percent,
-  Building2,
-  Zap,
-  CheckCircle2,
-} from 'lucide-react';
+import { motion, useInView, type Variants } from 'framer-motion';
+import { DollarSign, Calendar, Percent, Building2, Zap, CheckCircle2 } from 'lucide-react';
 import { useRef } from 'react';
 
 interface LoanFeature {
@@ -58,7 +51,7 @@ export const LoanFeatures = () => {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -69,7 +62,7 @@ export const LoanFeatures = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       y: 20,
       opacity: 0,
@@ -182,14 +175,10 @@ export const LoanFeatures = () => {
               <h3 className="text-sm font-medium text-gray-600 uppercase tracking-wider mb-2">
                 {feature.title}
               </h3>
-              
-              <p className="text-xl font-bold text-primary-900 mb-2">
-                {feature.value}
-              </p>
-              
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
+
+              <p className="text-xl font-bold text-primary-900 mb-2">{feature.value}</p>
+
+              <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
 
               {/* Hover effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-teal-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />

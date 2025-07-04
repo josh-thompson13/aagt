@@ -97,8 +97,6 @@ export * from './Button';
 
 // Card Components
 export * from './Card';
-// Data Visualization Components
-export * from './DataVisualization';
 export { FeaturesGrid } from './FeaturesGrid';
 // Form Components
 export * from './Form';
@@ -119,6 +117,7 @@ export * from './Modal';
 export * from './Notification';
 // Legacy UI Components
 export { TrustIndicators } from './TrustIndicators';
+export { WhyAAGT } from './WhyAAGT';
 
 // App-like Transitions
 export {

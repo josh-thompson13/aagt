@@ -14,24 +14,24 @@ interface LoadingOverlayProps {
 
 const overlayVariants = {
   hidden: { opacity: 0 },
-  visible: { 
+  visible: {
     opacity: 1,
-    transition: { duration: 0.3 }
+    transition: { duration: 0.3 },
   },
-  exit: { 
+  exit: {
     opacity: 0,
-    transition: { duration: 0.2 }
+    transition: { duration: 0.2 },
   },
 };
 
 const contentVariants = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     scale: 0.9,
     y: 20,
   },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
     y: 0,
     transition: {
@@ -39,16 +39,15 @@ const contentVariants = {
       stiffness: 300,
       damping: 25,
       delay: 0.1,
-    }
+    },
   },
-  exit: { 
-    opacity: 0, 
+  exit: {
+    opacity: 0,
     scale: 0.9,
     y: -10,
-    transition: { duration: 0.2 }
+    transition: { duration: 0.2 },
   },
 };
-
 
 export const LoadingOverlay = ({
   isVisible,
@@ -85,12 +84,8 @@ export const LoadingOverlay = ({
             {/* Loading Icon */}
             <div className="mb-6 flex justify-center">
               <div className="relative">
-                <AnimatedIcon 
-                  type="loading" 
-                  size="xl" 
-                  className="text-teal-600"
-                />
-                
+                <AnimatedIcon type="loading" size="xl" className="text-teal-600" />
+
                 {/* Pulse ring effect */}
                 <div className="absolute inset-0 -m-2">
                   <motion.div
@@ -106,7 +101,7 @@ export const LoadingOverlay = ({
                     }}
                   />
                 </div>
-                
+
                 <div className="absolute inset-0 -m-4">
                   <motion.div
                     className="w-full h-full border border-teal-100 rounded-full"
@@ -126,19 +121,13 @@ export const LoadingOverlay = ({
             </div>
 
             {/* Title */}
-            <h2 
-              id="loading-title"
-              className="text-xl font-semibold text-gray-900 mb-3"
-            >
+            <h2 id="loading-title" className="text-xl font-semibold text-gray-900 mb-3">
               {title}
             </h2>
 
             {/* Message */}
             {message && (
-              <p 
-                id="loading-message"
-                className="text-gray-600 mb-6 text-sm leading-relaxed"
-              >
+              <p id="loading-message" className="text-gray-600 mb-6 text-sm leading-relaxed">
                 {message}
               </p>
             )}
@@ -150,7 +139,7 @@ export const LoadingOverlay = ({
                   <span>Progress</span>
                   <span>{Math.round(progress)}%</span>
                 </div>
-                
+
                 <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                   <motion.div
                     className="bg-teal-600 h-full rounded-full"

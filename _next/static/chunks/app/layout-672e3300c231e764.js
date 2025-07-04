@@ -1,1 +1,336 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[177],{1213:(e,t,n)=>{Promise.resolve().then(n.t.bind(n,6874,23)),Promise.resolve().then(n.t.bind(n,8346,23)),Promise.resolve().then(n.bind(n,3170)),Promise.resolve().then(n.bind(n,5849)),Promise.resolve().then(n.t.bind(n,3999,23))},3170:(e,t,n)=>{n.d(t,{PostHogProvider:()=>x}),n(5155);var r=n(2341),s=n(2115),a=(0,s.createContext)({client:r.Ay}),i=()=> (0,s.useContext)(a).client,o=(e,t)=> (o=Object.setPrototypeOf||({__proto__:[]})instanceof Array&&((e,t)=> {e.__proto__=t})||((e,t)=> {for(var n in t)Object.hasOwn(t,n)&&(e[n]=t[n])}))(e,t),l=function(){return(l=Object.assign||((e)=> {for(var t,n=1,r=arguments.length;n<r;n++)for(var s in t=arguments[n])Object.hasOwn(t,s)&&(e[s]=t[s]);return e})).apply(this,arguments)};function c(e,t){var n={};for(var r in e)Object.hasOwn(e,r)&&0>t.indexOf(r)&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols)for(var s=0,r=Object.getOwnPropertySymbols(e);s<r.length;s++)0>t.indexOf(r[s])&&Object.prototype.propertyIsEnumerable.call(e,r[s])&&(n[r[s]]=e[r[s]]);return n}"function"==typeof SuppressedError&&SuppressedError;var d=(e)=> "function"==typeof e;function u(e){var t=e.flag,n=e.children,r=e.onIntersect,s=e.onClick,a=e.trackView,o=e.options,d=c(e,["flag","children","onIntersect","onClick","trackView","options"]),u=useRef(null);return useEffect(()=> {if(null!==u.current&&a){var e=new IntersectionObserver((e)=> r(e[0]),l({threshold:.1},o));return e.observe(u.current),()=> e.disconnect()}},[t,o,i(),u,a,r]),React.createElement("div",l({ref:u},d,{onClick:s}),n)}var h={componentStack:null,error:null},m={INVALID_FALLBACK:"[PostHog.js][PostHogErrorBoundary] Invalid fallback prop, provide a valid React element or a function that returns a valid React element."};!((e)=> {if("function"!=typeof e&&null!==e)throw TypeError("Class extends value "+String(e)+" is not a constructor or null");function t(){this.constructor=n}function n(t){var n=e.call(this,t)||this;return n.state=h,n}o(n,e),n.prototype=null===e?Object.create(e):(t.prototype=e.prototype,new t),n.prototype.componentDidCatch=function(e,t){var n,r=t.componentStack,s=this.props.additionalProperties;this.setState({error:e,componentStack:r}),d(s)?n=s(e):"object"==typeof s&&(n=s),this.context.client.captureException(e,n)},n.prototype.render=function(){var e=this.props,t=e.children,n=e.fallback,r=this.state;if(null==r.componentStack)return d(t)?t():t;var a=d(n)?s.createElement(n,{error:r.error,componentStack:r.componentStack}):n;return s.isValidElement(a)?a:(console.warn(m.INVALID_FALLBACK),s.createElement(s.Fragment,null))},n.contextType=a})(s.Component);var p=n(5695);const x=e=>((0,s.useEffect)(()=>{},[]),e.children)},3544:(e,t,n)=>{n.d(t,{o:()=>r});const r={name:"AAGT Private Loans",description:"Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.",tagline:"Alternative lending solutions for Australian businesses",mission:"Making business and investment funding accessible and straightforward",email:"aagtpvtloans@gmail.com",domain:"https://aagtprivateloans.com.au",businessType:"Direct Private Lending Company",targetMarket:"Business owners and investors seeking alternative funding solutions",primaryMessage:"Alternative lending solutions for businesses declined by traditional banks",loanRange:{min:15e4,max:5e6,currency:"AUD"},features:["Same day approval","4-day settlement","Minimal documentation","Direct lender using proprietary funds"]}},3999:()=>{},5695:(e,t,n)=>{var r=n(8999);n.o(r,"usePathname")&&n.d(t,{usePathname:()=> r.usePathname}),n.o(r,"useRouter")&&n.d(t,{useRouter:()=> r.useRouter}),n.o(r,"useSearchParams")&&n.d(t,{useSearchParams:()=> r.useSearchParams})},5849:(e,t,n)=>{n.d(t,{BaseTemplate:()=>d});var r=n(5155),s=n(3544),a=n(8316),i=n(6766),o=n(6874),l=n.n(o),c=n(2115);const d=e=>{const[t,n]=(0,c.useState)(!1);return(0,r.jsxs)("div",{className:"w-full min-h-screen text-gray-800 antialiased",children:[(0,r.jsx)("header",{className:"sticky top-0 z-30 bg-white shadow-md",children:(0,r.jsxs)("div",{className:"container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",children:[(0,r.jsxs)("div",{className:"flex justify-between items-center h-16 sm:h-20",children:[(0,r.jsx)("div",{className:"flex-shrink-0 flex items-center",children:(0,r.jsx)(l(),{href:"/",className:"flex items-center",children:(0,r.jsx)(i.default,{src:(0,a.OX)("/images/aagt_logo_no_background.png"),alt:"AAGT Private Loans Logo",width:180,height:60,className:"h-10 sm:h-12 w-auto",priority:!0})})}),(0,r.jsx)("nav",{className:"hidden md:flex items-center space-x-1 lg:space-x-4",children:e.navItems}),(0,r.jsx)("div",{className:"md:hidden",children:(0,r.jsxs)("button",{type:"button",className:"inline-flex items-center justify-center p-1.5 sm:p-2 rounded-md text-gray-500 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-blue-200 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200",onClick:()=>n(!t),"aria-expanded":t,children:[(0,r.jsx)("span",{className:"sr-only",children:"Open main menu"}),(0,r.jsx)("svg",{className:"h-5 w-5 sm:h-6 sm:w-6",fill:"none",viewBox:"0 0 24 24",stroke:"currentColor","aria-hidden":"true",children:(0,r.jsx)("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:t?"M6 18L18 6M6 6l12 12":"M4 6h16M4 12h16M4 18h16"})})]})})]}),t&&(0,r.jsx)("div",{className:"md:hidden bg-white border-t border-gray-100",children:(0,r.jsx)("div",{className:"px-3 pt-3 pb-4",children:e.navItems})})]})}),(0,r.jsx)("main",{children:e.children}),(0,r.jsx)("footer",{className:"bg-gray-800 text-white",children:(0,r.jsxs)("div",{className:"container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8",children:[(0,r.jsxs)("div",{className:"grid grid-cols-1 md:grid-cols-3 gap-8",children:[(0,r.jsxs)("div",{children:[(0,r.jsx)("h3",{className:"text-lg font-semibold mb-4",children:s.o.name}),(0,r.jsx)("p",{className:"text-gray-300",children:s.o.description})]}),(0,r.jsxs)("div",{children:[(0,r.jsx)("h3",{className:"text-lg font-semibold mb-4",children:"Quick Links"}),(0,r.jsxs)("ul",{className:"space-y-2",children:[(0,r.jsx)("li",{children:(0,r.jsx)(l(),{href:"/business-loans",className:"text-gray-300 hover:text-white",children:"Business Loans"})}),(0,r.jsx)("li",{children:(0,r.jsx)(l(),{href:"/investment-loans",className:"text-gray-300 hover:text-white",children:"Investment Loans"})}),(0,r.jsx)("li",{children:(0,r.jsx)(l(),{href:"/rates",className:"text-gray-300 hover:text-white",children:"Rates & Terms"})}),(0,r.jsx)("li",{children:(0,r.jsx)(l(),{href:"/resources",className:"text-gray-300 hover:text-white",children:"Resources"})}),(0,r.jsx)("li",{children:(0,r.jsx)(l(),{href:"/about",className:"text-gray-300 hover:text-white",children:"About"})}),(0,r.jsx)("li",{children:(0,r.jsx)(l(),{href:"/contact",className:"text-gray-300 hover:text-white",children:"Contact"})})]})]}),(0,r.jsxs)("div",{children:[(0,r.jsx)("h3",{className:"text-lg font-semibold mb-4",children:"Contact Us"}),(0,r.jsx)("p",{className:"text-gray-300",children:s.o.email})]})]}),(0,r.jsx)("div",{className:"mt-8 pt-8 border-t border-gray-700 text-center text-gray-400",children:`\xa9 ${new Date().getFullYear()} ${s.o.name}. All rights reserved.`})]})})]})}},8316:(e,t,n)=>{n.d(t,{OX:()=>r}),n(9509);const r=e=>e},8346:e=>{e.exports={style:{fontFamily:"'Inter', 'Inter Fallback'",fontStyle:"normal"},className:"__className_e8ce0c"}}},e=>{var t=t=>e(e.s=t);e.O(0,[954,229,874,766,441,684,358],()=>t(1213)),_N_E=e.O()}]);
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [177],
+  {
+    1213: (e, t, n) => {
+      Promise.resolve().then(n.t.bind(n, 6874, 23)),
+        Promise.resolve().then(n.t.bind(n, 8346, 23)),
+        Promise.resolve().then(n.bind(n, 3170)),
+        Promise.resolve().then(n.bind(n, 5849)),
+        Promise.resolve().then(n.t.bind(n, 3999, 23));
+    },
+    3170: (e, t, n) => {
+      n.d(t, { PostHogProvider: () => x }), n(5155);
+      var r = n(2341),
+        s = n(2115),
+        a = (0, s.createContext)({ client: r.Ay }),
+        i = () => (0, s.useContext)(a).client,
+        o = (e, t) =>
+          (o =
+            Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array &&
+              ((e, t) => {
+                e.__proto__ = t;
+              })) ||
+            ((e, t) => {
+              for (var n in t) Object.hasOwn(t, n) && (e[n] = t[n]);
+            }))(e, t),
+        l = function () {
+          return (l =
+            Object.assign ||
+            ((e) => {
+              for (var t, n = 1, r = arguments.length; n < r; n++)
+                for (var s in (t = arguments[n])) Object.hasOwn(t, s) && (e[s] = t[s]);
+              return e;
+            })).apply(this, arguments);
+        };
+      function c(e, t) {
+        var n = {};
+        for (var r in e) Object.hasOwn(e, r) && 0 > t.indexOf(r) && (n[r] = e[r]);
+        if (null != e && 'function' == typeof Object.getOwnPropertySymbols)
+          for (var s = 0, r = Object.getOwnPropertySymbols(e); s < r.length; s++)
+            0 > t.indexOf(r[s]) &&
+              Object.prototype.propertyIsEnumerable.call(e, r[s]) &&
+              (n[r[s]] = e[r[s]]);
+        return n;
+      }
+      'function' == typeof SuppressedError && SuppressedError;
+      var d = (e) => 'function' == typeof e;
+      function u(e) {
+        var t = e.flag,
+          n = e.children,
+          r = e.onIntersect,
+          s = e.onClick,
+          a = e.trackView,
+          o = e.options,
+          d = c(e, ['flag', 'children', 'onIntersect', 'onClick', 'trackView', 'options']),
+          u = useRef(null);
+        return (
+          useEffect(() => {
+            if (null !== u.current && a) {
+              var e = new IntersectionObserver((e) => r(e[0]), l({ threshold: 0.1 }, o));
+              return e.observe(u.current), () => e.disconnect();
+            }
+          }, [t, o, i(), u, a, r]),
+          React.createElement('div', l({ ref: u }, d, { onClick: s }), n)
+        );
+      }
+      var h = { componentStack: null, error: null },
+        m = {
+          INVALID_FALLBACK:
+            '[PostHog.js][PostHogErrorBoundary] Invalid fallback prop, provide a valid React element or a function that returns a valid React element.',
+        };
+      !((e) => {
+        if ('function' != typeof e && null !== e)
+          throw TypeError('Class extends value ' + String(e) + ' is not a constructor or null');
+        function t() {
+          this.constructor = n;
+        }
+        function n(t) {
+          var n = e.call(this, t) || this;
+          return (n.state = h), n;
+        }
+        o(n, e),
+          (n.prototype = null === e ? Object.create(e) : ((t.prototype = e.prototype), new t())),
+          (n.prototype.componentDidCatch = function (e, t) {
+            var n,
+              r = t.componentStack,
+              s = this.props.additionalProperties;
+            this.setState({ error: e, componentStack: r }),
+              d(s) ? (n = s(e)) : 'object' == typeof s && (n = s),
+              this.context.client.captureException(e, n);
+          }),
+          (n.prototype.render = function () {
+            var e = this.props,
+              t = e.children,
+              n = e.fallback,
+              r = this.state;
+            if (null == r.componentStack) return d(t) ? t() : t;
+            var a = d(n)
+              ? s.createElement(n, { error: r.error, componentStack: r.componentStack })
+              : n;
+            return s.isValidElement(a)
+              ? a
+              : (console.warn(m.INVALID_FALLBACK), s.createElement(s.Fragment, null));
+          }),
+          (n.contextType = a);
+      })(s.Component);
+      var p = n(5695);
+      const x = (e) => ((0, s.useEffect)(() => {}, []), e.children);
+    },
+    3544: (e, t, n) => {
+      n.d(t, { o: () => r });
+      const r = {
+        name: 'AAGT Private Loans',
+        description:
+          'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
+        tagline: 'Alternative lending solutions for Australian businesses',
+        mission: 'Making business and investment funding accessible and straightforward',
+        email: 'aagtpvtloans@gmail.com',
+        domain: 'https://aagtprivateloans.com.au',
+        businessType: 'Direct Private Lending Company',
+        targetMarket: 'Business owners and investors seeking alternative funding solutions',
+        primaryMessage:
+          'Alternative lending solutions for businesses declined by traditional banks',
+        loanRange: { min: 15e4, max: 5e6, currency: 'AUD' },
+        features: [
+          'Same day approval',
+          '4-day settlement',
+          'Minimal documentation',
+          'Direct lender using proprietary funds',
+        ],
+      };
+    },
+    3999: () => {},
+    5695: (e, t, n) => {
+      var r = n(8999);
+      n.o(r, 'usePathname') && n.d(t, { usePathname: () => r.usePathname }),
+        n.o(r, 'useRouter') && n.d(t, { useRouter: () => r.useRouter }),
+        n.o(r, 'useSearchParams') && n.d(t, { useSearchParams: () => r.useSearchParams });
+    },
+    5849: (e, t, n) => {
+      n.d(t, { BaseTemplate: () => d });
+      var r = n(5155),
+        s = n(3544),
+        a = n(8316),
+        i = n(6766),
+        o = n(6874),
+        l = n.n(o),
+        c = n(2115);
+      const d = (e) => {
+        const [t, n] = (0, c.useState)(!1);
+        return (0, r.jsxs)('div', {
+          className: 'w-full min-h-screen text-gray-800 antialiased',
+          children: [
+            (0, r.jsx)('header', {
+              className: 'sticky top-0 z-30 bg-white shadow-md',
+              children: (0, r.jsxs)('div', {
+                className: 'container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8',
+                children: [
+                  (0, r.jsxs)('div', {
+                    className: 'flex justify-between items-center h-16 sm:h-20',
+                    children: [
+                      (0, r.jsx)('div', {
+                        className: 'flex-shrink-0 flex items-center',
+                        children: (0, r.jsx)(l(), {
+                          href: '/',
+                          className: 'flex items-center',
+                          children: (0, r.jsx)(i.default, {
+                            src: (0, a.OX)('/images/aagt_logo_no_background.png'),
+                            alt: 'AAGT Private Loans Logo',
+                            width: 180,
+                            height: 60,
+                            className: 'h-10 sm:h-12 w-auto',
+                            priority: !0,
+                          }),
+                        }),
+                      }),
+                      (0, r.jsx)('nav', {
+                        className: 'hidden md:flex items-center space-x-1 lg:space-x-4',
+                        children: e.navItems,
+                      }),
+                      (0, r.jsx)('div', {
+                        className: 'md:hidden',
+                        children: (0, r.jsxs)('button', {
+                          type: 'button',
+                          className:
+                            'inline-flex items-center justify-center p-1.5 sm:p-2 rounded-md text-gray-500 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-blue-200 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200',
+                          onClick: () => n(!t),
+                          'aria-expanded': t,
+                          children: [
+                            (0, r.jsx)('span', {
+                              className: 'sr-only',
+                              children: 'Open main menu',
+                            }),
+                            (0, r.jsx)('svg', {
+                              className: 'h-5 w-5 sm:h-6 sm:w-6',
+                              fill: 'none',
+                              viewBox: '0 0 24 24',
+                              stroke: 'currentColor',
+                              'aria-hidden': 'true',
+                              children: (0, r.jsx)('path', {
+                                strokeLinecap: 'round',
+                                strokeLinejoin: 'round',
+                                strokeWidth: 2,
+                                d: t ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16',
+                              }),
+                            }),
+                          ],
+                        }),
+                      }),
+                    ],
+                  }),
+                  t &&
+                    (0, r.jsx)('div', {
+                      className: 'md:hidden bg-white border-t border-gray-100',
+                      children: (0, r.jsx)('div', {
+                        className: 'px-3 pt-3 pb-4',
+                        children: e.navItems,
+                      }),
+                    }),
+                ],
+              }),
+            }),
+            (0, r.jsx)('main', { children: e.children }),
+            (0, r.jsx)('footer', {
+              className: 'bg-gray-800 text-white',
+              children: (0, r.jsxs)('div', {
+                className: 'container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8',
+                children: [
+                  (0, r.jsxs)('div', {
+                    className: 'grid grid-cols-1 md:grid-cols-3 gap-8',
+                    children: [
+                      (0, r.jsxs)('div', {
+                        children: [
+                          (0, r.jsx)('h3', {
+                            className: 'text-lg font-semibold mb-4',
+                            children: s.o.name,
+                          }),
+                          (0, r.jsx)('p', {
+                            className: 'text-gray-300',
+                            children: s.o.description,
+                          }),
+                        ],
+                      }),
+                      (0, r.jsxs)('div', {
+                        children: [
+                          (0, r.jsx)('h3', {
+                            className: 'text-lg font-semibold mb-4',
+                            children: 'Quick Links',
+                          }),
+                          (0, r.jsxs)('ul', {
+                            className: 'space-y-2',
+                            children: [
+                              (0, r.jsx)('li', {
+                                children: (0, r.jsx)(l(), {
+                                  href: '/business-loans',
+                                  className: 'text-gray-300 hover:text-white',
+                                  children: 'Business Loans',
+                                }),
+                              }),
+                              (0, r.jsx)('li', {
+                                children: (0, r.jsx)(l(), {
+                                  href: '/investment-loans',
+                                  className: 'text-gray-300 hover:text-white',
+                                  children: 'Investment Loans',
+                                }),
+                              }),
+                              (0, r.jsx)('li', {
+                                children: (0, r.jsx)(l(), {
+                                  href: '/rates',
+                                  className: 'text-gray-300 hover:text-white',
+                                  children: 'Rates & Terms',
+                                }),
+                              }),
+                              (0, r.jsx)('li', {
+                                children: (0, r.jsx)(l(), {
+                                  href: '/resources',
+                                  className: 'text-gray-300 hover:text-white',
+                                  children: 'Resources',
+                                }),
+                              }),
+                              (0, r.jsx)('li', {
+                                children: (0, r.jsx)(l(), {
+                                  href: '/about',
+                                  className: 'text-gray-300 hover:text-white',
+                                  children: 'About',
+                                }),
+                              }),
+                              (0, r.jsx)('li', {
+                                children: (0, r.jsx)(l(), {
+                                  href: '/contact',
+                                  className: 'text-gray-300 hover:text-white',
+                                  children: 'Contact',
+                                }),
+                              }),
+                            ],
+                          }),
+                        ],
+                      }),
+                      (0, r.jsxs)('div', {
+                        children: [
+                          (0, r.jsx)('h3', {
+                            className: 'text-lg font-semibold mb-4',
+                            children: 'Contact Us',
+                          }),
+                          (0, r.jsx)('p', { className: 'text-gray-300', children: s.o.email }),
+                        ],
+                      }),
+                    ],
+                  }),
+                  (0, r.jsx)('div', {
+                    className: 'mt-8 pt-8 border-t border-gray-700 text-center text-gray-400',
+                    children: `\xa9 ${new Date().getFullYear()} ${s.o.name}. All rights reserved.`,
+                  }),
+                ],
+              }),
+            }),
+          ],
+        });
+      };
+    },
+    8316: (e, t, n) => {
+      n.d(t, { OX: () => r }), n(9509);
+      const r = (e) => e;
+    },
+    8346: (e) => {
+      e.exports = {
+        style: { fontFamily: "'Inter', 'Inter Fallback'", fontStyle: 'normal' },
+        className: '__className_e8ce0c',
+      };
+    },
+  },
+  (e) => {
+    var t = (t) => e((e.s = t));
+    e.O(0, [954, 229, 874, 766, 441, 684, 358], () => t(1213)), (_N_E = e.O());
+  },
+]);

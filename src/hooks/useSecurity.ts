@@ -23,9 +23,12 @@ export const useCSRFProtection = () => {
     setCsrfToken(newToken);
   }, []);
 
-  const validateToken = useCallback((token: string) => {
-    return security.csrfProtection.validateToken(token, csrfToken || '');
-  }, [csrfToken]);
+  const validateToken = useCallback(
+    (token: string) => {
+      return security.csrfProtection.validateToken(token, csrfToken || '');
+    },
+    [csrfToken]
+  );
 
   return { csrfToken, refreshToken, validateToken };
 };
@@ -38,12 +41,12 @@ export const useRateLimit = (key: string, maxAttempts: number, windowMs: number)
   const checkLimit = useCallback(() => {
     const allowed = security.rateLimiting.isAllowed(key, maxAttempts, windowMs);
     setIsBlocked(!allowed);
-    
+
     // Calculate attempts left
     const attempts = security.rateLimiting.attempts.get(key);
     const left = attempts ? Math.max(0, maxAttempts - attempts.count) : maxAttempts;
     setAttemptsLeft(left);
-    
+
     return allowed;
   }, [key, maxAttempts, windowMs]);
 
@@ -66,18 +69,21 @@ export const useSecureForm = () => {
     return result;
   }, []);
 
-  const sanitizeInput = useCallback((value: string, type: 'text' | 'email' | 'phone' | 'business') => {
-    switch (type) {
-      case 'email':
-        return security.sanitization.sanitizeEmail(value);
-      case 'phone':
-        return security.sanitization.sanitizePhone(value);
-      case 'business':
-        return security.sanitization.sanitizeBusinessNumber(value);
-      default:
-        return security.sanitization.sanitizeText(value);
-    }
-  }, []);
+  const sanitizeInput = useCallback(
+    (value: string, type: 'text' | 'email' | 'phone' | 'business') => {
+      switch (type) {
+        case 'email':
+          return security.sanitization.sanitizeEmail(value);
+        case 'phone':
+          return security.sanitization.sanitizePhone(value);
+        case 'business':
+          return security.sanitization.sanitizeBusinessNumber(value);
+        default:
+          return security.sanitization.sanitizeText(value);
+      }
+    },
+    []
+  );
 
   const checkForXSS = useCallback((input: string) => {
     return security.xssProtection.containsXSS(input);
@@ -100,39 +106,44 @@ export const useSecureForm = () => {
 export const useSecureFileUpload = () => {
   const [scanResults, setScanResults] = useState<Record<string, boolean>>({});
 
-  const validateFile = useCallback(async (file: File): Promise<{
-    isValid: boolean;
-    errors: string[];
-  }> => {
-    const errors: string[] = [];
+  const validateFile = useCallback(
+    async (
+      file: File
+    ): Promise<{
+      isValid: boolean;
+      errors: string[];
+    }> => {
+      const errors: string[] = [];
 
-    // Check file type
-    if (!security.fileUploadSecurity.isAllowedType(file.type)) {
-      errors.push(`File type ${file.type} is not allowed`);
-    }
-
-    // Check file size
-    if (!security.fileUploadSecurity.isValidSize(file.size)) {
-      errors.push('File size exceeds maximum limit');
-    }
-
-    // Scan file content
-    try {
-      const scanResult = await security.fileUploadSecurity.scanFileContent(file);
-      setScanResults(prev => ({ ...prev, [file.name]: scanResult.safe }));
-      
-      if (!scanResult.safe) {
-        errors.push(scanResult.reason || 'File content is potentially dangerous');
+      // Check file type
+      if (!security.fileUploadSecurity.isAllowedType(file.type)) {
+        errors.push(`File type ${file.type} is not allowed`);
       }
-    } catch (error) {
-      errors.push('Failed to scan file content');
-    }
 
-    return {
-      isValid: errors.length === 0,
-      errors,
-    };
-  }, []);
+      // Check file size
+      if (!security.fileUploadSecurity.isValidSize(file.size)) {
+        errors.push('File size exceeds maximum limit');
+      }
+
+      // Scan file content
+      try {
+        const scanResult = await security.fileUploadSecurity.scanFileContent(file);
+        setScanResults((prev) => ({ ...prev, [file.name]: scanResult.safe }));
+
+        if (!scanResult.safe) {
+          errors.push(scanResult.reason || 'File content is potentially dangerous');
+        }
+      } catch (error) {
+        errors.push('Failed to scan file content');
+      }
+
+      return {
+        isValid: errors.length === 0,
+        errors,
+      };
+    },
+    []
+  );
 
   const generateSafeFileName = useCallback((originalName: string) => {
     return security.fileUploadSecurity.generateSafeFileName(originalName);
@@ -149,57 +160,56 @@ export const useSecureFileUpload = () => {
 export const useSecureAPI = () => {
   const { csrfToken } = useCSRFProtection();
 
-  const createSecureRequest = useCallback((
-    url: string,
-    options: RequestInit = {}
-  ): RequestInit => {
-    const securityHeaders = security.securityValidator.generateSecurityHeaders();
-    
-    return {
-      ...options,
-      headers: {
-        ...securityHeaders,
-        ...options.headers,
-        ...(csrfToken && { 'X-CSRF-Token': csrfToken }),
-      },
-    };
-  }, [csrfToken]);
+  const createSecureRequest = useCallback(
+    (_url: string, options: RequestInit = {}): RequestInit => {
+      const securityHeaders = security.securityValidator.generateSecurityHeaders();
 
-  const securePost = useCallback(async (
-    url: string,
-    data: any,
-    options: RequestInit = {}
-  ) => {
-    // Validate and sanitize data
-    const validationResult = security.securityValidator.validateFormData(data);
-    
-    if (!validationResult.isValid) {
-      throw new Error(`Security validation failed: ${validationResult.errors.join(', ')}`);
-    }
+      return {
+        ...options,
+        headers: {
+          ...securityHeaders,
+          ...options.headers,
+          ...(csrfToken && { 'X-CSRF-Token': csrfToken }),
+        },
+      };
+    },
+    [csrfToken]
+  );
 
-    const secureOptions = createSecureRequest(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(validationResult.sanitized),
-      ...options,
-    });
+  const securePost = useCallback(
+    async (url: string, data: any, options: RequestInit = {}) => {
+      // Validate and sanitize data
+      const validationResult = security.securityValidator.validateFormData(data);
 
-    return fetch(url, secureOptions);
-  }, [createSecureRequest]);
+      if (!validationResult.isValid) {
+        throw new Error(`Security validation failed: ${validationResult.errors.join(', ')}`);
+      }
 
-  const secureGet = useCallback(async (
-    url: string,
-    options: RequestInit = {}
-  ) => {
-    const secureOptions = createSecureRequest(url, {
-      method: 'GET',
-      ...options,
-    });
+      const secureOptions = createSecureRequest(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(validationResult.sanitized),
+        ...options,
+      });
 
-    return fetch(url, secureOptions);
-  }, [createSecureRequest]);
+      return fetch(url, secureOptions);
+    },
+    [createSecureRequest]
+  );
+
+  const secureGet = useCallback(
+    async (url: string, options: RequestInit = {}) => {
+      const secureOptions = createSecureRequest(url, {
+        method: 'GET',
+        ...options,
+      });
+
+      return fetch(url, secureOptions);
+    },
+    [createSecureRequest]
+  );
 
   return {
     createSecureRequest,
@@ -238,74 +248,82 @@ export const useEncryption = () => {
 export const useInputSecurity = () => {
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
-  const validateInput = useCallback((
-    fieldName: string,
-    value: string,
-    type: 'text' | 'email' | 'phone' | 'business' | 'url' = 'text'
-  ) => {
-    const errors: string[] = [];
+  const validateInput = useCallback(
+    (
+      fieldName: string,
+      value: string,
+      type: 'text' | 'email' | 'phone' | 'business' | 'url' = 'text'
+    ) => {
+      const errors: string[] = [];
 
-    // Check for XSS
-    if (security.xssProtection.containsXSS(value)) {
-      errors.push('Input contains potentially dangerous content');
-    }
+      // Check for XSS
+      if (security.xssProtection.containsXSS(value)) {
+        errors.push('Input contains potentially dangerous content');
+      }
 
-    // Check for SQL injection
-    if (security.sqlInjectionProtection.containsSQLInjection(value)) {
-      errors.push('Input contains potentially dangerous patterns');
-    }
+      // Check for SQL injection
+      if (security.sqlInjectionProtection.containsSQLInjection(value)) {
+        errors.push('Input contains potentially dangerous patterns');
+      }
 
-    // Type-specific validation
-    switch (type) {
-      case 'email':
-        if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          errors.push('Invalid email format');
-        }
-        break;
-      case 'phone':
-        if (value && !/^(\+?61|0)[2-9]\d{8}$/.test(value.replace(/\s/g, ''))) {
-          errors.push('Invalid phone number format');
-        }
-        break;
-      case 'url':
-        try {
-          if (value && !security.sanitization.sanitizeUrl(value)) {
-            errors.push('Invalid or unsafe URL');
+      // Type-specific validation
+      switch (type) {
+        case 'email':
+          if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            errors.push('Invalid email format');
           }
-        } catch {
-          errors.push('Invalid URL format');
+          break;
+        case 'phone':
+          if (value && !/^(\+?61|0)[2-9]\d{8}$/.test(value.replace(/\s/g, ''))) {
+            errors.push('Invalid phone number format');
+          }
+          break;
+        case 'url':
+          try {
+            if (value && !security.sanitization.sanitizeUrl(value)) {
+              errors.push('Invalid or unsafe URL');
+            }
+          } catch {
+            errors.push('Invalid URL format');
+          }
+          break;
+      }
+
+      setValidationErrors((prev) => {
+        const newState = { ...prev };
+        if (errors.length > 0) {
+          newState[fieldName] = errors[0]!;
+        } else {
+          delete newState[fieldName];
         }
-        break;
-    }
+        return newState;
+      });
 
-    setValidationErrors(prev => ({
-      ...prev,
-      [fieldName]: errors.length > 0 ? errors[0] : '',
-    }));
+      return errors.length === 0;
+    },
+    []
+  );
 
-    return errors.length === 0;
-  }, []);
-
-  const sanitizeInput = useCallback((
-    value: string,
-    type: 'text' | 'email' | 'phone' | 'business' | 'url' = 'text'
-  ) => {
-    switch (type) {
-      case 'email':
-        return security.sanitization.sanitizeEmail(value);
-      case 'phone':
-        return security.sanitization.sanitizePhone(value);
-      case 'business':
-        return security.sanitization.sanitizeBusinessNumber(value);
-      case 'url':
-        return security.sanitization.sanitizeUrl(value);
-      default:
-        return security.sanitization.sanitizeText(value);
-    }
-  }, []);
+  const sanitizeInput = useCallback(
+    (value: string, type: 'text' | 'email' | 'phone' | 'business' | 'url' = 'text') => {
+      switch (type) {
+        case 'email':
+          return security.sanitization.sanitizeEmail(value);
+        case 'phone':
+          return security.sanitization.sanitizePhone(value);
+        case 'business':
+          return security.sanitization.sanitizeBusinessNumber(value);
+        case 'url':
+          return security.sanitization.sanitizeUrl(value);
+        default:
+          return security.sanitization.sanitizeText(value);
+      }
+    },
+    []
+  );
 
   const clearValidationError = useCallback((fieldName: string) => {
-    setValidationErrors(prev => {
+    setValidationErrors((prev) => {
       const updated = { ...prev };
       delete updated[fieldName];
       return updated;

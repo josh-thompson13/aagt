@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '../Button';
 import { Input, Textarea } from '../Form';
 import { Dialog } from './Dialog';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
+import { Modal, ModalBody, ModalFooter } from './Modal';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',

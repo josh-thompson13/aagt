@@ -9,15 +9,8 @@ interface UseIntersectionObserverOptions {
   freezeOnceVisible?: boolean;
 }
 
-export const useIntersectionObserver = (
-  options: UseIntersectionObserverOptions = {}
-) => {
-  const {
-    threshold = 0.1,
-    root = null,
-    rootMargin = '0px',
-    freezeOnceVisible = false,
-  } = options;
+export const useIntersectionObserver = (options: UseIntersectionObserverOptions = {}) => {
+  const { threshold = 0.1, root = null, rootMargin = '0px', freezeOnceVisible = false } = options;
 
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
@@ -28,11 +21,14 @@ export const useIntersectionObserver = (
     if (!node) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+
         const { isIntersecting } = entry;
-        
+
         setIsIntersecting(isIntersecting);
-        
+
         if (isIntersecting && !hasBeenVisible) {
           setHasBeenVisible(true);
         }

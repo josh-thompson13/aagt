@@ -10,7 +10,7 @@ export const sanitization = {
       allowedAttributes: {},
       disallowedTagsMode: 'discard',
     };
-    
+
     return sanitizeHtml(dirty, { ...defaultOptions, ...options });
   },
 
@@ -26,7 +26,7 @@ export const sanitization = {
   // Sanitize text input
   sanitizeText: (input: string): string => {
     if (typeof input !== 'string') return '';
-    
+
     return input
       .trim()
       .replace(/[<>]/g, '') // Remove potential HTML tags
@@ -55,9 +55,7 @@ export const sanitization = {
 
   // Sanitize numeric input
   sanitizeNumber: (input: string | number): number => {
-    const num = typeof input === 'string' 
-      ? parseFloat(input.replace(/[^0-9.-]/g, '')) 
-      : input;
+    const num = typeof input === 'string' ? parseFloat(input.replace(/[^0-9.-]/g, '')) : input;
     return isNaN(num) ? 0 : Math.max(0, num);
   },
 
@@ -94,20 +92,20 @@ export const xssProtection = {
       '"': '&quot;',
       "'": '&#039;',
     };
-    
-    return text.replace(/[&<>"']/g, (m) => map[m]);
+
+    return text.replace(/[&<>"']/g, (m) => map[m] || m);
   },
 
   // Validate and sanitize attributes
   sanitizeAttributes: (attributes: Record<string, any>): Record<string, any> => {
     const safe: Record<string, any> = {};
-    
+
     Object.entries(attributes).forEach(([key, value]) => {
       // Skip dangerous attributes
       if (key.startsWith('on') || key.includes('script') || key.includes('javascript')) {
         return;
       }
-      
+
       if (typeof value === 'string') {
         safe[key] = sanitization.sanitizeText(value);
       } else if (typeof value === 'number') {
@@ -116,7 +114,7 @@ export const xssProtection = {
         safe[key] = value;
       }
     });
-    
+
     return safe;
   },
 
@@ -134,8 +132,8 @@ export const xssProtection = {
       /<meta/gi,
       /data:text\/html/gi,
     ];
-    
-    return xssPatterns.some(pattern => pattern.test(input));
+
+    return xssPatterns.some((pattern) => pattern.test(input));
   },
 };
 
@@ -145,7 +143,7 @@ export const csrfProtection = {
   generateToken: (): string => {
     const array = new Uint8Array(32);
     crypto.getRandomValues(array);
-    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+    return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join('');
   },
 
   // Validate CSRF token
@@ -183,25 +181,25 @@ export const rateLimiting = {
   isAllowed: (key: string, maxAttempts: number, windowMs: number): boolean => {
     const now = Date.now();
     const attempts = rateLimiting.attempts.get(key);
-    
+
     if (!attempts) {
       rateLimiting.attempts.set(key, { count: 1, lastAttempt: now });
       return true;
     }
-    
+
     // Reset counter if window has passed
     if (now - attempts.lastAttempt > windowMs) {
       rateLimiting.attempts.set(key, { count: 1, lastAttempt: now });
       return true;
     }
-    
+
     // Check if under limit
     if (attempts.count < maxAttempts) {
       attempts.count++;
       attempts.lastAttempt = now;
       return true;
     }
-    
+
     return false;
   },
 
@@ -239,8 +237,8 @@ export const sqlInjectionProtection = {
       /\*\//g,
       /;/g,
     ];
-    
-    return sqlPatterns.some(pattern => pattern.test(input));
+
+    return sqlPatterns.some((pattern) => pattern.test(input));
   },
 
   // Escape SQL special characters (basic client-side protection)
@@ -284,12 +282,12 @@ export const fileUploadSecurity = {
   scanFileContent: async (file: File): Promise<{ safe: boolean; reason?: string }> => {
     try {
       const content = await file.text();
-      
+
       // Check for script tags in non-script files
       if (!file.type.includes('javascript') && /<script/gi.test(content)) {
         return { safe: false, reason: 'Script content detected in non-script file' };
       }
-      
+
       // Check for suspicious patterns
       const suspiciousPatterns = [
         /eval\s*\(/gi,
@@ -297,13 +295,13 @@ export const fileUploadSecurity = {
         /window\.location/gi,
         /\.innerHTML/gi,
       ];
-      
+
       for (const pattern of suspiciousPatterns) {
         if (pattern.test(content)) {
           return { safe: false, reason: 'Suspicious content pattern detected' };
         }
       }
-      
+
       return { safe: true };
     } catch (error) {
       // If we can't read the content, allow it (binary files)
@@ -318,7 +316,7 @@ export const fileUploadSecurity = {
     const safeName = sanitization.sanitizeFileName(name);
     const timestamp = Date.now();
     const random = Math.random().toString(36).substr(2, 9);
-    
+
     return `${safeName}_${timestamp}_${random}.${extension}`;
   },
 };
@@ -330,19 +328,16 @@ export const encryption = {
     const encoder = new TextEncoder();
     const dataBuffer = encoder.encode(data);
     const passwordBuffer = encoder.encode(password);
-    
+
     // Create key from password
-    const key = await crypto.subtle.importKey(
-      'raw',
-      passwordBuffer,
-      { name: 'PBKDF2' },
-      false,
-      ['deriveBits', 'deriveKey']
-    );
-    
+    const key = await crypto.subtle.importKey('raw', passwordBuffer, { name: 'PBKDF2' }, false, [
+      'deriveBits',
+      'deriveKey',
+    ]);
+
     // Generate salt
     const salt = crypto.getRandomValues(new Uint8Array(16));
-    
+
     // Derive encryption key
     const encryptionKey = await crypto.subtle.deriveKey(
       {
@@ -356,10 +351,10 @@ export const encryption = {
       false,
       ['encrypt']
     );
-    
+
     // Generate IV
     const iv = crypto.getRandomValues(new Uint8Array(12));
-    
+
     // Encrypt data
     const encrypted = await crypto.subtle.encrypt(
       {
@@ -369,13 +364,13 @@ export const encryption = {
       encryptionKey,
       dataBuffer
     );
-    
+
     // Combine salt, iv, and encrypted data
     const combined = new Uint8Array(salt.length + iv.length + encrypted.byteLength);
     combined.set(salt, 0);
     combined.set(iv, salt.length);
     combined.set(new Uint8Array(encrypted), salt.length + iv.length);
-    
+
     // Return base64 encoded result
     return btoa(String.fromCharCode(...combined));
   },
@@ -386,22 +381,24 @@ export const encryption = {
     const dataBuffer = encoder.encode(data);
     const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
     const hashArray = new Uint8Array(hashBuffer);
-    
-    return Array.from(hashArray, byte => byte.toString(16).padStart(2, '0')).join('');
+
+    return Array.from(hashArray, (byte) => byte.toString(16).padStart(2, '0')).join('');
   },
 };
 
 // Comprehensive security validator
 export const securityValidator = {
   // Validate entire form data
-  validateFormData: (data: Record<string, any>): { 
-    isValid: boolean; 
-    sanitized: Record<string, any>; 
-    errors: string[] 
+  validateFormData: (
+    data: Record<string, any>
+  ): {
+    isValid: boolean;
+    sanitized: Record<string, any>;
+    errors: string[];
   } => {
     const errors: string[] = [];
     const sanitized: Record<string, any> = {};
-    
+
     Object.entries(data).forEach(([key, value]) => {
       if (typeof value === 'string') {
         // Check for XSS
@@ -409,13 +406,13 @@ export const securityValidator = {
           errors.push(`Potential XSS detected in field: ${key}`);
           return;
         }
-        
+
         // Check for SQL injection
         if (sqlInjectionProtection.containsSQLInjection(value)) {
           errors.push(`Potential SQL injection detected in field: ${key}`);
           return;
         }
-        
+
         // Sanitize based on field type
         switch (key) {
           case 'email':
@@ -437,7 +434,7 @@ export const securityValidator = {
         sanitized[key] = value;
       }
     });
-    
+
     return {
       isValid: errors.length === 0,
       sanitized,

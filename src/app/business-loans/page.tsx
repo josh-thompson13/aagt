@@ -7,8 +7,10 @@ import { ArrowRight, CheckCircle2, DollarSign, FileText, Clock, TrendingUp } fro
 export async function generateMetadata() {
   return {
     title: 'Business Loans | Fast Funding $150K-$5M',
-    description: 'Get business loans from $150,000 to $5,000,000 with same day approval and 4-day settlement. Direct funder with minimal documentation required.',
-    keywords: 'business loans Australia, fast business funding, same day approval business loan, quick business finance, $150k business loan',
+    description:
+      'Get business loans from $150,000 to $5,000,000 with same day approval and 4-day settlement. Direct funder with minimal documentation required.',
+    keywords:
+      'business loans Australia, fast business funding, same day approval business loan, quick business finance, $150k business loan',
     alternates: {
       canonical: 'https://aagtprivateloans.com.au/business-loans',
     },
@@ -31,27 +33,27 @@ export default function BusinessLoansPage() {
   const loanProductSchema = {
     '@context': 'https://schema.org',
     '@type': 'FinancialProduct',
-    'name': 'Business Loans',
-    'description': 'Fast business funding from $150,000 to $5,000,000 with same day approval',
-    'provider': {
+    name: 'Business Loans',
+    description: 'Fast business funding from $150,000 to $5,000,000 with same day approval',
+    provider: {
       '@type': 'FinancialService',
-      'name': 'AAGT Private Loans',
+      name: 'AAGT Private Loans',
     },
-    'interestRate': 'Competitive rates',
-    'feesAndCommissionsSpecification': 'Fee-free approval process',
-    'amount': {
+    interestRate: 'Competitive rates',
+    feesAndCommissionsSpecification: 'Fee-free approval process',
+    amount: {
       '@type': 'MonetaryAmount',
-      'minValue': 150000,
-      'maxValue': 5000000,
-      'currency': 'AUD'
-    }
+      minValue: 150000,
+      maxValue: 5000000,
+      currency: 'AUD',
+    },
   };
 
   return (
     <>
       <StructuredData data={breadcrumbSchema(breadcrumbs)} />
       <StructuredData data={loanProductSchema} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-900 to-primary-700 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +88,10 @@ export default function BusinessLoansPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow"
+              >
                 <feature.icon className="h-12 w-12 text-primary-700 mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.text}</h3>
               </div>
@@ -104,14 +109,14 @@ export default function BusinessLoansPage() {
                 Direct Funding for Your Business
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                As direct funders, we lend our own money. This means no complex credit committees, 
-                no lengthy approval processes, and no unnecessary delays. When you need business 
+                As direct funders, we lend our own money. This means no complex credit committees,
+                no lengthy approval processes, and no unnecessary delays. When you need business
                 funding, we deliver.
               </p>
               <p className="text-lg text-gray-700 mb-8">
-                Our business loans are designed for entrepreneurs and business owners who need 
-                quick access to capital. Whether it's for expansion, equipment, inventory, or 
-                cash flow management, we provide the funding you need to grow.
+                Our business loans are designed for entrepreneurs and business owners who need quick
+                access to capital. Whether it's for expansion, equipment, inventory, or cash flow
+                management, we provide the funding you need to grow.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
@@ -169,7 +174,7 @@ export default function BusinessLoansPage() {
                 1
               </div>
               <h3 className="text-xl font-semibold mb-2">Apply Online</h3>
-              <p className="text-gray-600">Complete our FAST 🚀 application in minutes</p>
+              <p className="text-gray-600">Complete our streamlined application in minutes</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-primary-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
@@ -199,18 +204,24 @@ export default function BusinessLoansPage() {
       {/* CTA Section */}
       <section className="py-20 bg-primary-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            {AppConfig.mission}
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+          <p className="text-xl text-white/90 mb-8">{AppConfig.mission}</p>
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Join thousands of business owners who have chosen AAGT Private Loans for their 
-            funding needs. No complex committees, no excessive paperwork, just straightforward 
-            business lending.
+            Join thousands of business owners who have chosen AAGT Private Loans for their funding
+            needs. No complex committees, no excessive paperwork, just straightforward business
+            lending.
           </p>
           <CallToAction />
+
+          {/* Professional Disclaimer */}
+          <div className="mt-12 pt-8 border-t border-white/20">
+            <p className="text-sm text-white/70 max-w-4xl mx-auto leading-relaxed">
+              Applications subject to credit approval and AAGT Private Loans' lending criteria.
+              Interest rates and terms may vary based on loan amount, security offered, and
+              individual circumstances. This is general information only and does not constitute
+              financial advice. AAGT Private Loans is committed to responsible lending practices.
+            </p>
+          </div>
         </div>
       </section>
     </>

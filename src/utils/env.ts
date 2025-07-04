@@ -2,7 +2,7 @@
 export const env = {
   // Node environment
   NODE_ENV: process.env.NODE_ENV || 'development',
-  
+
   // Application URLs
   APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
@@ -73,19 +73,12 @@ export function getEnvVar(key: keyof typeof env): string | number | boolean | un
 
 // Validation function for required environment variables
 export function validateEnv() {
-  const required = [
-    'APP_URL',
-    'SITE_URL',
-    'FROM_EMAIL',
-    'TO_EMAIL',
-  ] as const;
+  const required = ['APP_URL', 'SITE_URL', 'FROM_EMAIL', 'TO_EMAIL'] as const;
 
-  const missing = required.filter(key => !env[key]);
-  
+  const missing = required.filter((key) => !env[key]);
+
   if (missing.length > 0) {
-    throw new Error(
-      `Missing required environment variables: ${missing.join(', ')}`
-    );
+    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
   }
 }
 

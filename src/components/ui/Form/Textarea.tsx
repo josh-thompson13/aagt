@@ -48,9 +48,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const textareaClasses = cn(
       styles.textarea,
       {
-        [styles.error]: error,
-        [styles.success]: success,
-        [styles.warning]: warning,
+        [styles.error || 'error']: error,
+        [styles.success || 'success']: success,
+        [styles.warning || 'warning']: warning,
         'w-full': fullWidth,
         'resize-none': !resize,
         'resize-y': resize,
@@ -59,11 +59,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
 
     const labelClasses = cn(styles.label, {
-      [styles.floating]: isFocused || hasValue,
-      [styles.required]: required,
+      [styles.floating || 'floating']: isFocused || hasValue,
+      [styles.required || 'required']: required,
     });
 
-    const helperTextClasses = cn(styles.helperText, styles[validationState]);
+    const helperTextClasses = cn(styles.helperText, styles[validationState as keyof typeof styles]);
 
     const displayText = error || success || warning || helperText;
 

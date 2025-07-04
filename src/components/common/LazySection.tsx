@@ -14,29 +14,25 @@ const defaultFallback = (
   </div>
 );
 
-export const LazySection = ({ 
-  children, 
+export const LazySection = ({
+  children,
   fallback = defaultFallback,
-  className 
+  className,
 }: LazySectionProps) => {
   return (
     <Suspense fallback={fallback}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </Suspense>
   );
 };
 
 // Higher-order component for lazy loading components
-export const withLazyLoading = <P extends object>(
-  Component: ComponentType<P>
-) => {
+export const withLazyLoading = <P extends object>(Component: ComponentType<P>) => {
   const LazyComponent = lazy(() => Promise.resolve({ default: Component }));
-  
+
   return (props: P & { fallback?: ReactNode }) => {
     const { fallback = defaultFallback, ...componentProps } = props;
-    
+
     return (
       <Suspense fallback={fallback}>
         <LazyComponent {...(componentProps as P)} />

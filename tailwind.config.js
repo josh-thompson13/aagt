@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        // AAGT Brand Colors
-        navy: {
+        // AAGT Brand Colors - New Design System
+        primary: {
           50: '#f0f4f8',
-          100: '#d9e6f2', 
+          100: '#d9e6f2',
           200: '#b3cce6',
           300: '#8db3d9',
           400: '#6799cc',
@@ -19,19 +19,19 @@ export default {
           600: '#3a6286',
           700: '#2a4864',
           800: '#1a2e42',
-          900: '#0A2540', // Primary navy
+          900: '#1e3a5f', // Deep navy blue
         },
-        teal: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0891B2', // Primary teal
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
+        accent: {
+          50: '#fefce8',
+          100: '#fef9c3',
+          200: '#fef08a',
+          300: '#fde047',
+          400: '#facc15',
+          500: '#eab308',
+          600: '#d4af37', // Professional gold
+          700: '#a16207',
+          800: '#854d0e',
+          900: '#713f12',
         },
         gray: {
           50: '#f9fafb',
@@ -45,41 +45,53 @@ export default {
           800: '#1f2937',
           900: '#111827',
         },
-        success: {
+        teal: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0891b2',
+          800: '#155e75',
+          900: '#134e4a',
+        },
+        green: {
           50: '#f0fdf4',
           100: '#dcfce7',
           200: '#bbf7d0',
           300: '#86efac',
           400: '#4ade80',
-          500: '#22c55e',
-          600: '#10B981', // Success green
+          500: '#10b981',
+          600: '#16a34a',
           700: '#15803d',
           800: '#166534',
           900: '#14532d',
         },
         gold: {
-          50: '#fffbeb',
-          100: '#fef3c7',
+          50: '#fffef7',
+          100: '#fef6b2',
           200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#F59E0B', // Soft gold
-          600: '#d97706',
-          700: '#b45309',
+          300: '#fbbf24',
+          400: '#f59e0b',
+          500: '#d97706',
+          600: '#b45309',
+          700: '#a16207',
           800: '#92400e',
           900: '#78350f',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1rem' }],
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-        'base': ['1rem', { lineHeight: '1.6' }],
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        xs: ['0.75rem', { lineHeight: '1rem' }],
+        sm: ['0.875rem', { lineHeight: '1.25rem' }],
+        base: ['1rem', { lineHeight: '1.6' }],
+        lg: ['1.125rem', { lineHeight: '1.75rem' }],
+        xl: ['1.25rem', { lineHeight: '1.75rem' }],
         '2xl': ['1.5rem', { lineHeight: '2rem' }],
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
         '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
@@ -87,18 +99,18 @@ export default {
         '6xl': ['3.75rem', { lineHeight: '1.1' }],
       },
       spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-        '128': '32rem',
+        18: '4.5rem',
+        88: '22rem',
+        128: '32rem',
       },
       borderRadius: {
-        'xl': '12px',
+        xl: '12px',
         '2xl': '16px',
       },
       boxShadow: {
-        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'medium': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'large': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        soft: '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        medium: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        large: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-in-out',
@@ -118,4 +130,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

@@ -40,7 +40,8 @@ export const CallToAction = () => {
                 Ready to Secure Your Business Funding?
               </h2>
               <p className="text-xl text-primary-100 mb-8">
-                {AppConfig.primaryMessage}. Get same day approval and 4-day settlement.
+                {AppConfig.primaryMessage}. Receive same-day approval and settlement within four
+                business days.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -62,7 +63,7 @@ export const CallToAction = () => {
               </div>
 
               <p className="text-primary-100 flex items-center gap-2">
-                <span>Need funding fast?</span>
+                <span>Require urgent funding?</span>
                 <Link href="/contact" className="font-bold hover:underline">
                   Contact us today
                 </Link>
@@ -71,13 +72,14 @@ export const CallToAction = () => {
 
             {/* Right Column - Loan Calculator */}
             <div className="bg-white text-gray-900 p-8 rounded-xl shadow-2xl">
-              <h3 className="text-2xl font-bold mb-6 text-primary-800">
-                Quick Funding Calculator
-              </h3>
+              <h3 className="text-2xl font-bold mb-6 text-primary-800">Quick Funding Calculator</h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="loan-amount" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="loan-amount"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     How much funding do you need?
                   </label>
                   <div className="relative">
@@ -95,7 +97,8 @@ export const CallToAction = () => {
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">
-                    Loans available from ${AppConfig.loanRange.min.toLocaleString('en-AU')} to ${AppConfig.loanRange.max.toLocaleString('en-AU')}
+                    Loans available from ${AppConfig.loanRange.min.toLocaleString('en-AU')} to $
+                    {AppConfig.loanRange.max.toLocaleString('en-AU')}
                   </p>
                 </div>
 
@@ -109,7 +112,8 @@ export const CallToAction = () => {
               </form>
 
               <p className="mt-4 text-sm text-gray-500">
-                Get same day approval for your business funding needs. No complex committees or lengthy processes.
+                Get same day approval for your business funding needs. No complex committees or
+                lengthy processes.
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import {
   ArrowRight,
   Briefcase,
@@ -9,7 +9,6 @@ import {
   DollarSign,
   FileText,
   Shield,
-  TrendingUp,
   Users,
   Zap,
 } from 'lucide-react';
@@ -85,7 +84,7 @@ export const FeaturesGrid = () => {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -96,7 +95,7 @@ export const FeaturesGrid = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       y: 50,
       opacity: 0,

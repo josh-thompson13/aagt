@@ -7,8 +7,10 @@ import QuickQuote from '@/components/QuickQuote';
 export async function generateMetadata() {
   return {
     title: 'Resources | Business Loan Tools & Guides',
-    description: 'Access loan calculators, business financing guides, FAQs, and industry insights. Educational resources for business owners seeking funding.',
-    keywords: 'business loan calculator, private lending resources, business financing guide, loan tools, funding education',
+    description:
+      'Access loan calculators, business financing guides, FAQs, and industry insights. Educational resources for business owners seeking funding.',
+    keywords:
+      'business loan calculator, private lending resources, business financing guide, loan tools, funding education',
     alternates: {
       canonical: 'https://aagtprivateloans.com.au/resources',
     },
@@ -27,29 +29,29 @@ export default function ResourcesPage() {
       title: 'Loan Calculator',
       description: 'Calculate monthly payments and total interest for your loan',
       link: '#calculator',
-      color: 'bg-blue-50 text-blue-700'
+      color: 'bg-blue-50 text-blue-700',
     },
     {
       icon: FileText,
       title: 'Application Checklist',
       description: 'Everything you need to prepare for your loan application',
       link: '#checklist',
-      color: 'bg-green-50 text-green-700'
+      color: 'bg-green-50 text-green-700',
     },
     {
       icon: TrendingUp,
       title: 'Business Planning Tools',
       description: 'Templates and guides for business growth planning',
       link: '#planning',
-      color: 'bg-purple-50 text-purple-700'
+      color: 'bg-purple-50 text-purple-700',
     },
     {
       icon: HelpCircle,
       title: 'FAQ Center',
       description: 'Answers to commonly asked questions about private lending',
       link: '#faq',
-      color: 'bg-orange-50 text-orange-700'
-    }
+      color: 'bg-orange-50 text-orange-700',
+    },
   ];
 
   const guides = [
@@ -58,86 +60,102 @@ export default function ResourcesPage() {
       title: 'Alternative Lending vs Traditional Banks',
       description: 'Understanding the key differences and when to choose private lending',
       readTime: '5 min read',
-      topics: ['Speed comparison', 'Documentation requirements', 'Approval criteria', 'Cost analysis']
+      topics: [
+        'Speed comparison',
+        'Documentation requirements',
+        'Approval criteria',
+        'Cost analysis',
+      ],
     },
     {
       category: 'Loan Types',
       title: 'Business Loan Options Explained',
       description: 'Comprehensive guide to different types of business funding available',
       readTime: '8 min read',
-      topics: ['Working capital loans', 'Equipment finance', 'Bridge loans', 'Second mortgages']
+      topics: ['Working capital loans', 'Equipment finance', 'Bridge loans', 'Second mortgages'],
     },
     {
       category: 'Application Process',
       title: 'How to Prepare Your Loan Application',
       description: 'Step-by-step guide to putting together a strong loan application',
       readTime: '10 min read',
-      topics: ['Required documents', 'Financial statements', 'Security requirements', 'Common mistakes']
+      topics: [
+        'Required documents',
+        'Financial statements',
+        'Security requirements',
+        'Common mistakes',
+      ],
     },
     {
       category: 'Investment',
       title: 'Property Development Finance Guide',
       description: 'Everything you need to know about funding property development projects',
       readTime: '12 min read',
-      topics: ['Development phases', 'Progress payments', 'Exit strategies', 'Risk management']
-    }
+      topics: ['Development phases', 'Progress payments', 'Exit strategies', 'Risk management'],
+    },
   ];
 
   const faqs = [
     {
       question: 'What is the minimum loan amount?',
-      answer: 'Our minimum loan amount is $150,000. This ensures we can provide cost-effective funding while maintaining our streamlined approval process.'
+      answer:
+        'Our minimum loan amount is $150,000. This ensures we can provide cost-effective funding while maintaining our streamlined approval process.',
     },
     {
       question: 'How quickly can I get approved?',
-      answer: 'Most applications receive same-day approval. Complex cases may take up to 48 hours. Once approved, settlements typically occur within 4 working days.'
+      answer:
+        'Most applications receive same-day approval. Complex cases may take up to 48 hours. Once approved, settlements typically occur within 4 working days.',
     },
     {
       question: 'What security do you accept?',
-      answer: 'We accept residential and commercial real estate as security. Properties must be in Australia and professionally valued.'
+      answer:
+        'We accept residential and commercial real estate as security. Properties must be in Australia and professionally valued.',
     },
     {
       question: 'Can I repay my loan early?',
-      answer: 'Yes, you can repay your loan early without penalty fees. We encourage early repayment to minimize interest costs.'
+      answer:
+        'Yes, you can repay your loan early without penalty fees. We encourage early repayment to minimize interest costs.',
     },
     {
       question: 'What if banks have declined my application?',
-      answer: 'Bank declines don\'t automatically disqualify you. We assess applications based on security strength and ability to service the loan, not just credit scores.'
+      answer:
+        "Bank declines don't automatically disqualify you. We assess applications based on security strength and ability to service the loan, not just credit scores.",
     },
     {
       question: 'Do you charge application fees?',
-      answer: 'No, we don\'t charge application fees. You only pay for professional services like valuations and legal costs, which are disclosed upfront.'
-    }
+      answer:
+        "No, we don't charge application fees. You only pay for professional services like valuations and legal costs, which are disclosed upfront.",
+    },
   ];
-
 
   const resourcesSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    'name': 'Business Loan Resources and Tools',
-    'description': 'Comprehensive resources for business owners seeking alternative funding solutions',
-    'provider': {
+    name: 'Business Loan Resources and Tools',
+    description:
+      'Comprehensive resources for business owners seeking alternative funding solutions',
+    provider: {
       '@type': 'FinancialService',
-      'name': 'AAGT Private Loans',
+      name: 'AAGT Private Loans',
     },
-    'mainEntity': {
+    mainEntity: {
       '@type': 'FAQPage',
-      'mainEntity': faqs.map(faq => ({
+      mainEntity: faqs.map((faq) => ({
         '@type': 'Question',
-        'name': faq.question,
-        'acceptedAnswer': {
+        name: faq.question,
+        acceptedAnswer: {
           '@type': 'Answer',
-          'text': faq.answer
-        }
-      }))
-    }
+          text: faq.answer,
+        },
+      })),
+    },
   };
 
   return (
     <>
       <StructuredData data={breadcrumbSchema(breadcrumbs)} />
       <StructuredData data={resourcesSchema} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-900 to-primary-700 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,7 +164,8 @@ export default function ResourcesPage() {
               Resources & Tools
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Everything you need to make informed decisions about business funding and private lending
+              Everything you need to make informed decisions about business funding and private
+              lending
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -175,10 +194,11 @@ export default function ResourcesPage() {
               Business Funding Tools
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Access our suite of tools designed to help you understand, plan, and apply for business funding.
+              Access our suite of tools designed to help you understand, plan, and apply for
+              business funding.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {tools.map((tool, index) => (
               <a
@@ -186,7 +206,9 @@ export default function ResourcesPage() {
                 href={tool.link}
                 className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 group"
               >
-                <div className={`w-16 h-16 rounded-lg ${tool.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <div
+                  className={`w-16 h-16 rounded-lg ${tool.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
+                >
                   <tool.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{tool.title}</h3>
@@ -223,23 +245,27 @@ export default function ResourcesPage() {
               Educational Guides
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Comprehensive guides to help you understand private lending and make informed funding decisions.
+              Comprehensive guides to help you understand private lending and make informed funding
+              decisions.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {guides.map((guide, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+              >
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-medium text-primary-700 bg-primary-50 px-3 py-1 rounded-full">
                     {guide.category}
                   </span>
                   <span className="text-sm text-gray-500">{guide.readTime}</span>
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{guide.title}</h3>
                 <p className="text-gray-600 mb-6">{guide.description}</p>
-                
+
                 <div className="space-y-2 mb-6">
                   <h4 className="text-sm font-medium text-gray-700">What you'll learn:</h4>
                   <ul className="space-y-1">
@@ -251,7 +277,7 @@ export default function ResourcesPage() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <a
                   href="/contact"
                   className="inline-flex items-center text-primary-700 font-medium hover:text-primary-600 transition-colors"
@@ -276,7 +302,7 @@ export default function ResourcesPage() {
               Get answers to the most common questions about private lending and our loan products.
             </p>
           </div>
-          
+
           <div className="space-y-6">
             {faqs.map((faq, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6">
@@ -285,7 +311,7 @@ export default function ResourcesPage() {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-6">Can't find what you're looking for?</p>
             <a
@@ -317,12 +343,12 @@ export default function ResourcesPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Required Documents</h3>
                 <div className="space-y-4">
                   {[
-                    'Photo identification (Driver\'s license or passport)',
+                    "Photo identification (Driver's license or passport)",
                     'Recent financial statements (last 2 years)',
                     'Bank statements (last 3 months)',
                     'Property details and contracts (if applicable)',
                     'Business registration documents',
-                    'Tax returns (if self-employed)'
+                    'Tax returns (if self-employed)',
                   ].map((item, index) => (
                     <div key={index} className="flex items-start">
                       <div className="w-6 h-6 border-2 border-gray-300 rounded mr-3 mt-0.5 flex-shrink-0" />
@@ -331,7 +357,7 @@ export default function ResourcesPage() {
                   ))}
                 </div>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Tips for Success</h3>
                 <div className="space-y-4">
@@ -341,7 +367,7 @@ export default function ResourcesPage() {
                     'Include explanations for any unusual transactions',
                     'Have property valuations ready if available',
                     'Prepare a brief business summary or purpose',
-                    'Be honest about your financial situation'
+                    'Be honest about your financial situation',
                   ].map((tip, index) => (
                     <div key={index} className="flex items-start">
                       <div className="w-2 h-2 bg-primary-700 rounded-full mr-3 mt-2 flex-shrink-0" />
@@ -358,15 +384,13 @@ export default function ResourcesPage() {
       {/* CTA Section */}
       <section className="py-20 bg-primary-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Get Started?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
           <p className="text-xl text-white/90 mb-8">
             Use our resources to prepare, then apply for funding that works for your business.
           </p>
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Our lending specialists are here to guide you through the process and answer any questions 
-            you may have about private lending solutions.
+            Our lending specialists are here to guide you through the process and answer any
+            questions you may have about private lending solutions.
           </p>
           <CallToAction />
         </div>

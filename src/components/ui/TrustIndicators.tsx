@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { Award, CheckCircle2, Clock, DollarSign, Shield, TrendingUp, Users } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -120,7 +120,7 @@ export const TrustIndicators = () => {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -131,7 +131,7 @@ export const TrustIndicators = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,

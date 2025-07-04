@@ -67,20 +67,14 @@ export const Select = ({
             className
           )}
           aria-invalid={error ? 'true' : 'false'}
-          aria-describedby={
-            error ? `${fieldId}-error` : helperText ? `${fieldId}-help` : undefined
-          }
+          aria-describedby={error ? `${fieldId}-error` : helperText ? `${fieldId}-help` : undefined}
           {...props}
         >
           <option value="" disabled>
             {placeholder}
           </option>
           {options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              disabled={option.disabled}
-            >
+            <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}

@@ -17,15 +17,15 @@ const personalInfoSchema = z.object({
   lastName: z.string().min(1, 'Last name is required').max(50, 'Last name too long'),
   email: z.string().email('Invalid email format').min(1, 'Email is required'),
   phone: z.string().regex(PATTERNS.phone, 'Invalid Australian phone number'),
-  dateOfBirth: z.string().min(1, 'Date of birth is required').refine(
-    (date) => {
+  dateOfBirth: z
+    .string()
+    .min(1, 'Date of birth is required')
+    .refine((date) => {
       const birthDate = new Date(date);
       const today = new Date();
       const age = today.getFullYear() - birthDate.getFullYear();
       return age >= 18 && age <= 100;
-    },
-    'Must be between 18 and 100 years old'
-  ),
+    }, 'Must be between 18 and 100 years old'),
   address: z.object({
     street: z.string().min(1, 'Street address is required').max(100, 'Address too long'),
     city: z.string().min(1, 'City is required').max(50, 'City name too long'),
@@ -40,30 +40,33 @@ const personalInfoSchema = z.object({
       errorMap: () => ({ message: 'Please select identification type' }),
     }),
     number: z.string().min(1, 'Identification number is required'),
-    expiryDate: z.string().optional().refine(
-      (date) => !date || new Date(date) > new Date(),
-      'Identification must not be expired'
-    ),
+    expiryDate: z
+      .string()
+      .optional()
+      .refine((date) => !date || new Date(date) > new Date(), 'Identification must not be expired'),
   }),
 });
 
 // Business Information Schema
 const businessInfoSchema = z.object({
   businessName: z.string().min(1, 'Business name is required').max(100, 'Business name too long'),
-  abn: z.string().regex(PATTERNS.abn, 'Invalid ABN format (11 digits)').transform(val => val.replace(/\s/g, '')),
+  abn: z
+    .string()
+    .regex(PATTERNS.abn, 'Invalid ABN format (11 digits)')
+    .transform((val) => val.replace(/\s/g, '')),
   acn: z.string().regex(PATTERNS.acn, 'Invalid ACN format (9 digits)').optional().or(z.literal('')),
   businessType: z.enum(['sole_trader', 'partnership', 'company', 'trust'], {
     errorMap: () => ({ message: 'Please select business type' }),
   }),
   industryType: z.string().min(1, 'Industry type is required'),
-  establishedDate: z.string().min(1, 'Business establishment date is required').refine(
-    (date) => {
+  establishedDate: z
+    .string()
+    .min(1, 'Business establishment date is required')
+    .refine((date) => {
       const establishedDate = new Date(date);
       const today = new Date();
       return establishedDate <= today;
-    },
-    'Establishment date cannot be in the future'
-  ),
+    }, 'Establishment date cannot be in the future'),
   registeredAddress: z.object({
     street: z.string().min(1, 'Street address is required'),
     city: z.string().min(1, 'City is required'),
@@ -71,53 +74,75 @@ const businessInfoSchema = z.object({
     postcode: z.string().regex(PATTERNS.postcode, 'Invalid postcode'),
     country: z.string().default('Australia'),
   }),
-  tradingAddress: z.object({
-    street: z.string().optional(),
-    city: z.string().optional(),
-    state: z.enum(['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']).optional(),
-    postcode: z.string().regex(PATTERNS.postcode, 'Invalid postcode').optional().or(z.literal('')),
-    country: z.string().default('Australia'),
-    sameAsRegistered: z.boolean().default(true),
-  }).optional(),
-  employees: z.number().min(0, 'Number of employees cannot be negative').max(10000, 'Too many employees'),
+  tradingAddress: z
+    .object({
+      street: z.string().optional(),
+      city: z.string().optional(),
+      state: z.enum(['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']).optional(),
+      postcode: z
+        .string()
+        .regex(PATTERNS.postcode, 'Invalid postcode')
+        .optional()
+        .or(z.literal('')),
+      country: z.string().default('Australia'),
+      sameAsRegistered: z.boolean().default(true),
+    })
+    .optional(),
+  employees: z
+    .number()
+    .min(0, 'Number of employees cannot be negative')
+    .max(10000, 'Too many employees'),
   annualTurnover: z.number().min(0, 'Annual turnover cannot be negative'),
-  description: z.string().min(10, 'Please provide a detailed business description').max(500, 'Description too long'),
+  description: z
+    .string()
+    .min(10, 'Please provide a detailed business description')
+    .max(500, 'Description too long'),
 });
 
 // Loan Details Schema
 const loanDetailsSchema = z.object({
-  amount: z.number()
+  amount: z
+    .number()
     .min(150000, 'Minimum loan amount is $150,000')
     .max(5000000, 'Maximum loan amount is $5,000,000'),
-  purpose: z.enum(['business_expansion', 'working_capital', 'investment_property', 'debt_consolidation', 'equipment', 'other'], {
-    errorMap: () => ({ message: 'Please select loan purpose' }),
-  }),
-  purposeDescription: z.string().min(10, 'Please provide detailed purpose description').max(300, 'Description too long'),
+  purpose: z.enum(
+    [
+      'business_expansion',
+      'working_capital',
+      'investment_property',
+      'debt_consolidation',
+      'equipment',
+      'other',
+    ],
+    {
+      errorMap: () => ({ message: 'Please select loan purpose' }),
+    }
+  ),
+  purposeDescription: z
+    .string()
+    .min(10, 'Please provide detailed purpose description')
+    .max(300, 'Description too long'),
   term: z.number().min(1, 'Minimum term is 1 month').max(300, 'Maximum term is 300 months'),
   repaymentType: z.enum(['principal_interest', 'interest_only'], {
     errorMap: () => ({ message: 'Please select repayment type' }),
   }),
   securityOffered: z.boolean(),
-  securityDetails: z.object({
-    type: z.enum(['property', 'equipment', 'inventory', 'accounts_receivable', 'other']),
-    description: z.string().min(10, 'Please describe the security offered'),
-    estimatedValue: z.number().min(1, 'Security value must be greater than 0'),
-  }).optional().refine(
-    (data, ctx) => {
-      const parent = ctx.parent as any;
-      if (parent.securityOffered && !data) {
-        return false;
-      }
-      return true;
-    },
-    'Security details required when security is offered'
-  ),
+  securityDetails: z
+    .object({
+      type: z.enum(['property', 'equipment', 'inventory', 'accounts_receivable', 'other']),
+      description: z.string().min(10, 'Please describe the security offered'),
+      estimatedValue: z.number().min(1, 'Security value must be greater than 0'),
+    })
+    .optional(),
 });
 
 // Financial Information Schema
 const financialInfoSchema = z.object({
   annualIncome: z.number().min(1, 'Annual income is required').max(100000000, 'Income too high'),
-  monthlyExpenses: z.number().min(0, 'Monthly expenses cannot be negative').max(10000000, 'Expenses too high'),
+  monthlyExpenses: z
+    .number()
+    .min(0, 'Monthly expenses cannot be negative')
+    .max(10000000, 'Expenses too high'),
   assets: z.object({
     cash: z.number().min(0, 'Cash assets cannot be negative'),
     property: z.number().min(0, 'Property assets cannot be negative'),
@@ -187,14 +212,17 @@ export const validateStep = (
     return { isValid: true, errors: [] };
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const errors: ValidationError[] = error.issues.map(issue => ({
+      const errors: ValidationError[] = error.issues.map((issue) => ({
         field: issue.path.join('.'),
         message: issue.message,
         type: getErrorType(issue.code),
       }));
       return { isValid: false, errors };
     }
-    return { isValid: false, errors: [{ field: 'general', message: 'Validation error', type: 'custom' }] };
+    return {
+      isValid: false,
+      errors: [{ field: 'general', message: 'Validation error', type: 'custom' }],
+    };
   }
 };
 
@@ -202,9 +230,9 @@ export const validateApplication = (
   data: ApplicationData
 ): { isValid: boolean; errors: ValidationError[] } => {
   const allErrors: ValidationError[] = [];
-  
+
   // Validate each step
-  Object.keys(stepSchemas).forEach(stepId => {
+  Object.keys(stepSchemas).forEach((stepId) => {
     const stepData = data[stepId as keyof ApplicationData];
     if (stepData) {
       const result = validateStep(stepId as keyof typeof stepSchemas, stepData);
@@ -221,7 +249,7 @@ export const validateApplication = (
 // Sanitization functions
 export const sanitizeInput = (input: string): string => {
   if (typeof input !== 'string') return '';
-  
+
   return input
     .trim()
     .replace(/[<>]/g, '') // Remove potential HTML tags
@@ -239,13 +267,13 @@ export const sanitizeNumericInput = (input: string | number): number => {
 const getNestedSchema = (schema: z.ZodSchema, path: string): z.ZodSchema => {
   const parts = path.split('.');
   let current = schema;
-  
+
   for (const part of parts) {
     if (current instanceof z.ZodObject) {
       current = current.shape[part];
     }
   }
-  
+
   return current;
 };
 
@@ -269,7 +297,7 @@ export const createDebouncedValidator = (
   delay = 300
 ) => {
   let timeoutId: NodeJS.Timeout;
-  
+
   return (value: any, callback: (result: { isValid: boolean; error?: string }) => void) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {

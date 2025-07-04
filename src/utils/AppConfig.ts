@@ -1,6 +1,7 @@
 export const AppConfig = {
   name: 'AAGT Private Loans',
-  description: 'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
+  description:
+    'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
   tagline: 'Alternative lending solutions for Australian businesses',
   mission: 'Making business and investment funding accessible and straightforward',
   email: 'aagtpvtloans@gmail.com',
@@ -11,12 +12,12 @@ export const AppConfig = {
   loanRange: {
     min: 150000,
     max: 5000000,
-    currency: 'AUD'
+    currency: 'AUD',
   },
   features: [
     'Same day approval',
     '4-day settlement',
     'Minimal documentation',
-    'Direct lender using proprietary funds'
-  ]
+    'Direct lender using proprietary funds',
+  ],
 };

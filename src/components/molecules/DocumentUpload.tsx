@@ -48,7 +48,7 @@ export const DocumentUpload = ({
 
   const uploadFile = async (file: File): Promise<UploadedFile> => {
     const fileId = `${Date.now()}-${file.name}`;
-    
+
     // Create file object
     const uploadedFile: UploadedFile = {
       id: fileId,
@@ -68,8 +68,8 @@ export const DocumentUpload = ({
     try {
       // Simulate upload with progress
       for (let progress = 0; progress <= 100; progress += 10) {
-        setUploadProgress(prev => ({ ...prev, [fileId]: progress }));
-        await new Promise(resolve => setTimeout(resolve, 100));
+        setUploadProgress((prev) => ({ ...prev, [fileId]: progress }));
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
 
       // Make actual upload request
@@ -84,7 +84,7 @@ export const DocumentUpload = ({
 
       const result = await response.json();
 
-      setUploadProgress(prev => {
+      setUploadProgress((prev) => {
         const newProgress = { ...prev };
         delete newProgress[fileId];
         return newProgress;
@@ -98,7 +98,7 @@ export const DocumentUpload = ({
       };
     } catch (error) {
       console.error('Upload error:', error);
-      setUploadProgress(prev => {
+      setUploadProgress((prev) => {
         const newProgress = { ...prev };
         delete newProgress[fileId];
         return newProgress;
@@ -112,87 +112,95 @@ export const DocumentUpload = ({
     }
   };
 
-  const onDrop = useCallback(async (acceptedFiles: File[]) => {
-    setDragActive(false);
+  const onDrop = useCallback(
+    async (acceptedFiles: File[]) => {
+      setDragActive(false);
 
-    // Validate file count
-    const totalFiles = files.length + acceptedFiles.length;
-    if (totalFiles > maxFiles) {
-      alert(`Maximum ${maxFiles} files allowed`);
-      return;
-    }
-
-    // Process each file
-    const newFiles: UploadedFile[] = [];
-    
-    for (const file of acceptedFiles) {
-      // Validate file size
-      if (file.size > maxFileSize) {
-        alert(`File ${file.name} is too large. Maximum size is ${Math.round(maxFileSize / 1024 / 1024)}MB`);
-        continue;
+      // Validate file count
+      const totalFiles = files.length + acceptedFiles.length;
+      if (totalFiles > maxFiles) {
+        alert(`Maximum ${maxFiles} files allowed`);
+        return;
       }
 
-      // Validate file type
-      const isValidType = acceptedFileTypes.some(type => {
-        if (type.includes('*')) {
-          const prefix = type.split('*')[0];
-          return prefix ? file.type.startsWith(prefix) : false;
+      // Process each file
+      const newFiles: UploadedFile[] = [];
+
+      for (const file of acceptedFiles) {
+        // Validate file size
+        if (file.size > maxFileSize) {
+          alert(
+            `File ${file.name} is too large. Maximum size is ${Math.round(maxFileSize / 1024 / 1024)}MB`
+          );
+          continue;
         }
-        return file.type === type || file.name.toLowerCase().endsWith(type);
-      });
 
-      if (!isValidType) {
-        alert(`File ${file.name} is not a supported file type`);
-        continue;
+        // Validate file type
+        const isValidType = acceptedFileTypes.some((type) => {
+          if (type.includes('*')) {
+            const prefix = type.split('*')[0];
+            return prefix ? file.type.startsWith(prefix) : false;
+          }
+          return file.type === type || file.name.toLowerCase().endsWith(type);
+        });
+
+        if (!isValidType) {
+          alert(`File ${file.name} is not a supported file type`);
+          continue;
+        }
+
+        try {
+          const uploadedFile = await uploadFile(file);
+          newFiles.push(uploadedFile);
+        } catch (error) {
+          console.error('Failed to upload file:', file.name, error);
+        }
       }
 
-      try {
-        const uploadedFile = await uploadFile(file);
-        newFiles.push(uploadedFile);
-      } catch (error) {
-        console.error('Failed to upload file:', file.name, error);
+      if (newFiles.length > 0) {
+        onFilesChange([...files, ...newFiles]);
       }
-    }
-
-    if (newFiles.length > 0) {
-      onFilesChange([...files, ...newFiles]);
-    }
-  }, [files, maxFiles, maxFileSize, acceptedFileTypes, onFilesChange, category]);
+    },
+    [files, maxFiles, maxFileSize, acceptedFileTypes, onFilesChange, category]
+  );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     onDragEnter: () => setDragActive(true),
     onDragLeave: () => setDragActive(false),
-    accept: acceptedFileTypes.reduce((acc, type) => {
-      acc[type] = ACCEPTED_FILE_TYPES[type as keyof typeof ACCEPTED_FILE_TYPES] || [];
-      return acc;
-    }, {} as Record<string, string[]>),
+    accept: acceptedFileTypes.reduce(
+      (acc, type) => {
+        acc[type] = ACCEPTED_FILE_TYPES[type as keyof typeof ACCEPTED_FILE_TYPES] || [];
+        return acc;
+      },
+      {} as Record<string, string[]>
+    ),
     maxSize: maxFileSize,
     disabled: files.length >= maxFiles,
   });
 
   const removeFile = (fileId: string) => {
-    const updatedFiles = files.filter(file => file.id !== fileId);
+    const updatedFiles = files.filter((file) => file.id !== fileId);
     onFilesChange(updatedFiles);
   };
 
   const retryUpload = async (fileId: string) => {
-    const fileIndex = files.findIndex(f => f.id === fileId);
+    const fileIndex = files.findIndex((f) => f.id === fileId);
     if (fileIndex === -1) return;
 
     const file = files[fileIndex];
     if (!file) return;
-    
+
     const updatedFiles = [...files];
-    updatedFiles[fileIndex] = { 
-      ...file, 
+    updatedFiles[fileIndex] = {
+      ...file,
       id: file.id || `${Date.now()}-${Math.random()}`,
       name: file.name || 'Unknown',
       size: file.size || 0,
       type: file.type || 'application/octet-stream',
       category: file.category || 'other',
-      uploadStatus: 'uploading' as const, 
-      uploadProgress: 0 
+      uploadStatus: 'uploading' as const,
+      uploadProgress: 0,
     };
     onFilesChange(updatedFiles);
 
@@ -200,17 +208,17 @@ export const DocumentUpload = ({
     // For now, we'll just mark it as completed
     setTimeout(() => {
       if (!file) return;
-      
+
       const retryFiles = [...files];
-      retryFiles[fileIndex] = { 
-        ...file, 
+      retryFiles[fileIndex] = {
+        ...file,
         id: file.id || `${Date.now()}-${Math.random()}`,
         name: file.name || 'Unknown',
         size: file.size || 0,
         type: file.type || 'application/octet-stream',
         category: file.category || 'other',
-        uploadStatus: 'completed' as const, 
-        uploadProgress: 100 
+        uploadStatus: 'completed' as const,
+        uploadProgress: 100,
       };
       onFilesChange(retryFiles);
     }, 1000);
@@ -221,7 +229,7 @@ export const DocumentUpload = ({
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / k ** i).toFixed(2)) + ' ' + sizes[i];
   };
 
   const getFileIcon = (file: UploadedFile) => {
@@ -241,12 +249,15 @@ export const DocumentUpload = ({
     <div className={cn('space-y-4', className)}>
       {/* Header */}
       <div>
-        <h3 className={cn('text-lg font-medium text-gray-900', required && "after:content-['*'] after:ml-0.5 after:text-red-500")}>
+        <h3
+          className={cn(
+            'text-lg font-medium text-gray-900',
+            required && "after:content-['*'] after:ml-0.5 after:text-red-500"
+          )}
+        >
           {title}
         </h3>
-        {description && (
-          <p className="mt-1 text-sm text-gray-500">{description}</p>
-        )}
+        {description && <p className="mt-1 text-sm text-gray-500">{description}</p>}
       </div>
 
       {/* Drop Zone */}
@@ -265,19 +276,19 @@ export const DocumentUpload = ({
         aria-label={`Upload documents for ${title}`}
       >
         <input {...getInputProps()} aria-describedby={`${category}-upload-help`} />
-        
-        <Upload className={cn(
-          'mx-auto h-12 w-12 mb-4',
-          isDragActive || dragActive ? 'text-teal-500' : 'text-gray-400'
-        )} />
-        
+
+        <Upload
+          className={cn(
+            'mx-auto h-12 w-12 mb-4',
+            isDragActive || dragActive ? 'text-teal-500' : 'text-gray-400'
+          )}
+        />
+
         <div className="space-y-2">
           <p className="text-base font-medium text-gray-900">
             {isDragActive ? 'Drop files here' : 'Drop files or click to upload'}
           </p>
-          <p className="text-sm text-gray-500">
-            Supports: PDF, DOC, DOCX, XLS, XLSX, Images
-          </p>
+          <p className="text-sm text-gray-500">Supports: PDF, DOC, DOCX, XLS, XLSX, Images</p>
           <p className="text-xs text-gray-400">
             Maximum {maxFiles} files, {Math.round(maxFileSize / 1024 / 1024)}MB each
           </p>
@@ -290,31 +301,27 @@ export const DocumentUpload = ({
           <h4 className="text-sm font-medium text-gray-900">
             Uploaded Files ({files.length}/{maxFiles})
           </h4>
-          
+
           <div className="space-y-2">
             {files.map((file) => (
               <div
                 key={file.id}
                 className={cn(
                   'flex items-center justify-between p-3 border rounded-lg',
-                  file.uploadStatus === 'error' ? 'border-red-200 bg-red-50' :
-                  file.uploadStatus === 'completed' ? 'border-success-200 bg-success-50' :
-                  'border-gray-200 bg-gray-50'
+                  file.uploadStatus === 'error'
+                    ? 'border-red-200 bg-red-50'
+                    : file.uploadStatus === 'completed'
+                      ? 'border-success-200 bg-success-50'
+                      : 'border-gray-200 bg-gray-50'
                 )}
               >
                 <div className="flex items-center space-x-3 flex-1 min-w-0">
-                  <span className="text-2xl flex-shrink-0">
-                    {getFileIcon(file)}
-                  </span>
-                  
+                  <span className="text-2xl flex-shrink-0">{getFileIcon(file)}</span>
+
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
-                      {file.name}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {formatFileSize(file.size)}
-                    </p>
-                    
+                    <p className="text-sm font-medium text-gray-900 truncate">{file.name}</p>
+                    <p className="text-xs text-gray-500">{formatFileSize(file.size)}</p>
+
                     {/* Upload Progress */}
                     {file.uploadStatus === 'uploading' && (
                       <div className="mt-1">
@@ -353,7 +360,7 @@ export const DocumentUpload = ({
                         Retry
                       </Button>
                     )}
-                    
+
                     {file.uploadStatus === 'completed' && file.url && (
                       <Button
                         size="sm"
@@ -364,7 +371,7 @@ export const DocumentUpload = ({
                         <Download className="h-4 w-4" />
                       </Button>
                     )}
-                    
+
                     <Button
                       size="sm"
                       variant="ghost"
@@ -384,7 +391,10 @@ export const DocumentUpload = ({
 
       {/* Help Text */}
       <div id={`${category}-upload-help`} className="text-xs text-gray-500">
-        <p>All documents must be clear and legible. Supported formats: PDF, Word documents, Excel spreadsheets, and common image formats.</p>
+        <p>
+          All documents must be clear and legible. Supported formats: PDF, Word documents, Excel
+          spreadsheets, and common image formats.
+        </p>
         {required && (
           <p className="text-red-600 mt-1">At least one document is required for this category.</p>
         )}

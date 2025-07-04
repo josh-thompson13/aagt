@@ -28,24 +28,26 @@ export async function POST(request: NextRequest) {
       propertyAddress,
       // Additional Information
       declinedByBanks,
-      workingWithBroker
+      workingWithBroker,
     } = body;
 
     // Validate required fields
-    if (!firstName || !lastName || !email || !businessName || !loanAmount || !loanType || !loanPurpose) {
-      return NextResponse.json(
-        { error: 'Please fill in all required fields' },
-        { status: 400 }
-      );
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !businessName ||
+      !loanAmount ||
+      !loanType ||
+      !loanPurpose
+    ) {
+      return NextResponse.json({ error: 'Please fill in all required fields' }, { status: 400 });
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Please provide a valid email address' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Please provide a valid email address' }, { status: 400 });
     }
 
     // Create comprehensive email content
@@ -90,14 +92,14 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
 
     // Email configuration for testing
     const testEmail = 'josh.thompsonau@icloud.com'; // Test email address
-    
+
     // Create transporter for Gmail (for testing)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER || 'aagtpvtloans@gmail.com',
-        pass: process.env.GMAIL_APP_PASSWORD || 'your-app-password-here'
-      }
+        pass: process.env.GMAIL_APP_PASSWORD || 'your-app-password-here',
+      },
     });
 
     const emailConfig = {
@@ -173,28 +175,28 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
             </div>
           </div>
         </div>
-      `
+      `,
     };
 
     try {
       // Send the email
       await transporter.sendMail(emailConfig);
-      
+
       console.log('=== LOAN APPLICATION EMAIL SENT SUCCESSFULLY ===');
       console.log(`To: ${emailConfig.to}`);
       console.log(`Subject: ${emailConfig.subject}`);
       console.log(`Applicant: ${firstName} ${lastName}`);
       console.log(`Amount: ${loanAmount}`);
       console.log('=== END ===');
-      
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.' 
+
+      return NextResponse.json({
+        success: true,
+        message:
+          'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.',
       });
-      
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
-      
+
       // Fallback: log email content if sending fails
       console.log('=== LOAN APPLICATION EMAIL SENDING FAILED - LOGGING CONTENT ===');
       console.log(`To: ${emailConfig.to}`);
@@ -202,14 +204,14 @@ User Agent: ${request.headers.get('user-agent') || 'Unknown'}
       console.log('\nBody:');
       console.log(emailBody);
       console.log('=== END EMAIL ===');
-      
+
       // Still return success to user (they don't need to know about email issues)
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.' 
+      return NextResponse.json({
+        success: true,
+        message:
+          'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.',
       });
     }
-
   } catch (error) {
     console.error('Application form error:', error);
     return NextResponse.json(

@@ -94,7 +94,7 @@ export const keyboardNavigation = {
     }
 
     if (newIndex !== currentIndex && items[newIndex]) {
-      items[newIndex].focus();
+      items[newIndex]?.focus();
     }
 
     return newIndex;
@@ -140,7 +140,7 @@ export const aria = {
     announcer.textContent = message;
 
     document.body.appendChild(announcer);
-    
+
     // Remove after announcement
     setTimeout(() => {
       document.body.removeChild(announcer);
@@ -160,10 +160,10 @@ export const aria = {
 export const colorContrast = {
   // Calculate relative luminance
   relativeLuminance: (r: number, g: number, b: number): number => {
-    const [rs, gs, bs] = [r, g, b].map(c => {
+    const [rs, gs, bs] = [r, g, b].map((c) => {
       c = c / 255;
-      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
-    });
+      return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    }) as [number, number, number];
     return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
   },
 
@@ -178,13 +178,13 @@ export const colorContrast = {
 
   // Check if contrast meets WCAG standards
   meetsWCAG: (
-    color1: [number, number, number], 
+    color1: [number, number, number],
     color2: [number, number, number],
     level: 'AA' | 'AAA' = 'AA',
     size: 'normal' | 'large' = 'normal'
   ): boolean => {
     const ratio = colorContrast.contrastRatio(color1, color2);
-    
+
     if (level === 'AAA') {
       return size === 'large' ? ratio >= 4.5 : ratio >= 7;
     } else {
@@ -206,12 +206,10 @@ export const formAccessibility = {
   associateError: (controlElement: HTMLElement, errorElement: HTMLElement) => {
     const errorId = errorElement.id || aria.generateId('error');
     errorElement.id = errorId;
-    
+
     const describedBy = controlElement.getAttribute('aria-describedby');
-    const newDescribedBy = describedBy 
-      ? `${describedBy} ${errorId}`
-      : errorId;
-    
+    const newDescribedBy = describedBy ? `${describedBy} ${errorId}` : errorId;
+
     controlElement.setAttribute('aria-describedby', newDescribedBy);
     controlElement.setAttribute('aria-invalid', 'true');
   },
@@ -222,9 +220,9 @@ export const formAccessibility = {
     if (describedBy) {
       const newDescribedBy = describedBy
         .split(' ')
-        .filter(id => id !== errorId)
+        .filter((id) => id !== errorId)
         .join(' ');
-      
+
       if (newDescribedBy) {
         controlElement.setAttribute('aria-describedby', newDescribedBy);
       } else {
@@ -237,29 +235,32 @@ export const formAccessibility = {
   // Validate form accessibility
   validateFormAccessibility: (formElement: HTMLFormElement): string[] => {
     const issues: string[] = [];
-    
+
     // Check for labels
     const inputs = formElement.querySelectorAll('input, select, textarea');
     inputs.forEach((input) => {
-      const hasLabel = 
+      const hasLabel =
         input.getAttribute('aria-label') ||
         input.getAttribute('aria-labelledby') ||
         formElement.querySelector(`label[for="${input.id}"]`);
-      
+
       if (!hasLabel) {
-        issues.push(`Form control missing accessible label: ${input.tagName}${input.id ? `#${input.id}` : ''}`);
+        issues.push(
+          `Form control missing accessible label: ${input.tagName}${input.id ? `#${input.id}` : ''}`
+        );
       }
     });
 
     // Check for required field indicators
     const requiredInputs = formElement.querySelectorAll('[required]');
     requiredInputs.forEach((input) => {
-      const hasRequiredIndicator = 
-        input.getAttribute('aria-required') === 'true' ||
-        input.getAttribute('aria-describedby');
-      
+      const hasRequiredIndicator =
+        input.getAttribute('aria-required') === 'true' || input.getAttribute('aria-describedby');
+
       if (!hasRequiredIndicator) {
-        issues.push(`Required field missing accessible indicator: ${input.tagName}${input.id ? `#${input.id}` : ''}`);
+        issues.push(
+          `Required field missing accessible indicator: ${input.tagName}${input.id ? `#${input.id}` : ''}`
+        );
       }
     });
 
@@ -282,14 +283,12 @@ export const screenReader = {
     const descriptionElement = screenReader.createSROnlyText(description);
     const descriptionId = aria.generateId('description');
     descriptionElement.id = descriptionId;
-    
+
     element.appendChild(descriptionElement);
-    
+
     const describedBy = element.getAttribute('aria-describedby');
-    const newDescribedBy = describedBy 
-      ? `${describedBy} ${descriptionId}`
-      : descriptionId;
-    
+    const newDescribedBy = describedBy ? `${describedBy} ${descriptionId}` : descriptionId;
+
     element.setAttribute('aria-describedby', newDescribedBy);
   },
 };
@@ -302,11 +301,7 @@ export const reducedMotion = {
   },
 
   // Apply animation only if motion is not reduced
-  conditionalAnimation: (
-    element: HTMLElement,
-    animation: () => void,
-    fallback?: () => void
-  ) => {
+  conditionalAnimation: (_element: HTMLElement, animation: () => void, fallback?: () => void) => {
     if (reducedMotion.prefersReducedMotion()) {
       fallback?.();
     } else {
@@ -321,7 +316,7 @@ export const touchAccessibility = {
   ensureMinimumTouchTarget: (element: HTMLElement) => {
     const rect = element.getBoundingClientRect();
     const minSize = 44;
-    
+
     if (rect.width < minSize || rect.height < minSize) {
       element.style.minWidth = `${minSize}px`;
       element.style.minHeight = `${minSize}px`;
@@ -337,24 +332,24 @@ export const accessibilityChecker = {
   // Run all accessibility checks on an element
   checkElement: (element: HTMLElement): string[] => {
     const issues: string[] = [];
-    
+
     // Check color contrast (basic implementation)
     const style = getComputedStyle(element);
     const hasGoodContrast = style.color && style.backgroundColor;
     if (!hasGoodContrast) {
       issues.push('Element may not have sufficient color contrast');
     }
-    
+
     // Check for alt text on images
     if (element.tagName === 'IMG' && !element.getAttribute('alt')) {
       issues.push('Image missing alt text');
     }
-    
+
     // Check for accessible form controls
     if (element.tagName === 'FORM') {
       issues.push(...formAccessibility.validateFormAccessibility(element as HTMLFormElement));
     }
-    
+
     // Check for minimum touch target size on interactive elements
     const isInteractive = ['BUTTON', 'A', 'INPUT', 'SELECT', 'TEXTAREA'].includes(element.tagName);
     if (isInteractive) {
@@ -363,29 +358,29 @@ export const accessibilityChecker = {
         issues.push('Interactive element below minimum touch target size (44x44px)');
       }
     }
-    
+
     return issues;
   },
-  
+
   // Generate accessibility report for the entire page
   generateReport: (): { issues: string[]; recommendations: string[] } => {
     const issues: string[] = [];
     const recommendations: string[] = [];
-    
+
     // Check for page title
     if (!document.title) {
       issues.push('Page missing title');
     }
-    
+
     // Check for main landmark
     if (!document.querySelector('main')) {
       issues.push('Page missing main landmark');
     }
-    
+
     // Check for heading hierarchy
     const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
     let currentLevel = 0;
-    
+
     headings.forEach((heading) => {
       const level = parseInt(heading.tagName.charAt(1));
       if (level > currentLevel + 1) {
@@ -393,13 +388,13 @@ export const accessibilityChecker = {
       }
       currentLevel = level;
     });
-    
+
     // General recommendations
     recommendations.push('Ensure all interactive elements are keyboard accessible');
     recommendations.push('Test with screen readers');
     recommendations.push('Verify color contrast meets WCAG 2.1 AA standards');
     recommendations.push('Test with users who have disabilities');
-    
+
     return { issues, recommendations };
   },
 };

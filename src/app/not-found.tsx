@@ -13,7 +13,7 @@ export default function NotFound() {
         <div className="mb-8">
           <Link href="/" className="inline-flex items-center justify-center">
             <Image
-              src={getAssetPath("/images/aagt_logo_no_background.png")}
+              src={getAssetPath('/images/aagt_logo_no_background.png')}
               alt="AAGT Private Loans Logo"
               width={200}
               height={80}
@@ -25,12 +25,10 @@ export default function NotFound() {
         {/* 404 Error */}
         <div className="mb-8">
           <h1 className="text-6xl md:text-8xl font-bold text-slate-900 mb-4">404</h1>
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-700 mb-4">
-            Page Not Found
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-700 mb-4">Page Not Found</h2>
           <p className="text-lg text-slate-600 max-w-md mx-auto">
-            The page you're looking for doesn't exist. Let's help you find the 
-            funding solutions you need.
+            The page you're looking for doesn't exist. Let's help you find the funding solutions you
+            need.
           </p>
         </div>
 
@@ -68,16 +66,10 @@ export default function NotFound() {
             >
               Investment Loans
             </Link>
-            <Link
-              href="/rates"
-              className="text-primary-700 hover:text-primary-800 underline"
-            >
+            <Link href="/rates" className="text-primary-700 hover:text-primary-800 underline">
               Rates & Terms
             </Link>
-            <Link
-              href="/contact"
-              className="text-primary-700 hover:text-primary-800 underline"
-            >
+            <Link href="/contact" className="text-primary-700 hover:text-primary-800 underline">
               Contact Us
             </Link>
           </div>

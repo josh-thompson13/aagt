@@ -7,8 +7,10 @@ import { Calculator, Clock, TrendingUp, CheckCircle } from 'lucide-react';
 export async function generateMetadata() {
   return {
     title: 'Quick Quote Calculator | AAGT Private Loans',
-    description: 'Calculate your loan interest and total repayment amount instantly. Get quick quotes for business loans from $150,000 to $5,000,000.',
-    keywords: 'loan calculator, business loan quote, private loan calculator, quick quote, loan interest calculator',
+    description:
+      'Calculate your loan interest and total repayment amount instantly. Get quick quotes for business loans from $150,000 to $5,000,000.',
+    keywords:
+      'loan calculator, business loan quote, private loan calculator, quick quote, loan interest calculator',
     alternates: {
       canonical: 'https://aagtprivateloans.com.au/calculator',
     },
@@ -25,50 +27,50 @@ export default function CalculatorPage() {
     {
       icon: Calculator,
       title: 'Instant Calculations',
-      description: 'Get immediate estimates for your loan interest and total repayment amount'
+      description: 'Get immediate estimates for your loan interest and total repayment amount',
     },
     {
       icon: Clock,
       title: 'Simple Terms',
-      description: 'Choose loan terms from 1 to 24 months to match your business needs'
+      description: 'Choose loan terms from 1 to 24 months to match your business needs',
     },
     {
       icon: TrendingUp,
       title: 'Transparent Pricing',
-      description: 'See exactly what you\'ll pay with no hidden fees or surprises'
+      description: "See exactly what you'll pay with no hidden fees or surprises",
     },
     {
       icon: CheckCircle,
       title: 'Quick Application',
-      description: 'Ready to apply? Get your full quote and start the approval process'
-    }
+      description: 'Ready to apply? Get your full quote and start the approval process',
+    },
   ];
 
   const calculatorSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    'name': 'AAGT Private Loans Calculator',
-    'description': 'Quick quote calculator for business loans from $150,000 to $5,000,000',
-    'applicationCategory': 'FinanceApplication',
-    'operatingSystem': 'Web',
-    'offers': {
+    name: 'AAGT Private Loans Calculator',
+    description: 'Quick quote calculator for business loans from $150,000 to $5,000,000',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    offers: {
       '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'AUD'
+      price: '0',
+      priceCurrency: 'AUD',
     },
-    'featureList': [
+    featureList: [
       'Instant loan calculations',
       'Term options from 1-24 months',
       'Transparent interest rates',
-      'No hidden fees'
-    ]
+      'No hidden fees',
+    ],
   };
 
   return (
     <>
       <StructuredData data={breadcrumbSchema(breadcrumbs)} />
       <StructuredData data={calculatorSchema} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-900 to-primary-700 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,9 +120,7 @@ export default function CalculatorPage() {
                         <h4 className="text-lg font-semibold text-gray-900 mb-2">
                           {feature.title}
                         </h4>
-                        <p className="text-gray-600">
-                          {feature.description}
-                        </p>
+                        <p className="text-gray-600">{feature.description}</p>
                       </div>
                     </div>
                   ))}
@@ -128,24 +128,30 @@ export default function CalculatorPage() {
               </div>
 
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                  How It Works
-                </h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">How It Works</h4>
                 <ol className="space-y-3 text-sm text-gray-600">
                   <li className="flex items-start">
-                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">1</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">
+                      1
+                    </span>
                     Enter your desired loan amount ($150,000 - $5,000,000)
                   </li>
                   <li className="flex items-start">
-                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">2</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">
+                      2
+                    </span>
                     Select your preferred loan term (1-24 months)
                   </li>
                   <li className="flex items-start">
-                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">3</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">
+                      3
+                    </span>
                     See your total interest and repayment amount instantly
                   </li>
                   <li className="flex items-start">
-                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">4</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-primary-700 text-white rounded-full text-xs flex items-center justify-center mr-3 mt-0.5">
+                      4
+                    </span>
                     Click "Get Full Quote" to start your application
                   </li>
                 </ol>
@@ -169,9 +175,7 @@ export default function CalculatorPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Loan Parameters
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Loan Parameters</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Minimum loan amount: $150,000</li>
                 <li>• Maximum loan amount: $5,000,000</li>
@@ -182,9 +186,7 @@ export default function CalculatorPage() {
             </div>
 
             <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Important Disclaimers
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Important Disclaimers</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Calculations are estimates only</li>
                 <li>• Final rates subject to assessment</li>
@@ -197,9 +199,9 @@ export default function CalculatorPage() {
 
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500">
-              This calculator provides estimates based on the information you provide. 
-              Actual loan terms, rates, and fees may vary based on your individual circumstances 
-              and are subject to our standard credit assessment and approval process.
+              This calculator provides estimates based on the information you provide. Actual loan
+              terms, rates, and fees may vary based on your individual circumstances and are subject
+              to our standard credit assessment and approval process.
             </p>
           </div>
         </div>
@@ -208,9 +210,7 @@ export default function CalculatorPage() {
       {/* CTA Section */}
       <section className="py-20 bg-primary-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Apply?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Apply?</h2>
           <p className="text-xl text-white/90 mb-8">
             Turn your quick quote into a full loan application and get approved today.
           </p>

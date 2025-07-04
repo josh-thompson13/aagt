@@ -4,7 +4,6 @@ import { AppConfig } from '@/utils/AppConfig';
 import { ArrowRight, Clock, DollarSign, FileCheck, Shield } from 'lucide-react';
 
 export const MarketingSection = () => {
-  
   return (
     <section className="py-20 bg-primary-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
@@ -14,7 +13,8 @@ export const MarketingSection = () => {
             Professional Private Lending Solutions
           </h2>
           <p className="text-lg md:text-xl text-slate-200 mb-10 font-normal max-w-3xl text-center leading-relaxed">
-            {AppConfig.primaryMessage}. As direct funders, we provide streamlined approval processes and competitive terms for qualified borrowers.
+            {AppConfig.primaryMessage}. As direct funders, we provide streamlined approval processes
+            and competitive terms for qualified borrowers.
           </p>
         </div>
 
@@ -28,7 +28,9 @@ export const MarketingSection = () => {
                   Why Choose AAGT Private Loans
                 </h3>
                 <p className="text-slate-700 text-lg mb-8 leading-relaxed">
-                  As a direct lender using proprietary funds, we offer faster decision-making and flexible solutions. Our streamlined processes deliver same-day approvals and 4-day settlements, compared to traditional banks that often require weeks.
+                  As a direct lender using proprietary funds, we offer faster decision-making and
+                  flexible solutions. Our streamlined processes deliver same-day approvals and 4-day
+                  settlements, compared to traditional banks that often require weeks.
                 </p>
                 <ul className="mb-10 space-y-2 text-base text-slate-700">
                   <li className="flex items-center gap-2">
@@ -54,7 +56,7 @@ export const MarketingSection = () => {
                     className="inline-flex items-center justify-center px-7 py-2.5 text-base font-semibold rounded-full text-white bg-primary-700 hover:bg-primary-800 shadow transition-all duration-150 focus:ring-2 focus:ring-primary-300 focus:outline-none"
                     style={{
                       boxShadow: '0 2px 16px 0 rgba(16, 112, 202, 0.10)',
-                      letterSpacing: '0.01em'
+                      letterSpacing: '0.01em',
                     }}
                   >
                     Apply Now
@@ -65,7 +67,7 @@ export const MarketingSection = () => {
                     className="inline-flex items-center justify-center px-7 py-2.5 text-base font-semibold rounded-full text-primary-700 border border-primary-700 bg-white hover:bg-primary-50 hover:text-primary-900 shadow transition-all duration-150 focus:ring-2 focus:ring-primary-200 focus:outline-none"
                     style={{
                       boxShadow: '0 2px 16px 0 rgba(16, 112, 202, 0.06)',
-                      letterSpacing: '0.01em'
+                      letterSpacing: '0.01em',
                     }}
                   >
                     View Rates
@@ -78,9 +80,13 @@ export const MarketingSection = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center p-8">
                       <DollarSign className="w-24 h-24 text-primary-700 mx-auto mb-4" />
-                      <h4 className="text-2xl font-bold text-primary-900 mb-2">Funding Available</h4>
+                      <h4 className="text-2xl font-bold text-primary-900 mb-2">
+                        Funding Available
+                      </h4>
                       <p className="text-4xl font-bold text-primary-700">$150K - $5M</p>
-                      <p className="text-lg text-primary-600 mt-2">For any worthwhile business purpose</p>
+                      <p className="text-lg text-primary-600 mt-2">
+                        For any worthwhile business purpose
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -88,9 +94,7 @@ export const MarketingSection = () => {
             </div>
             {/* Motto */}
             <div className="mt-14 pt-8 border-t border-slate-200 text-center">
-              <p className="text-xl md:text-2xl text-primary-700 font-bold">
-                {AppConfig.mission}
-              </p>
+              <p className="text-xl md:text-2xl text-primary-700 font-bold">{AppConfig.mission}</p>
               <p className="text-base text-slate-600 mt-2 italic">
                 Professional lending solutions tailored to your business requirements
               </p>
@@ -109,9 +113,7 @@ export const MarketingSection = () => {
             <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
               Same Day Approval
             </h3>
-            <p className="text-slate-600 text-base">
-              Quick decisions when you need them most
-            </p>
+            <p className="text-slate-600 text-base">Quick decisions when you need them most</p>
           </div>
           <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
             <div className="mb-4">
@@ -122,9 +124,7 @@ export const MarketingSection = () => {
             <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
               Minimal Documents
             </h3>
-            <p className="text-slate-600 text-base">
-              Simple process, no excessive paperwork
-            </p>
+            <p className="text-slate-600 text-base">Simple process, no excessive paperwork</p>
           </div>
           <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
             <div className="mb-4">
@@ -132,12 +132,8 @@ export const MarketingSection = () => {
                 <DollarSign className="w-8 h-8 text-primary-700" />
               </div>
             </div>
-            <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
-              Direct Funder
-            </h3>
-            <p className="text-slate-600 text-base">
-              We lend our own funds - no middlemen
-            </p>
+            <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">Direct Funder</h3>
+            <p className="text-slate-600 text-base">We lend our own funds - no middlemen</p>
           </div>
           <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20">
             <div className="mb-4">
@@ -145,12 +141,8 @@ export const MarketingSection = () => {
                 <Shield className="w-8 h-8 text-primary-700" />
               </div>
             </div>
-            <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">
-              Flexible Terms
-            </h3>
-            <p className="text-slate-600 text-base">
-              Solutions tailored to your business needs
-            </p>
+            <h3 className="text-lg md:text-xl text-slate-900 mb-4 font-semibold">Flexible Terms</h3>
+            <p className="text-slate-600 text-base">Solutions tailored to your business needs</p>
           </div>
         </div>
       </div>
