@@ -22,7 +22,9 @@
     "type-check": "tsc --noEmit",
     "quality": "bun run lint && bun run format && bun run type-check",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build:gh-pages": "next build && touch out/.nojekyll",
+    "deploy:gh-pages": "bun run build:gh-pages"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
