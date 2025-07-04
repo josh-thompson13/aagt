@@ -88,32 +88,6 @@ export const PrestigeHero = () => {
           </div>
         </div>
 
-        {/* Loan Types */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {loanTypes.map((loan, index) => (
-            <div 
-              key={index}
-              className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-primary-300 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="p-3 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors">
-                  <loan.icon className="h-8 w-8 text-primary-700" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{loan.title}</h3>
-                  <p className="text-gray-600 mb-4">{loan.description}</p>
-                  <a 
-                    href={loan.link}
-                    className="inline-flex items-center text-primary-700 font-medium hover:text-primary-800 transition-colors"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
 
         
 
