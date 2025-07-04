@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import DOMPurify from 'isomorphic-dompurify';
 import type { ApplicationData, ApplicationSubmissionResult } from '@/types/application';
 import { validateApplication } from '@/utils/validation';
 
@@ -140,7 +139,7 @@ async function simulateCreditCheck(applicationData: ApplicationData): Promise<{
 }
 
 // Generate interest rate based on risk assessment
-function calculateInterestRate(creditScore: number, risk: string, loanDetails: any): number {
+function calculateInterestRate(creditScore: number, _risk: string, loanDetails: any): number {
   let baseRate = 8.5; // Default rate
   
   // Adjust based on credit score

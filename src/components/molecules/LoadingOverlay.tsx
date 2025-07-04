@@ -49,15 +49,6 @@ const contentVariants = {
   },
 };
 
-const progressVariants = {
-  animate: {
-    width: '100%',
-    transition: {
-      duration: 0.5,
-      ease: 'easeInOut',
-    }
-  }
-};
 
 export const LoadingOverlay = ({
   isVisible,
@@ -70,7 +61,7 @@ export const LoadingOverlay = ({
     <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
-          variants={overlayVariants}
+          variants={overlayVariants as any}
           initial="hidden"
           animate="visible"
           exit="exit"
@@ -85,7 +76,7 @@ export const LoadingOverlay = ({
           aria-describedby="loading-message"
         >
           <motion.div
-            variants={contentVariants}
+            variants={contentVariants as any}
             initial="hidden"
             animate="visible"
             exit="exit"

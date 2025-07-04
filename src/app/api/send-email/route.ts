@@ -159,7 +159,7 @@ const EMAIL_TEMPLATES = {
 
 // Create nodemailer transporter
 function createTransporter() {
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     host: env.SMTP_HOST,
     port: env.SMTP_PORT,
     secure: env.SMTP_SECURE,

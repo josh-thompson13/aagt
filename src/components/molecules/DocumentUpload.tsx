@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Upload, File, X, CheckCircle, AlertCircle, Download } from 'lucide-react';
+import { Upload, X, CheckCircle, AlertCircle, Download } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import type { UploadedFile } from '@/types/application';
 import { Button } from '@/components/atoms';
@@ -135,7 +135,8 @@ export const DocumentUpload = ({
       // Validate file type
       const isValidType = acceptedFileTypes.some(type => {
         if (type.includes('*')) {
-          return file.type.startsWith(type.split('*')[0]);
+          const prefix = type.split('*')[0];
+          return prefix ? file.type.startsWith(prefix) : false;
         }
         return file.type === type || file.name.toLowerCase().endsWith(type);
       });
@@ -180,15 +181,37 @@ export const DocumentUpload = ({
     if (fileIndex === -1) return;
 
     const file = files[fileIndex];
+    if (!file) return;
+    
     const updatedFiles = [...files];
-    updatedFiles[fileIndex] = { ...file, uploadStatus: 'uploading', uploadProgress: 0 };
+    updatedFiles[fileIndex] = { 
+      ...file, 
+      id: file.id || `${Date.now()}-${Math.random()}`,
+      name: file.name || 'Unknown',
+      size: file.size || 0,
+      type: file.type || 'application/octet-stream',
+      category: file.category || 'other',
+      uploadStatus: 'uploading' as const, 
+      uploadProgress: 0 
+    };
     onFilesChange(updatedFiles);
 
     // Note: In a real implementation, you'd need to store the original File object
     // For now, we'll just mark it as completed
     setTimeout(() => {
+      if (!file) return;
+      
       const retryFiles = [...files];
-      retryFiles[fileIndex] = { ...file, uploadStatus: 'completed', uploadProgress: 100 };
+      retryFiles[fileIndex] = { 
+        ...file, 
+        id: file.id || `${Date.now()}-${Math.random()}`,
+        name: file.name || 'Unknown',
+        size: file.size || 0,
+        type: file.type || 'application/octet-stream',
+        category: file.category || 'other',
+        uploadStatus: 'completed' as const, 
+        uploadProgress: 100 
+      };
       onFilesChange(retryFiles);
     }, 1000);
   };

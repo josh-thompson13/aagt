@@ -107,18 +107,6 @@ export function RateComparisonTable({ rates }: Props) {
     return `${rate.toFixed(2)}%`;
   };
 
-  const getAAGTAdvantage = (aagtRate: RateComparison, bankRate: RateComparison) => {
-    const rateDiff = bankRate.comparisonRate - aagtRate.comparisonRate;
-    const isLower = rateDiff > 0;
-    
-    return {
-      isLower,
-      difference: Math.abs(rateDiff),
-      message: isLower 
-        ? `${rateDiff.toFixed(2)}% higher than AAGT`
-        : `${Math.abs(rateDiff).toFixed(2)}% lower than AAGT`
-    };
-  };
 
   const SortButton = ({ field, children }: { field: SortField; children: React.ReactNode }) => (
     <button
@@ -212,7 +200,7 @@ export function RateComparisonTable({ rates }: Props) {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {filteredRates.map((rate, index) => (
+              {filteredRates.map((rate) => (
                 <tr 
                   key={rate.id}
                   className={`hover:bg-gray-50 transition-colors ${

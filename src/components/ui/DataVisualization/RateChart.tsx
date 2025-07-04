@@ -82,7 +82,7 @@ export const RateChart = forwardRef<HTMLCanvasElement, RateChartProps>(
             color: '#374151',
             font: {
               size: 12,
-              weight: '500',
+              weight: 500,
             },
             usePointStyle: true,
             pointStyle: 'circle',
@@ -151,7 +151,7 @@ export const RateChart = forwardRef<HTMLCanvasElement, RateChartProps>(
 
     return (
       <div className={cn('bg-white rounded-lg p-4', className)} style={{ height }} {...props}>
-        <Line ref={ref} data={chartData} options={options} />
+        <Line ref={ref as any} data={chartData} options={options} />
       </div>
     );
   }

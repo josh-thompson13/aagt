@@ -1,1 +1,1 @@
-export { LoanCalculator } from './LoanCalculator';
+// Molecules - complex components built from atoms

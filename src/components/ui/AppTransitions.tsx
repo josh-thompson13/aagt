@@ -66,7 +66,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
         initial={config.initial}
         animate={config.animate}
         exit={config.exit}
-        transition={config.transition}
+        transition={config.transition as any}
         className="min-h-screen"
       >
         {children}
@@ -245,7 +245,7 @@ export const ModalTransition = ({
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElastic={{ top: 0, bottom: 0.2 }}
-            onDragEnd={(event, info) => {
+            onDragEnd={(_event, info) => {
               if (info.offset.y > 100) {
                 onClose();
               }
@@ -316,13 +316,13 @@ export const PullToRefresh = ({
       drag="y"
       dragConstraints={{ top: 0, bottom: 0 }}
       dragElastic={{ top: 0.3, bottom: 0 }}
-      onDrag={(event, info) => {
+      onDrag={(_event, info) => {
         if (info.offset.y > 0) {
           setPullDistance(Math.min(info.offset.y, 100));
           setIsPulling(info.offset.y > 50);
         }
       }}
-      onDragEnd={(event, info) => {
+      onDragEnd={(_event, info) => {
         if (info.offset.y > 50) {
           onRefresh();
         }

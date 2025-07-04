@@ -62,7 +62,7 @@ export default function LoanProductsPage() {
     'hasOfferCatalog': {
       '@type': 'OfferCatalog',
       'name': 'Loan Products',
-      'itemListElement': loanProducts.map((product, index) => ({
+      'itemListElement': loanProducts.map((product) => ({
         '@type': 'Offer',
         'name': product.title,
         'description': product.shortDescription,

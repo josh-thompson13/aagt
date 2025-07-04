@@ -43,7 +43,7 @@ export const PricingCard = forwardRef<HTMLDivElement, PricingCardProps>(
     const cardClasses = cn(
       styles.pricing,
       {
-        [styles.featured]: featured,
+        'featured': featured,
       },
       className
     );

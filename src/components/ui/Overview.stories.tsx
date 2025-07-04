@@ -8,7 +8,6 @@ import {
   CardFooter,
   CardHeader,
   Input,
-  LoanCalculator,
   Modal,
   PricingCard,
   RateChart,
@@ -202,7 +201,14 @@ const ComponentShowcase = () => {
         <h2 className="text-2xl font-bold text-[#0A2540] mb-6">Data Visualization</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <RateChart data={rateData} title="Interest Rate Trend" height={300} />
-          <LoanCalculator defaultAmount={500000} defaultRate={4.8} defaultTerm={5} />
+          <Card>
+            <CardHeader>
+              <h3 className="text-lg font-semibold">Quick Quote Calculator</h3>
+            </CardHeader>
+            <CardBody>
+              <p className="text-gray-600">Simple calculator for loan estimates with 1-24 month terms.</p>
+            </CardBody>
+          </Card>
         </div>
       </section>
 

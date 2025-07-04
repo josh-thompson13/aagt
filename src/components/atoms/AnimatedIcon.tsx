@@ -126,7 +126,7 @@ export const AnimatedIcon = ({
 
   return (
     <motion.div
-      variants={iconVariants}
+      variants={iconVariants as any}
       initial="initial"
       animate="animate"
       exit="exit"

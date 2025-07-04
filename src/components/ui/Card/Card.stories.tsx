@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Clock, DollarSign, Star, TrendingUp, Users } from 'lucide-react';
+import { Clock, DollarSign, TrendingUp, Users } from 'lucide-react';
 import { Button } from '../Button';
 import { Card, CardBody, CardFooter, CardHeader } from './Card';
 import { MetricCard } from './MetricCard';

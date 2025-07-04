@@ -92,7 +92,7 @@ export const RateComparison = forwardRef<HTMLCanvasElement, RateComparisonProps>
           displayColors: false,
           callbacks: {
             label: (context) => {
-              const isAAGT = data[context.dataIndex].isAAGT;
+              const isAAGT = data[context.dataIndex]?.isAAGT || false;
               const prefix = isAAGT ? 'AAGT: ' : '';
               return `${prefix}${context.parsed.y.toFixed(2)}% p.a.`;
             },

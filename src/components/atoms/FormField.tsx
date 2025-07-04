@@ -1,7 +1,7 @@
 'use client';
 
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { cn } from '@/utils/cn';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 

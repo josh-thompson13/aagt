@@ -37,8 +37,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       styles[variant],
       styles[size],
       {
-        [styles.interactive]: interactive,
-        [styles.loading]: loading,
+        'interactive': interactive,
+        'loading': loading,
       },
       className
     );

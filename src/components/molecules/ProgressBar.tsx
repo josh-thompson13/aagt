@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { CheckCircle, Circle, AlertCircle } from 'lucide-react';
+import { CheckCircle, Circle } from 'lucide-react';
 import type { ApplicationStep, FormProgress } from '@/types/application';
 
 interface ProgressBarProps {

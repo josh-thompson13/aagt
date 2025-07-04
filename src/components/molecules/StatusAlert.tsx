@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { cn } from '@/utils/cn';
@@ -100,13 +101,14 @@ export const StatusAlert = ({
 
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [autoHide, isVisible, onClose, autoHideDelay]);
 
   return (
     <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
-          variants={alertVariants}
+          variants={alertVariants as any}
           initial="hidden"
           animate="visible"
           exit="exit"
@@ -125,7 +127,7 @@ export const StatusAlert = ({
               className="absolute top-0 left-0 right-0 h-1 bg-black/10 rounded-t-xl overflow-hidden"
             >
               <motion.div
-                variants={progressVariants}
+                variants={progressVariants as any}
                 initial="initial"
                 animate="animate"
                 custom={autoHideDelay}

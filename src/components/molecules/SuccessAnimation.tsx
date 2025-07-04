@@ -95,7 +95,7 @@ export const SuccessAnimation = ({
 }: SuccessAnimationProps) => {
   return (
     <motion.div
-      variants={containerVariants}
+      variants={containerVariants as any}
       initial="hidden"
       animate="visible"
       className={cn(
@@ -108,12 +108,12 @@ export const SuccessAnimation = ({
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden rounded-2xl">
         <motion.div
-          variants={pulseVariants}
+          variants={pulseVariants as any}
           animate="animate"
           className="absolute -top-4 -right-4 w-32 h-32 bg-success-200/30 rounded-full"
         />
         <motion.div
-          variants={pulseVariants}
+          variants={pulseVariants as any}
           animate="animate"
           className="absolute -bottom-8 -left-8 w-40 h-40 bg-teal-200/20 rounded-full"
           style={{ animationDelay: '1s' }}
@@ -124,13 +124,13 @@ export const SuccessAnimation = ({
       <div className="relative z-10">
         {/* Success Icon with sparkles */}
         <motion.div
-          variants={itemVariants}
+          variants={itemVariants as any}
           className="relative mb-8 flex justify-center"
         >
           <div className="relative">
             {/* Main success icon */}
             <motion.div
-              variants={iconVariants}
+              variants={iconVariants as any}
               className="relative z-10"
             >
               <CheckCircle className="h-24 w-24 text-success-500" />
@@ -138,7 +138,7 @@ export const SuccessAnimation = ({
 
             {/* Sparkle decorations */}
             <motion.div
-              variants={sparkleVariants}
+              variants={sparkleVariants as any}
               animate="animate"
               className="absolute -top-2 -right-2"
             >
@@ -146,7 +146,7 @@ export const SuccessAnimation = ({
             </motion.div>
             
             <motion.div
-              variants={sparkleVariants}
+              variants={sparkleVariants as any}
               animate="animate"
               className="absolute -bottom-1 -left-3"
               style={{ animationDelay: '1s' }}
@@ -172,7 +172,7 @@ export const SuccessAnimation = ({
 
         {/* Title */}
         <motion.h1
-          variants={itemVariants}
+          variants={itemVariants as any}
           className="text-3xl font-bold text-gray-900 mb-4"
         >
           {title}
@@ -180,7 +180,7 @@ export const SuccessAnimation = ({
 
         {/* Message */}
         <motion.p
-          variants={itemVariants}
+          variants={itemVariants as any}
           className="text-lg text-gray-700 mb-6 leading-relaxed"
         >
           {message}
@@ -189,7 +189,7 @@ export const SuccessAnimation = ({
         {/* Application ID */}
         {applicationId && (
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="bg-white/70 backdrop-blur-sm rounded-xl p-4 mb-8 border border-success-200"
           >
             <p className="text-sm text-gray-600 mb-1">Your Application ID</p>
@@ -205,7 +205,7 @@ export const SuccessAnimation = ({
         {/* Next Steps */}
         {nextSteps.length > 0 && (
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="text-left bg-white/50 rounded-xl p-6 mb-8"
           >
             <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
@@ -215,7 +215,7 @@ export const SuccessAnimation = ({
               {nextSteps.map((step, index) => (
                 <motion.li
                   key={index}
-                  variants={itemVariants}
+                  variants={itemVariants as any}
                   className="flex items-start space-x-3"
                 >
                   <div className="flex-shrink-0 mt-1">
@@ -234,7 +234,7 @@ export const SuccessAnimation = ({
 
         {/* Action Buttons */}
         <motion.div
-          variants={itemVariants}
+          variants={itemVariants as any}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           {onViewApplication && (
@@ -261,7 +261,7 @@ export const SuccessAnimation = ({
 
         {/* Footer message */}
         <motion.div
-          variants={itemVariants}
+          variants={itemVariants as any}
           className="mt-8 pt-6 border-t border-success-200"
         >
           <p className="text-sm text-gray-600">

@@ -1,15 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import DOMPurify from 'isomorphic-dompurify';
 import type { ApplicationData } from '@/types/application';
 import { validateApplication, sanitizeInput } from '@/utils/validation';
 
 // In production, this would connect to your actual database
 // For now, we'll simulate database operations
-
-interface SaveApplicationRequest {
-  applicationData: ApplicationData;
-  saveType?: 'draft' | 'submit';
-}
 
 // Sanitize application data
 function sanitizeApplicationData(data: ApplicationData): ApplicationData {
@@ -174,7 +168,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to database (simulated)
-    const saveResult = await saveToDatabase(sanitizedData);
+    await saveToDatabase(sanitizedData);
     
     // If this is a submission (not draft), integrate with CRM and send notifications
     if (sanitizedData.status === 'submitted') {
@@ -284,7 +278,7 @@ async function saveToDatabase(data: ApplicationData): Promise<{ id: string }> {
   return { id: data.id! };
 }
 
-async function getFromDatabase(applicationId: string): Promise<ApplicationData | null> {
+async function getFromDatabase(_applicationId: string): Promise<ApplicationData | null> {
   // In production, retrieve from your database
   await new Promise(resolve => setTimeout(resolve, 100));
   

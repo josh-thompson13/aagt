@@ -1,5 +1,21 @@
 import { NextResponse } from 'next/server';
-import type { RateUpdateResponse } from '@/types/calculator';
+
+interface RateUpdateResponse {
+  rates: {
+    business: number;
+    investment: number;
+    property: number;
+    workingCapital: number;
+  };
+  lastUpdated: string;
+  comparisonRates: Array<{
+    lender: string;
+    rate: number;
+    fees: number;
+    comparisonRate: number;
+    isAAGT: boolean;
+  }>;
+}
 
 const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
 let cachedRates: { data: RateUpdateResponse; timestamp: number } | null = null;

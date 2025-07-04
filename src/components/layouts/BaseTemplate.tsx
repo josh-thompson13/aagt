@@ -212,11 +212,9 @@ export const BaseTemplate = (props: {
                 {[
                   { href: "/business-loans", label: "Business Loans" },
                   { href: "/investment-loans", label: "Investment Loans" },
-                  { href: "/rates", label: "Rates & Terms" },
-                  { href: "/resources", label: "Resources" },
                   { href: "/about", label: "About Us" },
-                  { href: "/contact", label: "Contact" }
-                ].map((link, index) => (
+                  { href: "/apply", label: "Apply Now" }
+                ].map((link) => (
                   <motion.li key={link.href}>
                     <Link 
                       href={link.href} 

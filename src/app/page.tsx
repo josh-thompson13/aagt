@@ -2,6 +2,7 @@ import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { PrestigeHero } from '@/components/prestige/PrestigeHero';
 import { TrustIndicators } from '@/components/ui/TrustIndicators';
+import { LoanFeatures } from '@/components/ui/LoanFeatures';
 import { FeaturesGrid } from '@/components/ui/FeaturesGrid';
 import { MarketingSection } from '@/components/marketing/MarketingSection';
 import { LuxuryServices } from '@/components/prestige/LuxuryServices';
@@ -104,6 +105,7 @@ export default function Index() {
       <StructuredData data={organizationSchema} />
       <PrestigeHero />
       <TrustIndicators />
+      <LoanFeatures />
       <FeaturesGrid />
       <MarketingSection />
       <LuxuryServices />

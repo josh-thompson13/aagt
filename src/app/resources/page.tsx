@@ -2,6 +2,7 @@ import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
 import { ArrowRight, Calculator, FileText, HelpCircle, TrendingUp } from 'lucide-react';
+import QuickQuote from '@/components/QuickQuote';
 
 export async function generateMetadata() {
   return {
@@ -109,14 +110,6 @@ export default function ResourcesPage() {
     }
   ];
 
-  const calculatorData = {
-    loanAmount: 500000,
-    interestRate: 1.2,
-    termMonths: 12
-  };
-
-  const monthlyPayment = (calculatorData.loanAmount * (calculatorData.interestRate / 100)).toFixed(2);
-  const totalInterest = (parseFloat(monthlyPayment) * calculatorData.termMonths).toFixed(2);
 
   const resourcesSchema = {
     '@context': 'https://schema.org',
@@ -204,103 +197,20 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Loan Calculator Section */}
+      {/* Quick Quote Section */}
       <section className="py-20 bg-gray-50" id="calculator">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Loan Calculator
+              Quick Quote Calculator
             </h2>
             <p className="text-lg text-gray-700">
-              Get an estimate of your monthly payments and total interest costs.
+              Get an instant estimate of your total interest and repayment amount.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Loan Details</h3>
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Loan Amount
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
-                      <input
-                        type="text"
-                        className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        value={calculatorData.loanAmount.toLocaleString()}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Interest Rate (per month)
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        value={`${calculatorData.interestRate}%`}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Loan Term
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        value={`${calculatorData.termMonths} months`}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Payment Summary</h3>
-                <div className="space-y-4">
-                  <div className="bg-primary-50 p-6 rounded-lg">
-                    <div className="text-sm text-primary-600 font-medium">Monthly Interest Payment</div>
-                    <div className="text-3xl font-bold text-primary-700">${monthlyPayment}</div>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <div className="text-sm text-gray-600 font-medium">Total Interest</div>
-                    <div className="text-2xl font-bold text-gray-900">${totalInterest}</div>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <div className="text-sm text-gray-600 font-medium">Total Repayment</div>
-                    <div className="text-2xl font-bold text-gray-900">
-                      ${(calculatorData.loanAmount + parseFloat(totalInterest)).toLocaleString()}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-6">
-                  <p className="text-xs text-gray-500 mb-4">
-                    * This is an estimate based on interest-only payments. Actual rates may vary based on individual circumstances.
-                  </p>
-                  <a
-                    href="/apply"
-                    className="w-full inline-flex items-center justify-center px-6 py-3 text-base font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-600 focus:ring-4 focus:ring-primary-200 transition-colors"
-                  >
-                    Get Personalized Quote
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="max-w-2xl mx-auto">
+            <QuickQuote />
           </div>
         </div>
       </section>
