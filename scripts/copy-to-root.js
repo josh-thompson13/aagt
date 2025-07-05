@@ -43,18 +43,21 @@ try {
   console.log('📂 Copying build files to repository root for GitHub Pages branch deployment...');
 
   // Copy essential files and directories
-  const filesToCopy = ['index.html', 'CNAME', 'favicon.ico', 'robots.txt', 'sitemap.xml'];
+  const filesToCopy = ['index.html', '404.html', 'CNAME', 'favicon.ico', 'robots.txt', 'sitemap.xml'];
 
   const dirsToCopy = [
     '_next',
     'images',
     'about',
-    'buying',
-    'selling',
-    'renting',
+    'apply',
+    'business-loans',
+    'calculator',
     'contact',
-    'estimate',
-    'sell-your-property',
+    'faq',
+    'investment-loans',
+    'loan-products',
+    'rates',
+    'resources',
   ];
 
   // Copy files
