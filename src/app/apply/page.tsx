@@ -1,6 +1,7 @@
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import ApplicationForm from '@/components/forms/ApplicationForm';
+import { Suspense } from 'react';
 
 export async function generateMetadata() {
   return {
@@ -58,7 +59,9 @@ export default function ApplyPage() {
             </p>
           </div>
 
-          <ApplicationForm />
+          <Suspense fallback={<div className="text-center py-8">Loading application form...</div>}>
+            <ApplicationForm />
+          </Suspense>
         </div>
       </section>
     </>

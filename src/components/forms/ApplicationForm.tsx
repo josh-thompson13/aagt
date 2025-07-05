@@ -3,9 +3,12 @@
 import { DocumentUpload } from '@/components/molecules/DocumentUpload';
 import type { UploadedFile } from '@/types/application';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export default function ApplicationForm() {
+  const searchParams = useSearchParams();
+  
   const [formData, setFormData] = useState({
     // Loan Details
     loanAmount: '',
@@ -46,6 +49,17 @@ export default function ApplicationForm() {
     message: string;
   }>({ type: null, message: '' });
   const [documents, setDocuments] = useState<UploadedFile[]>([]);
+
+  // Pre-fill loan amount from URL parameter
+  useEffect(() => {
+    const amount = searchParams.get('amount');
+    if (amount) {
+      setFormData(prev => ({
+        ...prev,
+        loanAmount: amount
+      }));
+    }
+  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

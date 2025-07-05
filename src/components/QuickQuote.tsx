@@ -65,7 +65,9 @@ export default function QuickQuote({
     if (onApply) {
       onApply();
     } else {
-      window.location.href = '/apply';
+      // Pass the loan amount as a URL parameter
+      const amount = parseInt(loanAmount) || 500000;
+      window.location.href = `/apply?amount=${amount}`;
     }
   };
 
