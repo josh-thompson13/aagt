@@ -73,16 +73,8 @@ export const DocumentUpload = ({
       }
 
       // Make actual upload request
-      const response = await fetch('/api/upload-document', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const result = await response.json();
+      const { uploadFile } = await import('@/lib/form-handler');
+      const result = await uploadFile(file, category);
 
       setUploadProgress((prev) => {
         const newProgress = { ...prev };

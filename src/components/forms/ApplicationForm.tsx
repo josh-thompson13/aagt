@@ -113,20 +113,14 @@ export default function ApplicationForm() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      const response = await fetch('/api/apply', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message:
+      const { submitForm } = await import('@/lib/form-handler');
+      await submitForm({
+        endpoint: '/api/apply',
+        data: formData,
+        onSuccess: (data) => {
+          setSubmitStatus({
+            type: 'success',
+            message: data.isDemo ? data.message :
             data.message ||
             'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.',
         });
@@ -160,17 +154,16 @@ export default function ApplicationForm() {
           receiveUpdates: false,
         });
         setDocuments([]);
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: data.error || 'Something went wrong. Please try again.',
-        });
-      }
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message: 'Network error. Please check your connection and try again.',
+        },
+        onError: (error) => {
+          setSubmitStatus({
+            type: 'error',
+            message: error,
+          });
+        },
       });
+    } catch (error) {
+      // Error already handled by onError callback
     } finally {
       setIsSubmitting(false);
     }
