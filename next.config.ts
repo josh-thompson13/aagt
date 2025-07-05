@@ -5,8 +5,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   // Uncomment and update if your repo is not at the root (e.g., https://username.github.io/repo-name)
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  // basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   eslint: {
     dirs: ['.'],
   },
