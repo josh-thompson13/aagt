@@ -22,7 +22,7 @@ const defaultMetadata = {
   description:
     'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Alternative lending solutions for businesses declined by traditional banks.',
   siteName: 'AAGT Private Loans',
-  baseUrl: 'https://aagtprivateloans.com.au',
+  baseUrl: '', // Base URL will be set from environment
   ogImage: '/images/aagt-og-image.jpg',
 };
 
@@ -41,8 +41,8 @@ export function generateMetadata(seoData: SEOData): Metadata {
     ? title
     : `${title} | ${defaultMetadata.title}`;
 
-  const url = canonical ? `${defaultMetadata.baseUrl}${canonical}` : defaultMetadata.baseUrl;
-  const imageUrl = ogImage.startsWith('http') ? ogImage : `${defaultMetadata.baseUrl}${ogImage}`;
+  const url = canonical || '';
+  const imageUrl = ogImage.startsWith('http') ? ogImage : ogImage;
 
   const metadata: Metadata = {
     title: fullTitle,

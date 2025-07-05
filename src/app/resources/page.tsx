@@ -12,15 +12,15 @@ export async function generateMetadata() {
     keywords:
       'business loan calculator, private lending resources, business financing guide, loan tools, funding education',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/resources',
+      canonical: '/resources',
     },
   };
 }
 
 export default function ResourcesPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
-    { name: 'Resources', url: 'https://aagtprivateloans.com.au/resources' },
+    { name: 'Home', url: '/' },
+    { name: 'Resources', url: '/resources' },
   ];
 
   const tools = [

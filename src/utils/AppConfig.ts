@@ -5,7 +5,7 @@ export const AppConfig = {
   tagline: 'Alternative lending solutions for Australian businesses',
   mission: 'Making business and investment funding accessible and straightforward',
   email: 'aagtpvtloans@gmail.com',
-  domain: 'https://aagtprivateloans.com.au',
+  domain: '', // Domain will be set from environment or deployment
   businessType: 'Direct Private Lending Company',
   targetMarket: 'Business owners and investors seeking alternative funding solutions',
   primaryMessage: 'Alternative lending solutions for businesses declined by traditional banks',

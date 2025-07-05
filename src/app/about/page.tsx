@@ -10,17 +10,17 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords:
       'AAGT private loans about, direct business lender, private lending specialists, alternative business funding, lending team experience, business loan experts',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/about',
+      canonical: '/about',
     },
     openGraph: {
       title: 'About AAGT Private Loans | Direct Lending Specialists',
       description:
         'Discover how AAGT Private Loans is transforming business funding with direct lending and competitive rates.',
-      url: 'https://aagtprivateloans.com.au/about',
+      url: '/about',
       siteName: 'AAGT Private Loans',
       images: [
         {
-          url: 'https://aagtprivateloans.com.au/og-about.jpg',
+          url: '/og-about.jpg',
           width: 1200,
           height: 630,
           alt: 'AAGT Private Loans Team - Direct Lending Specialists',
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'About AAGT Private Loans | Direct Lending Specialists',
       description:
         'Discover how AAGT Private Loans is transforming business funding with direct lending.',
-      images: ['https://aagtprivateloans.com.au/twitter-about.jpg'],
+      images: ['/twitter-about.jpg'],
     },
     robots: {
       index: true,
@@ -57,8 +57,8 @@ export default function About() {
     name: 'AAGT Private Loans',
     description:
       'Direct private lending company providing fast business funding with same day approval and competitive rates',
-    url: 'https://aagtprivateloans.com.au',
-    logo: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
+    url: '/',
+    logo: '/images/aagt_logo_no_background.png',
     address: {
       '@type': 'PostalAddress',
       addressRegion: 'NSW',

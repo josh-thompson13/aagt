@@ -1,14 +1,22 @@
 import { AppConfig } from './AppConfig';
 
+// Helper function to get the base URL from environment or use relative paths
+const getBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  return process.env.NEXT_PUBLIC_SITE_URL || '';
+};
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
-  '@id': 'https://aagtprivateloans.com.au#organization',
+  '@id': '#organization',
   name: 'AAGT Private Loans',
   legalName: 'AAGT Private Loans Pty Ltd',
-  url: 'https://aagtprivateloans.com.au',
-  logo: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
-  image: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
+  url: getBaseUrl(),
+  logo: '/images/aagt_logo_no_background.png',
+  image: '/images/aagt_logo_no_background.png',
   description:
     'Direct private lending company offering fast business funding from $150,000 to $5,000,000 with same day approval and 4-day settlement',
   address: {
@@ -39,7 +47,7 @@ export const organizationSchema = {
           '@type': 'FinancialProduct',
           name: 'Business Loans',
           description: 'Fast business funding from $150,000 to $5,000,000',
-          url: 'https://aagtprivateloans.com.au/business-loans',
+          url: '/business-loans',
         },
         amount: {
           '@type': 'MonetaryAmount',
@@ -54,7 +62,7 @@ export const organizationSchema = {
           '@type': 'FinancialProduct',
           name: 'Investment Loans',
           description: 'Funding for any worthwhile business or investment purpose',
-          url: 'https://aagtprivateloans.com.au/investment-loans',
+          url: '/investment-loans',
         },
         amount: {
           '@type': 'MonetaryAmount',
@@ -69,7 +77,7 @@ export const organizationSchema = {
           '@type': 'FinancialProduct',
           name: 'Second Mortgages',
           description: 'Up to 70% LVR for additional capital needs',
-          url: 'https://aagtprivateloans.com.au/business-loans',
+          url: '/business-loans',
         },
       },
       {
@@ -78,7 +86,7 @@ export const organizationSchema = {
           '@type': 'FinancialProduct',
           name: 'Off-the-Plan Finance',
           description: 'Special financing solutions for off-the-plan property purchases',
-          url: 'https://aagtprivateloans.com.au/investment-loans',
+          url: '/investment-loans',
         },
       },
     ],
@@ -88,20 +96,20 @@ export const organizationSchema = {
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  '@id': 'https://aagtprivateloans.com.au#website',
-  url: 'https://aagtprivateloans.com.au',
+  '@id': '#website',
+  url: getBaseUrl(),
   name: 'AAGT Private Loans',
   description:
     'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
   publisher: {
-    '@id': 'https://aagtprivateloans.com.au#organization',
+    '@id': '#organization',
   },
   potentialAction: [
     {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://aagtprivateloans.com.au/apply?amount={loan_amount}',
+        urlTemplate: '/apply?amount={loan_amount}',
       },
       'query-input': 'required name=loan_amount',
     },
@@ -132,7 +140,7 @@ export const loanProductSchema = (loan: {
   name: loan.name,
   description: loan.description,
   provider: {
-    '@id': 'https://aagtprivateloans.com.au#organization',
+    '@id': '#organization',
   },
   interestRate: 'Competitive rates',
   feesAndCommissionsSpecification: 'Fee-free approval process',
@@ -161,12 +169,12 @@ export const faqSchema = (questions: Array<{ question: string; answer: string }>
 export const financialServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
-  '@id': 'https://aagtprivateloans.com.au#financialservice',
+  '@id': '#financialservice',
   name: 'AAGT Private Loans',
-  image: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
+  image: '/images/aagt_logo_no_background.png',
   '@graph': [
     {
-      '@id': 'https://aagtprivateloans.com.au#organization',
+      '@id': '#organization',
     },
   ],
   address: {
@@ -175,7 +183,7 @@ export const financialServiceSchema = {
     addressRegion: 'NSW',
     addressCountry: 'AU',
   },
-  url: 'https://aagtprivateloans.com.au',
+  url: getBaseUrl(),
   telephone: '+61 461 534 088',
   serviceType: 'Private Lending',
   areaServed: 'Australia',

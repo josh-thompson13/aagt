@@ -12,15 +12,15 @@ export async function generateMetadata() {
     keywords:
       'investment loans Australia, property investment finance, development finance, off the plan funding, business investment loans',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/investment-loans',
+      canonical: '/investment-loans',
     },
   };
 }
 
 export default function InvestmentLoansPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
-    { name: 'Investment Loans', url: 'https://aagtprivateloans.com.au/investment-loans' },
+    { name: 'Home', url: '/' },
+    { name: 'Investment Loans', url: '/investment-loans' },
   ];
 
   const loanProductSchema = {

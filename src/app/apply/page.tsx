@@ -11,15 +11,15 @@ export async function generateMetadata() {
     keywords:
       'loan application, business loan form, apply for business funding, private loan application Australia',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/apply',
+      canonical: '/apply',
     },
   };
 }
 
 export default function ApplyPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
-    { name: 'Loan Application', url: 'https://aagtprivateloans.com.au/apply' },
+    { name: 'Home', url: '/' },
+    { name: 'Loan Application', url: '/apply' },
   ];
 
   const applicationSchema = {

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     images: ['/images/loan-products-og.jpg'],
   },
   alternates: {
-    canonical: 'https://aagtprivateloans.com.au/loan-products',
+    canonical: '/loan-products',
   },
 };
 
@@ -44,13 +44,13 @@ export default function LoanProductsPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://aagtprivateloans.com.au',
+        item: '/',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Loan Products',
-        item: 'https://aagtprivateloans.com.au/loan-products',
+        item: '/loan-products',
       },
     ],
   };
@@ -59,8 +59,8 @@ export default function LoanProductsPage() {
     '@context': 'https://schema.org',
     '@type': 'FinancialService',
     name: 'AAGT Private Loans',
-    url: 'https://aagtprivateloans.com.au',
-    logo: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
+    url: '/',
+    logo: '/images/aagt_logo_no_background.png',
     description:
       'Leading Australian private lender offering business and investment loans from $150,000 to $5,000,000',
     areaServed: 'Australia',
@@ -71,7 +71,7 @@ export default function LoanProductsPage() {
         '@type': 'Offer',
         name: product.title,
         description: product.shortDescription,
-        url: `https://aagtprivateloans.com.au/loan-products/${product.slug}`,
+        url: `/loan-products/${product.slug}`,
         priceSpecification: {
           '@type': 'UnitPriceSpecification',
           minPrice: product.minRate,

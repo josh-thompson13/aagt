@@ -27,7 +27,7 @@ ${JSON.stringify(data, null, 2)}
         <br/>
         <p><strong>To submit this application:</strong></p>
         <ul style="list-style: disc; padding-left: 2rem;">
-          <li>Email us at: loans@aagtprivateloans.com.au</li>
+          <li>Email us at: aagtpvtloans@gmail.com</li>
           <li>Call us at: 1300 XXX XXX</li>
           <li>Or visit our office for a consultation</li>
         </ul>

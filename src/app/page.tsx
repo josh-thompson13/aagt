@@ -12,17 +12,17 @@ export async function generateMetadata() {
     keywords:
       'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au',
+      canonical: '/',
     },
     openGraph: {
       title: 'AAGT Private Loans | Alternative Business Funding Solutions',
       description:
         'Direct business funding from $150,000 to $5,000,000. Same day approval, 4-day settlement. Professional lending solutions for Australian businesses.',
-      url: 'https://aagtprivateloans.com.au',
+      url: '/',
       siteName: 'AAGT Private Loans',
       images: [
         {
-          url: 'https://aagtprivateloans.com.au/og-image.jpg',
+          url: '/og-image.jpg',
           width: 1200,
           height: 630,
           alt: 'AAGT Private Loans - Fast & Easy Business Funding',
@@ -36,7 +36,7 @@ export async function generateMetadata() {
       title: 'AAGT Private Loans | Alternative Business Funding Solutions',
       description:
         'Direct business funding from $150,000 to $5,000,000. Same day approval, 4-day settlement. Professional lending solutions.',
-      images: ['https://aagtprivateloans.com.au/og-image.jpg'],
+      images: ['/og-image.jpg'],
     },
     robots: {
       index: true,
@@ -53,7 +53,7 @@ export async function generateMetadata() {
 }
 
 export default function Index() {
-  const breadcrumbs = [{ name: 'Home', url: 'https://aagtprivateloans.com.au' }];
+  const breadcrumbs = [{ name: 'Home', url: '/' }];
 
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -61,8 +61,8 @@ export default function Index() {
     name: 'AAGT Private Loans',
     description:
       'Direct private lending company offering fast business funding from $150k to $5M with same day approval and 4-day settlement',
-    url: 'https://aagtprivateloans.com.au',
-    logo: 'https://aagtprivateloans.com.au/logo.png',
+    url: '/',
+    logo: '/logo.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Sydney',

@@ -12,15 +12,15 @@ export async function generateMetadata() {
     keywords:
       'loan calculator, business loan quote, private loan calculator, quick quote, loan interest calculator',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/calculator',
+      canonical: '/calculator',
     },
   };
 }
 
 export default function CalculatorPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
-    { name: 'Calculator', url: 'https://aagtprivateloans.com.au/calculator' },
+    { name: 'Home', url: '/' },
+    { name: 'Calculator', url: '/calculator' },
   ];
 
   const features = [

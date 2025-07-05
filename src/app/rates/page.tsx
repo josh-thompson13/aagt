@@ -21,15 +21,15 @@ export async function generateMetadata() {
     keywords:
       'private loan rates Australia, business loan interest rates, competitive loan terms, private lending rates, loan comparison',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/rates',
+      canonical: '/rates',
     },
   };
 }
 
 export default function RatesTermsPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
-    { name: 'Rates & Terms', url: 'https://aagtprivateloans.com.au/rates' },
+    { name: 'Home', url: '/' },
+    { name: 'Rates & Terms', url: '/rates' },
   ];
 
   const features = [

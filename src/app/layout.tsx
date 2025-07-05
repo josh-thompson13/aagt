@@ -8,7 +8,6 @@ import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aagtprivateloans.com.au'),
   title: {
     default: 'AAGT Private Loans | Fast Business Funding Australia',
     template: '%s | AAGT Private Loans',

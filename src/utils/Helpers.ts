@@ -4,8 +4,8 @@ export const getBaseUrl = () => {
   }
 
   // GitHub Pages with custom domain
-  if (process.env.GITHUB_ACTIONS) {
-    return 'https://aagtprivateloans.com.au';
+  if (process.env.GITHUB_ACTIONS && process.env.CUSTOM_DOMAIN) {
+    return `https://${process.env.CUSTOM_DOMAIN}`;
   }
 
   if (process.env.VERCEL_ENV === 'production' && process.env.VERCEL_PROJECT_PRODUCTION_URL) {

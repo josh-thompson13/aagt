@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     images: ['/images/faq-og.jpg'],
   },
   alternates: {
-    canonical: 'https://aagtprivateloans.com.au/faq',
+    canonical: '/faq',
   },
 };
 
@@ -44,13 +44,13 @@ export default function FAQPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://aagtprivateloans.com.au',
+        item: '/',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'FAQ',
-        item: 'https://aagtprivateloans.com.au/faq',
+        item: '/faq',
       },
     ],
   };
@@ -72,8 +72,8 @@ export default function FAQPage() {
     '@context': 'https://schema.org',
     '@type': 'FinancialService',
     name: 'AAGT Private Loans',
-    url: 'https://aagtprivateloans.com.au',
-    logo: 'https://aagtprivateloans.com.au/images/aagt_logo_no_background.png',
+    url: '/',
+    logo: '/images/aagt_logo_no_background.png',
     description:
       'Leading Australian private lender providing expert answers and support for business and investment lending',
     areaServed: 'Australia',

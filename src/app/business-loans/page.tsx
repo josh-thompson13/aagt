@@ -12,15 +12,15 @@ export async function generateMetadata() {
     keywords:
       'business loans Australia, fast business funding, same day approval business loan, quick business finance, $150k business loan',
     alternates: {
-      canonical: 'https://aagtprivateloans.com.au/business-loans',
+      canonical: '/business-loans',
     },
   };
 }
 
 export default function BusinessLoansPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://aagtprivateloans.com.au' },
-    { name: 'Business Loans', url: 'https://aagtprivateloans.com.au/business-loans' },
+    { name: 'Home', url: '/' },
+    { name: 'Business Loans', url: '/business-loans' },
   ];
 
   const loanProductSchema = {

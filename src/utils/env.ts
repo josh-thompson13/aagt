@@ -6,7 +6,7 @@ export const env = {
   // Application URLs
   APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
   API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
-  SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://aagtprivateloans.com.au',
+  SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || '',
 
   // SEO & Analytics
   GOOGLE_VERIFICATION: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
@@ -24,8 +24,8 @@ export const env = {
   SMTP_SECURE: process.env.SMTP_SECURE === 'true',
   SMTP_USER: process.env.SMTP_USER,
   SMTP_PASS: process.env.SMTP_PASS,
-  FROM_EMAIL: process.env.FROM_EMAIL || 'info@aagtprivateloans.com.au',
-  TO_EMAIL: process.env.TO_EMAIL || 'info@aagtprivateloans.com.au',
+  FROM_EMAIL: process.env.FROM_EMAIL || 'aagtpvtloans@gmail.com',
+  TO_EMAIL: process.env.TO_EMAIL || 'aagtpvtloans@gmail.com',
 
   // Database
   DATABASE_URL: process.env.DATABASE_URL,
@@ -58,7 +58,7 @@ export const env = {
 
   // Contact Information
   COMPANY_PHONE: process.env.COMPANY_PHONE || '+61-2-9999-9999',
-  COMPANY_EMAIL: process.env.COMPANY_EMAIL || 'info@aagtprivateloans.com.au',
+  COMPANY_EMAIL: process.env.COMPANY_EMAIL || 'aagtpvtloans@gmail.com',
   COMPANY_ADDRESS: process.env.COMPANY_ADDRESS || 'Level 1, 123 Business Street, Sydney NSW 2000',
 
   // Social Media

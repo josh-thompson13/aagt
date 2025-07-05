@@ -8,17 +8,17 @@ export const metadata: Metadata = {
   keywords:
     'contact AAGT private loans, business loan contact, private lending inquiry, loan specialist contact, business funding help',
   alternates: {
-    canonical: 'https://aagtprivateloans.com.au/contact',
+    canonical: '/contact',
   },
   openGraph: {
     title: 'Contact Us | AAGT Private Loans',
     description:
       'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
-    url: 'https://aagtprivateloans.com.au/contact',
+    url: '/contact',
     siteName: 'AAGT Private Loans',
     images: [
       {
-        url: 'https://aagtprivateloans.com.au/og-contact.jpg',
+        url: '/og-contact.jpg',
         width: 1200,
         height: 630,
         alt: 'Contact AAGT Private Loans',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Contact Us | AAGT Private Loans',
     description: 'Contact AAGT Private Loans for business funding and lending support.',
-    images: ['https://aagtprivateloans.com.au/og-contact.jpg'],
+    images: ['/og-contact.jpg'],
   },
   robots: {
     index: true,
@@ -113,7 +113,7 @@ export default function Contact() {
             name: 'Contact AAGT Private Loans',
             description:
               'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
-            url: 'https://aagtprivateloans.com.au/contact',
+            url: '/contact',
             mainEntity: {
               '@type': 'FinancialService',
               name: 'AAGT Private Loans',
