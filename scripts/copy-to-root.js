@@ -67,6 +67,12 @@ try {
 
     if (copyFile(srcPath, destPath)) {
       console.log(`✅ Copied ${file}`);
+    } else if (file === 'CNAME') {
+      // Try copying CNAME from public directory if not in out directory
+      const publicCNAME = path.join(rootDir, 'public', 'CNAME');
+      if (copyFile(publicCNAME, destPath)) {
+        console.log(`✅ Copied ${file} from public directory`);
+      }
     }
   }
 
