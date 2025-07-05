@@ -2,6 +2,7 @@
 
 import type React from 'react';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardBody, CardHeader } from '@/components/ui/Card';
 import { Input, Select } from '@/components/ui/Form';
 import { Button } from '@/components/ui/Button';
@@ -22,6 +23,7 @@ export default function QuickQuote({
   const [loanTerm, setLoanTerm] = useState<string>('12');
   const [totalInterest, setTotalInterest] = useState<number>(0);
   const [totalRepayment, setTotalRepayment] = useState<number>(0);
+  const router = useRouter();
 
   // Interest rate (monthly) - typically 1.2% for private loans
   const monthlyRate = 0.012;
@@ -67,7 +69,7 @@ export default function QuickQuote({
     } else {
       // Pass the loan amount as a URL parameter
       const amount = parseInt(loanAmount) || 500000;
-      window.location.href = `/apply?amount=${amount}`;
+      router.push(`/apply?amount=${amount}`);
     }
   };
 

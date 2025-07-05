@@ -16,7 +16,6 @@ export const generateOrganizationSchema = () => ({
   alternateName: 'AAGT',
   description:
     'Direct private lending company providing business and investment loans from $150,000 to $5,000,000 with fast approvals and competitive rates.',
-  url: '/',
   logo: '/images/aagt_logo_no_background.png',
   image: '/images/aagt-og-image.jpg',
   telephone: '+61-2-9999-9999',
@@ -152,7 +151,6 @@ export const generateLocalBusinessSchema = () => ({
   },
   telephone: '+61-2-9999-9999',
   email: 'aagtpvtloans@gmail.com',
-  url: '/',
   priceRange: '$150,000 - $5,000,000',
   currenciesAccepted: 'AUD',
   paymentAccepted: 'Bank Transfer, Electronic Transfer',

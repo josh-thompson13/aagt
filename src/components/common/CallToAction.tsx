@@ -2,11 +2,13 @@
 
 import { ArrowRight, Phone, Calculator } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { AppConfig } from '@/utils/AppConfig';
 
 export const CallToAction = () => {
   const [loanAmount, setLoanAmount] = useState('');
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ export const CallToAction = () => {
       return;
     }
     // Redirect to application with loan amount
-    window.location.href = `/apply?amount=${encodeURIComponent(loanAmount)}`;
+    router.push(`/apply?amount=${encodeURIComponent(loanAmount)}`);
   };
 
   const formatLoanAmount = (value: string) => {

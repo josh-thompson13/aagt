@@ -129,8 +129,7 @@ export const FullWidth: Story = {
 export const AsLink: Story = {
   args: {
     children: 'Visit Our Website',
-    href: 'https://aagt.com.au',
-    target: '_blank',
+    href: '/',
     variant: 'outline',
   },
 };

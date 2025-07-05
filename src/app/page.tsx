@@ -3,6 +3,7 @@ import { LuxuryServices } from '@/components/prestige/LuxuryServices';
 import { PrestigeHero } from '@/components/prestige/PrestigeHero';
 import { WhyAAGT } from '@/components/ui/WhyAAGT';
 import { breadcrumbSchema } from '@/utils/structuredData';
+import { getAbsoluteUrl } from '@/utils/getBaseUrl';
 
 export async function generateMetadata() {
   return {
@@ -11,18 +12,14 @@ export async function generateMetadata() {
       'AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.',
     keywords:
       'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
-    alternates: {
-      canonical: '/',
-    },
     openGraph: {
       title: 'AAGT Private Loans | Alternative Business Funding Solutions',
       description:
         'Direct business funding from $150,000 to $5,000,000. Same day approval, 4-day settlement. Professional lending solutions for Australian businesses.',
-      url: '/',
       siteName: 'AAGT Private Loans',
       images: [
         {
-          url: '/og-image.jpg',
+          url: getAbsoluteUrl('/og-image.jpg'),
           width: 1200,
           height: 630,
           alt: 'AAGT Private Loans - Fast & Easy Business Funding',
@@ -36,7 +33,7 @@ export async function generateMetadata() {
       title: 'AAGT Private Loans | Alternative Business Funding Solutions',
       description:
         'Direct business funding from $150,000 to $5,000,000. Same day approval, 4-day settlement. Professional lending solutions.',
-      images: ['/og-image.jpg'],
+      images: [getAbsoluteUrl('/og-image.jpg')],
     },
     robots: {
       index: true,
@@ -61,7 +58,6 @@ export default function Index() {
     name: 'AAGT Private Loans',
     description:
       'Direct private lending company offering fast business funding from $150k to $5M with same day approval and 4-day settlement',
-    url: '/',
     logo: '/logo.png',
     address: {
       '@type': 'PostalAddress',

@@ -1,50 +1,52 @@
 import { Clock, Mail, Phone } from 'lucide-react';
-import type { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/utils/getBaseUrl';
 
-export const metadata: Metadata = {
-  title: 'Contact Us | AAGT Private Loans',
-  description:
-    'Contact AAGT Private Loans for business funding inquiries. Get same day approval for loans from $150,000 to $5,000,000. Speak to our lending specialists today.',
-  keywords:
-    'contact AAGT private loans, business loan contact, private lending inquiry, loan specialist contact, business funding help',
-  alternates: {
-    canonical: '/contact',
-  },
-  openGraph: {
+export async function generateMetadata() {
+  return {
     title: 'Contact Us | AAGT Private Loans',
     description:
-      'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
-    url: '/contact',
-    siteName: 'AAGT Private Loans',
-    images: [
-      {
-        url: '/og-contact.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Contact AAGT Private Loans',
-      },
-    ],
-    locale: 'en_AU',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact Us | AAGT Private Loans',
-    description: 'Contact AAGT Private Loans for business funding and lending support.',
-    images: ['/og-contact.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+      'Contact AAGT Private Loans for business funding inquiries. Get same day approval for loans from $150,000 to $5,000,000. Speak to our lending specialists today.',
+    keywords:
+      'contact AAGT private loans, business loan contact, private lending inquiry, loan specialist contact, business funding help',
+    alternates: {
+      canonical: '/contact',
+    },
+    openGraph: {
+      title: 'Contact Us | AAGT Private Loans',
+      description:
+        'Contact AAGT Private Loans for business funding inquiries and expert lending advice.',
+      url: '/contact',
+      siteName: 'AAGT Private Loans',
+      images: [
+        {
+          url: getAbsoluteUrl('/og-contact.jpg'),
+          width: 1200,
+          height: 630,
+          alt: 'Contact AAGT Private Loans',
+        },
+      ],
+      locale: 'en_AU',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Contact Us | AAGT Private Loans',
+      description: 'Contact AAGT Private Loans for business funding and lending support.',
+      images: [getAbsoluteUrl('/og-contact.jpg')],
+    },
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-};
+  };
+}
 
 const contactInfo = {
   email: 'aagtpvtloans@gmail.com',
