@@ -24,6 +24,17 @@ export const getI18nPath = (url: string) => {
 };
 
 export const getAssetPath = (path: string) => {
-  // No base path needed for custom domain
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  
+  // If path already starts with base path, return as is
+  if (basePath && path.startsWith(basePath)) {
+    return path;
+  }
+  
+  // If path is absolute and we have a base path, prepend it
+  if (basePath && path.startsWith('/')) {
+    return `${basePath}${path}`;
+  }
+  
   return path;
 };
