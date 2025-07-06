@@ -4,6 +4,7 @@ import '@/styles/global.css';
 import { BaseTemplate } from '@/components/layouts/BaseTemplate';
 import { LocaleLink } from '@/components/common/LocaleLink';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
+import { getAssetPath } from '@/utils/Helpers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
     'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
   icons: {
     icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: getAssetPath('/favicon-16x16.png'), sizes: '16x16', type: 'image/png' },
+      { url: getAssetPath('/favicon-32x32.png'), sizes: '32x32', type: 'image/png' },
+      { url: getAssetPath('/favicon.ico'), sizes: 'any' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: getAssetPath('/apple-touch-icon.png'),
   },
   openGraph: {
     type: 'website',

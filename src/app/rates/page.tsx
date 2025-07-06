@@ -43,7 +43,7 @@ export default function RatesTermsPage() {
     {
       type: 'Business Loans',
       purpose: 'Working capital, expansion, equipment',
-      rateRange: 'From 1.2% per month',
+      rateRange: '8.5 - 12% per annum',
       lvrMax: 'Up to 70% LVR',
       termOptions: '1-24 months',
       features: [
@@ -56,7 +56,7 @@ export default function RatesTermsPage() {
     {
       type: 'Investment Loans',
       purpose: 'Property development, off-the-plan',
-      rateRange: 'From 1.0% per month',
+      rateRange: '8.5 - 12% per annum',
       lvrMax: 'Up to 70% LVR',
       termOptions: '1-24 months',
       features: ['Development finance', 'Progress payments', 'Exit strategies', 'Flexible terms'],
@@ -64,7 +64,7 @@ export default function RatesTermsPage() {
     {
       type: 'Bridge Finance',
       purpose: 'Short-term funding solutions',
-      rateRange: 'From 1.5% per month',
+      rateRange: '8.5 - 12% per annum',
       lvrMax: 'Up to 65% LVR',
       termOptions: '1-12 months',
       features: [
@@ -77,7 +77,7 @@ export default function RatesTermsPage() {
     {
       type: 'Second Mortgages',
       purpose: 'Additional capital needs',
-      rateRange: 'From 1.3% per month',
+      rateRange: '14.9 - 17.9% per annum',
       lvrMax: 'Up to 70% LVR',
       termOptions: '1-24 months',
       features: ['Equity release', 'Debt consolidation', 'Business funding', 'Investment capital'],
@@ -122,7 +122,7 @@ export default function RatesTermsPage() {
     },
     {
       bank: 'AAGT Private',
-      rate: 'From 1.0% per month',
+      rate: '8.5 - 17.9% p.a.',
       approval: 'Same day',
       documentation: 'Minimal',
     },
@@ -138,7 +138,7 @@ export default function RatesTermsPage() {
       '@type': 'FinancialService',
       name: 'AAGT Private Loans',
     },
-    interestRate: 'From 1.0% per month',
+    interestRate: '8.5 - 17.9% per annum',
     feesAndCommissionsSpecification: 'No application fees, transparent cost structure',
     amount: {
       '@type': 'MonetaryAmount',
@@ -363,7 +363,7 @@ export default function RatesTermsPage() {
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Interest Rates</h3>
                 <p className="text-gray-700">
-                  Interest rates are calculated monthly and may vary based on loan amount, term,
+                  Interest rates are calculated annually and may vary based on loan amount, term,
                   security, and individual circumstances. Rates shown are indicative only.
                 </p>
               </div>
