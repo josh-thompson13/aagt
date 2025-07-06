@@ -2,6 +2,7 @@
 
 import { AppConfig } from '@/utils/AppConfig';
 import { ArrowRight, Clock, DollarSign, FileCheck, Shield } from 'lucide-react';
+import Link from 'next/link';
 
 export const MarketingSection = () => {
   return (
@@ -51,7 +52,7 @@ export const MarketingSection = () => {
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a
+                  <Link
                     href="/apply"
                     className="inline-flex items-center justify-center px-7 py-2.5 text-base font-semibold rounded-full text-white bg-primary-700 hover:bg-primary-800 shadow transition-all duration-150 focus:ring-2 focus:ring-primary-300 focus:outline-none"
                     style={{
@@ -61,8 +62,8 @@ export const MarketingSection = () => {
                   >
                     Apply Now
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/rates"
                     className="inline-flex items-center justify-center px-7 py-2.5 text-base font-semibold rounded-full text-primary-700 border border-primary-700 bg-white hover:bg-primary-50 hover:text-primary-900 shadow transition-all duration-150 focus:ring-2 focus:ring-primary-200 focus:outline-none"
                     style={{
@@ -71,7 +72,7 @@ export const MarketingSection = () => {
                     }}
                   >
                     View Rates
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* Right: Visual */}

@@ -10,6 +10,7 @@ import {
   Clock,
   Shield,
 } from 'lucide-react';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -99,19 +100,19 @@ export default function RatesTermsPage() {
               your business needs
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/apply"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Get Your Rate
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 transition-all duration-200"
               >
                 Speak to a Specialist
-              </a>
+              </Link>
             </div>
           </div>
         </div>

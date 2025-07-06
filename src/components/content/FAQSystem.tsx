@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import {
   Search,
   ChevronDown,
@@ -361,12 +362,12 @@ export function FAQSystem({ faqs }: Props) {
             >
               Clear Filters
             </button>
-            <a
+            <Link
               href="/contact"
               className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
               Ask a Question
-            </a>
+            </Link>
           </div>
         </div>
       )}
@@ -376,19 +377,19 @@ export function FAQSystem({ faqs }: Props) {
         <div className="text-center">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Still have questions?</h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="/contact"
               className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               Ask Our Experts
-            </a>
-            <a
+            </Link>
+            <Link
               href="/calculator"
               className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
               Get a Quote
-            </a>
+            </Link>
           </div>
         </div>
       </div>

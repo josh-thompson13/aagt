@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { StructuredData } from '@/components/common/StructuredData';
 import { FAQSystem } from '@/components/content/FAQSystem';
 import { faqs, featuredFAQs } from '@/data/faqs';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions | Private Lending FAQ | AAGT Private Loans',
@@ -165,12 +166,12 @@ export default function FAQPage() {
               questions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/contact"
                 className="px-8 py-3 bg-white text-primary-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Ask a Question
-              </a>
+              </Link>
               <a
                 href="tel:1300-AAGT-LOANS"
                 className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary-900 transition-colors"

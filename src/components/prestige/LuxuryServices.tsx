@@ -1,6 +1,7 @@
 'use client';
 
 import { DollarSign, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 
 const services = [
   {
@@ -64,7 +65,7 @@ export const LuxuryServices = () => {
                 <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                 
                 {/* Button */}
-                <a
+                <Link
                   href={service.link}
                   className="inline-flex items-center gap-2 px-6 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 hover:border-slate-400 focus:ring-2 focus:ring-slate-200 transition-all duration-200"
                 >
@@ -72,7 +73,7 @@ export const LuxuryServices = () => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
+                </Link>
               </div>
             );
           })}
@@ -83,12 +84,12 @@ export const LuxuryServices = () => {
           <p className="text-primary-100 mb-6">
             Need funding fast? Start your application now for same day approval
           </p>
-          <a
+          <Link
             href="/apply"
             className="inline-flex items-center gap-2 px-8 py-3 bg-primary-700 text-white font-semibold rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
           >
             Submit Application
-          </a>
+          </Link>
         </div>
       </div>
     </section>

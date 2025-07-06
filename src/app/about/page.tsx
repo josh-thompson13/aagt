@@ -1,6 +1,7 @@
 import { AppConfig } from '@/utils/AppConfig';
 import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users } from 'lucide-react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -92,13 +93,13 @@ export default function About() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <Link
                   href="/apply"
                   className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-white bg-primary-700 hover:bg-primary-800 transition duration-150"
                 >
                   Apply Now
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+                </Link>
                 <a
                   href="#story"
                   className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 transition duration-150"
@@ -286,19 +287,19 @@ export default function About() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a
+              <Link
                 href="/apply"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-white bg-primary-700 hover:bg-primary-800 transition duration-150"
               >
                 Apply Now
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white transition duration-150"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
 
             {/* Contact Info */}

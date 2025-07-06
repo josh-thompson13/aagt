@@ -3,6 +3,7 @@ import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
 import { ArrowRight, Calculator, FileText, HelpCircle, TrendingUp } from 'lucide-react';
 import QuickQuote from '@/components/QuickQuote';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -278,13 +279,13 @@ export default function ResourcesPage() {
                   </ul>
                 </div>
 
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center text-primary-700 font-medium hover:text-primary-600 transition-colors"
                 >
                   Request Guide
                   <ArrowRight className="ml-1 h-4 w-4" />
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -314,13 +315,13 @@ export default function ResourcesPage() {
 
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-6">Can't find what you're looking for?</p>
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-600 focus:ring-4 focus:ring-primary-200 transition-colors"
             >
               Ask Our Specialists
               <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
