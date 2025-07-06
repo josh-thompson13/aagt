@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '@/components/ui/PageTransition';
+import { usePathname } from 'next/navigation';
 
 export const BaseTemplate = (props: {
   navItems?: React.ReactNode;
@@ -15,6 +16,7 @@ export const BaseTemplate = (props: {
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,11 @@ export const BaseTemplate = (props: {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when pathname changes (navigation occurs)
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
@@ -118,7 +125,7 @@ export const BaseTemplate = (props: {
                   transition={{ delay: 0.1, duration: 0.2 }}
                 >
                   {/* Simplified mobile navigation */}
-                  <div className="space-y-2 mb-6" onClick={closeMobileMenu}>{props.mobileNavItems || props.navItems}</div>
+                  <div className="space-y-2 mb-6">{props.mobileNavItems || props.navItems}</div>
 
                   {/* Large, prominent Apply button */}
                   <div className="space-y-3">

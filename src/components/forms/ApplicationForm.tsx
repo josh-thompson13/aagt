@@ -1,6 +1,5 @@
 'use client';
 
-import type { UploadedFile } from '@/types/application';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -47,7 +46,6 @@ export default function ApplicationForm() {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
-  const [documents, setDocuments] = useState<UploadedFile[]>([]);
 
   // Pre-fill loan amount from URL parameter
   useEffect(() => {
@@ -166,7 +164,6 @@ export default function ApplicationForm() {
           agreeToTerms: false,
           receiveUpdates: false,
         });
-        setDocuments([]);
         },
         onError: (error) => {
           setSubmitStatus({
