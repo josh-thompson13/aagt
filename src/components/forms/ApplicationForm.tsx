@@ -1,10 +1,9 @@
 'use client';
 
-import { DocumentUpload } from '@/components/molecules/DocumentUpload';
 import type { UploadedFile } from '@/types/application';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function ApplicationForm() {
   const searchParams = useSearchParams();
@@ -210,8 +209,8 @@ export default function ApplicationForm() {
             <span className="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
             Quick Contact
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
+        
+        
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email *
               </label>
@@ -224,22 +223,9 @@ export default function ApplicationForm() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
                 placeholder="your@email.com"
               />
-            </div>
-            <div className="flex items-end pb-3">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="receiveUpdates"
-                  checked={formData.receiveUpdates}
-                  onChange={handleChange}
-                  className="h-5 w-5 text-teal-600 focus:ring-teal-500 border-gray-300 rounded transition-colors duration-200 cursor-pointer"
-                />
-                <span className="ml-2 text-sm text-gray-700">
-                  Sign up for news and updates
-                </span>
-              </label>
-            </div>
-          </div>
+        
+           
+        
         </div>
 
         {/* 2. Loan Details */}
@@ -551,41 +537,11 @@ export default function ApplicationForm() {
           </div>
         </div>
 
-        {/* 5. Supporting Documents */}
-        <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
-            Supporting Documents
-          </h3>
-          <div className="space-y-6">
-            <DocumentUpload
-              category="supporting-documents"
-              title="Required Documents"
-              description="Upload the required documentation to support your loan application. All documents will be securely encrypted."
-              acceptedFileTypes={['application/pdf', '.doc', '.docx', '.xls', '.xlsx', 'image/*']}
-              maxFiles={10}
-              files={documents}
-              onFilesChange={setDocuments}
-              required
-            />
-            <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-gray-200 shadow-sm">
-              <h4 className="font-medium text-gray-900 mb-2">Suggested Documents:</h4>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Bank statements (last 3 months)</li>
-                <li>• Business financial statements</li>
-                <li>• Tax returns or BAS statements</li>
-                <li>• Property valuation or contract of sale</li>
-                <li>• Business registration/incorporation documents</li>
-                <li>• Identification documents (driver's license, passport)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+      
         {/* 6. Additional Information */}
         <div className="bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200 rounded-xl p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">6</span>
+            <span className="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
             Additional Information
           </h3>
           <div className="space-y-6">

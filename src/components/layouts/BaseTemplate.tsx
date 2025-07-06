@@ -25,6 +25,10 @@ export const BaseTemplate = (props: {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="w-full min-h-screen text-gray-800 antialiased">
       <header
@@ -114,19 +118,21 @@ export const BaseTemplate = (props: {
                   transition={{ delay: 0.1, duration: 0.2 }}
                 >
                   {/* Simplified mobile navigation */}
-                  <div className="space-y-2 mb-6">{props.mobileNavItems || props.navItems}</div>
+                  <div className="space-y-2 mb-6" onClick={closeMobileMenu}>{props.mobileNavItems || props.navItems}</div>
 
                   {/* Large, prominent Apply button */}
                   <div className="space-y-3">
                     <Link
                       href="/apply"
                       className="block w-full bg-primary-900 text-white text-center py-5 px-6 rounded-xl text-xl font-bold hover:bg-primary-800 transition-colors duration-200 shadow-lg"
+                      onClick={closeMobileMenu}
                     >
                       Apply for Loan
                     </Link>
                     <Link
                       href="/"
                       className="block w-full bg-gray-100 text-gray-700 text-center py-4 px-6 rounded-xl text-lg font-semibold hover:bg-gray-200 transition-colors duration-200"
+                      onClick={closeMobileMenu}
                     >
                       Back to Home
                     </Link>
