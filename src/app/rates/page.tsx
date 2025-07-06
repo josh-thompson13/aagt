@@ -41,92 +41,28 @@ export default function RatesTermsPage() {
 
   const loanTypes = [
     {
-      type: 'Business Loans',
-      purpose: 'Working capital, expansion, equipment',
+      type: '1st Mortgages',
+      purpose: 'Business loans and investment funding',
       rateRange: '8.5 - 12% per annum',
-      lvrMax: 'Up to 70% LVR',
+      lvrMax: 'Up to 80% LVR',
       termOptions: '1-24 months',
       features: [
         'Same day approval',
-        'Minimal documentation',
-        'Any business purpose',
-        'Fast settlement',
+        'Settlements within 4 working days',
+        'Interest Only Repayments available',
+        'Capitalised Interest option',
       ],
     },
     {
-      type: 'Investment Loans',
-      purpose: 'Property development, off-the-plan',
-      rateRange: '8.5 - 12% per annum',
-      lvrMax: 'Up to 70% LVR',
-      termOptions: '1-24 months',
-      features: ['Development finance', 'Progress payments', 'Exit strategies', 'Flexible terms'],
-    },
-    {
-      type: 'Bridge Finance',
-      purpose: 'Short-term funding solutions',
-      rateRange: '8.5 - 12% per annum',
-      lvrMax: 'Up to 65% LVR',
-      termOptions: '1-12 months',
-      features: [
-        'Quick settlements',
-        'Temporary funding',
-        'Property bridging',
-        'Cash flow solutions',
-      ],
-    },
-    {
-      type: 'Second Mortgages',
+      type: '2nd Mortgages',
       purpose: 'Additional capital needs',
       rateRange: '14.9 - 17.9% per annum',
       lvrMax: 'Up to 70% LVR',
       termOptions: '1-24 months',
-      features: ['Equity release', 'Debt consolidation', 'Business funding', 'Investment capital'],
+      features: ['Same day approval', 'Settlements within 4 working days', 'Interest Only Repayments available', 'Discharged Bankrupts accepted'],
     },
   ];
 
-  const feeStructure = [
-    {
-      fee: 'Application Fee',
-      cost: '$0',
-      description: 'No upfront application fees',
-    },
-    {
-      fee: 'Valuation',
-      cost: 'At cost',
-      description: 'Professional valuation arranged',
-    },
-    {
-      fee: 'Legal Costs',
-      cost: 'At cost',
-      description: 'Independent legal documentation',
-    },
-    {
-      fee: 'Exit Fee',
-      cost: '$0',
-      description: 'No penalty for early repayment',
-    },
-  ];
-
-  const bankComparison = [
-    {
-      bank: 'Big 4 Banks',
-      rate: '8.5% - 12.5% p.a.',
-      approval: '4-8 weeks',
-      documentation: 'Extensive',
-    },
-    {
-      bank: 'Regional Banks',
-      rate: '9.0% - 13.0% p.a.',
-      approval: '3-6 weeks',
-      documentation: 'Comprehensive',
-    },
-    {
-      bank: 'AAGT Private',
-      rate: '8.5 - 17.9% p.a.',
-      approval: 'Same day',
-      documentation: 'Minimal',
-    },
-  ];
 
   const loanProductSchema = {
     '@context': 'https://schema.org',
@@ -250,98 +186,6 @@ export default function RatesTermsPage() {
         </div>
       </section>
 
-      {/* Fee Structure */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Transparent Fee Structure
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              No hidden fees or surprise charges. Here's exactly what you can expect to pay.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {feeStructure.map((fee, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{fee.fee}</h3>
-                <div className="text-2xl font-bold text-primary-700 mb-2">{fee.cost}</div>
-                <p className="text-sm text-gray-600">{fee.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 bg-primary-50 p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold text-primary-900 mb-4 text-center">
-              Why Our Pricing is Different
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <DollarSign className="h-12 w-12 text-primary-700 mx-auto mb-4" />
-                <h4 className="font-semibold text-gray-900 mb-2">No Application Fees</h4>
-                <p className="text-sm text-gray-700">Get started without upfront costs</p>
-              </div>
-              <div className="text-center">
-                <Shield className="h-12 w-12 text-primary-700 mx-auto mb-4" />
-                <h4 className="font-semibold text-gray-900 mb-2">No Exit Penalties</h4>
-                <p className="text-sm text-gray-700">Repay early without additional charges</p>
-              </div>
-              <div className="text-center">
-                <FileText className="h-12 w-12 text-primary-700 mx-auto mb-4" />
-                <h4 className="font-semibold text-gray-900 mb-2">Transparent Costs</h4>
-                <p className="text-sm text-gray-700">All costs disclosed upfront</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bank Comparison */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">How We Compare</h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              See how AAGT Private Loans compares to traditional banking options for business
-              funding.
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl shadow-lg">
-            <table className="w-full">
-              <thead className="bg-primary-700 text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left font-semibold">Lender Type</th>
-                  <th className="px-6 py-4 text-left font-semibold">Interest Rate</th>
-                  <th className="px-6 py-4 text-left font-semibold">Approval Time</th>
-                  <th className="px-6 py-4 text-left font-semibold">Documentation</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {bankComparison.map((comparison, index) => (
-                  <tr
-                    key={index}
-                    className={`border-b border-gray-200 ${comparison.bank === 'AAGT Private' ? 'bg-primary-50' : ''}`}
-                  >
-                    <td className="px-6 py-4 font-semibold text-gray-900">{comparison.bank}</td>
-                    <td className="px-6 py-4 text-gray-700">{comparison.rate}</td>
-                    <td className="px-6 py-4 text-gray-700">{comparison.approval}</td>
-                    <td className="px-6 py-4 text-gray-700">{comparison.documentation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600">
-              * Rates shown are indicative and subject to individual assessment. Traditional bank
-              rates shown are annual percentage rates (APR).
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Terms and Conditions */}
       <section className="py-20 bg-gray-50">

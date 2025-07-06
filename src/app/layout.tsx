@@ -61,6 +61,12 @@ const desktopNavItems = (
       Investment Loans
     </LocaleLink>
     <LocaleLink
+      href="/rates"
+      className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors"
+    >
+      Rates
+    </LocaleLink>
+    <LocaleLink
       href="/about"
       className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors"
     >
@@ -83,6 +89,12 @@ const mobileNavItems = (
       className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
     >
       Business Loans
+    </LocaleLink>
+    <LocaleLink
+      href="/rates"
+      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
+    >
+      Rates
     </LocaleLink>
     <LocaleLink
       href="/about"
