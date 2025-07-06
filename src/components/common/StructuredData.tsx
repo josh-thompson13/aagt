@@ -1,3 +1,5 @@
+import { getAssetPath } from '@/utils/Helpers';
+
 interface StructuredDataProps {
   data: Record<string, any>;
 }
@@ -16,8 +18,8 @@ export const generateOrganizationSchema = () => ({
   alternateName: 'AAGT',
   description:
     'Direct private lending company providing business and investment loans from $150,000 to $5,000,000 with fast approvals and competitive rates.',
-  logo: '/images/aagt_logo_no_background.png',
-  image: '/images/aagt-og-image.jpg',
+  logo: getAssetPath('/images/aagt_logo_no_background.png'),
+  image: getAssetPath('/images/aagt-og-image.jpg'),
   telephone: '+61-2-9999-9999',
   email: 'aagtpvtloans@gmail.com',
   address: {
