@@ -5,6 +5,7 @@ import { BaseTemplate } from '@/components/layouts/BaseTemplate';
 import { LocaleLink } from '@/components/common/LocaleLink';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 import { getAssetPath } from '@/utils/Helpers';
+import { MobileNavItems } from '@/components/navigation/MobileNavItems';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -81,36 +82,6 @@ const desktopNavItems = (
   </>
 );
 
-// Simplified mobile navigation with only essential links
-const mobileNavItems = (
-  <>
-    <LocaleLink
-      href="/business-loans"
-      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
-    >
-      Business Loans
-    </LocaleLink>
-    <LocaleLink
-      href="/rates"
-      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
-    >
-      Rates
-    </LocaleLink>
-    <LocaleLink
-      href="/about"
-      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
-    >
-      About Us
-    </LocaleLink>
-    <LocaleLink
-      href="/contact"
-      className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors"
-    >
-      Contact Us
-    </LocaleLink>
-  </>
-);
-
 const navItems = desktopNavItems;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -121,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <PostHogProvider>
-          <BaseTemplate navItems={navItems} mobileNavItems={mobileNavItems}>
+          <BaseTemplate navItems={navItems} mobileNavItems={<MobileNavItems />}>
             {children}
           </BaseTemplate>
         </PostHogProvider>

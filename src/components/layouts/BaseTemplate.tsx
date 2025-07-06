@@ -4,10 +4,23 @@ import { AppConfig } from '@/utils/AppConfig';
 import { getAssetPath } from '@/utils/Helpers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '@/components/ui/PageTransition';
 import { usePathname } from 'next/navigation';
+
+// Create context for mobile menu control
+const MobileMenuContext = createContext<{
+  closeMobileMenu: () => void;
+} | null>(null);
+
+export const useMobileMenu = () => {
+  const context = useContext(MobileMenuContext);
+  if (!context) {
+    throw new Error('useMobileMenu must be used within MobileMenuProvider');
+  }
+  return context;
+};
 
 export const BaseTemplate = (props: {
   navItems?: React.ReactNode;
@@ -37,7 +50,8 @@ export const BaseTemplate = (props: {
   };
 
   return (
-    <div className="w-full min-h-screen text-gray-800 antialiased">
+    <MobileMenuContext.Provider value={{ closeMobileMenu }}>
+      <div className="w-full min-h-screen text-gray-800 antialiased">
       <header
         className={`sticky top-0 z-30 ${
           isScrolled
@@ -275,6 +289,7 @@ export const BaseTemplate = (props: {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </MobileMenuContext.Provider>
   );
 };
