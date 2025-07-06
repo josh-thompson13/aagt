@@ -8,9 +8,7 @@ import {
   Calculator,
   TrendingDown,
   Clock,
-  FileText,
   Shield,
-  DollarSign,
 } from 'lucide-react';
 
 export async function generateMetadata() {
