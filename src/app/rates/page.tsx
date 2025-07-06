@@ -88,27 +88,27 @@ export default function RatesTermsPage() {
       <StructuredData data={loanProductSchema} />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 to-primary-700 py-24">
+      <section className="relative bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Transparent Rates & Terms
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
               Competitive private loan rates with no hidden fees and flexible terms designed for
               your business needs
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/apply"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-primary-700 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-white/50 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Get Your Rate
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-white border-2 border-white hover:bg-white hover:text-primary-700 focus:ring-4 focus:ring-white/50 transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 transition-all duration-200"
               >
                 Speak to a Specialist
               </a>
@@ -118,7 +118,7 @@ export default function RatesTermsPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-primary-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
@@ -135,13 +135,13 @@ export default function RatesTermsPage() {
       </section>
 
       {/* Loan Types and Rates */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
               Current Rates by Loan Type
             </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Our rates are competitive and transparent. All rates shown are indicative and subject
               to individual assessment and loan approval.
             </p>
@@ -154,19 +154,19 @@ export default function RatesTermsPage() {
                 className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow"
               >
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{loan.type}</h3>
-                  <p className="text-gray-600 mb-4">{loan.purpose}</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{loan.type}</h3>
+                  <p className="text-slate-600 mb-4">{loan.purpose}</p>
                   <div className="text-3xl font-bold text-primary-700 mb-2">{loan.rateRange}</div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
-                    <span className="text-sm font-medium text-gray-500">Max LVR</span>
-                    <div className="text-lg font-semibold text-gray-900">{loan.lvrMax}</div>
+                    <span className="text-sm font-medium text-slate-500">Max LVR</span>
+                    <div className="text-lg font-semibold text-slate-900">{loan.lvrMax}</div>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-500">Term</span>
-                    <div className="text-lg font-semibold text-gray-900">{loan.termOptions}</div>
+                    <span className="text-sm font-medium text-slate-500">Term</span>
+                    <div className="text-lg font-semibold text-slate-900">{loan.termOptions}</div>
                   </div>
                 </div>
 
@@ -174,7 +174,7 @@ export default function RatesTermsPage() {
                   {loan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
                       <CheckCircle2 className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                      <span className="text-sm text-slate-700">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -186,9 +186,9 @@ export default function RatesTermsPage() {
 
 
       {/* Terms and Conditions */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-primary-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
             Important Terms & Conditions
           </h2>
 
@@ -240,13 +240,13 @@ export default function RatesTermsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-900">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Ready to Get Your Personalized Rate?
           </h2>
-          <p className="text-xl text-white/90 mb-8">{AppConfig.mission}</p>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 mb-8">{AppConfig.mission}</p>
+          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
             Get a personalized rate quote based on your specific requirements. Our lending
             specialists will work with you to find the most competitive terms for your situation.
           </p>

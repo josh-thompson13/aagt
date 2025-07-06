@@ -60,23 +60,23 @@ export default function BusinessLoansPage() {
       </section>
 
       {/* Key Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-primary-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
             Key Features
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Loan Amounts</h3>
-              <p className="text-2xl font-bold text-primary-700">$150,000 - $5,000,000</p>
+              <h3 className="text-xl font-semibold text-white mb-2">Loan Amounts</h3>
+              <p className="text-2xl font-bold text-primary-100">$150,000 - $5,000,000</p>
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Loan Terms</h3>
-              <p className="text-2xl font-bold text-primary-700">1 - 24 Months</p>
+              <h3 className="text-xl font-semibold text-white mb-2">Loan Terms</h3>
+              <p className="text-2xl font-bold text-primary-100">1 - 24 Months</p>
             </div>
             <div className="text-center">
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">LVR</h3>
-              <p className="text-2xl font-bold text-primary-700">Up to 70%</p>
+              <h3 className="text-xl font-semibold text-white mb-2">LVR</h3>
+              <p className="text-2xl font-bold text-primary-100">Up to 70%</p>
             </div>
           </div>
         </div>
@@ -114,27 +114,27 @@ export default function BusinessLoansPage() {
       </section>
 
       {/* Simple Requirements Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-primary-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
             Simple Requirements
           </h2>
           <ul className="space-y-4 max-w-2xl mx-auto">
             <li className="flex items-start">
               <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Established Australian business</span>
+              <span className="text-lg text-slate-200">Established Australian business</span>
             </li>
             <li className="flex items-start">
               <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Clear repayment strategy</span>
+              <span className="text-lg text-slate-200">Clear repayment strategy</span>
             </li>
             <li className="flex items-start">
               <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Security available (property or business assets)</span>
+              <span className="text-lg text-slate-200">Security available (property or business assets)</span>
             </li>
             <li className="flex items-start">
               <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Basic financial documentation</span>
+              <span className="text-lg text-slate-200">Basic financial documentation</span>
             </li>
           </ul>
         </div>
@@ -142,7 +142,7 @@ export default function BusinessLoansPage() {
 
 
       {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
             Ready to Get Started?
