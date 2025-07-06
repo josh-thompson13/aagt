@@ -2,7 +2,6 @@ import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
 import { CheckCircle2 } from 'lucide-react';
-import QuickQuote from '@/components/QuickQuote';
 
 export async function generateMetadata() {
   return {
@@ -141,15 +140,6 @@ export default function BusinessLoansPage() {
         </div>
       </section>
 
-      {/* Quick Quote Calculator Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
-            Quick Funding Calculator
-          </h2>
-          <QuickQuote />
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gray-50">
