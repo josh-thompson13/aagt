@@ -1,7 +1,9 @@
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { loanProducts } from '@/data/loanProducts';
 
 export async function generateMetadata() {
   return {
@@ -39,6 +41,22 @@ export default function BusinessLoansPage() {
       maxValue: 5000000,
       currency: 'AUD',
     },
+  };
+
+  // Filter business loan products
+  const businessLoanProducts = loanProducts.filter(product => product.category === 'business');
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-AU', {
+      style: 'currency',
+      currency: 'AUD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  const formatRate = (rate: number) => {
+    return `${rate.toFixed(2)}%`;
   };
 
   return (
@@ -140,6 +158,109 @@ export default function BusinessLoansPage() {
         </div>
       </section>
 
+      {/* Business Loan Products Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+            Our Business Loan Products
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {businessLoanProducts.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden"
+              >
+                {/* Header */}
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{product.title}</h3>
+                      <p className="text-gray-600">{product.shortDescription}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      {product.featured && (
+                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded">
+                          Featured
+                        </span>
+                      )}
+                      {product.popular && (
+                        <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">
+                          Popular
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Key Metrics */}
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="text-center">
+                      <div className="flex items-center justify-center w-8 h-8 bg-primary-100 rounded-full mx-auto mb-2">
+                        <DollarSign className="w-4 h-4 text-primary-600" />
+                      </div>
+                      <div className="text-sm text-gray-600">Amount</div>
+                      <div className="font-semibold text-gray-900">
+                        {formatCurrency(product.minAmount)} - {formatCurrency(product.maxAmount)}
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex items-center justify-center w-8 h-8 bg-green-100 rounded-full mx-auto mb-2">
+                        <TrendingUp className="w-4 h-4 text-green-600" />
+                      </div>
+                      <div className="text-sm text-gray-600">Rate from</div>
+                      <div className="font-semibold text-gray-900">
+                        {formatRate(product.minRate)} p.a.
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full mx-auto mb-2">
+                        <Clock className="w-4 h-4 text-blue-600" />
+                      </div>
+                      <div className="text-sm text-gray-600">Approval</div>
+                      <div className="font-semibold text-gray-900">
+                        {product.turnaroundTime.approval}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Features */}
+                <div className="p-6">
+                  <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
+                  <div className="grid grid-cols-1 gap-2">
+                    {product.features.slice(0, 4).map((feature) => (
+                      <div key={feature} className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{feature}</span>
+                      </div>
+                    ))}
+                    {product.features.length > 4 && (
+                      <div className="text-sm text-gray-500 mt-1">
+                        +{product.features.length - 4} more features
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-6 flex gap-3">
+                    <Link
+                      href={`/loan-products/${product.slug}`}
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      href="/calculator"
+                      className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      Calculate
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-white">
