@@ -1,9 +1,11 @@
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
-import { CheckCircle2, DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle2, DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight, Building, Briefcase, Target, Zap } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { loanProducts } from '@/data/loanProducts';
+import { getAssetPath } from '@/utils/Helpers';
 
 export async function generateMetadata() {
   return {
@@ -59,122 +61,149 @@ export default function BusinessLoansPage() {
     return `${rate.toFixed(2)}%`;
   };
 
+  const keyFeatures = [
+    { icon: Clock, text: 'Same Day Approval', color: 'bg-blue-500' },
+    { icon: Zap, text: '4-Day Settlement', color: 'bg-green-500' },
+    { icon: Building, text: 'Direct Lender', color: 'bg-purple-500' },
+    { icon: Target, text: 'Minimal Documentation', color: 'bg-orange-500' },
+  ];
+
+  const businessPurposes = [
+    'Business expansion and growth initiatives',
+    'Equipment and machinery purchases',
+    'Working capital and cash flow management',
+    'Business acquisitions and buyouts',
+    'Inventory and stock purchases',
+    'Commercial property purchases',
+  ];
+
   return (
     <>
       <StructuredData data={breadcrumbSchema(breadcrumbs)} />
       <StructuredData data={loanProductSchema} />
 
       {/* Hero Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            Business Loans
-          </h1>
-          <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto">
-            Fast business funding for companies that need capital quickly. We understand banks can be slow
-            and bureaucratic - we're different. Direct funding with same day approval and 4-day settlement.
-          </p>
-        </div>
-      </section>
+      <section className="relative bg-white overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 opacity-50" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Main Content */}
+            <div className="text-center lg:text-left">
+              <p className="text-primary-700 font-semibold text-sm uppercase tracking-wider mb-4">
+                Business Funding Solutions
+              </p>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Business Loans
+                <span className="block text-primary-700">$150K - $5M</span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-gray-600 mb-8">
+                Direct funding for established businesses. No committees, no delays – just fast decisions when you need capital most.
+              </p>
 
-      {/* Key Features Section */}
-      <section className="py-16 bg-primary-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
-            Key Features
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-white mb-2">Loan Amounts</h3>
-              <p className="text-2xl font-bold text-primary-100">$150,000 - $5,000,000</p>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Apply Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link
+                  href="/calculator"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Calculate Repayments
+                </Link>
+              </div>
+
+              {/* Key Features Grid */}
+              <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
+                {keyFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className={`p-2 ${feature.color} rounded-lg`}>
+                      <feature.icon className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-white mb-2">Loan Terms</h3>
-              <p className="text-2xl font-bold text-primary-100">1 - 24 Months</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-white mb-2">LVR</h3>
-              <p className="text-2xl font-bold text-primary-100">Up to 70%</p>
+
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src={getAssetPath("/images/sean-pollock-PhYq704ffdA-unsplash.jpg")}
+                  alt="Business owner planning growth and expansion"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Stats Cards */}
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-600">$5M</div>
+                  <div className="text-sm text-gray-600">Max Loan</div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-blue-600">Same Day</div>
+                  <div className="text-xs text-gray-600">Approval</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Eligible Purposes Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
-            Eligible Purposes
-          </h2>
-          <ul className="space-y-4 max-w-2xl mx-auto">
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Business expansion and growth initiatives</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Equipment and machinery purchases</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Working capital and cash flow management</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Business acquisitions and buyouts</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-700">Inventory and stock purchases</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Simple Requirements Section */}
-      <section className="py-16 bg-primary-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
-            Simple Requirements
-          </h2>
-          <ul className="space-y-4 max-w-2xl mx-auto">
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-200">Established Australian business</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-200">Clear repayment strategy</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-200">Security available (property or business assets)</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="h-6 w-6 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
-              <span className="text-lg text-slate-200">Basic financial documentation</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* Business Loan Products Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
-            Our Business Loan Products
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <section className="py-24 bg-primary-900 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-primary-900/90" />
+          <Image
+            src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
+            alt="Business growth and investment background"
+            fill
+            className="object-cover opacity-20"
+            sizes="100vw"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
+              Our Business Loan Products
+            </h2>
+            <div className="flex justify-center">
+              <p className="text-primary-100 font-light max-w-2xl text-center">
+                Tailored funding solutions designed specifically for growing Australian businesses
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {businessLoanProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden"
+                className="p-8 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-slate-200 transition-all duration-300 group rounded-xl shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm"
               >
-                {/* Header */}
-                <div className="p-6 border-b border-gray-100">
+                {/* Product Header */}
+                <div className="mb-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{product.title}</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{product.title}</h3>
                       <p className="text-gray-600">{product.shortDescription}</p>
                     </div>
                     <div className="flex gap-2">
@@ -192,31 +221,31 @@ export default function BusinessLoansPage() {
                   </div>
 
                   {/* Key Metrics */}
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-8 h-8 bg-primary-100 rounded-full mx-auto mb-2">
-                        <DollarSign className="w-4 h-4 text-primary-600" />
+                      <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full mx-auto mb-2">
+                        <DollarSign className="w-5 h-5 text-white" />
                       </div>
-                      <div className="text-sm text-gray-600">Amount</div>
-                      <div className="font-semibold text-gray-900">
+                      <div className="text-xs text-gray-600">Amount</div>
+                      <div className="font-bold text-gray-900 text-sm">
                         {formatCurrency(product.minAmount)} - {formatCurrency(product.maxAmount)}
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-8 h-8 bg-green-100 rounded-full mx-auto mb-2">
-                        <TrendingUp className="w-4 h-4 text-green-600" />
+                      <div className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full mx-auto mb-2">
+                        <TrendingUp className="w-5 h-5 text-white" />
                       </div>
-                      <div className="text-sm text-gray-600">Rate from</div>
-                      <div className="font-semibold text-gray-900">
+                      <div className="text-xs text-gray-600">Rate from</div>
+                      <div className="font-bold text-gray-900 text-sm">
                         {formatRate(product.minRate)} p.a.
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full mx-auto mb-2">
-                        <Clock className="w-4 h-4 text-blue-600" />
+                      <div className="flex items-center justify-center w-10 h-10 bg-purple-500 rounded-full mx-auto mb-2">
+                        <Clock className="w-5 h-5 text-white" />
                       </div>
-                      <div className="text-sm text-gray-600">Approval</div>
-                      <div className="font-semibold text-gray-900">
+                      <div className="text-xs text-gray-600">Approval</div>
+                      <div className="font-bold text-gray-900 text-sm">
                         {product.turnaroundTime.approval}
                       </div>
                     </div>
@@ -224,37 +253,33 @@ export default function BusinessLoansPage() {
                 </div>
 
                 {/* Features */}
-                <div className="p-6">
+                <div className="mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
                   <div className="grid grid-cols-1 gap-2">
-                    {product.features.slice(0, 4).map((feature) => (
+                    {product.features.slice(0, 3).map((feature) => (
                       <div key={feature} className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                         <span className="text-sm text-gray-700">{feature}</span>
                       </div>
                     ))}
-                    {product.features.length > 4 && (
-                      <div className="text-sm text-gray-500 mt-1">
-                        +{product.features.length - 4} more features
-                      </div>
-                    )}
                   </div>
+                </div>
 
-                  <div className="mt-6 flex gap-3">
-                    <Link
-                      href={`/loan-products/${product.slug}`}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-                    >
-                      Learn More
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                    <Link
-                      href="/calculator"
-                      className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      Calculate
-                    </Link>
-                  </div>
+                {/* CTA Buttons */}
+                <div className="flex gap-3">
+                  <Link
+                    href={`/loan-products/${product.slug}`}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"
+                  >
+                    Learn More
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/apply"
+                    className="px-6 py-2 bg-primary-700 text-white font-medium rounded-lg hover:bg-primary-800 transition-colors"
+                  >
+                    Apply
+                  </Link>
                 </div>
               </div>
             ))}
@@ -262,18 +287,72 @@ export default function BusinessLoansPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-            Apply now for fast approval or speak with our lending specialists about your business needs.
-          </p>
-          <CallToAction />
+      {/* Business Purposes Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Fund Your
+                <span className="block text-primary-700">Business Growth</span>
+              </h2>
+              <p className="text-xl text-gray-600 mb-8">
+                Our business loans are designed for established companies looking to expand, acquire assets, or strengthen their operations. Direct funding decisions mean you get the capital you need, fast.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                {businessPurposes.map((purpose, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                    <span className="text-gray-700">{purpose}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Start Application
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Speak to a Specialist
+                </Link>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={getAssetPath("/images/priscilla-du-preez-XkKCui44iM0-unsplash.jpg")}
+                  alt="Business team planning growth strategy"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Achievement Card */}
+              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary-700 mb-1">95%</div>
+                  <div className="text-sm text-gray-600">Approval Rate</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Final CTA Section */}
+      <CallToAction />
     </>
   );
 }

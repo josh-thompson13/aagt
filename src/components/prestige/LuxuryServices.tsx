@@ -35,7 +35,7 @@ export const LuxuryServices = () => {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-primary-900/90" />
         <Image
-          src={getAssetPath("/images/amina-atar-tAPxuPCThxY-unsplash.jpg")}
+          src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
           alt="Business growth and investment background"
           fill
           className="object-cover opacity-20"
