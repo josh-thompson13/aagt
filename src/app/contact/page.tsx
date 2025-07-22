@@ -1,4 +1,4 @@
-import { Clock, Mail, Phone, MessageCircle, ArrowRight, MapPin, Users, Shield, Zap, CheckCircle } from 'lucide-react';
+import { Clock, Mail, Phone, MessageCircle, ArrowRight, Users, Shield, Zap, CheckCircle } from 'lucide-react';
 import { getAbsoluteUrl } from '@/utils/getBaseUrl';
 import Link from 'next/link';
 import Image from 'next/image';

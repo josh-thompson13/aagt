@@ -1,6 +1,6 @@
 import { AppConfig } from '@/utils/AppConfig';
 import { getAssetPath } from '@/utils/Helpers';
-import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users, Shield, Target, CheckCircle, Building } from 'lucide-react';
+import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users, Shield, Target } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';

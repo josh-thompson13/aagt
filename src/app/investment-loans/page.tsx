@@ -1,7 +1,7 @@
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
-import { CheckCircle2, DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight, Building2, Target, Zap, HomeIcon } from 'lucide-react';
+import { DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight, Building2, Target, Zap } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { loanProducts } from '@/data/loanProducts';

@@ -1,21 +1,13 @@
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
-import { AppConfig } from '@/utils/AppConfig';
 import { CallToAction } from '@/components/common/CallToAction';
 import {
   ArrowRight,
-  CheckCircle2,
   Calculator,
   TrendingDown,
   Clock,
   Shield,
-  DollarSign,
-  TrendingUp,
-  Target,
-  Zap,
-  Award,
   CheckCircle,
-  Users,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
