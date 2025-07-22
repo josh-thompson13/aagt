@@ -2,6 +2,7 @@
 
 import { DollarSign, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const services = [
   {
@@ -28,8 +29,20 @@ const services = [
 
 export const LuxuryServices = () => {
   return (
-    <section className="py-24 bg-primary-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-primary-900 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-primary-900/90" />
+        <Image
+          src="/images/amina-atar-tAPxuPCThxY-unsplash.jpg"
+          alt="Business growth and investment background"
+          fill
+          className="object-cover opacity-20"
+          sizes="100vw"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
@@ -49,7 +62,7 @@ export const LuxuryServices = () => {
             return (
               <div
                 key={index}
-                className={`p-8 border border-slate-200 transition-all duration-300 group rounded-xl ${service.bgColor} ${service.hoverBg} shadow-lg hover:shadow-xl hover:scale-105`}
+                className={`p-8 border border-slate-200 transition-all duration-300 group rounded-xl ${service.bgColor} ${service.hoverBg} shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm`}
               >
                 {/* Icon */}
                 <div className="mb-6">
