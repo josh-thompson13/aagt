@@ -229,10 +229,10 @@ export default function RatesTermsPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Responsible Lending</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Assessment Process</h3>
                 <p className="text-gray-700">
-                  We are committed to responsible lending practices. All applications are assessed
-                  for suitability and affordability in accordance with regulatory requirements.
+                  All applications are assessed for suitability and affordability according to our
+                  lending criteria and business requirements.
                 </p>
               </div>
             </div>

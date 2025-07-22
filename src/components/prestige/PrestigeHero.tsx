@@ -82,7 +82,7 @@ export const PrestigeHero = () => {
         <div className="mt-12 text-center">
           <p className="text-gray-600 flex items-center justify-center gap-2">
             <CheckCircle className="h-5 w-5 text-green-600" />
-            Australian Credit License regulated by ASIC
+            Trusted Australian Private Lender
           </p>
         </div>
       </div>

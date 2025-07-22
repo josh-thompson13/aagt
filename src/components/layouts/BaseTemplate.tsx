@@ -1,13 +1,13 @@
 'use client';
 
+import { PageTransition } from '@/components/ui/PageTransition';
 import { AppConfig } from '@/utils/AppConfig';
 import { getAssetPath } from '@/utils/Helpers';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, createContext, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { PageTransition } from '@/components/ui/PageTransition';
 import { usePathname } from 'next/navigation';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 // Create context for mobile menu control
 const MobileMenuContext = createContext<{
@@ -190,11 +190,11 @@ export const BaseTemplate = (props: {
               <h3 className="text-xl font-bold mb-4 text-white">{AppConfig.name}</h3>
               <p className="text-gray-300 mb-6 leading-relaxed max-w-md">{AppConfig.description}</p>
               <div className="flex space-x-4">
-                <div className="px-4 py-2 bg-teal-600 text-white text-sm font-medium rounded-lg">
-                  ASIC Regulated
-                </div>
                 <div className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg">
                   Direct Lender
+                </div>
+                <div className="px-4 py-2 bg-teal-600 text-white text-sm font-medium rounded-lg">
+                  Trusted Partner
                 </div>
               </div>
             </div>
@@ -271,13 +271,10 @@ export const BaseTemplate = (props: {
             <div className="mt-8 p-6 bg-gray-800 rounded-lg border border-gray-600">
               <h4 className="text-sm font-semibold text-gray-200 mb-4">Legal Disclaimer & Important Information</h4>
               <p className="text-xs text-gray-300 leading-relaxed">
-                <strong className="text-gray-200">Important Information:</strong> AAGT Private Loans Pty Ltd holds an Australian Credit License (ACL) and is regulated by the Australian Securities and Investments Commission (ASIC). All loan applications are subject to credit approval and AAGT Private Loans' lending criteria. Interest rates and fees are subject to change without notice. This website does not constitute financial advice. Consider seeking independent financial advice before applying for any loan product. AAGT Private Loans is committed to responsible lending practices and will assess your application according to responsible lending obligations. Warning: Borrowing money costs money. Before entering into any credit contract, consider your financial situation carefully. Late repayments can incur additional fees and charges. If you are experiencing financial difficulty, please contact us immediately.
+                <strong className="text-gray-200">Important Information:</strong> AAGT Private Loans is a commercial unlicensed lender. All loan applications are subject to credit approval and AAGT Private Loans' lending criteria. Interest rates and fees are subject to change without notice. This website does not constitute financial advice. Consider seeking independent financial advice before applying for any loan product. Warning: Borrowing money costs money. Before entering into any credit contract, consider your financial situation carefully. Late repayments can incur additional fees and charges. If you are experiencing financial difficulty, please contact us immediately.
               </p>
               <p className="text-xs text-gray-300 mt-4">
-                <strong className="text-gray-200">Privacy & Security:</strong> We are committed to protecting your privacy and maintaining the security of your personal information. All data transmitted through this website is encrypted using industry-standard SSL technology. We comply with the Privacy Act 1988 and the Australian Privacy Principles.
-              </p>
-              <p className="text-xs text-gray-300 mt-4">
-                <strong className="text-gray-200">Dispute Resolution:</strong> AAGT Private Loans is a member of the Australian Financial Complaints Authority (AFCA). If you have a complaint that cannot be resolved through our internal dispute resolution process, you may contact AFCA at www.afca.org.au or 1800 931 678.
+                <strong className="text-gray-200">Privacy & Security:</strong> We are committed to protecting your privacy and maintaining the security of your personal information. All data transmitted through this website is encrypted using industry-standard SSL technology.
               </p>
               <p className="text-xs text-gray-300 mt-4">
                 <strong className="text-gray-200">Lending Criteria:</strong> AAGT Private Loans only lends to Corporate/Incorporated/Trustee entities. NO personal loans. All loans are subject to terms and conditions. All loans are secured by a 1st or 2nd mortgage; consequently you must engage your own solicitor to witness our documents and provide you with independent legal advice.

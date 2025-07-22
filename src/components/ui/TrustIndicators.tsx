@@ -102,8 +102,8 @@ export const TrustIndicators = () => {
   const trustBadges = [
     {
       icon: Shield,
-      title: 'ASIC Regulated',
-      description: 'Fully licensed and regulated financial services',
+      title: 'Trusted Partner',
+      description: 'Reliable and experienced financial services',
       color: 'green',
     },
     {

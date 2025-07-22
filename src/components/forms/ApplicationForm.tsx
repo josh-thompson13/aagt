@@ -658,11 +658,10 @@ export default function ApplicationForm() {
           <div className="mt-8 p-4 bg-gray-50 rounded-lg border">
             <p className="text-xs text-gray-600 leading-relaxed">
               By submitting this application, you acknowledge that AAGT Private Loans will conduct
-              credit checks and assess your application according to responsible lending
-              obligations. Applications are subject to credit approval and AAGT Private Loans'
+              credit checks and assess your application according to our lending
+              criteria. Applications are subject to credit approval and AAGT Private Loans'
               lending criteria. This application does not constitute financial advice - consider
-              seeking independent financial advice if needed. AAGT Private Loans is committed to
-              responsible lending practices.
+              seeking independent financial advice if needed.
             </p>
           </div>
         </div>

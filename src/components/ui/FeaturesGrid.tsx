@@ -66,10 +66,10 @@ export const FeaturesGrid = () => {
     },
     {
       icon: Shield,
-      title: 'Secure & Regulated',
+      title: 'Secure & Trusted',
       description:
-        'ASIC regulated and fully compliant. Your business information is protected with bank-level security.',
-      benefits: ['ASIC regulated', 'Data encryption', 'Privacy protected'],
+        'Trusted Australian lender with full compliance. Your business information is protected with bank-level security.',
+      benefits: ['Trusted partner', 'Data encryption', 'Privacy protected'],
       color: 'green',
       gradient: 'from-green-400 to-teal-600',
     },
