@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getAssetPath } from './Helpers';
 
 export interface SEOData {
   title: string;
@@ -23,7 +24,7 @@ const defaultMetadata = {
     'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Alternative lending solutions for businesses declined by traditional banks.',
   siteName: 'AAGT Private Loans',
   baseUrl: '', // Base URL will be set from environment
-  ogImage: '/images/aagt-og-image.jpg',
+  ogImage: getAssetPath('/images/aagt-og-image.jpg'),
 };
 
 export function generateMetadata(seoData: SEOData): Metadata {

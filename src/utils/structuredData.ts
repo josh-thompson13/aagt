@@ -1,4 +1,5 @@
 import { AppConfig } from './AppConfig';
+import { getAssetPath } from './Helpers';
 
 // Helper function to get the base URL from environment or use relative paths
 const getBaseUrl = () => {
@@ -15,8 +16,8 @@ export const organizationSchema = {
   name: 'AAGT Private Loans',
   legalName: 'AAGT Private Loans Pty Ltd',
   url: getBaseUrl(),
-  logo: '/images/aagt_logo_no_background.png',
-  image: '/images/aagt_logo_no_background.png',
+  logo: getAssetPath('/images/aagt_logo_no_background.png'),
+  image: getAssetPath('/images/aagt_logo_no_background.png'),
   description:
     'Direct private lending company offering fast business funding from $150,000 to $5,000,000 with same day approval and 4-day settlement',
   address: {
@@ -171,7 +172,7 @@ export const financialServiceSchema = {
   '@type': 'FinancialService',
   '@id': '#financialservice',
   name: 'AAGT Private Loans',
-  image: '/images/aagt_logo_no_background.png',
+  image: getAssetPath('/images/aagt_logo_no_background.png'),
   '@graph': [
     {
       '@id': '#organization',

@@ -1,4 +1,5 @@
 import { AppConfig } from '@/utils/AppConfig';
+import { getAssetPath } from '@/utils/Helpers';
 import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -59,7 +60,7 @@ export default function About() {
     description:
       'Direct private lending company providing fast business funding with same day approval and competitive rates',
     url: '/',
-    logo: '/images/aagt_logo_no_background.png',
+    logo: getAssetPath('/images/aagt_logo_no_background.png'),
     address: {
       '@type': 'PostalAddress',
       addressRegion: 'NSW',

@@ -3,6 +3,7 @@
 import { ArrowRight, CheckCircle, Clock, FileCheck, Shield, TrendingUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { getAssetPath } from '../../utils/Helpers';
 
 export const PrestigeHero = () => {
   const router = useRouter();
@@ -81,7 +82,7 @@ export const PrestigeHero = () => {
           <div className="relative">
             <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
               <Image
-                src="/images/zane-lee-9cnzCy4YsNE-unsplash.jpg"
+                src={getAssetPath("/images/zane-lee-9cnzCy4YsNE-unsplash.jpg")}
                 alt="Professional business consultation and financial guidance"
                 fill
                 className="object-cover"

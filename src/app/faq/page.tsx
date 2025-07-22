@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { StructuredData } from '@/components/common/StructuredData';
 import { FAQSystem } from '@/components/content/FAQSystem';
 import { faqs, featuredFAQs } from '@/data/faqs';
+import { getAssetPath } from '@/utils/Helpers';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/faq-og.jpg',
+        url: getAssetPath('/images/faq-og.jpg'),
         width: 1200,
         height: 630,
         alt: 'AAGT Private Loans - FAQ',
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Private Lending FAQ | AAGT Private Loans',
     description:
       "Get answers to your private lending questions. Expert advice from Australia's leading private lender.",
-    images: ['/images/faq-og.jpg'],
+    images: [getAssetPath('/images/faq-og.jpg')],
   },
   alternates: {
     canonical: '/faq',
@@ -74,7 +75,7 @@ export default function FAQPage() {
     '@type': 'FinancialService',
     name: 'AAGT Private Loans',
     url: '/',
-    logo: '/images/aagt_logo_no_background.png',
+    logo: getAssetPath('/images/aagt_logo_no_background.png'),
     description:
       'Leading Australian private lender providing expert answers and support for business and investment lending',
     areaServed: 'Australia',

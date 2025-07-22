@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Banknote, Clock, FileText, Settings } from 'lucide-react';
 import Image from 'next/image';
+import { getAssetPath } from '../../utils/Helpers';
 
 export const WhyAAGT = () => {
   const features = [
@@ -131,7 +132,7 @@ export const WhyAAGT = () => {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/brooke-cagle-JBwcenOuRCg-unsplash.jpg"
+                  src={getAssetPath("/images/brooke-cagle-JBwcenOuRCg-unsplash.jpg")}
                   alt="Successful business partnership and collaboration"
                   fill
                   className="object-cover"
@@ -166,7 +167,7 @@ export const WhyAAGT = () => {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/mario-gogh-VBLHICVh-lI-unsplash.jpg"
+                  src={getAssetPath("/images/mario-gogh-VBLHICVh-lI-unsplash.jpg")}
                   alt="Modern Australian business environment"
                   fill
                   className="object-cover"

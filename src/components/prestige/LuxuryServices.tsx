@@ -3,6 +3,7 @@
 import { DollarSign, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getAssetPath } from '../../utils/Helpers';
 
 const services = [
   {
@@ -34,7 +35,7 @@ export const LuxuryServices = () => {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-primary-900/90" />
         <Image
-          src="/images/amina-atar-tAPxuPCThxY-unsplash.jpg"
+          src={getAssetPath("/images/amina-atar-tAPxuPCThxY-unsplash.jpg")}
           alt="Business growth and investment background"
           fill
           className="object-cover opacity-20"

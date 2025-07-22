@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { StructuredData } from '@/components/common/StructuredData';
 import { LoanProductsCatalog } from '@/components/content/LoanProductsCatalog';
 import { loanProducts } from '@/data/loanProducts';
+import { getAssetPath } from '@/utils/Helpers';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/loan-products-og.jpg',
+        url: getAssetPath('/images/loan-products-og.jpg'),
         width: 1200,
         height: 630,
         alt: 'AAGT Private Loans - Loan Products',
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Loan Products | AAGT Private Loans',
     description:
       'Complete range of business and investment loan products. Same-day approval, competitive rates.',
-    images: ['/images/loan-products-og.jpg'],
+    images: [getAssetPath('/images/loan-products-og.jpg')],
   },
   alternates: {
     canonical: '/loan-products',
@@ -61,7 +62,7 @@ export default function LoanProductsPage() {
     '@type': 'FinancialService',
     name: 'AAGT Private Loans',
     url: '/',
-    logo: '/images/aagt_logo_no_background.png',
+    logo: getAssetPath('/images/aagt_logo_no_background.png'),
     description:
       'Leading Australian private lender offering business and investment loans from $150,000 to $5,000,000',
     areaServed: 'Australia',
