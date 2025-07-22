@@ -347,12 +347,9 @@ Create a sophisticated, trustworthy presence that balances professionalism with 
 - [ ] Mobile experience refinement
 
 ## Compliance and Legal Requirements
-- Australian Credit License disclaimers
-- Privacy policy for financial services
-- Terms of use and lending conditions
-- Responsible lending obligations
-- Dispute resolution information
-- Anti-money laundering compliance
+- The operator is a commercial unlicensed lender. They are not licensed by ASIC and do not adhere to responsible lending practises. It is very important that false statements are avoided on the site.
+
+
 
 ## Content Style Guide
 
