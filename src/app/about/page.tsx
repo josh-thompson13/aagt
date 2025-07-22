@@ -1,8 +1,9 @@
 import { AppConfig } from '@/utils/AppConfig';
 import { getAssetPath } from '@/utils/Helpers';
-import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users } from 'lucide-react';
+import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Users, Shield, Target, CheckCircle, Building } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -72,6 +73,72 @@ export default function About() {
     slogan: AppConfig.mission,
   };
 
+  const keyFeatures = [
+    { icon: Clock, text: 'Same Day Decisions', color: 'bg-blue-500' },
+    { icon: DollarSign, text: 'Direct Funding', color: 'bg-green-500' },
+    { icon: Shield, text: 'Proven Track Record', color: 'bg-purple-500' },
+    { icon: Target, text: 'Personal Service', color: 'bg-orange-500' },
+  ];
+
+  const differentiators = [
+    {
+      icon: DollarSign,
+      title: 'Direct Funding',
+      description:
+        'We lend our own funds, enabling faster decisions and flexible solutions tailored to your business needs.',
+      bgColor: 'bg-gradient-to-br from-green-50 to-green-100',
+      iconBg: 'bg-green-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-green-100 hover:to-green-200',
+    },
+    {
+      icon: Clock,
+      title: 'Same Day Approval',
+      description: 'Quick decisions when you need them most, with settlement typically within 4 working days.',
+      bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
+      iconBg: 'bg-blue-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
+    },
+    {
+      icon: Award,
+      title: 'Proven Experience',
+      description: 'Extensive track record of successful funding for Australian businesses across diverse industries.',
+      bgColor: 'bg-gradient-to-br from-amber-50 to-amber-100',
+      iconBg: 'bg-amber-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-amber-100 hover:to-amber-200',
+    },
+    {
+      icon: Users,
+      title: 'Personal Service',
+      description: 'Dedicated lending specialists who understand your business and provide personalized solutions.',
+      bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
+      iconBg: 'bg-purple-500',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
+    },
+  ];
+
+  const faqs = [
+    {
+      question: 'What makes AAGT different from banks and other lenders?',
+      answer:
+        "We're a direct lender using our own funds, which means no committee delays, faster approvals, and more flexible terms. We focus on your business potential rather than just credit scores.",
+    },
+    {
+      question: 'What loan amounts do you offer?',
+      answer:
+        'We provide business funding from $150,000 to $5,000,000 for any worthwhile business purpose including expansion, equipment, working capital, and investment opportunities.',
+    },
+    {
+      question: 'How quickly can I get approved and receive funds?',
+      answer:
+        'We offer same day approval for qualified applicants, with funds typically available within 4 working days of approval. Our streamlined process eliminates unnecessary delays.',
+    },
+    {
+      question: 'What documentation do you require?',
+      answer:
+        'We require minimal documentation compared to traditional lenders. Our streamlined process focuses on the essentials needed to assess your funding request quickly and efficiently.',
+    },
+  ];
+
   return (
     <>
       <script
@@ -79,244 +146,330 @@ export default function About() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">
+      {/* Hero Section */}
+      <section className="relative bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 opacity-50" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Main Content */}
+            <div className="text-center lg:text-left">
+              <p className="text-primary-700 font-semibold text-sm uppercase tracking-wider mb-4">
                 About AAGT Private Loans
+              </p>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Transforming
+                <span className="block text-primary-700">Business Funding</span>
               </h1>
-              <div className="flex justify-center mt-4 mb-4">
-                <p className="text-lg md:text-xl text-slate-600 mb-10 font-normal max-w-3xl leading-relaxed text-center">
-                  Direct private lending specialists transforming business funding with same day
-                  approvals, competitive rates, and straightforward processes
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              
+              <p className="text-xl md:text-2xl text-gray-600 mb-8">
+                Direct private lending specialists revolutionizing business funding with same day approvals, competitive rates, and straightforward processes.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Link
                   href="/apply"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-white bg-primary-700 hover:bg-primary-800 transition duration-150"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Apply Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-                <a
-                  href="#story"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 transition duration-150"
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Our Story
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Mission & Vision Section */}
-        <section className="py-24 bg-primary-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Mission */}
-              <div className="text-center">
-                <div className="mb-8">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Heart className="w-8 h-8 text-primary-700" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Our Mission</h2>
-                </div>
-                <p className="text-base text-slate-200 leading-relaxed">
-                  {AppConfig.mission}. We believe business funding should be accessible,
-                  transparent, and focused on helping entrepreneurs and investors achieve their
-                  goals without unnecessary complexity.
-                </p>
+                  Contact Our Team
+                </Link>
               </div>
 
-              {/* Vision */}
-              <div className="text-center">
-                <div className="mb-8">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Award className="w-8 h-8 text-primary-700" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Our Vision</h2>
-                </div>
-                <p className="text-base text-slate-200 leading-relaxed">
-                  To revolutionize private lending by eliminating the friction between ambition and capital.
-                  We're building a future where smart businesses get funded on merit, not bureaucracy -
-                  where a great opportunity today doesn't have to wait weeks for committee approval.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* What Sets Us Apart */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                Why Choose AAGT Private Loans
-              </h2>
-              <div className="flex justify-center">
-                <p className="text-lg md:text-xl text-slate-600 font-normal max-w-3xl leading-relaxed text-center">
-                  The expertise and values that make AAGT Private Loans different from traditional
-                  lenders
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  icon: <DollarSign className="w-8 h-8" />,
-                  title: 'Direct Funding',
-                  description:
-                    'We lend our own funds, enabling faster decisions and flexible solutions',
-                  bgColor: 'bg-gradient-to-br from-green-50 to-green-100',
-                  iconBg: 'bg-green-500',
-                  hoverBg: 'hover:bg-gradient-to-br hover:from-green-100 hover:to-green-200',
-                },
-                {
-                  icon: <Clock className="w-8 h-8" />,
-                  title: 'Same Day Approval',
-                  description: 'Quick decisions when you need them most, with 4-day settlement',
-                  bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
-                  iconBg: 'bg-blue-500',
-                  hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
-                },
-                {
-                  icon: <Award className="w-8 h-8" />,
-                  title: 'Proven Experience',
-                  description: 'Track record of successful funding for Australian businesses',
-                  bgColor: 'bg-gradient-to-br from-amber-50 to-amber-100',
-                  iconBg: 'bg-amber-500',
-                  hoverBg: 'hover:bg-gradient-to-br hover:from-amber-100 hover:to-amber-200',
-                },
-                {
-                  icon: <Users className="w-8 h-8" />,
-                  title: 'Personal Service',
-                  description: 'Dedicated lending specialists who understand your business needs',
-                  bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
-                  iconBg: 'bg-purple-500',
-                  hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
-                },
-              ].map((feature, index) => (
-                <div
-                  key={index}
-                  className={`p-8 transition-all duration-300 group rounded-xl ${feature.bgColor} ${feature.hoverBg} hover:shadow-lg hover:scale-105 text-center bg-white shadow-sm`}
-                >
-                  {/* Icon */}
-                  <div className="mb-6">
-                    <div
-                      className={`inline-flex p-4 ${feature.iconBg} rounded-full shadow-md group-hover:shadow-lg transition-all duration-300`}
-                    >
-                      <div className="text-white transition-colors duration-300">
-                        {feature.icon}
-                      </div>
+              {/* Key Features Grid */}
+              <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
+                {keyFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className={`p-2 ${feature.color} rounded-lg`}>
+                      <feature.icon className="h-4 w-4 text-white" />
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="font-medium mb-3 text-lg">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-24 bg-primary-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="p-12 rounded-xl border border-slate-600 bg-primary-800">
-              <div className="mb-16">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-center">
-                  Frequently Asked Questions
-                </h2>
-                <div className="flex justify-center">
-                  <p className="text-slate-200 font-light max-w-2xl text-center">
-                    Common questions about AAGT Private Loans and our business funding services
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {[
-                  {
-                    question: 'What makes AAGT different from banks and other lenders?',
-                    answer:
-                      "We're a direct lender using our own funds, which means no committee delays, faster approvals, and more flexible terms. We focus on your business potential rather than just credit scores.",
-                  },
-                  {
-                    question: 'What loan amounts do you offer?',
-                    answer:
-                      'We provide business funding from $150,000 to $5,000,000 for any worthwhile business purpose including expansion, equipment, working capital, and investment opportunities.',
-                  },
-                  {
-                    question: 'How quickly can I get approved and receive funds?',
-                    answer:
-                      'We offer same day approval for qualified applicants, with funds typically available within 4 working days of approval. Our streamlined process eliminates unnecessary delays.',
-                  },
-                  {
-                    question: 'What documentation do you require?',
-                    answer:
-                      'We require minimal documentation compared to traditional lenders. Our streamlined process focuses on the essentials needed to assess your funding request quickly and efficiently.',
-                  },
-                ].map((faq, index) => (
-                  <div
-                    key={index}
-                    className="pb-8 mb-8"
-                  >
-                    <h3 className="font-medium text-white mb-4 text-lg">{faq.question}</h3>
-                    <p className="text-slate-200 leading-relaxed">{faq.answer}</p>
+                    <span className="text-sm font-medium text-gray-700">{feature.text}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Call to Action */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Ready to Secure Your Business Funding?
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src={getAssetPath("/images/brooke-cagle-JBwcenOuRCg-unsplash.jpg")}
+                  alt="AAGT Private Loans team and professional service"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Stats Cards */}
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-600">$2B+</div>
+                  <div className="text-sm text-gray-600">Funded</div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-blue-600">1000+</div>
+                  <div className="text-xs text-gray-600">Happy Clients</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision Section */}
+      <section className="py-24 bg-primary-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-primary-900/90" />
+          <Image
+            src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
+            alt="Professional mission and vision background"
+            fill
+            className="object-cover opacity-20"
+            sizes="100vw"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
+              Our Purpose & Vision
             </h2>
             <div className="flex justify-center">
-              <p className="text-lg md:text-xl text-slate-600 mb-10 font-normal max-w-2xl leading-relaxed text-center">
-                Join thousands of Australian business owners who've chosen AAGT Private Loans for
-                their funding needs. Experience professional lending with competitive terms.
+              <p className="text-primary-100 font-light max-w-2xl text-center">
+                The values and vision that drive everything we do at AAGT Private Loans
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link
-                href="/apply"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-white bg-primary-700 hover:bg-primary-800 transition duration-150"
-              >
-                Apply Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white transition duration-150"
-              >
-                Contact Us
-              </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Mission */}
+            <div className="p-8 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-slate-200 transition-all duration-300 group rounded-xl shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm text-center">
+              <div className="mb-6">
+                <div className="inline-flex p-4 bg-blue-500 rounded-full shadow-md group-hover:shadow-lg transition-all duration-300 mb-4">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                {AppConfig.mission}. We believe business funding should be accessible, transparent, and focused on helping entrepreneurs and investors achieve their goals without unnecessary complexity.
+              </p>
             </div>
 
-            {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-slate-600">
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span className="text-sm">Call us for a consultation</span>
+            {/* Vision */}
+            <div className="p-8 bg-gradient-to-br from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 border border-slate-200 transition-all duration-300 group rounded-xl shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm text-center">
+              <div className="mb-6">
+                <div className="inline-flex p-4 bg-emerald-500 rounded-full shadow-md group-hover:shadow-lg transition-all duration-300 mb-4">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span className="text-sm">Get expert lending advice</span>
+              <p className="text-gray-700 leading-relaxed">
+                To revolutionize private lending by eliminating the friction between ambition and capital. We're building a future where smart businesses get funded on merit, not bureaucracy - where a great opportunity doesn't have to wait weeks for committee approval.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Sets Us Apart */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Why Choose AAGT Private Loans
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The expertise and values that make AAGT Private Loans different from traditional lenders
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {differentiators.map((feature, index) => (
+              <div
+                key={index}
+                className={`p-8 transition-all duration-300 group rounded-xl ${feature.bgColor} ${feature.hoverBg} hover:shadow-lg hover:scale-105 text-center`}
+              >
+                <div className="mb-6">
+                  <div
+                    className={`inline-flex p-4 ${feature.iconBg} rounded-full shadow-md group-hover:shadow-lg transition-all duration-300`}
+                  >
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <h3 className="font-semibold mb-3 text-lg text-gray-900">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Success Built on
+                <span className="block text-primary-700">Strong Partnerships</span>
+              </h2>
+              <p className="text-xl text-gray-600 mb-8">
+                Every business relationship we build is founded on trust, transparency, and mutual success. We don't just provide funding – we become your financial partner in growth.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <span className="text-gray-700">Technology-driven assessment process</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <span className="text-gray-700">Industry-agnostic funding solutions</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <span className="text-gray-700">Scalable loan amounts for growth</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <span className="text-gray-700">Ongoing relationship management</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/business-loans"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Explore Our Services
+                </Link>
+                <Link
+                  href="/rates"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  View Current Rates
+                </Link>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={getAssetPath("/images/matteo-vistocco-Dph00R2SwFo-unsplash.jpg")}
+                  alt="Successful business partnership and collaboration"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Achievement Card */}
+              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary-700 mb-1">95%</div>
+                  <div className="text-sm text-gray-600">Client Success Rate</div>
+                </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-primary-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-primary-900/90" />
+          <Image
+            src={getAssetPath("/images/mario-gogh-VBLHICVh-lI-unsplash.jpg")}
+            alt="FAQ and support background"
+            fill
+            className="object-cover opacity-20"
+            sizes="100vw"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
+              Frequently Asked Questions
+            </h2>
+            <div className="flex justify-center">
+              <p className="text-primary-100 font-light max-w-2xl text-center">
+                Common questions about AAGT Private Loans and our business funding services
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="p-8 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-slate-200 transition-all duration-300 group rounded-xl shadow-lg hover:shadow-xl backdrop-blur-sm"
+              >
+                <h3 className="font-semibold text-gray-900 mb-4 text-lg">{faq.question}</h3>
+                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Ready to Secure Your Business Funding?
+          </h2>
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            Join thousands of Australian business owners who've chosen AAGT Private Loans for their funding needs. Experience professional lending with competitive terms.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Apply Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Contact Our Team
+            </Link>
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-gray-600">
+            <div className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <span className="text-sm">Call for expert consultation</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              <span className="text-sm">Get personalized lending advice</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

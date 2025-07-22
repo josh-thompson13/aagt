@@ -69,9 +69,9 @@ export const BaseTemplate = (props: {
                 <Image
                   src={getAssetPath('/images/aagt_logo_no_background.png')}
                   alt="AAGT Private Loans Logo"
-                  width={180}
-                  height={60}
-                  className="w-auto h-10 sm:h-12"
+                  width={240}
+                  height={80}
+                  className="w-auto h-12 sm:h-16"
                   priority
                 />
               </Link>
@@ -178,15 +178,6 @@ export const BaseTemplate = (props: {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <div className="flex items-center mb-6">
-                <Image
-                  src={getAssetPath('/images/aagt_logo_no_background.png')}
-                  alt="AAGT Private Loans Logo"
-                  width={160}
-                  height={53}
-                  className="h-10 w-auto"
-                />
-              </div>
               <h3 className="text-xl font-bold mb-4 text-white">{AppConfig.name}</h3>
               <p className="text-gray-300 mb-6 leading-relaxed max-w-md">{AppConfig.description}</p>
               <div className="flex space-x-4">
