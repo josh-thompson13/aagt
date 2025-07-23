@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Banknote, Clock, FileText, Settings } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getAssetPath } from '../../utils/Helpers';
 
 export const WhyAAGT = () => {
@@ -109,18 +110,18 @@ export const WhyAAGT = () => {
                 We don't just provide funding – we become your financial partner.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
+                <Link
                   href="/about"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Learn About Us
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Start a Conversation
-                </a>
+                </Link>
               </div>
             </motion.div>
 
@@ -219,18 +220,18 @@ export const WhyAAGT = () => {
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
+                <Link
                   href="/business-loans"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Business Loans
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/investment-loans"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-primary-50 hover:bg-primary-100 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Investment Loans
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

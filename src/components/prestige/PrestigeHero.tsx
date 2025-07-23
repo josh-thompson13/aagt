@@ -1,20 +1,11 @@
 'use client';
 
 import { ArrowRight, CheckCircle, Clock, FileCheck, Shield, TrendingUp } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { getAssetPath } from '../../utils/Helpers';
 
 export const PrestigeHero = () => {
-  const router = useRouter();
-
-  const handleApply = () => {
-    router.push('/apply');
-  };
-
-  const handleViewRates = () => {
-    router.push('/rates');
-  };
 
   const keyFeatures = [
     { icon: Clock, text: 'Same Day Approval' },
@@ -52,19 +43,19 @@ export const PrestigeHero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <button
-                onClick={handleApply}
+              <Link
+                href="/apply"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
               >
                 Apply Now
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button
-                onClick={handleViewRates}
+              </Link>
+              <Link
+                href="/rates"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
               >
                 View Current Rates
-              </button>
+              </Link>
             </div>
 
             {/* Key Features */}
