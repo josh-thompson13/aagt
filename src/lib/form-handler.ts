@@ -7,7 +7,7 @@ export interface FormSubmitOptions {
   endpoint: string;
   data: any;
   onSuccess?: (data: any) => void;
-  
+
   onError?: (error: string) => void;
 }
 
@@ -29,7 +29,7 @@ ${JSON.stringify(data, null, 2)}
         <p><strong>To submit this application:</strong></p>
         <ul style="list-style: disc; padding-left: 2rem;">
           <li>Email us at: aagtpvtloans@gmail.com</li>
-          <li>Call us at: 1300 XXX XXX</li>
+          <li>Call us at: +61 461 534 088</li>
           <li>Or visit our office for a consultation</li>
         </ul>
       </div>

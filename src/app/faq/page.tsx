@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
 import { StructuredData } from '@/components/common/StructuredData';
 import { FAQSystem } from '@/components/content/FAQSystem';
 import { faqs, featuredFAQs } from '@/data/faqs';
 import { getAssetPath } from '@/utils/Helpers';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -174,10 +174,10 @@ export default function FAQPage() {
                 Ask a Question
               </Link>
               <a
-                href="tel:1300-AAGT-LOANS"
+                href="tel:+61 461 534 088"
                 className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary-900 transition-colors"
               >
-                Call 1300 AAGT LOANS
+                Call +61 461 534 088
               </a>
             </div>
 

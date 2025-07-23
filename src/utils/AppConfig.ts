@@ -5,7 +5,7 @@ export const AppConfig = {
   tagline: 'Alternative lending solutions for Australian businesses',
   mission: 'Making business and investment funding accessible and straightforward',
   email: 'aagtpvtloans@gmail.com',
-  phone: '1300 000 000', // Placeholder phone number - update with actual
+  phone: '+61 461 534 088', // Placeholder phone number - update with actual
   domain: '', // Domain will be set from environment or deployment
   businessType: 'Direct Private Lending Company',
   targetMarket: 'Business owners and investors seeking alternative funding solutions',
