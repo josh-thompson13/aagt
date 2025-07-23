@@ -1,17 +1,17 @@
-import { StructuredData } from '@/components/common/StructuredData';
-import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
+import { StructuredData } from '@/components/common/StructuredData';
+import { getAssetPath } from '@/utils/Helpers';
+import { breadcrumbSchema } from '@/utils/structuredData';
 import {
   ArrowRight,
   Calculator,
-  TrendingDown,
+  CheckCircle,
   Clock,
   Shield,
-  CheckCircle,
+  TrendingDown,
 } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { getAssetPath } from '@/utils/Helpers';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -350,7 +350,7 @@ export default function RatesTermsPage() {
             <div className="relative">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={getAssetPath("/images/sydney.jpeg")}
+                  src={getAssetPath("/images/images/jamie-davies-Hao52Fu9-F8-unsplash.jpg")}
                   alt="Professional lending consultation"
                   fill
                   className="object-cover"
