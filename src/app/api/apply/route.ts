@@ -161,7 +161,7 @@ This application was submitted through the AAGT Private Loans website.
     // Send email
     const mailOptions = {
       from: process.env.FROM_EMAIL || process.env.SMTP_USER,
-      to: 'josh.thompsonau@icloud.com',
+      to: 'jtbusinessau@gmail.com',
       subject: `New Loan Application - ${formData.firstName} ${formData.lastName} (${formattedLoanAmount})`,
       text: emailText,
       html: emailHtml,
