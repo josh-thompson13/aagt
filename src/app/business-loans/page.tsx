@@ -304,7 +304,7 @@ export default function BusinessLoansPage() {
               <div className="space-y-4 mb-8">
                 {businessPurposes.map((purpose, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-primary-600 rounded-full" />
                     <span className="text-gray-700">{purpose}</span>
                   </div>
                 ))}

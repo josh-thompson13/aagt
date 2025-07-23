@@ -335,19 +335,19 @@ export default function Contact() {
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Nationwide lending services</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Local market expertise</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Remote consultation available</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Same service standards nationwide</span>
                 </div>
               </div>

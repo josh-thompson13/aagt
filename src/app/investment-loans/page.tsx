@@ -329,7 +329,7 @@ export default function InvestmentLoansPage() {
               <div className="space-y-4 mb-8">
                 {investmentPurposes.map((purpose, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-primary-600 rounded-full" />
                     <span className="text-gray-700">{purpose}</span>
                   </div>
                 ))}
@@ -369,15 +369,15 @@ export default function InvestmentLoansPage() {
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Specialist investment loan structuring</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Portfolio lending and cross-collateralization</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Flexible exit strategies and refinancing</span>
                 </div>
               </div>

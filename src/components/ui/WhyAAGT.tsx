@@ -204,15 +204,15 @@ export const WhyAAGT = () => {
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Technology-driven assessment process</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Industry-agnostic funding solutions</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
                   <span className="text-gray-700">Scalable loan amounts for growth</span>
                 </div>
               </div>
