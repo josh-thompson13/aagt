@@ -85,7 +85,7 @@ export const DocumentUpload = ({
       return {
         ...uploadedFile,
         uploadStatus: 'completed',
-        url: result.url,
+        url: result.file?.url || '#',
         uploadProgress: 100,
       };
     } catch (error) {
