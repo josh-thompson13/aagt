@@ -27,20 +27,10 @@ Since GitHub Pages only supports static files and cannot run server-side code, w
 
 After creating the form, you'll see a page with your form endpoint. It will look like:
 ```
-https://formspree.io/f/YOUR_FORM_ID
+https://formspree.io/f/xanbeprj
 ```
 
-Copy this URL - you'll need it in the next step.
-
-## Step 4: Update the Code
-
-Open `/src/lib/form-handler.ts` and find line 17:
-
-```typescript
-const formspreeEndpoint = 'https://formspree.io/f/xpwzgwbq'; // Replace with your Formspree endpoint
-```
-
-Replace `xpwzgwbq` with your actual Formspree form ID.
+The endpoint is already configured in the code as: `https://formspree.io/f/xanbeprj`
 
 ## Step 5: Configure Form Settings (Optional)
 

@@ -1,6 +1,7 @@
 // Form submission handler for GitHub Pages compatibility
 
-const isStaticExport = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true';
+const isStaticExport = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true' || 
+  (typeof window !== 'undefined' && window.location.hostname.includes('github.io'));
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export interface FormSubmitOptions {
@@ -12,8 +13,13 @@ export interface FormSubmitOptions {
 }
 
 export async function submitForm({ endpoint, data, onSuccess, onError }: FormSubmitOptions) {
+  console.log('Form handler - isStaticExport:', isStaticExport);
+  console.log('Form handler - apiUrl:', apiUrl);
+  console.log('Form handler - hostname:', typeof window !== 'undefined' ? window.location.hostname : 'server');
+  
   // If running on GitHub Pages, use Formspree for email functionality
   if (isStaticExport && !apiUrl) {
+    console.log('Using Formspree for form submission');
     const formspreeEndpoint = 'https://formspree.io/f/xanbeprj';
     
     try {
@@ -108,6 +114,7 @@ export async function submitForm({ endpoint, data, onSuccess, onError }: FormSub
   }
 
   // Use external API if configured
+  console.log('Using API route for form submission, endpoint:', endpoint);
   const url = apiUrl ? `${apiUrl}${endpoint}` : endpoint;
 
   try {
