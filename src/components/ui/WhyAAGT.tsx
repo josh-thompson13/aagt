@@ -9,32 +9,32 @@ export const WhyAAGT = () => {
   const features = [
     {
       icon: Banknote,
-      title: 'Direct Lender',
-      description: 'We fund with our own capital',
+      title: 'Direct Funding',
+      description: 'We lend our own funds, enabling faster decisions and flexible solutions tailored to your business needs.',
       bgColor: 'bg-gradient-to-br from-green-50 to-green-100',
       iconBg: 'bg-green-500',
       hoverBg: 'hover:bg-gradient-to-br hover:from-green-100 hover:to-green-200',
     },
     {
       icon: Clock,
-      title: '4-Day Settlement',
-      description: 'From approval to funds',
+      title: 'Same Day Approval',
+      description: 'Quick decisions when you need them most, with settlement typically within 4 working days.',
       bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
       iconBg: 'bg-blue-500',
       hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
     },
     {
       icon: FileText,
-      title: 'Simple Process',
-      description: 'No committees or complex requirements',
+      title: 'Proven Experience',
+      description: 'Extensive track record of successful funding for Australian businesses across diverse industries.',
       bgColor: 'bg-gradient-to-br from-amber-50 to-amber-100',
       iconBg: 'bg-amber-500',
       hoverBg: 'hover:bg-gradient-to-br hover:from-amber-100 hover:to-amber-200',
     },
     {
       icon: Settings,
-      title: 'Flexible Terms',
-      description: 'Tailored to your needs',
+      title: 'Personal Service',
+      description: 'Dedicated lending specialists who understand your business and provide personalized solutions.',
       bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
       iconBg: 'bg-purple-500',
       hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
@@ -53,9 +53,11 @@ export const WhyAAGT = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">Why Choose AAGT?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We make business funding simple, fast, and flexible
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Why Choose AAGT Private Loans
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The expertise and values that make AAGT Private Loans different from traditional lenders
             </p>
           </motion.div>
 
@@ -132,7 +134,7 @@ export const WhyAAGT = () => {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={getAssetPath("/images/brooke-cagle-JBwcenOuRCg-unsplash.jpg")}
+                  src={getAssetPath("/images/matteo-vistocco-Dph00R2SwFo-unsplash.jpg")}
                   alt="Successful business partnership and collaboration"
                   fill
                   className="object-cover"
@@ -144,7 +146,7 @@ export const WhyAAGT = () => {
               {/* Floating Achievement Card */}
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-700 mb-1">1000+</div>
+                  <div className="text-3xl font-bold text-primary-700 mb-1">500+</div>
                   <div className="text-sm text-gray-600">Successful Loans</div>
                 </div>
               </div>
@@ -216,12 +218,20 @@ export const WhyAAGT = () => {
                   <span className="text-gray-700">Scalable loan amounts for growth</span>
                 </div>
               </div>
-              <a
-                href="/loan-products"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-primary-50 hover:bg-primary-100 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Explore Our Products
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/business-loans"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Business Loans
+                </a>
+                <a
+                  href="/investment-loans"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-primary-50 hover:bg-primary-100 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Investment Loans
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>

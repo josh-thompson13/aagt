@@ -268,7 +268,7 @@ export default function BusinessLoansPage() {
                 {/* CTA Buttons */}
                 <div className="flex gap-3">
                   <Link
-                    href={`/loan-products/${product.slug}`}
+                    href="/contact"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"
                   >
                     Learn More

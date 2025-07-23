@@ -1,11 +1,11 @@
-import { StructuredData } from '@/components/common/StructuredData';
-import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
-import { DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight, Building2, Target, Zap } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { StructuredData } from '@/components/common/StructuredData';
 import { loanProducts } from '@/data/loanProducts';
 import { getAssetPath } from '@/utils/Helpers';
+import { breadcrumbSchema } from '@/utils/structuredData';
+import { ArrowRight, Building2, CheckCircle, Clock, DollarSign, Target, TrendingUp, Zap } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -271,7 +271,7 @@ export default function InvestmentLoansPage() {
                 {/* CTA Buttons */}
                 <div className="flex gap-3">
                   <Link
-                    href={`/loan-products/${product.slug}`}
+                    href="/contact"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"
                   >
                     Learn More
@@ -310,7 +310,7 @@ export default function InvestmentLoansPage() {
               {/* Floating Achievement Card */}
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-700 mb-1">$2B+</div>
+                  <div className="text-3xl font-bold text-primary-700 mb-1">$100M+</div>
                   <div className="text-sm text-gray-600">Funded</div>
                 </div>
               </div>
