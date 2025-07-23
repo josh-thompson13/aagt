@@ -350,7 +350,7 @@ export default function RatesTermsPage() {
             <div className="relative">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={getAssetPath("/images/images/jamie-davies-Hao52Fu9-F8-unsplash.jpg")}
+                  src={getAssetPath("/images/jamie-davies-Hao52Fu9-F8-unsplash.jpg")}
                   alt="Professional lending consultation"
                   fill
                   className="object-cover"
