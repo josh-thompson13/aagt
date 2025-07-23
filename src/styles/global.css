@@ -195,6 +195,11 @@
     animation: slideUp 0.3s ease-out;
   }
 
+  /* Prevent flash of unstyled content during page transitions */
+  main {
+    isolation: isolate;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;

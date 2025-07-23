@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { type ReactNode, useEffect, useState } from 'react';
+import { type ReactNode } from 'react';
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -11,43 +11,30 @@ interface PageTransitionProps {
 
 export const PageTransition = ({ children, className = '' }: PageTransitionProps) => {
   const pathname = usePathname();
-  const [_isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [pathname]);
 
   const pageVariants: Variants = {
     initial: {
       opacity: 0,
-      y: 20,
-      scale: 0.98,
+      y: 10,
     },
     in: {
       opacity: 1,
       y: 0,
-      scale: 1,
     },
     out: {
       opacity: 0,
-      y: -20,
-      scale: 1.02,
+      y: -10,
     },
   };
 
   const pageTransition = {
     type: 'tween' as const,
-    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    duration: 0.6,
+    ease: 'easeInOut' as const,
+    duration: 0.3,
   };
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
         initial="initial"
@@ -57,13 +44,7 @@ export const PageTransition = ({ children, className = '' }: PageTransitionProps
         transition={pageTransition}
         className={className}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-        >
-          {children}
-        </motion.div>
+        {children}
       </motion.div>
     </AnimatePresence>
   );
