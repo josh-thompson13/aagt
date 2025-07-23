@@ -260,7 +260,7 @@ export const sanitizeInput = (input: string): string => {
 
 export const sanitizeNumericInput = (input: string | number): number => {
   const num = typeof input === 'string' ? parseFloat(input.replace(/[^0-9.-]/g, '')) : input;
-  return isNaN(num) ? 0 : Math.max(0, num);
+  return Number.isNaN(num) ? 0 : Math.max(0, num);
 };
 
 // Helper functions
