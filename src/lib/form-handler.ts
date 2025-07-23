@@ -7,6 +7,7 @@ export interface FormSubmitOptions {
   endpoint: string;
   data: any;
   onSuccess?: (data: any) => void;
+  
   onError?: (error: string) => void;
 }
 
