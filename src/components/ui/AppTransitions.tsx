@@ -24,12 +24,6 @@ const routeTransitions = {
     exit: { opacity: 0, scale: 1.05 },
     transition: { duration: 0.3, ease: 'easeInOut' },
   },
-  calculator: {
-    initial: { opacity: 0, rotateX: 90, transformPerspective: 1000 },
-    animate: { opacity: 1, rotateX: 0 },
-    exit: { opacity: 0, rotateX: -90 },
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
   modal: {
     initial: { opacity: 0, scale: 0.8, y: 50 },
     animate: { opacity: 1, scale: 1, y: 0 },
@@ -44,7 +38,6 @@ const routeTransitions = {
 
 // Get transition type based on route
 const getTransitionType = (pathname: string): keyof typeof routeTransitions => {
-  if (pathname.includes('/calculator')) return 'calculator';
   if (pathname.includes('/apply') || pathname.includes('/contact')) return 'slide';
   if (pathname.includes('/loan') || pathname.includes('/rate')) return 'scale';
   return 'default';

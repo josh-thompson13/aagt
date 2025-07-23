@@ -1,5 +1,6 @@
 import { AppConfig } from '@/utils/AppConfig';
 import { getAssetPath } from '@/utils/Helpers';
+import { LazyImage } from '@/components/common/LazyImage';
 import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Shield, Target } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -199,12 +200,13 @@ export default function About() {
       <section className="py-24 bg-primary-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-primary-900/90" />
-          <Image
+          <LazyImage
             src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
             alt="Professional mission and vision background"
             fill
             className="object-cover opacity-20"
             sizes="100vw"
+            rootMargin="100px"
           />
         </div>
 
@@ -256,12 +258,13 @@ export default function About() {
       <section className="py-24 bg-primary-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-primary-900/90" />
-          <Image
+          <LazyImage
             src={getAssetPath("/images/mario-gogh-VBLHICVh-lI-unsplash.jpg")}
             alt="FAQ and support background"
             fill
             className="object-cover opacity-20"
             sizes="100vw"
+            rootMargin="100px"
           />
         </div>
 

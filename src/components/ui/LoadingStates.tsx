@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp } from 'lucide-react';
 
 // Generic Skeleton Component
 export const Skeleton = ({
@@ -211,61 +210,6 @@ export const LoadingSpinner = ({
   );
 };
 
-// Calculator Loading State
-export const CalculatorLoading = () => {
-  return (
-    <motion.div
-      className="flex items-center justify-center p-8 bg-gradient-to-br from-teal-50 to-primary-50 rounded-2xl border border-teal-200"
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4 }}
-    >
-      <div className="flex items-center space-x-4">
-        <motion.div
-          className="p-3 bg-teal-100 rounded-lg"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-        >
-          <TrendingUp className="h-6 w-6 text-teal-700" />
-        </motion.div>
-        <div>
-          <motion.div
-            className="flex space-x-1 mb-2"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.2,
-                },
-              },
-            }}
-          >
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                className="h-2 w-2 bg-teal-600 rounded-full"
-                variants={{
-                  hidden: { opacity: 0.3 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      duration: 0.5,
-                      repeat: Infinity,
-                      repeatType: 'reverse',
-                    },
-                  },
-                }}
-              />
-            ))}
-          </motion.div>
-          <p className="text-sm font-medium text-gray-700">Calculating your quote...</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 // Page Transition Loading
 export const PageTransitionLoading = () => {

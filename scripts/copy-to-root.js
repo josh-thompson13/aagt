@@ -51,7 +51,6 @@ try {
     'about',
     'apply',
     'business-loans',
-    'calculator',
     'contact',
     'faq',
     'investment-loans',

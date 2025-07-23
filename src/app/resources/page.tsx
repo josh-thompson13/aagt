@@ -1,17 +1,16 @@
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
-import { ArrowRight, Calculator, FileText, HelpCircle, TrendingUp } from 'lucide-react';
-import QuickQuote from '@/components/QuickQuote';
+import { ArrowRight, FileText, HelpCircle, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
     title: 'Resources | Business Loan Tools & Guides',
     description:
-      'Access loan calculators, business financing guides, FAQs, and industry insights. Educational resources for business owners seeking funding.',
+      'Access business financing guides, FAQs, and industry insights. Educational resources for business owners seeking funding.',
     keywords:
-      'business loan calculator, private lending resources, business financing guide, loan tools, funding education',
+      'private lending resources, business financing guide, loan tools, funding education',
     alternates: {
       canonical: '/resources',
     },
@@ -25,13 +24,6 @@ export default function ResourcesPage() {
   ];
 
   const tools = [
-    {
-      icon: Calculator,
-      title: 'Loan Calculator',
-      description: 'Calculate monthly payments and total interest for your loan',
-      link: '#calculator',
-      color: 'bg-blue-50 text-blue-700',
-    },
     {
       icon: FileText,
       title: 'Application Checklist',
@@ -170,11 +162,11 @@ export default function ResourcesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="#calculator"
+                href="/apply"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-primary-700 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-white/50 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
-                Try Our Calculator
-                <Calculator className="ml-2 h-5 w-5" />
+                Apply Now
+                <ArrowRight className="ml-2 h-5 w-5" />
               </a>
               <a
                 href="#guides"
@@ -220,23 +212,6 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Quick Quote Section */}
-      <section className="py-20 bg-gray-50" id="calculator">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Quick Quote Calculator
-            </h2>
-            <p className="text-lg text-gray-700">
-              Get an instant estimate of your total interest and repayment amount.
-            </p>
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            <QuickQuote />
-          </div>
-        </div>
-      </section>
 
       {/* Guides Section */}
       <section className="py-20" id="guides">

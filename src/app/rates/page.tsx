@@ -1,4 +1,5 @@
 import { CallToAction } from '@/components/common/CallToAction';
+import { LazyImage } from '@/components/common/LazyImage';
 import { StructuredData } from '@/components/common/StructuredData';
 import { getAssetPath } from '@/utils/Helpers';
 import { breadcrumbSchema } from '@/utils/structuredData';
@@ -160,10 +161,10 @@ export default function RatesTermsPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
-                  href="/calculator"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Calculate Payments
+                  Contact Us
                 </Link>
               </div>
 
@@ -217,12 +218,13 @@ export default function RatesTermsPage() {
       <section className="py-24 bg-primary-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-primary-900/90" />
-          <Image
+          <LazyImage
             src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
             alt="Professional lending rates background"
             fill
             className="object-cover opacity-20"
             sizes="100vw"
+            rootMargin="100px"
           />
         </div>
 
@@ -286,10 +288,10 @@ export default function RatesTermsPage() {
                     Apply Now
                   </Link>
                   <Link
-                    href="/calculator"
+                    href="/contact"
                     className="px-4 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 transition-colors"
                   >
-                    Calculate
+                    Get Quote
                   </Link>
                 </div>
               </div>
@@ -349,12 +351,13 @@ export default function RatesTermsPage() {
             {/* Image */}
             <div className="relative">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+                <LazyImage
                   src={getAssetPath("/images/k8-NPaCLnEZVnk-unsplash.jpg")}
                   alt="Professional lending consultation"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  rootMargin="100px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>

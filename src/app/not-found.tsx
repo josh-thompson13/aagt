@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAssetPath } from '@/utils/Helpers';
-import { Home, Calculator } from 'lucide-react';
+import { Home, ArrowRight } from 'lucide-react';
 
 export default function NotFound() {
   return (
@@ -45,7 +45,7 @@ export default function NotFound() {
             href="/apply"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary-700 text-primary-700 font-semibold rounded-lg hover:bg-primary-50 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 focus:ring-4 focus:ring-primary-200 transition-all duration-200"
           >
-            <Calculator className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5" />
             Apply for Funding
           </Link>
         </div>

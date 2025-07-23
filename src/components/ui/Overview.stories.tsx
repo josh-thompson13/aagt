@@ -186,17 +186,17 @@ const ComponentShowcase = () => {
         </div>
       </section>
 
-      {/* Calculator Section */}
+      {/* Application Section */}
       <section>
-        <h2 className="text-2xl font-bold text-[#0A2540] mb-6">Calculator Tools</h2>
+        <h2 className="text-2xl font-bold text-[#0A2540] mb-6">Application Tools</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
-              <h3 className="text-lg font-semibold">Quick Quote Calculator</h3>
+              <h3 className="text-lg font-semibold">Quick Application</h3>
             </CardHeader>
             <CardBody>
               <p className="text-gray-600">
-                Simple calculator for loan estimates with 1-24 month terms.
+                Streamlined application process with fast approvals.
               </p>
             </CardBody>
           </Card>

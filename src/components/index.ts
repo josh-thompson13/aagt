@@ -9,5 +9,3 @@ export { BaseTemplate } from './layouts/BaseTemplate';
 export { PostHogProvider } from './analytics/PostHogProvider';
 export { SuspendedPostHogPageView as PostHogPageView } from './analytics/PostHogPageView';
 
-// Calculator Components
-export { default as QuickQuote } from './QuickQuote';

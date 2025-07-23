@@ -1,4 +1,5 @@
 import { CallToAction } from '@/components/common/CallToAction';
+import { LazyImage } from '@/components/common/LazyImage';
 import { StructuredData } from '@/components/common/StructuredData';
 import { loanProducts } from '@/data/loanProducts';
 import { getAssetPath } from '@/utils/Helpers';
@@ -117,10 +118,10 @@ export default function InvestmentLoansPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
-                  href="/calculator"
+                  href="/rates"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Calculate Returns
+                  View Rates
                 </Link>
               </div>
 
@@ -175,12 +176,13 @@ export default function InvestmentLoansPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-primary-900/90" />
-          <Image
+          <LazyImage
             src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
             alt="Investment and development background"
             fill
             className="object-cover opacity-20"
             sizes="100vw"
+            rootMargin="100px"
           />
         </div>
 
@@ -297,12 +299,13 @@ export default function InvestmentLoansPage() {
             {/* Image */}
             <div className="order-2 lg:order-1 relative">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+                <LazyImage
                   src={getAssetPath("/images/amina-atar-tAPxuPCThxY-unsplash.jpg")}
                   alt="Investment planning and portfolio growth"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  rootMargin="100px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
@@ -392,12 +395,13 @@ export default function InvestmentLoansPage() {
             {/* Image */}
             <div className="relative">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+                <LazyImage
                   src={getAssetPath("/images/mario-gogh-VBLHICVh-lI-unsplash.jpg")}
                   alt="Successful investment partnership and consultation"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  rootMargin="100px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>

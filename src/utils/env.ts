@@ -44,7 +44,6 @@ export const env = {
   RATE_LIMIT_WINDOW: parseInt(process.env.RATE_LIMIT_WINDOW || '900000', 10),
 
   // Feature Flags
-  FEATURE_CALCULATOR_ADVANCED: process.env.FEATURE_CALCULATOR_ADVANCED === 'true',
   FEATURE_ELIGIBILITY_CHECK: process.env.FEATURE_ELIGIBILITY_CHECK === 'true',
   FEATURE_DOCUMENT_UPLOAD: process.env.FEATURE_DOCUMENT_UPLOAD === 'true',
   FEATURE_LIVE_CHAT: process.env.FEATURE_LIVE_CHAT === 'true',
@@ -84,7 +83,6 @@ export function validateEnv() {
 
 // Feature flag helpers
 export const features = {
-  isCalculatorAdvanced: () => env.FEATURE_CALCULATOR_ADVANCED,
   isEligibilityCheckEnabled: () => env.FEATURE_ELIGIBILITY_CHECK,
   isDocumentUploadEnabled: () => env.FEATURE_DOCUMENT_UPLOAD,
   isLiveChatEnabled: () => env.FEATURE_LIVE_CHAT,

@@ -385,10 +385,10 @@ export function FAQSystem({ faqs }: Props) {
               Ask Our Experts
             </Link>
             <Link
-              href="/calculator"
+              href="/apply"
               className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
-              Get a Quote
+              Apply Now
             </Link>
           </div>
         </div>

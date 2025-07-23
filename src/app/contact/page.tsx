@@ -2,6 +2,7 @@ import { Clock, Mail, Phone, MessageCircle, ArrowRight, Users, Shield, Zap, Chec
 import { getAbsoluteUrl } from '@/utils/getBaseUrl';
 import Link from 'next/link';
 import Image from 'next/image';
+import { LazyImage } from '@/components/common/LazyImage';
 import { getAssetPath } from '@/utils/Helpers';
 
 export async function generateMetadata() {
@@ -179,12 +180,13 @@ export default function Contact() {
       <section className="py-24 bg-primary-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-primary-900/90" />
-          <Image
+          <LazyImage
             src={getAssetPath("/images/kevin-matos-Nl_FMFpXo2g-unsplash.jpg")}
             alt="Professional contact and communication background"
             fill
             className="object-cover opacity-20"
             sizes="100vw"
+            rootMargin="100px"
           />
         </div>
 
@@ -371,12 +373,13 @@ export default function Contact() {
             {/* Image */}
             <div className="relative">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+                <LazyImage
                   src={getAssetPath("/images/jamie-davies-Hao52Fu9-F8-unsplash.jpg")}
                   alt="Professional consultation and nationwide service"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  rootMargin="100px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
