@@ -101,10 +101,14 @@ export default function ApplicationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submit triggered', formData);
 
     // Validate minimum loan amount
     const loanAmountNum = parseInt(formData.loanAmount.replace(/[^0-9]/g, ''));
+    console.log('Loan amount validation:', loanAmountNum, 'Required minimum: 150000');
+    
     if (loanAmountNum < 150000) {
+      console.log('Validation failed: Loan amount too low');
       setSubmitStatus({
         type: 'error',
         message: 'Minimum loan amount is $150,000.',
@@ -112,13 +116,17 @@ export default function ApplicationForm() {
       return;
     }
 
+    console.log('Terms agreed:', formData.agreeToTerms);
     if (!formData.agreeToTerms) {
+      console.log('Validation failed: Terms not agreed');
       setSubmitStatus({
         type: 'error',
         message: 'Please agree to the Terms and Conditions to continue.',
       });
       return;
     }
+
+    console.log('All validations passed, proceeding with submission');
 
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
@@ -631,6 +639,7 @@ export default function ApplicationForm() {
           <button
             type="submit"
             disabled={isSubmitting}
+            onClick={() => console.log('Submit button clicked!')}
             className="w-full md:w-auto inline-flex items-center justify-center px-12 py-4 text-lg font-bold rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
           >
             {isSubmitting ? (
