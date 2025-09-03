@@ -1,6 +1,6 @@
 import { StructuredData } from '@/components/common/StructuredData';
-import { breadcrumbSchema } from '@/utils/structuredData';
 import ApplicationForm from '@/components/forms/ApplicationForm';
+import { breadcrumbSchema } from '@/utils/structuredData';
 import { Suspense } from 'react';
 
 export async function generateMetadata() {
@@ -53,9 +53,12 @@ export default function ApplyPage() {
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Loan Application</h1>
-            <p className="text-lg text-gray-700">
-              Complete this form for a same-day response
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Quick Loan Application</h1>
+            <p className="text-2xl text-gray-600">
+              Complete this form for a 
+            </p>
+            <p className="text-2xl font-bold text-green-600">
+              SAME-DAY response
             </p>
           </div>
 

@@ -83,16 +83,18 @@ export const BaseTemplate = (props: {
             </nav>
 
             {/* Apply for Loan CTA Button */}
-            <div
-              className="hidden sm:flex items-center"
-            >
-              <Link
-                href="/apply"
-                className="bg-primary-900 text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-primary-800 shadow-lg hover:shadow-xl"
-              >
-                Apply Now
-              </Link>
-            </div>
+            
+              <div className="hidden sm:flex items-center">
+                {!(pathname === '/apply' || pathname === '/apply/') && (
+                <Link
+                  href="/apply"
+                  className="bg-primary-900 text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-primary-800 shadow-lg hover:shadow-xl"
+                >
+                  Apply Now
+                </Link>
+                )}
+              </div>
+            
 
             {/* Mobile menu button */}
             <div className="md:hidden">

@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import { AlertCircle, CheckCircle2, Plus } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -39,6 +39,8 @@ export default function ApplicationForm() {
     workingWithBroker: false,
     agreeToTerms: false,
     receiveUpdates: false,
+    // Property Addresses
+    propertyAddresses: [''],
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -97,6 +99,32 @@ export default function ApplicationForm() {
         [name]: newValue,
       }));
     }
+  };
+
+  // Handler for property address change
+  const handlePropertyAddressChange = (index: number, value: string) => {
+    setFormData((prev) => {
+      const updated = [...prev.propertyAddresses];
+      updated[index] = value;
+      return { ...prev, propertyAddresses: updated };
+    });
+  };
+
+  // Handler to add a new property address
+  const handleAddPropertyAddress = () => {
+    setFormData((prev) => ({
+      ...prev,
+      propertyAddresses: [...prev.propertyAddresses, ''],
+    }));
+  };
+
+  // Handler to remove a property address
+  const handleRemovePropertyAddress = (index: number) => {
+    setFormData((prev) => {
+      const updated = [...prev.propertyAddresses];
+      updated.splice(index, 1);
+      return { ...prev, propertyAddresses: updated };
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -171,6 +199,7 @@ export default function ApplicationForm() {
           workingWithBroker: false,
           agreeToTerms: false,
           receiveUpdates: false,
+          propertyAddresses: [''],
         });
         },
         onError: (error) => {
@@ -208,28 +237,88 @@ export default function ApplicationForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-12">
-        {/* Contact Information */}
+        {/* Contact Information + Business & Personal Information */}
         <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-xl p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
             <span className="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
             Quick Contact
           </h3>
-        
-        
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email *
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                placeholder="your@email.com"
-              />
-        
-           
+          {/* Email */}
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Email *
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+            placeholder="your@email.com"
+          />
+          {/* Personal Details */}
+          <div className="mt-6">
+            <h4 className="text-lg font-medium text-gray-900 mb-4">Personal Details</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  First Name *
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                  placeholder="Enter your first name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Last Name *
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                  placeholder="Enter your last name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                  placeholder="04XX XXX XXX"
+                />
+              </div>
+              <div className="md:col-span-1">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Name of Borrowing Entity *
+                </label>
+                <input
+                  type="text"
+                  name="borrowingEntity"
+                  value={formData.borrowingEntity}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                  placeholder="e.g. Ajax p/l as Trustee for the AJAX Trust"
+                  title="Enter the full legal name of the borrowing entity"
+                />
+              </div>
+            </div>
+          </div>
         
         </div>
 
@@ -319,7 +408,7 @@ export default function ApplicationForm() {
                 required
                 rows={2}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                placeholder="e.g. Office Building, House, Vacant land"
+                placeholder="e.g. Real estate, shares, boat, vehicle, truck"
               />
             </div>
             <div>
@@ -353,283 +442,66 @@ export default function ApplicationForm() {
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Property Address (if applicable)
+                Property Address(es) (if applicable)
               </label>
-              <input
-                type="text"
-                name="propertyAddress"
-                value={formData.propertyAddress}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                placeholder="Property address, city, state, postcode"
-              />
+              {formData.propertyAddresses.map((address, idx) => (
+                <div key={idx} className="flex items-center mb-2">
+                  <input
+                    type="text"
+                    name={`propertyAddress_${idx}`}
+                    value={address}
+                    onChange={e => handlePropertyAddressChange(idx, e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
+                    placeholder={`Property address ${idx + 1}, city, state, postcode`}
+                  />
+                  {formData.propertyAddresses.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => handleRemovePropertyAddress(idx)}
+                      className="ml-2 text-red-500 hover:text-red-700"
+                      aria-label="Remove address"
+                    >
+                      &times;
+                    </button>
+                  )}
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={handleAddPropertyAddress}
+                className="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium rounded bg-green-100 text-green-700 hover:bg-green-200 transition"
+              >
+                <Plus className="w-4 h-4 mr-1" />
+                Add another property address
+              </button>
             </div>
           </div>
         </div>
 
-        {/* 4. Business & Personal Information */}
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
-            Business & Personal Information
-          </h3>
-          <div className="space-y-6">
-            {/* Personal Details */}
-            <div>
-              <h4 className="text-lg font-medium text-gray-900 mb-4">Personal Details</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="Enter your first name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="Enter your last name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="04XX XXX XXX"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Business Details */}
-            <div>
-              <h4 className="text-lg font-medium text-gray-900 mb-4">Business Details</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Name of Borrowing Entity *
-                  </label>
-                  <input
-                    type="text"
-                    name="borrowingEntity"
-                    value={formData.borrowingEntity}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="e.g. Ajax p/l as Trustee for the AJAX Trust"
-                title="Enter the full legal name of the borrowing entity"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Names of Directors *
-                  </label>
-                  <input
-                    type="text"
-                    name="directorsNames"
-                    value={formData.directorsNames}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="List all directors' names"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Name
-                  </label>
-                  <input
-                    type="text"
-                    name="businessName"
-                    value={formData.businessName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="Your business name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ABN</label>
-                  <input
-                    type="text"
-                    name="abn"
-                    value={formData.abn}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="XX XXX XXX XXX"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Address *
-                  </label>
-                  <input
-                    type="text"
-                    name="businessAddress"
-                    value={formData.businessAddress}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                    placeholder="Street address, city, state, postcode"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Industry/Business Type *
-                  </label>
-                  <select
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                  >
-                    <option value="">Select industry</option>
-                    <option value="construction">Construction</option>
-                    <option value="retail">Retail</option>
-                    <option value="manufacturing">Manufacturing</option>
-                    <option value="professional-services">Professional Services</option>
-                    <option value="hospitality">Hospitality</option>
-                    <option value="real-estate">Real Estate</option>
-                    <option value="technology">Technology</option>
-                    <option value="healthcare">Healthcare</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Years in Business *
-                  </label>
-                  <select
-                    name="yearsInBusiness"
-                    value={formData.yearsInBusiness}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                  >
-                    <option value="">Select years</option>
-                    <option value="0-1">0-1 years</option>
-                    <option value="1-2">1-2 years</option>
-                    <option value="2-5">2-5 years</option>
-                    <option value="5-10">5-10 years</option>
-                    <option value="10+">10+ years</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      
-        {/* 6. Additional Information */}
-        <div className="bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
-            Additional Information
-          </h3>
-          <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Are you/ have you ever been Bankrupt? (Does not Disqualify) *
-              </label>
+        {/* Agree to Terms & Privacy Policy */}
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-xl p-6">
+          <div className="space-y-4">
+            <label className="flex items-start">
               <input
-                type="text"
-                name="bankruptcyHistory"
-                value={formData.bankruptcyHistory}
+                type="checkbox"
+                name="agreeToTerms"
+                checked={formData.agreeToTerms}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                placeholder="e.g. Yes, but was discharged in 2017 / No, never"
+                className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                What is your Exit Strategy? How do you propose to repay the loan? *
-              </label>
-              <textarea
-                name="exitStrategy"
-                value={formData.exitStrategy}
-                onChange={handleChange}
-                required
-                rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors duration-200"
-                placeholder="e.g. Sell shares, Refinance, Incoming cash, Inheritance"
-              />
-            </div>
-          </div>
-          <div className="mt-6 space-y-4">
-            <div>
-              <label className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="declinedByBanks"
-                  checked={formData.declinedByBanks}
-                  onChange={handleChange}
-                  className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-                />
-                <span className="ml-2 text-sm text-gray-700">
-                  I have been declined by traditional banks
-                </span>
-              </label>
-            </div>
-            <div>
-              <label className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="workingWithBroker"
-                  checked={formData.workingWithBroker}
-                  onChange={handleChange}
-                  className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-                />
-                <span className="ml-2 text-sm text-gray-700">
-                  I am working with a mortgage broker
-                </span>
-              </label>
-            </div>
-            <div>
-              <label className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="agreeToTerms"
-                  checked={formData.agreeToTerms}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-                />
-                <span className="ml-2 text-sm text-gray-700">
-                  I agree to the{' '}
-                  <a href="#" className="text-primary-700 hover:text-primary-600 underline">
-                    Terms and Conditions
-                  </a>{' '}
-                  and{' '}
-                  <a href="#" className="text-primary-700 hover:text-primary-600 underline">
-                    Privacy Policy
-                  </a>{' '}
-                  *
-                </span>
-              </label>
-            </div>
+              <span className="ml-2 text-sm text-gray-700">
+                I agree to the{' '}
+                <a href="#" className="text-primary-700 hover:text-primary-600 underline">
+                  Terms and Conditions
+                </a>{' '}
+                and{' '}
+                <a href="#" className="text-primary-700 hover:text-primary-600 underline">
+                  Privacy Policy
+                </a>{' '}
+                *
+              </span>
+            </label>
           </div>
         </div>
 

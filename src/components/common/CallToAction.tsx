@@ -1,8 +1,8 @@
 'use client';
 
+import { AppConfig } from '@/utils/AppConfig';
 import { ArrowRight, Phone } from 'lucide-react';
 import Link from 'next/link';
-import { AppConfig } from '@/utils/AppConfig';
 
 export const CallToAction = () => {
 
