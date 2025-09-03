@@ -19,7 +19,7 @@ export const WhyAAGT = () => {
     {
       icon: Clock,
       title: 'Same Day Approval',
-      description: 'Quick decisions when you need them most, with settlement typically within 4 working days.',
+      description: 'Quick decisions when you need them most, with settlement as quick as 4 working days.',
       bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
       iconBg: 'bg-blue-500',
       hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
@@ -107,7 +107,6 @@ export const WhyAAGT = () => {
               </h2>
               <p className="text-xl text-gray-600 mb-8">
                 Every business relationship we build is founded on trust, transparency, and mutual success. 
-                We don't just provide funding – we become your financial partner.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -147,8 +146,8 @@ export const WhyAAGT = () => {
               {/* Floating Achievement Card */}
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-700 mb-1">500+</div>
-                  <div className="text-sm text-gray-600">Successful Loans</div>
+                  <div className="text-3xl font-bold text-primary-700 mb-1">40+</div>
+                  <div className="text-sm text-gray-600">Years of Experience</div>
                 </div>
               </div>
             </motion.div>
@@ -182,8 +181,14 @@ export const WhyAAGT = () => {
               {/* Floating Stats */}
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-green-600">95%</div>
-                  <div className="text-xs text-gray-600">Approval Rate</div>
+                  <div className="text-xl font-bold text-green-600">High</div>
+                  <div className="text-xs text-gray-600">LVR's</div>
+                </div>
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-green-600">Low</div>
+                  <div className="text-xs text-gray-600">Rates</div>
                 </div>
               </div>
             </motion.div>

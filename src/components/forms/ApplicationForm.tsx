@@ -267,8 +267,7 @@ export default function ApplicationForm() {
                 <option value="1-3">1-3 months</option>
                 <option value="3-6">3-6 months</option>
                 <option value="6-12">6-12 months</option>
-                <option value="12-18">12-18 months</option>
-                <option value="18-24">18-24 months</option>
+                
               </select>
             </div>
             <div>

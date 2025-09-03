@@ -1,12 +1,12 @@
-import { StructuredData } from '@/components/common/StructuredData';
-import { LazyImage } from '@/components/common/LazyImage';
-import { breadcrumbSchema } from '@/utils/structuredData';
 import { CallToAction } from '@/components/common/CallToAction';
-import { DollarSign, TrendingUp, Clock, CheckCircle, ArrowRight, Building, Target, Zap } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { LazyImage } from '@/components/common/LazyImage';
+import { StructuredData } from '@/components/common/StructuredData';
 import { loanProducts } from '@/data/loanProducts';
 import { getAssetPath } from '@/utils/Helpers';
+import { breadcrumbSchema } from '@/utils/structuredData';
+import { ArrowRight, Building, CheckCircle, Clock, DollarSign, Target, TrendingUp, Zap } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -85,12 +85,42 @@ export default function BusinessLoansPage() {
 
       {/* Hero Section */}
       <section className="relative bg-white overflow-hidden">
+        
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 opacity-50" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Main Content */}
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src={getAssetPath("/images/sean-pollock-PhYq704ffdA-unsplash.jpg")}
+                  alt="Business owner planning growth and expansion"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Stats Cards */}
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-600">$5M</div>
+                  <div className="text-sm text-gray-600">Max Loan</div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-blue-600">Same Day</div>
+                  <div className="text-xs text-gray-600">Approval</div>
+                </div>
+              </div>
+            </div>
             <div className="text-center lg:text-left">
               <p className="text-primary-700 font-semibold text-sm uppercase tracking-wider mb-4">
                 Business Funding Solutions
@@ -135,35 +165,7 @@ export default function BusinessLoansPage() {
               </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="relative">
-              <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
-                <Image
-                  src={getAssetPath("/images/sean-pollock-PhYq704ffdA-unsplash.jpg")}
-                  alt="Business owner planning growth and expansion"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-              </div>
-              
-              {/* Floating Stats Cards */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">$5M</div>
-                  <div className="text-sm text-gray-600">Max Loan</div>
-                </div>
-              </div>
-              
-              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
-                <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">Same Day</div>
-                  <div className="text-xs text-gray-600">Approval</div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>

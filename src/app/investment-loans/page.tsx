@@ -94,6 +94,35 @@ export default function InvestmentLoansPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Main Content */}
+             {/* Hero Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
+                <Image
+                  src={getAssetPath("/images/ryoji-iwata-wUZjnOv7t0g-unsplash.jpg")}
+                  alt="Modern property investment and development"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Stats Cards */}
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-600">75%</div>
+                  <div className="text-sm text-gray-600">Max LVR</div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-blue-600">Same Day</div>
+                  <div className="text-xs text-gray-600">Approval</div>
+                </div>
+              </div>
+            </div>
             <div className="text-center lg:text-left">
               <p className="text-primary-700 font-semibold text-sm uppercase tracking-wider mb-4">
                 Investment Funding Solutions
@@ -138,35 +167,7 @@ export default function InvestmentLoansPage() {
               </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="relative">
-              <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
-                <Image
-                  src={getAssetPath("/images/ryoji-iwata-wUZjnOv7t0g-unsplash.jpg")}
-                  alt="Modern property investment and development"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-              </div>
-              
-              {/* Floating Stats Cards */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-emerald-600">70%</div>
-                  <div className="text-sm text-gray-600">Max LVR</div>
-                </div>
-              </div>
-              
-              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
-                <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">48 Hrs</div>
-                  <div className="text-xs text-gray-600">Approval</div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </section>
@@ -409,8 +410,8 @@ export default function InvestmentLoansPage() {
               {/* Floating Achievement Card */}
               <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-emerald-600 mb-1">500+</div>
-                  <div className="text-sm text-gray-600">Investment Loans</div>
+                  <div className="text-3xl font-bold text-emerald-600 mb-1">40+</div>
+                  <div className="text-sm text-gray-600">Years of Experience</div>
                 </div>
               </div>
             </div>
