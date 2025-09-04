@@ -1,9 +1,9 @@
-import { Clock, Mail, Phone, MessageCircle, ArrowRight, Users, Shield, Zap, CheckCircle } from 'lucide-react';
-import { getAbsoluteUrl } from '@/utils/getBaseUrl';
-import Link from 'next/link';
-import Image from 'next/image';
 import { LazyImage } from '@/components/common/LazyImage';
+import { getAbsoluteUrl } from '@/utils/getBaseUrl';
 import { getAssetPath } from '@/utils/Helpers';
+import { ArrowRight, CheckCircle, Clock, Mail, MessageCircle, Phone, Shield, Users, Zap } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -332,7 +332,7 @@ export default function Contact() {
                 <span className="block text-primary-700">All of Australia</span>
               </h2>
               <p className="text-xl text-gray-600 mb-8">
-                Based in Sydney but providing funding solutions to businesses across Australia. We understand local markets and deliver nationwide service with a personal touch.
+                Based in Queensland but providing funding solutions to businesses across Australia. We understand local markets and deliver nationwide service with a personal touch.
               </p>
               
               <div className="space-y-4 mb-8">

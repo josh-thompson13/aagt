@@ -1,11 +1,11 @@
+import { PostHogProvider } from '@/components/analytics/PostHogProvider';
+import { LocaleLink } from '@/components/common/LocaleLink';
+import { BaseTemplate } from '@/components/layouts/BaseTemplate';
+import { MobileNavItems } from '@/components/navigation/MobileNavItems';
+import '@/styles/global.css';
+import { getAssetPath } from '@/utils/Helpers';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/global.css';
-import { BaseTemplate } from '@/components/layouts/BaseTemplate';
-import { LocaleLink } from '@/components/common/LocaleLink';
-import { PostHogProvider } from '@/components/analytics/PostHogProvider';
-import { getAssetPath } from '@/utils/Helpers';
-import { MobileNavItems } from '@/components/navigation/MobileNavItems';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     'AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.',
   keywords:
-    'private loans Australia, business loans fast approval, private lending Sydney, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
+    'private loans Australia, business loans fast approval, private lending Queensland, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
   icons: {
     icon: [
       { url: getAssetPath('/favicon-16x16.png'), sizes: '16x16', type: 'image/png' },
