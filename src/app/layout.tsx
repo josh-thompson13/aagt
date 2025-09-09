@@ -62,6 +62,12 @@ const desktopNavItems = (
       Investment Loans
     </LocaleLink>
     <LocaleLink
+      href="/off-the-plan-purchases"
+      className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors"
+    >
+      Off-the-Plan Purchases
+    </LocaleLink>
+    <LocaleLink
       href="/rates"
       className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors"
     >

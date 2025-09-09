@@ -31,11 +31,11 @@ const services = [
     icon: Building2,
     title: 'Off-the-Plan Purchases',
     description:
-      "Bank won't lend at settlement after an off-the-plan contract? We fund the gap so you keep your capital gain.",
+      "Contracted off-the-plan but bank won't lend at settlement? We fund shortfalls so you can complete and keep your capital gain.",
     bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
     iconBg: 'bg-purple-500',
     hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
-    link: '#',
+    link: '/off-the-plan-purchases',
   },
 ];
 
