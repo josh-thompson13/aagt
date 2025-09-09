@@ -1,8 +1,8 @@
 'use client';
 
-import { DollarSign, TrendingUp } from 'lucide-react';
-import Link from 'next/link';
+import { Building2, DollarSign, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getAssetPath } from '../../utils/Helpers';
 
 const services = [
@@ -16,6 +16,7 @@ const services = [
     hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',
     link: '/business-loans',
   },
+  
   {
     icon: TrendingUp,
     title: 'Investment Loans',
@@ -25,6 +26,16 @@ const services = [
     iconBg: 'bg-emerald-500',
     hoverBg: 'hover:bg-gradient-to-br hover:from-emerald-100 hover:to-emerald-200',
     link: '/investment-loans',
+  },
+  {
+    icon: Building2,
+    title: 'Off-the-Plan Purchases',
+    description:
+      "Bank won't lend at settlement after an off-the-plan contract? We fund the gap so you keep your capital gain.",
+    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100',
+    iconBg: 'bg-purple-500',
+    hoverBg: 'hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200',
+    link: '#',
   },
 ];
 
@@ -57,7 +68,7 @@ export const LuxuryServices = () => {
           </div>
         </div>
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-10xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
