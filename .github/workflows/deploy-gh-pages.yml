@@ -43,8 +43,10 @@ jobs:
 
       - name: Build with Next.js
         run: bun run build:gh-pages
-        env:
-          NEXT_PUBLIC_BASE_PATH: /aagt
+
+      - name: Ensure CNAME in artifact
+        run: |
+          echo "aagtpvtloans.com" > out/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

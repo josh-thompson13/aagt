@@ -5,8 +5,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   // GitHub Pages configuration for repository deployment
-  basePath: process.env.NODE_ENV === 'production' ? (process.env.NEXT_PUBLIC_BASE_PATH || '/aagt') : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? (process.env.NEXT_PUBLIC_BASE_PATH || '/aagt') : '',
+  // Use a basePath only if explicitly provided (e.g., for project pages)
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
   eslint: {
     dirs: ['.'],
   },
