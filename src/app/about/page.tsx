@@ -255,26 +255,14 @@ export default function About() {
 
 
       {/* FAQ Section */}
-      <section className="py-24 bg-primary-900 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-primary-900/90" />
-          <LazyImage
-            src={getAssetPath("/images/mario-gogh-VBLHICVh-lI-unsplash.jpg")}
-            alt="FAQ and support background"
-            fill
-            className="object-cover opacity-20"
-            sizes="100vw"
-            rootMargin="100px"
-          />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
+            <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-gray-900">
               Frequently Asked Questions
             </h2>
             <div className="flex justify-center">
-              <p className="text-primary-100 font-light max-w-2xl text-center">
+              <p className="text-gray-600 font-light max-w-2xl text-center">
                 Common questions about AAGT Private Loans and our business funding services
               </p>
             </div>
@@ -284,7 +272,7 @@ export default function About() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="p-8 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-slate-200 transition-all duration-300 group rounded-xl shadow-lg hover:shadow-xl backdrop-blur-sm"
+                className="p-8 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 border border-slate-200 transition-all duration-300 group rounded-xl shadow-lg hover:shadow-xl"
               >
                 <h3 className="font-semibold text-gray-900 mb-4 text-lg">{faq.question}</h3>
                 <p className="text-gray-700 leading-relaxed">{faq.answer}</p>

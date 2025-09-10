@@ -3,7 +3,17 @@ import { LazyImage } from '@/components/common/LazyImage';
 import { StructuredData } from '@/components/common/StructuredData';
 import { getAssetPath } from '@/utils/Helpers';
 import { breadcrumbSchema } from '@/utils/structuredData';
-import { ArrowRight, Briefcase, HeartCrack, User, UserX } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowRight,
+  Briefcase,
+  CreditCard,
+  FileX,
+  HeartCrack,
+  Landmark,
+  User,
+  UserX
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -27,10 +37,15 @@ export default function OffThePlanPurchasesPage() {
   ];
 
   const declineReasons = [
-    { icon: User, text: 'Age or retirement change' },
-    { icon: Briefcase, text: 'Reduced income or job change' },
-    { icon: HeartCrack, text: 'Divorce or relationship separation' },
-    { icon: UserX, text: "Partner’s death impacting servicing" },
+    { icon: CreditCard, text: 'New debts or higher credit limits' },
+    { icon: AlertTriangle, text: 'Recent adverse credit or missed payments' },
+    { icon: Briefcase, text: 'Employment change, probation or variable income' },
+    { icon: User, text: 'Approaching retirement limits loan term' },
+    { icon: HeartCrack, text: 'Separation/divorce impacts combined servicing' },
+    { icon: UserX, text: 'Death or illness' },
+    { icon: FileX, text: 'Insufficient documentation at settlement' },
+    { icon: Landmark, text: 'Bank policy changes tighten criteria' },
+    
   ];
 
   const reasonIconStyles = [
