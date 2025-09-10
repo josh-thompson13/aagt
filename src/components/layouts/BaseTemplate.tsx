@@ -59,7 +59,7 @@ export const BaseTemplate = (props: {
             : 'bg-white shadow-md'
         }`}
       >
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Main navigation bar */}
           <div className="flex justify-between items-center h-16 sm:h-20">
             <div

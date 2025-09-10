@@ -9,13 +9,6 @@ export function MobileNavItems() {
   return (
     <>
       <LocaleLink
-        href="/"
-        className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
-        onClick={closeMobileMenu}
-      >
-        Home
-      </LocaleLink>
-      <LocaleLink
         href="/business-loans"
         className="block w-full px-6 py-4 text-lg font-semibold text-gray-700 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-colors border-b border-gray-100"
         onClick={closeMobileMenu}

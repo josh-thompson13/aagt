@@ -180,8 +180,8 @@ export default function About() {
               {/* Floating Stats Cards */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">$100M+</div>
-                  <div className="text-sm text-gray-600">Funded</div>
+                  <div className="text-2xl font-bold text-green-600">Fast</div>
+                  <div className="text-sm text-gray-600">Funding</div>
                 </div>
               </div>
               

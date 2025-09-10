@@ -314,8 +314,8 @@ export default function InvestmentLoansPage() {
               {/* Floating Achievement Card */}
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-700 mb-1">$100M+</div>
-                  <div className="text-sm text-gray-600">Funded</div>
+                  <div className="text-3xl font-bold text-primary-700 mb-1">Fast</div>
+                  <div className="text-sm text-gray-600">Funding</div>
                 </div>
               </div>
             </div>
