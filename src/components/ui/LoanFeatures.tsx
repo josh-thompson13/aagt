@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, type Variants } from 'framer-motion';
-import { DollarSign, Calendar, Percent, Building2, Zap, CheckCircle2 } from 'lucide-react';
+import { Building2, Calendar, CheckCircle2, DollarSign, Percent, Zap } from 'lucide-react';
 import { useRef } from 'react';
 
 interface LoanFeature {
@@ -40,7 +40,7 @@ export const LoanFeatures = () => {
       icon: Building2,
       title: 'LVR Ratios',
       value: 'Up to 80% LVR',
-      description: '70% for second mortgages',
+      description: '75% for second mortgages',
     },
     {
       icon: Zap,

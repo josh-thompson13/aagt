@@ -187,7 +187,7 @@ export default function About() {
               
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">40+</div>
+                  <div className="text-xl font-bold text-green-600">40+</div>
                   <div className="text-xs text-gray-600">Years of Experience</div>
                 </div>
               </div>

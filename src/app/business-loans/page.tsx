@@ -116,7 +116,7 @@ export default function BusinessLoansPage() {
               
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">Same Day</div>
+                  <div className="text-xl font-bold text-green-600">Same Day</div>
                   <div className="text-xs text-gray-600">Approval</div>
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default function BusinessLoansPage() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="mb-16">
             <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-white">
               Our Business Loan Products
@@ -197,7 +197,7 @@ export default function BusinessLoansPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-1 max-w-xl mx-auto justify-items-center">
             {businessLoanProducts.map((product) => (
               <div
                 key={product.id}

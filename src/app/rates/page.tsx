@@ -18,7 +18,7 @@ export async function generateMetadata() {
   return {
     title: 'Rates & Terms | Competitive Private Loan Rates',
     description:
-      'Transparent private loan rates and terms. Compare our competitive interest rates with major banks. Flexible terms from 1-24 months.',
+      'Transparent private loan rates and terms. Compare our competitive interest rates with major banks. Flexible terms from 1-12 months.',
     keywords:
       'private loan rates Australia, business loan interest rates, competitive loan terms, private lending rates, loan comparison',
     alternates: {
@@ -44,9 +44,9 @@ export default function RatesTermsPage() {
     {
       type: 'Business Loans',
       purpose: 'Business expansion and working capital',
-      rateRange: '8.95 - 12.95% p.a.',
-      lvrMax: 'Up to 70% LVR',
-      termOptions: '1-24 months',
+      rateRange: 'From 8.95% p.a.',
+      lvrMax: 'Up to 75% LVR',
+      termOptions: '1-12 months',
       amount: '$150,000 - $5,000,000',
       features: [
         'Same-day approval available',
@@ -62,13 +62,13 @@ export default function RatesTermsPage() {
     {
       type: 'Investment Loans', 
       purpose: 'Property investment and development',
-      rateRange: '9.25 - 13.25% p.a.',
-      lvrMax: 'Up to 70% LVR',
-      termOptions: '1-24 months', 
-      amount: '$200,000 - $5,000,000',
+      rateRange: 'From 8.95% p.a.',
+      lvrMax: 'Up to 75% LVR',
+      termOptions: '1-12 months', 
+      amount: '$150,000 - $5,000,000',
       features: [
         'Portfolio lending available',
-        'Off-the-plan finance specialists',
+        'Capitalised interest option',
         'Professional investor rates',
         'Fast property settlements',
         'Cross-collateralization options',
@@ -80,9 +80,9 @@ export default function RatesTermsPage() {
     {
       type: 'Second Mortgages',
       purpose: 'Additional capital without refinancing',
-      rateRange: '11.95 - 16.95% p.a.',
-      lvrMax: 'Up to 85% combined LVR',
-      termOptions: '1-18 months',
+      rateRange: 'From 15.95% p.a.',
+      lvrMax: 'Up to 70% combined LVR',
+      termOptions: '1-12 months',
       amount: '$150,000 - $1,500,000',
       features: [
         'Keep your existing mortgage',
@@ -205,7 +205,7 @@ export default function RatesTermsPage() {
               
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">24 Hrs</div>
+                  <div className="text-xl font-bold text-green-600">24 Hrs</div>
                   <div className="text-xs text-gray-600">Quote Ready</div>
                 </div>
               </div>
@@ -374,69 +374,7 @@ export default function RatesTermsPage() {
         </div>
       </section>
 
-      {/* Terms Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Important Terms & Conditions
-            </h2>
-            <p className="text-lg text-gray-600">
-              Transparent lending terms you can understand and trust
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Loan Eligibility</h3>
-                  <p className="text-gray-700">
-                    Loans are subject to credit assessment and approval. Minimum loan amount $150,000. Security required for all loans.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Interest Rates</h3>
-                  <p className="text-gray-700">
-                    Rates are calculated annually and may vary based on loan amount, term, security, and individual circumstances.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Fees Structure</h3>
-                  <p className="text-gray-700">
-                    Establishment fees typically 1-2% of loan amount. No ongoing fees or hidden charges.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Repayment Options</h3>
-                  <p className="text-gray-700">
-                    Flexible repayment options including interest-only payments. Terms structured to suit your cash flow.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Security Requirements</h3>
-                  <p className="text-gray-700">
-                    All loans secured by real estate or business assets. Professional valuations required for security properties.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Assessment Process</h3>
-                  <p className="text-gray-700">
-                    Applications assessed for suitability and affordability according to our lending criteria.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       {/* Final CTA */}
       <CallToAction />

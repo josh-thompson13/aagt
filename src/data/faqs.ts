@@ -226,7 +226,7 @@ export const faqs: FAQItem[] = [
     id: 'investment-property-loans',
     question: 'Do you provide investment property loans?',
     answer:
-      'Yes, we specialize in investment property loans with competitive rates from 9.25% p.a. We offer up to 70% LVR, interest-only options, and can consider portfolio lending for experienced investors. Our expertise includes residential, commercial, and development properties.',
+      'Yes, we specialize in investment property loans with competitive rates from 9.25% p.a. We offer up to 75% LVR, interest-only options, and can consider portfolio lending for experienced investors. Our expertise includes residential, commercial, and development properties.',
     category: 'Investment & Property',
     tags: ['investment property', 'property loans', 'portfolio lending', 'LVR'],
     helpful: 89,
@@ -263,19 +263,7 @@ export const faqs: FAQItem[] = [
     featured: false,
     relatedQuestions: ['business-requirements', 'working-capital', 'equipment-finance'],
   },
-  {
-    id: 'working-capital',
-    question: 'Do you offer working capital facilities?',
-    answer:
-      'Yes, we provide working capital loans and line of credit facilities from $150,000 to $2,000,000. These can be structured as revolving credit lines where you only pay interest on funds drawn down, providing flexibility for seasonal businesses or growth phases.',
-    category: 'Business Loans',
-    tags: ['working capital', 'line of credit', 'revolving facility', 'cash flow'],
-    helpful: 71,
-    notHelpful: 5,
-    lastUpdated: '2024-01-15',
-    featured: false,
-    relatedQuestions: ['business-loan-purposes', 'repayment-options', 'cash-flow-solutions'],
-  },
+
 ];
 
 export const faqCategories = [

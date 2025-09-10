@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Calculator, DollarSign, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Input,
-  Modal,
-  PricingCard,
-  ToastProvider,
-  useToast,
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    Input,
+    Modal,
+    PricingCard,
+    ToastProvider,
+    useToast,
 } from './index';
 
 const meta: Meta = {
@@ -177,7 +177,7 @@ const ComponentShowcase = () => {
             features={[
               { text: 'Loans from $2,000,000', included: true },
               { text: 'Same day approval', included: true },
-              { text: '2 day settlement', included: true },
+              { text: '4 day settlement', included: true },
               { text: 'Flexible terms', included: true },
               { text: 'Priority support', included: true },
             ]}

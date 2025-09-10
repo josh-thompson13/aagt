@@ -3,7 +3,7 @@ import { LazyImage } from '@/components/common/LazyImage';
 import { StructuredData } from '@/components/common/StructuredData';
 import { getAssetPath } from '@/utils/Helpers';
 import { breadcrumbSchema } from '@/utils/structuredData';
-import { ArrowRight, User, Briefcase, HeartCrack, UserX } from 'lucide-react';
+import { ArrowRight, Briefcase, HeartCrack, User, UserX } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ export async function generateMetadata() {
   return {
     title: 'Off-the-Plan Purchases | Fund Your Settlement, Keep Your Gain',
     description:
-      "Bank won't lend at settlement after an off-the-plan contract? We fund the shortfall so you can complete and keep your capital gain.",
+      "Bank won't lend at settlement after an off-the-plan contract? We fully fund the shortfall so you can complete and keep your capital gain.",
     keywords:
       "off the plan finance, settlement shortfall funding, complete off the plan purchase, private lending for OTP, bank declined settlement, bank won't let me settle my property, bank won't lend at settlement",
     alternates: {
@@ -67,13 +67,13 @@ export default function OffThePlanPurchasesPage() {
               {/* Floating Stats */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600">$5M</div>
+                  <div className="text-2xl font-bold text-green-600">$5M</div>
                   <div className="text-sm text-gray-600">Max Loan</div>
                 </div>
               </div>
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">Same Day</div>
+                  <div className="text-xl font-bold text-green-600">Same Day</div>
                   <div className="text-xs text-gray-600">Approval</div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function OffThePlanPurchasesPage() {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 Off-the-Plan Purchases
-                <span className="block text-primary-700">Complete And Keep Your Gain</span>
+                <span className="block text-primary-700">Settle And Keep Your Profit</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-600 mb-6">
@@ -137,20 +137,20 @@ export default function OffThePlanPurchasesPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">
               Common Reasons Banks Decline OTP Settlement
             </h2>
             <p className="text-primary-100/90 mb-8">
-              Circumstances can change between contract and completion. The factors below often affect servicing capacity or policy fit with major banks.
+              Circumstances can change in the years between contract and building completion. The factors below will often negate any previous financial approvals you may have with your bank.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 justify-items-center">
               {declineReasons.map((reason, i) => {
                 const defaultStyle = { bg: 'bg-gray-100', fg: 'text-gray-700' } as const;
                 const style = reasonIconStyles[i % reasonIconStyles.length] ?? defaultStyle;
                 return (
-                  <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
+                  <div key={i} className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm text-center">
                     <div className={`p-2 rounded-lg ${style.bg}`}>
                       <reason.icon className={`h-5 w-5 ${style.fg}`} />
                     </div>
@@ -160,12 +160,13 @@ export default function OffThePlanPurchasesPage() {
               })}
             </div>
 
-            <h3 className="text-2xl font-semibold text-white mb-3">How Settlement Funding Helps</h3>
+            <h3 className="text-3xl md:text-4xl font-light mb-4 text-white">How Our Settlement Funding Is Your Solution to Changed Circumstances</h3>
             <p className="text-primary-100/95 mb-8">
-              Specialist settlement funding can bridge the shortfall so you can complete on time, protect your equity uplift, and later refinance when income and documentation are back on track.
+              Specialist settlement funding can provide 100% of purchase price so you can complete on time and secure your capital gain.
             </p>
+            <span>test</span>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/apply"
                 className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
@@ -193,24 +194,24 @@ export default function OffThePlanPurchasesPage() {
                 Case Study: Off‑the‑Plan Settlement Shortfall
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                A couple contracted to buy an apartment for $1,000,000. Three years later, at completion, the apartment was valued at $1,500,000. Following a change in employment and a temporary reduction in household income, their bank declined to provide funds at settlement.
+                A couple contracted to buy an apartment for $1,500,000. Three years later, at completion, the apartment was valued at $2,500,000. Due to loss of employment just prior to settlement, their bank cancelled their initial approval, putting at risk the capital gain of $1,000,000. 
               </p>
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary-600 rounded-full" />
-                  <span className="text-gray-700">Contract price: $1,000,000</span>
+                  <span className="text-gray-700">Contract price: $1,500,000</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary-600 rounded-full" />
-                  <span className="text-gray-700">Valuation at settlement (3 years later): $1,500,000</span>
+                  <span className="text-gray-700">Valuation at settlement (3 years later): $2,500,000</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary-600 rounded-full" />
-                  <span className="text-gray-700">Potential equity uplift at risk: $500,000</span>
+                  <span className="text-gray-700">Potential equity uplift at risk: $1,000,000</span>
                 </div>
               </div>
               <p className="text-lg text-gray-700 mb-8">
-                In cases like this, settlement funding can complete the purchase, preserve the equity uplift, and allow refinance once circumstances stabilise — the kind of outcome many clients pursue.
+                In cases like this, our Settlement Funding can complete the purchase, thus preserving the equity uplift.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -241,7 +242,7 @@ export default function OffThePlanPurchasesPage() {
               </div>
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-700 mb-1">$500k</div>
+                  <div className="text-3xl font-bold text-green-500 mb-1">$1M</div>
                   <div className="text-sm text-gray-600">Equity Uplift Preserved</div>
                 </div>
               </div>

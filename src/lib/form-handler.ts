@@ -1,8 +1,10 @@
 // Form submission handler for GitHub Pages compatibility
 
-const isStaticExport = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true' || 
+const isStaticExport =
+  process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true' ||
   (typeof window !== 'undefined' && window.location.hostname.includes('github.io'));
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 export interface FormSubmitOptions {
   endpoint: string;
@@ -17,99 +19,62 @@ export async function submitForm({ endpoint, data, onSuccess, onError }: FormSub
   console.log('Form handler - apiUrl:', apiUrl);
   console.log('Form handler - hostname:', typeof window !== 'undefined' ? window.location.hostname : 'server');
   
-  // If running on GitHub Pages, use Formspree for email functionality
-  if (isStaticExport && !apiUrl) {
-    console.log('Using Formspree for form submission');
-    const formspreeEndpoint = 'https://formspree.io/f/xanbeprj';
+  // If running on GitHub Pages or a static context without API, use Web3Forms
+  if (isStaticExport || !apiUrl) {
+    if (!web3formsKey) {
+      const msg = 'Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it to .env.production.local and rebuild.';
+      console.error(msg);
+      onError?.(msg);
+      throw new Error(msg);
+    }
     
-    try {
-      // Format data for Formspree
-      const formspreeData = {
-        _subject: `New Loan Application - ${data.firstName} ${data.lastName}`,
-        _replyto: data.email,
-        _to: 'jtbusinessau@gmail.com',
-        
-        // Application details
-        'Full Name': `${data.firstName} ${data.lastName}`,
-        'Email': data.email,
-        'Phone': data.phone,
-        'Loan Amount': data.loanAmount ? `$${parseInt(data.loanAmount.replace(/[^0-9]/g, '') || '0').toLocaleString()}` : 'Not specified',
-        'Loan Purpose': data.loanPurpose,
-        'Preferred Term': data.preferredTerm,
-        'Funds Required Date': data.fundsRequiredDate,
-        'Security Offered': data.securityOffered,
-        'Property Value': data.propertyValue,
-        'Property Address': data.propertyAddress || 'Not provided',
-        'Debt Owing': data.debtOwing,
-        'Borrowing Entity': data.borrowingEntity,
-        'Directors Names': data.directorsNames,
-        'Business Name': data.businessName || 'Not provided',
-        'ABN': data.abn || 'Not provided',
-        'Business Address': data.businessAddress,
-        'Industry': data.industry,
-        'Years in Business': data.yearsInBusiness,
-        'Bankruptcy History': data.bankruptcyHistory,
-        'Exit Strategy': data.exitStrategy,
-        'Declined by Banks': data.declinedByBanks ? 'Yes' : 'No',
-        'Working with Broker': data.workingWithBroker ? 'Yes' : 'No',
-        'Agreed to Terms': data.agreeToTerms ? 'Yes' : 'No',
-        'Receive Updates': data.receiveUpdates ? 'Yes' : 'No',
-        'Submission Date': new Date().toLocaleString('en-AU')
-      };
+    
+    
+    console.log('Using Web3Forms for form submission');
+    console.log('Using Web3Forms for form submission');
+    const endpointUrl = 'https://api.web3forms.com/submit';
 
-      const response = await fetch(formspreeEndpoint, {
+    // Build a flat payload: Web3Forms accepts arbitrary fields
+    const payload: Record<string, any> = {
+      access_key: web3formsKey,
+      from_name: 'AAGT Private Loans Website',
+      from_email: data.email || undefined,
+      subject:
+        data._form === 'contact'
+          ? `New Contact Message - ${data.name || data.email || 'Website'}`
+          : `New Loan Application - ${data.firstName || ''} ${data.lastName || ''}`.trim(),
+      // useful metadata
+      page: typeof window !== 'undefined' ? window.location.href : undefined,
+      // honey pot (empty means human)
+      botcheck: '',
+    };
+
+    // Merge user data as-is so it appears in the email
+    for (const [k, v] of Object.entries(data || {})) {
+      payload[k] = v;
+    }
+
+    try {
+      const response = await fetch(endpointUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formspreeData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        const message = 'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.';
-        if (onSuccess) {
-          onSuccess({ 
-            success: true, 
-            message,
-            isDemo: false 
-          });
-        }
+      const result = await response.json();
+      if (result?.success) {
+        const message =
+          data._form === 'contact'
+            ? 'Thanks for reaching out! We will get back to you within 24 hours.'
+            : 'Thank you for your loan application! A lending specialist will contact you within 4 business hours.';
+        onSuccess?.({ success: true, message, isDemo: false });
         return { success: true, message, isDemo: false };
-      } else {
-        throw new Error('Form submission failed');
       }
-    } catch {
-      // Fallback to demo mode if Formspree fails
-      const message = `
-        <div style="text-align: left;">
-          <h3>Thank you for your submission!</h3>
-          <p>There was an issue with the automated submission, but we've received your information.</p>
-          <p><strong>Please contact us directly to complete your application:</strong></p>
-          <ul style="list-style: disc; padding-left: 2rem;">
-            <li>Email us at: aagtpvtloans@gmail.com</li>
-            <li>Call us at: +61 461 534 088</li>
-            <li>Or visit our office for a consultation</li>
-          </ul>
-          <p><strong>Your application details:</strong></p>
-          <p>Name: ${data.firstName} ${data.lastName}<br/>
-             Email: ${data.email}<br/>
-             Phone: ${data.phone}<br/>
-             Loan Amount: ${data.loanAmount ? `$${parseInt(data.loanAmount.replace(/[^0-9]/g, '') || '0').toLocaleString()}` : 'Not specified'}
-          </p>
-        </div>
-      `;
-      
-      if (onError) {
-        onError('Submission failed. Please contact us directly.');
-      }
-      if (onSuccess) {
-        onSuccess({ 
-          success: true, 
-          message,
-          isDemo: true 
-        });
-      }
-      return { success: true, message, isDemo: true };
+      throw new Error(result?.message || 'Form submission failed');
+    } catch (e) {
+      const err = e instanceof Error ? e.message : 'Submission failed';
+      onError?.(err);
+      throw e;
     }
   }
 

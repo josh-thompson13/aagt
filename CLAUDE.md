@@ -35,7 +35,7 @@ This project transforms an SEO-optimized real estate website template into a pro
 1. **Business Loans**: $150,000 to $5,000,000 for business expansion and operations
 2. **Investment Loans**: Flexible funding for various investment opportunities
 3. **Property Development Finance**: Specialized solutions for off-the-plan purchases
-4. **Second Mortgages**: Up to 70% LVR for additional capital needs
+4. **Second Mortgages**: Up to 75% LVR for additional capital needs
 5. **Bridge Financing**: Short-term solutions with 1-24 month terms
 
 ## Page Structure Recommendations

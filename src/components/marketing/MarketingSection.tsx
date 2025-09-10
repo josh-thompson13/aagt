@@ -48,7 +48,7 @@ export const MarketingSection = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />
-                    Second mortgages up to 70% LVR
+                    Second mortgages up to 75% LVR
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">

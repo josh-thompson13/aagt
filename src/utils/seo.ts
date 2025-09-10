@@ -163,7 +163,7 @@ export const pageSEOData = {
       'Business expansion loans from $150,000 to $5,000,000. Direct private lender with streamlined approval process. Apply today for competitive rates.',
     keywords: [
       'business expansion loans',
-      'working capital loans',
+      
       'commercial loans Australia',
       'business finance solutions',
       'private business funding',

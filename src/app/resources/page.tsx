@@ -1,6 +1,6 @@
+import { CallToAction } from '@/components/common/CallToAction';
 import { StructuredData } from '@/components/common/StructuredData';
 import { breadcrumbSchema } from '@/utils/structuredData';
-import { CallToAction } from '@/components/common/CallToAction';
 import { ArrowRight, FileText, HelpCircle, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
@@ -65,7 +65,7 @@ export default function ResourcesPage() {
       title: 'Business Loan Options Explained',
       description: 'Comprehensive guide to different types of business funding available',
       readTime: '8 min read',
-      topics: ['Working capital loans', 'Equipment finance', 'Bridge loans', 'Second mortgages'],
+      topics: [ 'Equipment finance', 'Bridge loans', 'Second mortgages'],
     },
     {
       category: 'Application Process',

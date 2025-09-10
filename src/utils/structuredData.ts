@@ -77,7 +77,7 @@ export const organizationSchema = {
         itemOffered: {
           '@type': 'FinancialProduct',
           name: 'Second Mortgages',
-          description: 'Up to 70% LVR for additional capital needs',
+          description: 'Up to 75% LVR for additional capital needs',
           url: '/business-loans',
         },
       },

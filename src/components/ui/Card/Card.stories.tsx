@@ -218,7 +218,7 @@ export const PricingCards: Story = {
         features={[
           { text: 'Loans from $2,000,000', included: true },
           { text: 'Same day approval', included: true },
-          { text: '2 day settlement', included: true },
+          { text: '4 day settlement', included: true },
           { text: 'Flexible terms', included: true },
           { text: 'Priority support', included: true },
         ]}

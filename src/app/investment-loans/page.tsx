@@ -74,7 +74,6 @@ export default function InvestmentLoansPage() {
 
   const investmentPurposes = [
     'Property development and construction projects',
-    'Off-the-plan property purchases',
     'Commercial and residential investment properties',
     'Investment portfolio expansion',
     'Strategic business investments',
@@ -118,7 +117,7 @@ export default function InvestmentLoansPage() {
               
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">Same Day</div>
+                  <div className="text-xl font-bold text-green-600">Same Day</div>
                   <div className="text-xs text-gray-600">Approval</div>
                 </div>
               </div>
@@ -314,7 +313,7 @@ export default function InvestmentLoansPage() {
               {/* Floating Achievement Card */}
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-700 mb-1">Fast</div>
+                  <div className="text-3xl font-bold text-green-700 mb-1">Fast</div>
                   <div className="text-sm text-gray-600">Funding</div>
                 </div>
               </div>

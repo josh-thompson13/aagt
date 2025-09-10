@@ -1,4 +1,5 @@
 import { LazyImage } from '@/components/common/LazyImage';
+import ContactForm from '@/components/forms/ContactForm';
 import { getAbsoluteUrl } from '@/utils/getBaseUrl';
 import { getAssetPath } from '@/utils/Helpers';
 import { ArrowRight, CheckCircle, Clock, Mail, MessageCircle, Phone, Shield, Users, Zap } from 'lucide-react';
@@ -167,11 +168,25 @@ export default function Contact() {
               
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-xl font-bold text-blue-600">Expert</div>
+                  <div className="text-xl font-bold text-green-600">Expert</div>
                   <div className="text-xs text-gray-600">Advice</div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-6 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-start">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
+              <p className="text-gray-600 mb-6">Fill out the form and our lending specialists will reply as soon as possible.</p>
+              <ContactForm />
+            </div>
+            
           </div>
         </div>
       </section>
