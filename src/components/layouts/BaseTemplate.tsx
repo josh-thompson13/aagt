@@ -192,28 +192,7 @@ export const BaseTemplate = (props: {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6 text-white">Loan Products</h3>
-              <ul className="space-y-3">
-                {[
-                  { href: '/business-loans', label: 'Business Loans' },
-                  { href: '/investment-loans', label: 'Investment Loans' },
-                  { href: '/about', label: 'About Us' },
-                  { href: '/apply', label: 'Apply Now' },
-                ].map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-300 hover:text-teal-400 transition-colors duration-200 inline-flex items-center group"
-                    >
-                      <span className="w-1.5 h-1.5 bg-teal-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+           
 
             {/* Contact Info */}
             <div>

@@ -72,9 +72,7 @@ export default function BusinessLoansPage() {
   const businessPurposes = [
     'Business expansion and growth initiatives',
     'Equipment and machinery purchases',
-    'Working capital and cash flow management',
     'Business acquisitions and buyouts',
-    'Inventory and stock purchases',
     'Commercial property purchases',
   ];
 
@@ -132,7 +130,7 @@ export default function BusinessLoansPage() {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                Direct funding for established businesses. No committees, no delays – just fast decisions when you need capital most.
+                No doc, private lending for established businesses. No committees, no delays – just fast decisions when you need capital most.
               </p>
 
               {/* CTA Buttons */}
@@ -325,7 +323,7 @@ export default function BusinessLoansPage() {
                   href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Speak to a Specialist
+                  Contact Us
                 </Link>
               </div>
             </div>

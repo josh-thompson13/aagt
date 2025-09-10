@@ -1,8 +1,8 @@
 'use client';
 
 import { ArrowRight, CheckCircle, Clock, FileCheck, Shield, TrendingUp } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getAssetPath } from '../../utils/Helpers';
 
 export const PrestigeHero = () => {
@@ -27,13 +27,13 @@ export const PrestigeHero = () => {
           <div className="text-center lg:text-left">
             {/* Tagline */}
             <p className="text-primary-700 font-semibold text-sm uppercase tracking-wider mb-4">
-              Alternative Business Funding Solutions
+              Non bank lending solutions
             </p>
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Fast Business Funding
-              <span className="block text-primary-700">When Banks Say No</span>
+              No Doc Lending
+              <span className="block text-primary-700">When The Banks Say No</span>
             </h1>
             
             {/* Subheadline */}

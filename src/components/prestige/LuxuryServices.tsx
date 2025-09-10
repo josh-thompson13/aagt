@@ -61,7 +61,7 @@ export const LuxuryServices = () => {
           </h2>
           <div className="flex justify-center">
             <p className="text-primary-100 font-light max-w-2xl text-center">
-              Direct lending solutions designed for business owners and investors who need quick,
+              Non bank lending solutions designed for business owners and investors who need quick,
               flexible funding
             </p>
           </div>
