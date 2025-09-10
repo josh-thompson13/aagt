@@ -147,7 +147,8 @@ export default function OffThePlanPurchasesPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
               {declineReasons.map((reason, i) => {
-                const style = reasonIconStyles[i % reasonIconStyles.length];
+                const defaultStyle = { bg: 'bg-gray-100', fg: 'text-gray-700' } as const;
+                const style = reasonIconStyles[i % reasonIconStyles.length] ?? defaultStyle;
                 return (
                   <div key={i} className="flex items-center gap-3 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
                     <div className={`p-2 rounded-lg ${style.bg}`}>
