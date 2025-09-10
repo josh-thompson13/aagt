@@ -1,6 +1,7 @@
 'use client';
 
 import { AlertCircle, CheckCircle2, Plus } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -484,13 +485,13 @@ export default function ApplicationForm() {
               />
               <span className="ml-2 text-sm text-gray-700">
                 I agree to the{' '}
-                <a href="#" className="text-primary-700 hover:text-primary-600 underline">
+                <Link href="/terms-and-conditions" className="text-primary-700 hover:text-primary-600 underline">
                   Terms and Conditions
-                </a>{' '}
+                </Link>{' '}
                 and{' '}
-                <a href="#" className="text-primary-700 hover:text-primary-600 underline">
+                <Link href="/privacy-policy" className="text-primary-700 hover:text-primary-600 underline">
                   Privacy Policy
-                </a>{' '}
+                </Link>{' '}
                 *
               </span>
             </label>

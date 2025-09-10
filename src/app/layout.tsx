@@ -2,6 +2,7 @@ import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 import { LocaleLink } from '@/components/common/LocaleLink';
 import { BaseTemplate } from '@/components/layouts/BaseTemplate';
 import { MobileNavItems } from '@/components/navigation/MobileNavItems';
+import { NavDropdown } from '@/components/navigation/NavDropdown';
 import '@/styles/global.css';
 import { getAssetPath } from '@/utils/Helpers';
 import type { Metadata } from 'next';
@@ -43,24 +44,7 @@ export const metadata: Metadata = {
 // Desktop navigation with all links
 const desktopNavItems = (
   <>
-    <LocaleLink
-      href="/business-loans"
-      className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors whitespace-nowrap"
-    >
-      Business Loans
-    </LocaleLink>
-    <LocaleLink
-      href="/investment-loans"
-      className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors whitespace-nowrap"
-    >
-      Investment Loans
-    </LocaleLink>
-    <LocaleLink
-      href="/off-the-plan-purchases"
-      className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors whitespace-nowrap"
-    >
-      Off-the-Plan Purchases
-    </LocaleLink>
+    <NavDropdown />
     <LocaleLink
       href="/rates"
       className="block px-3 py-2 text-gray-600 hover:text-teal-700 hover:bg-teal-50 rounded-md text-sm md:text-base font-medium transition-colors whitespace-nowrap"
