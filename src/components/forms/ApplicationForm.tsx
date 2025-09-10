@@ -8,6 +8,8 @@ export default function ApplicationForm() {
   const searchParams = useSearchParams();
   
   const [formData, setFormData] = useState({
+    // Web3Forms (provided as hidden input for static hosting)
+    access_key: '4d705a31-ec63-40d2-b497-6da0b50a5294',
     // Loan Details
     loanAmount: '',
     loanPurpose: '',
@@ -173,6 +175,7 @@ export default function ApplicationForm() {
         });
         // Reset form on success
         setFormData({
+          access_key: '4d705a31-ec63-40d2-b497-6da0b50a5294',
           loanAmount: '',
           loanPurpose: '',
           preferredTerm: '',
@@ -237,6 +240,9 @@ export default function ApplicationForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-12">
+        {/* Hidden fields for Web3Forms */}
+        <input type="hidden" name="access_key" value={formData.access_key} readOnly />
+        <input type="text" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
         {/* Contact Information + Business & Personal Information */}
         <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-xl p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">

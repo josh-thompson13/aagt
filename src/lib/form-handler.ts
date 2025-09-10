@@ -21,22 +21,23 @@ export async function submitForm({ endpoint, data, onSuccess, onError }: FormSub
   
   // If running on GitHub Pages or a static context without API, use Web3Forms
   if (isStaticExport || !apiUrl) {
-    if (!web3formsKey) {
-      const msg = 'Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it to .env.production.local and rebuild.';
+    // Allow providing the Web3Forms key via submitted data (hidden input) or env
+    const providedKey = (data && (data.access_key || data.accessKey)) as string | undefined;
+    const effectiveKey = providedKey || web3formsKey;
+    if (!effectiveKey) {
+      const msg = 'Missing Web3Forms access key. Provide as hidden input `access_key` or set NEXT_PUBLIC_WEB3FORMS_KEY.';
       console.error(msg);
       onError?.(msg);
       throw new Error(msg);
     }
-    
-    
-    
+
     console.log('Using Web3Forms for form submission');
     console.log('Using Web3Forms for form submission');
     const endpointUrl = 'https://api.web3forms.com/submit';
 
     // Build a flat payload: Web3Forms accepts arbitrary fields
     const payload: Record<string, any> = {
-      access_key: web3formsKey,
+      access_key: effectiveKey,
       from_name: 'AAGT Private Loans Website',
       from_email: data.email || undefined,
       subject:
