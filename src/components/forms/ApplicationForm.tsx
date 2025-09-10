@@ -167,6 +167,11 @@ export default function ApplicationForm() {
       const { submitForm } = await import('@/lib/form-handler');
 
       // Build a minimal payload: only include fields present on this form
+      const amountOnlyDigits = formData.loanAmount.replace(/[^0-9]/g, '');
+      const loanAmountFormatted = amountOnlyDigits
+        ? `$${parseInt(amountOnlyDigits, 10).toLocaleString()}`
+        : '';
+
       const submission = {
         access_key: formData.access_key,
         _form: 'application',
@@ -175,7 +180,7 @@ export default function ApplicationForm() {
         lastName: formData.lastName,
         phone: formData.phone,
         borrowingEntity: formData.borrowingEntity,
-        loanAmount: formData.loanAmount,
+        loanAmount: loanAmountFormatted,
         preferredTerm: formData.preferredTerm,
         fundsRequiredDate: formData.fundsRequiredDate,
         loanPurpose: formData.loanPurpose,
