@@ -91,7 +91,7 @@ export default function OffThePlanPurchasesPage() {
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-600 mb-6">
-                Contracted off-the-plan but the bank won’t lend at settlement? We fund the shortfall so you can complete and protect your capital gain.
+                Contracted off-the-plan but the bank won’t lend at settlement? We can fund 100% of the purchase price so you can settle and secure your capital gain.
               </p>
 
               <div className="mb-8 text-base text-gray-700 bg-primary-50 border border-primary-100 rounded-lg p-4">
@@ -162,9 +162,11 @@ export default function OffThePlanPurchasesPage() {
 
             <h3 className="text-3xl md:text-4xl font-light mb-4 text-white">How Our Settlement Funding Is Your Solution to Changed Circumstances</h3>
             <p className="text-primary-100/95 mb-8">
-              Specialist settlement funding can provide 100% of purchase price so you can complete on time and secure your capital gain.
+              Specialist settlement funding can provide{' '}
+              <span className="text-green-400 font-bold">100% of purchase price</span>
+              {' '}so you can complete on time and secure your capital gain.
             </p>
-            <span>test</span>
+            
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -194,7 +196,7 @@ export default function OffThePlanPurchasesPage() {
                 Case Study: Off‑the‑Plan Settlement Shortfall
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                A couple contracted to buy an apartment for $1,500,000. Three years later, at completion, the apartment was valued at $2,500,000. Due to loss of employment just prior to settlement, their bank cancelled their initial approval, putting at risk the capital gain of $1,000,000. 
+                A couple contracted to buy an apartment for $1,500,000. Three years later, at completion, the apartment was valued at $2,500,000. Due to loss of employment just prior to settlement, their bank cancelled their initial approval, putting at risk their capital gain of $1,000,000. 
               </p>
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
