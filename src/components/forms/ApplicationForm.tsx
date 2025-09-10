@@ -1,15 +1,16 @@
 'use client';
 
 import { AlertCircle, CheckCircle2, Plus } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function ApplicationForm() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   
   const [formData, setFormData] = useState({
     // Web3Forms (provided as hidden input for static hosting)
-    access_key: '4d705a31-ec63-40d2-b497-6da0b50a5294',
+    access_key: 'fb6c8a57-15b3-489f-989d-f155d8b1c4b2',
     // Loan Details
     loanAmount: '',
     loanPurpose: '',
@@ -163,47 +164,32 @@ export default function ApplicationForm() {
 
     try {
       const { submitForm } = await import('@/lib/form-handler');
+
+      // Build a minimal payload: only include fields present on this form
+      const submission = {
+        access_key: formData.access_key,
+        _form: 'application',
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        borrowingEntity: formData.borrowingEntity,
+        loanAmount: formData.loanAmount,
+        preferredTerm: formData.preferredTerm,
+        fundsRequiredDate: formData.fundsRequiredDate,
+        loanPurpose: formData.loanPurpose,
+        securityOffered: formData.securityOffered,
+        propertyValue: formData.propertyValue,
+        debtOwing: formData.debtOwing,
+        propertyAddresses: formData.propertyAddresses.filter(Boolean),
+        agreeToTerms: formData.agreeToTerms ? 'yes' : 'no',
+      } as const;
+
       await submitForm({
         endpoint: '/api/apply',
-        data: formData,
-        onSuccess: (data) => {
-          setSubmitStatus({
-            type: 'success',
-            message: data.isDemo ? data.message :
-            data.message ||
-            'Thank you for your loan application! A lending specialist will review your application and contact you within 4 hours during business hours.',
-        });
-        // Reset form on success
-        setFormData({
-          access_key: '4d705a31-ec63-40d2-b497-6da0b50a5294',
-          loanAmount: '',
-          loanPurpose: '',
-          preferredTerm: '',
-          propertyType: '',
-          propertyValue: '',
-          propertyAddress: '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          businessName: '',
-          abn: '',
-          businessAddress: '',
-          industry: '',
-          yearsInBusiness: '',
-          borrowingEntity: '',
-          directorsNames: '',
-          fundsRequiredDate: '',
-          securityOffered: '',
-          debtOwing: '',
-          bankruptcyHistory: '',
-          exitStrategy: '',
-          declinedByBanks: false,
-          workingWithBroker: false,
-          agreeToTerms: false,
-          receiveUpdates: false,
-          propertyAddresses: [''],
-        });
+        data: submission,
+        onSuccess: () => {
+          router.push('/apply/thank-you');
         },
         onError: (error) => {
           setSubmitStatus({
