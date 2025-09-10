@@ -77,14 +77,14 @@ export const BaseTemplate = (props: {
               </Link>
             </div>
 
-            {/* Desktop navigation */}
-            <nav className="hidden md:flex items-center space-x-1 lg:space-x-4">
+            {/* Desktop navigation (xl and up) */}
+            <nav className="hidden xl:flex items-center space-x-1 xl:space-x-6">
               {props.navItems}
             </nav>
 
             {/* Apply for Loan CTA Button */}
             
-              <div className="hidden sm:flex items-center">
+              <div className="hidden xl:flex items-center">
                 {!(pathname === '/apply' || pathname === '/apply/') && (
                 <Link
                   href="/apply"
@@ -96,8 +96,8 @@ export const BaseTemplate = (props: {
               </div>
             
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
+            {/* Mobile/Tablet menu button (below xl) */}
+            <div className="xl:hidden">
               <button
                 type="button"
                 className="inline-flex items-center justify-center p-1.5 sm:p-2 rounded-md text-gray-500 hover:text-teal-700 hover:bg-teal-50 focus:outline-none focus:ring-4 focus:ring-teal-200 shadow-sm hover:shadow-md"
@@ -127,7 +127,7 @@ export const BaseTemplate = (props: {
           <AnimatePresence>
             {mobileMenuOpen && (
               <motion.div
-                className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100"
+                className="xl:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
