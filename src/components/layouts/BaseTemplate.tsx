@@ -40,10 +40,34 @@ export const BaseTemplate = (props: {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when pathname changes (navigation occurs)
+  // Close mobile menu and ensure we reset scroll on navigation
   useEffect(() => {
     setMobileMenuOpen(false);
+    // Force scroll to top after route change to avoid preserved offset
+    // on iOS Safari when the mobile drawer was open.
+    if (typeof window !== 'undefined') {
+      // Next tick to allow layout to settle
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      });
+    }
   }, [pathname]);
+
+  // Lock body scroll when mobile menu is open to prevent layout push altering scroll
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      if (mobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = '';
+      }
+    };
+  }, [mobileMenuOpen]);
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
