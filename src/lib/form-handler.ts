@@ -10,17 +10,24 @@ export interface FormSubmitOptions {
   endpoint: string;
   data: any;
   onSuccess?: (data: any) => void;
-
   onError?: (error: string) => void;
+  // Force a specific submission path regardless of environment
+  // - 'auto': default behavior (use Web3Forms on static/no API, otherwise API)
+  // - 'web3forms': always submit via Web3Forms
+  // - 'api': always submit via API endpoint
+  mode?: 'auto' | 'web3forms' | 'api';
 }
 
-export async function submitForm({ endpoint, data, onSuccess, onError }: FormSubmitOptions) {
+export async function submitForm({ endpoint, data, onSuccess, onError, mode = 'auto' }: FormSubmitOptions) {
   console.log('Form handler - isStaticExport:', isStaticExport);
   console.log('Form handler - apiUrl:', apiUrl);
   console.log('Form handler - hostname:', typeof window !== 'undefined' ? window.location.hostname : 'server');
   
-  // If running on GitHub Pages or a static context without API, use Web3Forms
-  if (isStaticExport || !apiUrl) {
+  // Determine which path to use
+  const useWeb3Forms = mode === 'web3forms' || (mode === 'auto' && (isStaticExport || !apiUrl));
+
+  // If running on GitHub Pages or a static context without API, or forced, use Web3Forms
+  if (useWeb3Forms) {
     // Allow providing the Web3Forms key via submitted data (hidden input) or env
     const providedKey = (data && (data.access_key || data.accessKey)) as string | undefined;
     const effectiveKey = providedKey || web3formsKey;
@@ -31,7 +38,6 @@ export async function submitForm({ endpoint, data, onSuccess, onError }: FormSub
       throw new Error(msg);
     }
 
-    console.log('Using Web3Forms for form submission');
     console.log('Using Web3Forms for form submission');
     const endpointUrl = 'https://api.web3forms.com/submit';
 
@@ -79,7 +85,7 @@ export async function submitForm({ endpoint, data, onSuccess, onError }: FormSub
     }
   }
 
-  // Use external API if configured
+  // Use external API if configured or forced
   console.log('Using API route for form submission, endpoint:', endpoint);
   const url = apiUrl ? `${apiUrl}${endpoint}` : endpoint;
 

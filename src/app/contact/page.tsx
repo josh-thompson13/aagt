@@ -180,6 +180,7 @@ export default function Contact() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
               <p className="text-gray-600 mb-6">Fill out the form and our lending specialists will reply as soon as possible.</p>
+              {/* Client-side form submission to avoid page jump */}
               <ContactForm />
             </div>
             

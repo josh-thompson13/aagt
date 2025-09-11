@@ -6,6 +6,8 @@ import { AlertCircle, CheckCircle2 } from 'lucide-react';
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     _form: 'contact',
+    // Web3Forms access key lives client-side by design
+    access_key: '4d705a31-ec63-40d2-b497-6da0b50a5294',
     name: '',
     email: '',
     phone: '',
@@ -32,9 +34,10 @@ export default function ContactForm() {
       await submitForm({
         endpoint: '/api/contact',
         data: formData,
+        mode: 'web3forms',
         onSuccess: (res) => {
           setStatus({ type: 'success', message: res.message || 'Thanks! We will get back to you shortly.' });
-          setFormData({ _form: 'contact', name: '', email: '', phone: '', message: '' });
+          setFormData({ _form: 'contact', access_key: '4d705a31-ec63-40d2-b497-6da0b50a5294', name: '', email: '', phone: '', message: '' });
         },
         onError: (msg) => setStatus({ type: 'error', message: msg }),
       });
@@ -125,4 +128,3 @@ export default function ContactForm() {
     </div>
   );
 }
-

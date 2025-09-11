@@ -32,8 +32,8 @@ export const PrestigeHero = () => {
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              No Doc, Non Bank, Private Lending
-              <span className="block text-primary-700">When The Banks Say No</span>
+              We Say Yes When Banks Say No
+              <span className="block text-primary-700">No Doc, Non Bank, Private Lending</span>
             </h1>
             
             {/* Subheadline */}
