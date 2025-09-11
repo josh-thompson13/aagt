@@ -101,7 +101,7 @@ export default function OffThePlanPurchasesPage() {
               </p>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Off-the-Plan Purchases
+                Off-the-Plan Purchase Finance
                 <span className="block text-primary-700">Settle And Keep Your Profit</span>
               </h1>
 
@@ -110,7 +110,7 @@ export default function OffThePlanPurchasesPage() {
               </p>
 
               <div className="mb-8 text-base text-gray-700 bg-primary-50 border border-primary-100 rounded-lg p-4">
-                If this scenario is you, don’t miss out on your capital gain — contact us immediately. AAGT has the solution for you.
+                If the scenario outlined below is you, contact us today - don't miss out on your capital gain.
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
@@ -208,7 +208,7 @@ export default function OffThePlanPurchasesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Case Study: Off‑the‑Plan Settlement Shortfall
+                Scenario: Unable to settle off-the-plan purchase
               </h2>
               <p className="text-lg text-gray-700 mb-6">
                 A couple contracted to buy an apartment for $1,500,000. Three years later, at completion, the apartment was valued at $2,500,000. Due to loss of employment just prior to settlement, their bank cancelled their initial approval, putting at risk their capital gain of $1,000,000. 

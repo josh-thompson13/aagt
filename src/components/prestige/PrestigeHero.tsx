@@ -27,12 +27,12 @@ export const PrestigeHero = () => {
           <div className="text-center lg:text-left">
             {/* Tagline */}
             <p className="text-primary-700 font-semibold text-sm uppercase tracking-wider mb-4">
-              Non bank lending solutions
+              Non bank, private lending solutions
             </p>
             
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              No Doc Lending
+              No Doc, Non Bank, Private Lending
               <span className="block text-primary-700">When The Banks Say No</span>
             </h1>
             

@@ -1,7 +1,7 @@
 import { LazyImage } from '@/components/common/LazyImage';
 import { AppConfig } from '@/utils/AppConfig';
 import { getAssetPath } from '@/utils/Helpers';
-import { ArrowRight, Award, Clock, DollarSign, Heart, Mail, Phone, Shield, Target } from 'lucide-react';
+import { ArrowRight, Award, Clock, DollarSign, Heart, Shield, Target } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -130,7 +130,7 @@ export default function About() {
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                Direct private lending specialists revolutionizing business funding with same day approvals, competitive rates, and straightforward processes.
+                Direct private lending specialists revolutionising business funding with same day approvals, competitive rates, and straightforward processes.
               </p>
 
               {/* CTA Buttons */}
@@ -245,7 +245,7 @@ export default function About() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                To revolutionize private lending by eliminating the friction between ambition and capital. We're building a future where smart businesses get funded on merit, not bureaucracy - where a great opportunity doesn't have to wait weeks for committee approval.
+                To revolutionise private lending by eliminating the friction between ambition and capital. We're building a future where smart businesses get funded on merit, not bureaucracy - where a great opportunity doesn't have to wait weeks for committee approval.
               </p>
             </div>
           </div>
@@ -282,45 +282,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Ready to Secure Your Business Funding?
-          </h2>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Join thousands of Australian business owners who've chosen AAGT Private Loans for their funding needs. Experience professional lending with competitive terms.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Apply Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Contact Our Team
-            </Link>
-          </div>
-
-          {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-gray-600">
-            <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              <span className="text-sm">Call for expert consultation</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              <span className="text-sm">Get personalized lending advice</span>
-            </div>
-          </div>
-        </div>
-      </section>
+    
     </>
   );
 }

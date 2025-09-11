@@ -287,12 +287,7 @@ export default function RatesTermsPage() {
                   >
                     Apply Now
                   </Link>
-                  <Link
-                    href="/contact"
-                    className="px-4 py-2 bg-white text-slate-700 font-medium rounded-lg border border-slate-300 hover:bg-slate-50 transition-colors"
-                  >
-                    Get Quote
-                  </Link>
+                  
                 </div>
               </div>
             ))}

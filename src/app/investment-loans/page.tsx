@@ -357,66 +357,7 @@ export default function InvestmentLoansPage() {
         </div>
       </section>
 
-      {/* Why Choose Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Content */}
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Investment Success
-                <span className="block text-primary-700">Built on Experience</span>
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Our deep understanding of property markets and investment strategies means we can structure loans that work for your specific goals. We're not just lenders – we're partners in your success.
-              </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
-                  <span className="text-gray-700">Specialist investment loan structuring</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
-                  <span className="text-gray-700">Portfolio lending and cross-collateralization</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full" />
-                  <span className="text-gray-700">Flexible exit strategies and refinancing</span>
-                </div>
-              </div>
-              <Link
-                href="/rates"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 bg-primary-50 hover:bg-primary-100 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
-              >
-                View Current Rates
-              </Link>
-            </div>
-
-            {/* Image */}
-            <div className="relative">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <LazyImage
-                  src={getAssetPath("/images/mario-gogh-VBLHICVh-lI-unsplash.jpg")}
-                  alt="Successful investment partnership and consultation"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  rootMargin="100px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-              </div>
-              
-              {/* Floating Achievement Card */}
-              <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-emerald-600 mb-1">40+</div>
-                  <div className="text-sm text-gray-600">Years of Experience</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+   
 
       {/* Final CTA Section */}
       <CallToAction />

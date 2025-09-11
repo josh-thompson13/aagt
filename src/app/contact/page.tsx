@@ -78,11 +78,7 @@ export default function Contact() {
       description: 'Discuss property investment loans and development finance solutions',
       icon: '🏢',
     },
-    {
-      title: 'Application Support',
-      description: 'Get help with your application or check on existing application status',
-      icon: '📋',
-    },
+    
     {
       title: 'Partnership Opportunities',
       description: 'Explore broker partnerships and referral arrangements',
@@ -313,7 +309,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contactReasons.map((reason, index) => (
               <div
                 key={index}
@@ -374,7 +370,7 @@ export default function Contact() {
                   href={`tel:${contactInfo.phone}`}
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Schedule Consultation
+                  Call +61 461 534 088
                 </Link>
                 <Link
                   href="/apply"
@@ -411,46 +407,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Don't let funding delays hold back your business growth. Contact our lending specialists today for same day approval.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link
-              href={`tel:${contactInfo.phone}`}
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-            >
-              <Phone className="mr-2 h-5 w-5" />
-              Call {contactInfo.phone}
-            </Link>
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-700 bg-white border-2 border-primary-700 hover:bg-primary-50 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Apply Online Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-
-          {/* Quick Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-gray-600">
-            <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              <span className="text-sm">{contactInfo.email}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
-              <span className="text-sm">{contactInfo.hours}</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Structured Data */}
       <script
