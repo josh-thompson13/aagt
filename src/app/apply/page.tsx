@@ -38,7 +38,7 @@ export default function ApplyPage() {
       amount: {
         '@type': 'MonetaryAmount',
         minValue: 150000,
-        maxValue: 5000000,
+        maxValue: 10000000,
         currency: 'AUD',
       },
     },

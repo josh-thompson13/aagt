@@ -12,7 +12,7 @@ export const AppConfig = {
   primaryMessage: 'Alternative lending solutions for businesses declined by traditional banks',
   loanRange: {
     min: 150000,
-    max: 5000000,
+    max: 10000000,
     currency: 'AUD',
   },
   features: [

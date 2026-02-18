@@ -55,7 +55,7 @@ export const generateOrganizationSchema = () => ({
             '@type': 'MonetaryAmount',
             currency: 'AUD',
             minValue: 150000,
-            maxValue: 5000000,
+            maxValue: 10000000,
           },
         },
       },

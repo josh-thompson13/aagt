@@ -50,7 +50,7 @@ export const env = {
   ENABLE_ANALYTICS: process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === 'true',
 
   // Application Settings
-  MAX_LOAN_AMOUNT: parseInt(process.env.MAX_LOAN_AMOUNT || '5000000', 10),
+  MAX_LOAN_AMOUNT: parseInt(process.env.MAX_LOAN_AMOUNT || '10000000', 10),
   MIN_LOAN_AMOUNT: parseInt(process.env.MIN_LOAN_AMOUNT || '150000', 10),
   DEFAULT_INTEREST_RATE: parseFloat(process.env.DEFAULT_INTEREST_RATE || '8.5'),
   MAX_LOAN_TERM: parseInt(process.env.MAX_LOAN_TERM || '300', 10),

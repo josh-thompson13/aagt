@@ -83,7 +83,7 @@ export default function RatesTermsPage() {
       rateRange: 'From 15.95% p.a.',
       lvrMax: 'Up to 70% combined LVR',
       termOptions: '1-12 months',
-      amount: '$150,000 - $1,500,000',
+      amount: '$150,000 - $10,000,000',
       features: [
         'Keep your existing mortgage',
         'Access locked-in equity',
@@ -120,7 +120,7 @@ export default function RatesTermsPage() {
     amount: {
       '@type': 'MonetaryAmount',
       minValue: 150000,
-      maxValue: 5000000,
+      maxValue: 10000000,
       currency: 'AUD',
     },
   };

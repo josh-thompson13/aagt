@@ -104,7 +104,7 @@ const loanDetailsSchema = z.object({
   amount: z
     .number()
     .min(150000, 'Minimum loan amount is $150,000')
-    .max(5000000, 'Maximum loan amount is $10,000,000'),
+    .max(10000000, 'Maximum loan amount is $10,000,000'),
   purpose: z.enum(
     [
       'business_expansion',
