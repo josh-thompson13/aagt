@@ -19,7 +19,7 @@ export const faqs: FAQItem[] = [
     id: 'interest-rates',
     question: 'What are your interest rates?',
     answer:
-      'Our interest rates start from 8.95% p.a. for business loans and 9.25% p.a. for investment loans. Rates vary based on loan amount, term, security type, and borrower profile. We provide competitive rates with transparent pricing and no hidden fees.',
+      'Our interest rates start from 7.95% p.a. for business loans and 9.25% p.a. for investment loans. Rates vary based on loan amount, term, security type, and borrower profile. We provide competitive rates with transparent pricing and no hidden fees.',
     category: 'Loan Basics',
     tags: ['interest rates', 'pricing', 'comparison', 'fees'],
     helpful: 94,

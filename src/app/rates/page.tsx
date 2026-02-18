@@ -4,12 +4,12 @@ import { StructuredData } from '@/components/common/StructuredData';
 import { getAssetPath } from '@/utils/Helpers';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import {
-    ArrowRight,
-    Calculator,
-    CheckCircle,
-    Clock,
-    Shield,
-    TrendingDown,
+  ArrowRight,
+  Calculator,
+  CheckCircle,
+  Clock,
+  Shield,
+  TrendingDown,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -44,7 +44,7 @@ export default function RatesTermsPage() {
     {
       type: 'Business Loans',
       purpose: 'Business expansion and working capital',
-      rateRange: 'From 8.95% p.a.',
+      rateRange: 'From 7.95% p.a.',
       lvrMax: 'Up to 75% LVR',
       termOptions: '1-12 months',
       amount: '$150,000 - $10,000,000',
@@ -62,7 +62,7 @@ export default function RatesTermsPage() {
     {
       type: 'Investment Loans', 
       purpose: 'Property investment and development',
-      rateRange: 'From 8.95% p.a.',
+      rateRange: 'From 7.95% p.a.',
       lvrMax: 'Up to 75% LVR',
       termOptions: '1-12 months', 
       amount: '$150,000 - $10,000,000',
@@ -115,7 +115,7 @@ export default function RatesTermsPage() {
       '@type': 'FinancialService',
       name: 'AAGT Private Loans',
     },
-    interestRate: '8.95 - 16.95% per annum',
+    interestRate: '7.95 - 16.95% per annum',
     feesAndCommissionsSpecification: 'No application fees, transparent cost structure',
     amount: {
       '@type': 'MonetaryAmount',
@@ -198,7 +198,7 @@ export default function RatesTermsPage() {
               {/* Floating Stats Cards */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">8.95%</div>
+                  <div className="text-2xl font-bold text-green-600">7.95%</div>
                   <div className="text-sm text-gray-600">Starting Rate</div>
                 </div>
               </div>
