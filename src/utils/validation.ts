@@ -1,5 +1,5 @@
-import { z } from 'zod';
 import type { ApplicationData, ValidationError } from '@/types/application';
+import { z } from 'zod';
 
 // Australian-specific validation patterns
 const PATTERNS = {
@@ -104,7 +104,7 @@ const loanDetailsSchema = z.object({
   amount: z
     .number()
     .min(150000, 'Minimum loan amount is $150,000')
-    .max(5000000, 'Maximum loan amount is $5,000,000'),
+    .max(5000000, 'Maximum loan amount is $10,000,000'),
   purpose: z.enum(
     [
       'business_expansion',

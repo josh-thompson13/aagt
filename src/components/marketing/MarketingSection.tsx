@@ -36,7 +36,7 @@ export const MarketingSection = () => {
                 <ul className="mb-10 space-y-2 text-base text-slate-700">
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />
-                    Direct funding from $150,000 to $5,000,000
+                    Direct funding from $150,000 to $10,000,000
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-primary-700" />

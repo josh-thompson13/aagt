@@ -10,7 +10,7 @@ export async function generateMetadata() {
   return {
     title: 'Contact Us | AAGT Private Loans',
     description:
-      'Contact AAGT Private Loans for business funding inquiries. Get same day approval for loans from $150,000 to $5,000,000. Speak to our lending specialists today.',
+      'Contact AAGT Private Loans for business funding inquiries. Get same day approval for loans from $150,000 to $10,000,000. Speak to our lending specialists today.',
     keywords:
       'contact AAGT private loans, business loan contact, private lending inquiry, loan specialist contact, business funding help',
     alternates: {

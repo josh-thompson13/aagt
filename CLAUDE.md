@@ -7,7 +7,7 @@ This project transforms an SEO-optimized real estate website template into a pro
 - **Company Name**: AAGT Private Loans
 - **Business Type**: Direct private lending company
 - **Target Market**: Business owners and investors seeking alternative funding solutions
-- **Core Service**: Business and investment loans from $150,000 to $5,000,000
+- **Core Service**: Business and investment loans from $150,000 to $10,000,000
 
 ## Key Brand Messages
 1. **Primary Value Proposition**: Alternative lending solutions for businesses declined by traditional banks
@@ -32,7 +32,7 @@ This project transforms an SEO-optimized real estate website template into a pro
 - "neighborhoods" → "industries/sectors"
 
 ### Core Services to Highlight
-1. **Business Loans**: $150,000 to $5,000,000 for business expansion and operations
+1. **Business Loans**: $150,000 to $10,000,000 for business expansion and operations
 2. **Investment Loans**: Flexible funding for various investment opportunities
 3. **Property Development Finance**: Specialized solutions for off-the-plan purchases
 4. **Second Mortgages**: Up to 75% LVR for additional capital needs
@@ -110,7 +110,7 @@ Replace property listings with:
 - "bridge loans for business"
 
 ### Meta Descriptions
-Homepage: "AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today."
+Homepage: "AAGT Private Loans provides direct business funding from $150,000 to $10,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today."
 
 ### Schema Markup Updates
 - Implement FinancialService schema

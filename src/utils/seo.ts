@@ -21,7 +21,7 @@ export interface SEOData {
 const defaultMetadata = {
   title: 'AAGT Private Loans',
   description:
-    'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Alternative lending solutions for businesses declined by traditional banks.',
+    'Direct business funding from $150,000 to $10,000,000. Fast approvals, competitive rates, and flexible terms. Alternative lending solutions for businesses declined by traditional banks.',
   siteName: 'AAGT Private Loans',
   baseUrl: '', // Base URL will be set from environment
   ogImage: getAssetPath('/images/aagt-og-image.jpg'),
@@ -160,7 +160,7 @@ export const pageSEOData = {
   businessLoans: {
     title: 'Business Loans $150K-$5M | Fast Approval | AAGT Private Loans',
     description:
-      'Business expansion loans from $150,000 to $5,000,000. Direct private lender with streamlined approval process. Apply today for competitive rates.',
+      'Business expansion loans from $150,000 to $10,000,000. Direct private lender with streamlined approval process. Apply today for competitive rates.',
     keywords: [
       'business expansion loans',
       

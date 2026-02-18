@@ -91,7 +91,7 @@ export default function About() {
     {
       question: 'What loan amounts do you offer?',
       answer:
-        'We provide business funding from $150,000 to $5,000,000 for any worthwhile business purpose including expansion, equipment, working capital, and investment opportunities.',
+        'We provide business funding from $150,000 to $10,000,000 for any worthwhile business purpose including expansion, equipment, working capital, and investment opportunities.',
     },
     {
       question: 'How quickly can I get approved and receive funds?',

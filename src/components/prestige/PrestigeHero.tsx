@@ -38,7 +38,7 @@ export const PrestigeHero = () => {
             
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-gray-600 mb-8">
-              Direct lending from $150,000 to $5,000,000. No committees, no delays – just straightforward funding decisions.
+              Direct lending from $150,000 to $10,000,000. No committees, no delays – just straightforward funding decisions.
             </p>
 
             {/* CTA Buttons */}

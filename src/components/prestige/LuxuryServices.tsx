@@ -10,7 +10,7 @@ const services = [
     icon: DollarSign,
     title: 'Business Loans',
     description:
-      'Fast funding from $150,000 to $5,000,000 for any worthwhile business purpose. Same day approval with minimal documentation.',
+      'Fast funding from $150,000 to $10,000,000 for any worthwhile business purpose. Same day approval with minimal documentation.',
     bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100',
     iconBg: 'bg-blue-500',
     hoverBg: 'hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200',

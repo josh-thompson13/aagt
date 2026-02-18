@@ -6,7 +6,7 @@ export const faqs: FAQItem[] = [
     id: 'loan-amounts',
     question: 'What loan amounts do you offer?',
     answer:
-      'We provide loans from $150,000 to $5,000,000 for various business and investment purposes. Our flexible approach means we can tailor loan amounts to your specific needs and security position.',
+      'We provide loans from $150,000 to $10,000,000 for various business and investment purposes. Our flexible approach means we can tailor loan amounts to your specific needs and security position.',
     category: 'Loan Basics',
     tags: ['loan amount', 'limits', 'minimum', 'maximum'],
     helpful: 87,

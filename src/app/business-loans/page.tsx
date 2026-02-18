@@ -12,7 +12,7 @@ export async function generateMetadata() {
   return {
     title: 'Business Loans | Fast Funding $150K-$5M',
     description:
-      'Get business loans from $150,000 to $5,000,000 with same day approval and 4-day settlement. Direct funder with minimal documentation required.',
+      'Get business loans from $150,000 to $10,000,000 with same day approval and 4-day settlement. Direct funder with minimal documentation required.',
     keywords:
       'business loans Australia, fast business funding, same day approval business loan, quick business finance, $150k business loan',
     alternates: {
@@ -31,7 +31,7 @@ export default function BusinessLoansPage() {
     '@context': 'https://schema.org',
     '@type': 'FinancialProduct',
     name: 'Business Loans',
-    description: 'Fast business funding from $150,000 to $5,000,000 with same day approval',
+    description: 'Fast business funding from $150,000 to $10,000,000 with same day approval',
     provider: {
       '@type': 'FinancialService',
       name: 'AAGT Private Loans',

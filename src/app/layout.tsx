@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | AAGT Private Loans',
   },
   description:
-    'AAGT Private Loans provides direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.',
+    'AAGT Private Loans provides direct business funding from $150,000 to $10,000,000. Fast approvals, competitive rates, and flexible terms. Explore alternative lending solutions today.',
   keywords:
     'private loans Australia, business loans fast approval, private lending Queensland, same day loan approval, off the plan finance, bank rejected loan alternative, quick business funding, second mortgage lender, 4 day loan settlement, private funder direct',
   icons: {

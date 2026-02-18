@@ -12,7 +12,7 @@ export async function generateMetadata() {
   return {
     title: 'Investment Loans | Property & Business Investment Funding',
     description:
-      'Flexible investment loans for property development, off-the-plan purchases, and business investments. Fast approvals from $150,000 to $5,000,000.',
+      'Flexible investment loans for property development, off-the-plan purchases, and business investments. Fast approvals from $150,000 to $10,000,000.',
     keywords:
       'investment loans Australia, property investment finance, development finance, off the plan funding, business investment loans',
     alternates: {

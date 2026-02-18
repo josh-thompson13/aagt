@@ -4,12 +4,12 @@ import { StructuredData } from '@/components/common/StructuredData';
 import { getAssetPath } from '@/utils/Helpers';
 import { breadcrumbSchema } from '@/utils/structuredData';
 import {
-  ArrowRight,
-  Calculator,
-  CheckCircle,
-  Clock,
-  Shield,
-  TrendingDown,
+    ArrowRight,
+    Calculator,
+    CheckCircle,
+    Clock,
+    Shield,
+    TrendingDown,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -47,7 +47,7 @@ export default function RatesTermsPage() {
       rateRange: 'From 8.95% p.a.',
       lvrMax: 'Up to 75% LVR',
       termOptions: '1-12 months',
-      amount: '$150,000 - $5,000,000',
+      amount: '$150,000 - $10,000,000',
       features: [
         'Same-day approval available',
         'Settlement within 4 working days',
@@ -65,7 +65,7 @@ export default function RatesTermsPage() {
       rateRange: 'From 8.95% p.a.',
       lvrMax: 'Up to 75% LVR',
       termOptions: '1-12 months', 
-      amount: '$150,000 - $5,000,000',
+      amount: '$150,000 - $10,000,000',
       features: [
         'Portfolio lending available',
         'Capitalised interest option',

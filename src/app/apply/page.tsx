@@ -7,7 +7,7 @@ export async function generateMetadata() {
   return {
     title: 'Loan Application | AAGT Private Loans',
     description:
-      'Complete your business loan application for same-day response. Simple form, minimal documentation. $150,000 to $5,000,000 available.',
+      'Complete your business loan application for same-day response. Simple form, minimal documentation. $150,000 to $10,000,000 available.',
     keywords:
       'loan application, business loan form, apply for business funding, private loan application Australia',
     alternates: {

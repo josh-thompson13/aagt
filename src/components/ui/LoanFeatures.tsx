@@ -20,7 +20,7 @@ export const LoanFeatures = () => {
     {
       icon: DollarSign,
       title: 'Loan Amounts',
-      value: '$150,000 - $5,000,000',
+      value: '$150,000 - $10,000,000',
       description: 'Flexible funding to match your business needs',
       highlight: true,
     },

@@ -19,7 +19,7 @@ export const organizationSchema = {
   logo: getAssetPath('/images/aagt_logo_no_background.png'),
   image: getAssetPath('/images/aagt_logo_no_background.png'),
   description:
-    'Direct private lending company offering fast business funding from $150,000 to $5,000,000 with same day approval and 4-day settlement',
+    'Direct private lending company offering fast business funding from $150,000 to $10,000,000 with same day approval and 4-day settlement',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Sydney',
@@ -28,7 +28,7 @@ export const organizationSchema = {
   },
   telephone: '+61 461 534 088',
   email: AppConfig.email,
-  priceRange: '$150,000-$5,000,000',
+  priceRange: '$150,000-$10,000,000',
   areaServed: 'Australia',
   slogan: AppConfig.mission,
   knowsAbout: [
@@ -47,7 +47,7 @@ export const organizationSchema = {
         itemOffered: {
           '@type': 'FinancialProduct',
           name: 'Business Loans',
-          description: 'Fast business funding from $150,000 to $5,000,000',
+          description: 'Fast business funding from $150,000 to $10,000,000',
           url: '/business-loans',
         },
         amount: {
@@ -101,7 +101,7 @@ export const websiteSchema = {
   url: getBaseUrl(),
   name: 'AAGT Private Loans',
   description:
-    'Direct business funding from $150,000 to $5,000,000. Fast approvals, competitive rates, and flexible terms.',
+    'Direct business funding from $150,000 to $10,000,000. Fast approvals, competitive rates, and flexible terms.',
   publisher: {
     '@id': '#organization',
   },
