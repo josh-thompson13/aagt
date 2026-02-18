@@ -126,7 +126,7 @@ export function generateMetadata(seoData: SEOData): Metadata {
 }
 
 export const defaultSEOData: SEOData = {
-  title: 'Business & Investment Loans $150K-$5M | AAGT Private Loans',
+  title: 'Business & Investment Loans $150K-$10M | AAGT Private Loans',
   description: defaultMetadata.description,
   keywords: [
     'private business loans',
@@ -145,7 +145,7 @@ export const defaultSEOData: SEOData = {
 // Page-specific SEO data
 export const pageSEOData = {
   home: {
-    title: 'Business & Investment Loans $150K-$5M | AAGT Private Loans',
+    title: 'Business & Investment Loans $150K-$10M | AAGT Private Loans',
     description:
       'Direct private lending for businesses and investors. Same-day approval, 4-day settlement. Competitive rates from 8.5%. Alternative funding when banks say no.',
     keywords: [
@@ -158,7 +158,7 @@ export const pageSEOData = {
   },
 
   businessLoans: {
-    title: 'Business Loans $150K-$5M | Fast Approval | AAGT Private Loans',
+    title: 'Business Loans $150K-$10M | Fast Approval | AAGT Private Loans',
     description:
       'Business expansion loans from $150,000 to $10,000,000. Direct private lender with streamlined approval process. Apply today for competitive rates.',
     keywords: [

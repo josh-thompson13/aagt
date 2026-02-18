@@ -84,7 +84,7 @@ export const MarketingSection = () => {
                       <h4 className="text-2xl font-bold text-primary-900 mb-2">
                         Funding Available
                       </h4>
-                      <p className="text-4xl font-bold text-primary-700">$150K - $5M</p>
+                      <p className="text-4xl font-bold text-primary-700">$150K - $10M</p>
                       <p className="text-lg text-primary-600 mt-2">
                         For any worthwhile business purpose
                       </p>

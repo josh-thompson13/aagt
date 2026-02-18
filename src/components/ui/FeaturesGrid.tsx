@@ -39,7 +39,7 @@ export const FeaturesGrid = () => {
     },
     {
       icon: DollarSign,
-      title: '$150K to $5M Range',
+      title: '$150K to $10M Range',
       description:
         'Flexible funding amounts to match your business needs, from expansion to major investments.',
       benefits: ['Flexible amounts', 'Competitive rates', 'Tailored terms'],

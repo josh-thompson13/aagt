@@ -70,7 +70,7 @@ export default function Contact() {
   const contactReasons = [
     {
       title: 'Business Loan Inquiry',
-      description: 'Get information about our business funding options from $150k to $5M',
+      description: 'Get information about our business funding options from $150k to $10M',
       icon: '💼',
     },
     {

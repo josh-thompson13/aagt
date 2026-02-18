@@ -82,7 +82,7 @@ export default function OffThePlanPurchasesPage() {
               {/* Floating Stats */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">$5M</div>
+                  <div className="text-2xl font-bold text-green-600">$10M</div>
                   <div className="text-sm text-gray-600">Max Loan</div>
                 </div>
               </div>

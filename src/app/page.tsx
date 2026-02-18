@@ -57,7 +57,7 @@ export default function Index() {
     '@type': 'FinancialService',
     name: 'AAGT Private Loans',
     description:
-      'Direct private lending company offering fast business funding from $150k to $5M with same day approval and 4-day settlement',
+      'Direct private lending company offering fast business funding from $150k to $10M with same day approval and 4-day settlement',
     logo: '/logo.png',
     address: {
       '@type': 'PostalAddress',

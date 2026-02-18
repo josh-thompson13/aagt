@@ -72,7 +72,7 @@ export const loanProducts: LoanProduct[] = [
     lastUpdated: '2024-01-15',
     seoTitle: 'Business Expansion Loans Australia | Fast Approval | AAGT Private Loans',
     seoDescription:
-      'Get fast business expansion loans from $150k to $5M. Same-day approval, 4-day settlement. Competitive rates from 8.95%. Apply now for business growth funding.',
+      'Get fast business expansion loans from $150k to $10M. Same-day approval, 4-day settlement. Competitive rates from 8.95%. Apply now for business growth funding.',
     seoKeywords: [
       'business expansion loans',
       'business growth funding',
@@ -155,7 +155,7 @@ export const loanProducts: LoanProduct[] = [
     lastUpdated: '2024-01-15',
     seoTitle: 'Investment Property Loans Australia | Up to 75% LVR | AAGT Private Loans',
     seoDescription:
-      'Investment property loans from $150k to $5M. Up to 75% LVR, competitive rates from 9.25%. Fast approval for property investors. Portfolio lending available.',
+      'Investment property loans from $150k to $10M. Up to 75% LVR, competitive rates from 9.25%. Fast approval for property investors. Portfolio lending available.',
     seoKeywords: [
       'investment property loans',
       'property investor loans',

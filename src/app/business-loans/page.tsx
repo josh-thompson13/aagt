@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
-    title: 'Business Loans | Fast Funding $150K-$5M',
+    title: 'Business Loans | Fast Funding $150K-$10M',
     description:
       'Get business loans from $150,000 to $10,000,000 with same day approval and 4-day settlement. Direct funder with minimal documentation required.',
     keywords:
@@ -107,7 +107,7 @@ export default function BusinessLoansPage() {
               {/* Floating Stats Cards */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">$5M</div>
+                  <div className="text-2xl font-bold text-green-600">$10M</div>
                   <div className="text-sm text-gray-600">Max Loan</div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function BusinessLoansPage() {
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 Business Loans
-                <span className="block text-primary-700">$150K - $5M</span>
+                <span className="block text-primary-700">$150K - $10M</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 mb-8">
